@@ -1,9 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <wiringPi.h>
+#include <wiringShift.h>
 
-#define LED_PIN 7
+#define COLUMN_DATA_PIN		7
+#define COLUMN_CLOCK_PIN 	8
+#define COLUMN_LATCH_PIN 	9
 #define DELAY 500
+
+uint8_t leds;
 
 void setup() {
   if (wiringPiSetup() == -1) {
@@ -11,18 +16,30 @@ void setup() {
     exit(1);
   }
 
-  pinMode(LED_PIN, OUTPUT);
+  pinMode(COLUMN_DATA_PIN, OUTPUT);
+  pinMode(COLUMN_CLOCK_PIN, OUTPUT);
+  pinMode(COLUMN_LATCH_PIN, OUTPUT);
+}
+
+void init() {
+  leds = 0;
+}
+
+void updateColumn(uint8_t column) {
+  digitalWrite(COLUMN_LATCH_PIN, LOW);
+  shiftOut(COLUMN_DATA_PIN, COLUMN_CLOCK_PIN, MSBFIRST, column);
+  digitalWrite(COLUMN_LATCH_PIN, HIGH);
 }
 
 int main(void) {
   printf("start");
 
   setup();
+  init();
 
   while(1) {
-    digitalWrite(LED_PIN, 1);
-    delay(DELAY);
-    digitalWrite(LED_PIN, 0);
+    updateColumn(leds);
+    leds++;
     delay(DELAY);
   }
 };
