@@ -1,5 +1,7 @@
-uint8_t volumne = 8;
+#include <stdio.h>
+#include "sound.h"
 
+uint8_t volumne = 8;
 
 void playSoundWrong() {
 }
