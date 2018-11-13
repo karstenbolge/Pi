@@ -1,1 +1,1 @@
-sudo gcc -o pi pi.c menu.c sound.h log.h -lwiringPi
+sudo gcc -o pi pi.c menu.c sound.c log.c switchEdgeTest.c -lwiringPi
