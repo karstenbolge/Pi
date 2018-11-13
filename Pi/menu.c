@@ -4,6 +4,7 @@
 #include "menu.h"
 #include "log.h"
 #include "sound.h"
+#include "switchEdgeTest.h"
 
 typedef struct itemFunctions {
   void (*open)(void);
@@ -136,6 +137,11 @@ void initMenu() {
   menu->next->child->id = MENU_SWITCH_EDGE;
   menu->next->child->parrent = menu->next;
   menu->next->child->child = NULL;
+  menu->next->child->event = malloc(sizeof(itemFunctions_t));
+  menu->next->child->event->open = &switchEdgeTestOpen;
+  menu->next->child->event->up = &switchEdgeTestUp;
+  menu->next->child->event->down = &switchEdgeTestDown;
+  menu->next->child->event->enter = &switchEdgeTestEnter;
   menu->next->child->previous = NULL;
   menu->next->child->next = malloc(sizeof(menuItem_t));
 
@@ -332,7 +338,6 @@ void initMenu() {
 			Extra balls
 			Precent extra balls
 		Standard audits
-			
 		Feature audits
 		Histograms
 		Time-stampt
@@ -363,7 +368,7 @@ Adjustments
 		H.S.T.D. adjustments*/
 
 void clearScreen() {
-  printf("\n\n\n\n");
+  system("@cls||clear");
 }
 
 void showMenu() {
@@ -454,6 +459,7 @@ void menuEnter() {
 	
 	if (currentItem->event->open) {
 	  currentItem->event->open();
+	  inItem = 1;
 	  return;
 	}
 	
