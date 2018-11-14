@@ -1,7 +1,9 @@
 #include "pi.h"
-#include<stdio.h>
+#include <stdlib.h>
 
 int main(void) {
+  readConfig();
+  
   printf("start");
   
   while(1) {
@@ -14,6 +16,8 @@ int main(void) {
         break;
       case 'f': menuEnter();
         break;
+	  case 'x': saveConfig(); exit(0);
+	    break;
     }      
   }
 };
