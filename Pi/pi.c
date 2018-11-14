@@ -21,6 +21,7 @@ void setup() {
 }
 
 void init() {
+  readConfig();
   leds = 0;
 }
 
