@@ -15,7 +15,7 @@ typedef struct highScoreItem {
 
 typedef struct config {
   uint8_t version;
-  highScoreItem_t highScore[6];
+  highScoreItem_t highScore[5];
 } config_t;
 
 config_t config; 
