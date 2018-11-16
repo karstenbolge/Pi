@@ -5,6 +5,8 @@
 #include "log.h"
 #include "sound.h"
 #include "switchEdgeTest.h"
+#include "highScore.h"
+#include "display.h"
 
 typedef struct itemFunctions {
   void (*open)(void);
@@ -228,7 +230,7 @@ void initMenu() {
   menu->next->child->previous = menu->next->child->next->next->next->next->next->next->next->next->next->next;
 // 0	
   memset(menu->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->next->name, "Utitlities");
+  strcpy(menu->next->next->name, "Utilities");
   menu->next->next->id = MENU_UTILITIES;
   menu->next->next->parrent = NULL;
   menu->next->next->child = malloc(sizeof(menuItem_t));
@@ -248,6 +250,11 @@ void initMenu() {
   menu->next->next->child->next->id = MENU_RESET_H_S_T_D;
   menu->next->next->child->next->parrent = menu->next->next;
   menu->next->next->child->next->child = NULL;
+  menu->next->next->child->next->event = malloc(sizeof(itemFunctions_t));
+  menu->next->next->child->next->event->open = &resetHighScoreOpen;
+  menu->next->next->child->next->event->up = &resetHighScoreUp;
+  menu->next->next->child->next->event->down = &resetHighScoreDown;
+  menu->next->next->child->next->event->enter = &resetHighScoreEnter;
   menu->next->next->child->next->previous = menu->next->next->child;
   menu->next->next->child->next->next = malloc(sizeof(menuItem_t));
 
@@ -367,10 +374,6 @@ Adjustments
 		Feature adjustments
 		H.S.T.D. adjustments*/
 
-void clearScreen() {
-  system("@cls||clear");
-}
-
 void showMenu() {
   clearScreen();
   menuItem_t *firstItem;
@@ -393,8 +396,12 @@ void showMenu() {
 void menuUp() {
   if (menuOpen) {
 	if (inItem) {
-	  if (currentItem->event->up) currentItem->event->up();
-	  else playSoundWrong();
+	  if (currentItem->event->up) {
+	    currentItem->event->up();
+		return;
+	  }
+	  
+	  playSoundWrong();
 	  return;
 	}
 	
@@ -407,10 +414,14 @@ void menuUp() {
 }
 
 void menuDown() {
-  if (menuOpen) {	
+  if (menuOpen) {
 	if (inItem) {
-	  if (currentItem->event->down) currentItem->event->down();
-	  else playSoundWrong();
+	  if (currentItem->event->down) {
+	    currentItem->event->down();
+		return;
+	  }
+	  
+	  playSoundWrong();
 	  return;
 	}
 
