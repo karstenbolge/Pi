@@ -46,10 +46,12 @@ int stringStart(char *str, char *in) {
 #define FOURTH "  forth:"
 
 void readConfig() {
+  initLog();
+  writeLogString("start");
   init();
   
   char readBuffer[CONFIG_BUFFER_SIZE];
-  pConfig = fopen("config.yaml" , "r");
+  pConfig = fopen("config.yaml", "r");
   if (pConfig != NULL) {
     int inGroup = 0;
 	int elementNumber = 0;
