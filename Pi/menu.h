@@ -65,7 +65,7 @@ Test menu
 		Lamp and flasher test
 		Display test
 		Flipper coil test
-Utitlities
+Utilities
 		Clear audits
 		Reset H.S.T.D.
 		Set time and date
