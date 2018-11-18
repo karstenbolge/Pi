@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdint.h>
 #include "sound.h"
 
 uint8_t volumne = 8;

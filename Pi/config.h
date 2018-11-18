@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdint.h>
 #include <string.h>
 
 #define CONFIG_BUFFER_SIZE 120

@@ -2,7 +2,7 @@
 #include "log.h"
 #include "config.h"
 
-void init() {
+void initConfig() {
   config.version = 1;
   config.highScore[0].current.score = 50000;
   strcpy(config.highScore[0].current.name, "KUB");
@@ -48,7 +48,7 @@ int stringStart(char *str, char *in) {
 void readConfig() {
   initLog();
   writeLogString("start");
-  init();
+  initConfig();
   
   char readBuffer[CONFIG_BUFFER_SIZE];
   pConfig = fopen("config.yaml", "r");

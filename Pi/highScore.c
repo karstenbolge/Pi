@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdint.h>
 #include "highScore.h"
 #include "display.h"
 #include "menu.h"

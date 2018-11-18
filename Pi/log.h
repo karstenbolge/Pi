@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdint.h>
 
 #define SHOULD_NEVER_HAPPENS 1
 
