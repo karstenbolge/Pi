@@ -1,0 +1,205 @@
+Guitar (skill-shot)
+Bass (Spell) (where?)
+Drums (50-100 bumbers to collect)
++Congas (pop up 15 sec, 3 times each to collect) (Greater jackpot)
+Clavinet 
+Synthesizer
++Hammond Organ (Greater jackpot)
+Horns
+-Hurry up trompet (two ramps 15 sec) (multiball)
++Sexy sax (Greater jackpot) (When horns, rigth in-lane)
+
+Re-union
++Dr. stuff
+	Stetoskop
+	Kittel
+	Head Mirror
+	Megafon + keyboard
+	
+When minimum instruments are collected (guitar, bass, drums, clavinet, syntesizer, horns) unlimited multiball for as long as dance moves collected.
+
+Timed x2 mode (all scores double)
+
+Left skill recovery, when lit, get another 30 flips to spell something to continue.
+Rigth kick-back
+
+When train spinner enough (50 spins?) then collected the hustle.
+Sneecky lock, if speed just match.
+
+"Get down"
+"Now, put some stak on it!"
+"Lay those tracks"
+
+Font *Dymo label makers 1970*
+Colors *Brown/orange*
+
+Lava lamps
+Vinyl records
+Platform shoes
+Flares (trousers)
+Roller skates
+Long hair and sideburns
+PEZ DISPENSER/lock ball
+
+Funky monkey?
+
+Discoball, inside glass to play with,
+Soultrain
+
+Mic-hair, moving target
+
+The hustle 18 sec
+The bump 4 sec
+YMCA danse
+Funky Chicken (two target, when each collect one, up to 8 (1,2,4,8))
+The Disco Finger
+The Bus Stop
+The Lawnmower
+The Sprinkler
+The Electric Slide
+
+Bpm 100? more like 90.
+
+Bustamovebook
+
+128x32 DMD
+
+Extraballs, hair styles
+http://www.stylisheve.com/1970s-hairstyles-for-men/
+
+Cya Later Alligator
+catch You On The Flip~side
+In Your Face!
+Can You Dig It
+
+Far Out
+That's Sick
+To The Max
+chill' 'be Cool
+feel Tha Funk
+get down wit da boogie
+get Down,' Or, 'boogie'
+
+looo-king Gooood!'
+right On
+Ace
+
+BAM!!!!
+Way Decent!
+
+attract
+What's Your 20?
+What's Happening?
+What's up Homie G Funk?
+Hey Good Looking
+
+Yagalistic - when nothing is happening
+
+
+===
+
+Display Rasparian
+http://raspberrycompote.blogspot.com/2012/12/low-level-graphics-on-raspberry-pi-part_9509.html
+http://betteros.org/tut/graphics1.php
+
+https://www.youtube.com/watch?v=_gwshF-cP74
+
+Shift registors 74HC595 out
+https://www.youtube.com/watch?v=cAT07gy4DII
+
+shift in CD4021
+https://www.youtube.com/watch?v=IHY3UFw9UhI
+
+in matrix
+https://arduino.stackexchange.com/questions/31885/need-help-in-circuit-diagram-of-88-reed-switch-matrix
+
+https://www.aliexpress.com/item/100pcs-Transparent-555-Wedge-AC-6-3V-pinball-led/32820054786.html?spm=2114.search0204.3.99.57da429aJLxJDo&ws_ab_test=searchweb0_0,searchweb201602_3_10152_10151_10065_10344_10068_5722815_10342_10325_10343_10546_10340_5722915_10548_10341_5722615_10696_10084_10083_10618_10304_10307_10820_5722715_10059_306_100031_10103_10624_10623_10622_5722515_10621_10620,searchweb201603_31,ppcSwitch_5_ppcChannel&algo_expid=54f77706-f50a-4a6e-9eed-2cc95ddc40ba-16&algo_pvid=54f77706-f50a-4a6e-9eed-2cc95ddc40ba&priceBeautifyAB=0
+
+
+Arcade stuff / elektrik
+https://www.alternate.dk/html/product/1090874
+
+https://www.mouser.dk/ProductDetail/UDOO/SB02-4940-0000-C0?qs=%2fha2pyFaduhD7YV5fCe4mXEscHVYPmsf%252bDBKZ5jk7kkYf5R6JNPj3XXwDtfDZzp3
+
+https://arduinotech.dk/shop/sn-28b-crimping-tool-til-f-eks-dupont-stik/
+
+https://www.conradelektronik.dk/p/raspberry-pi-spilkonsol-joy-it-raspberry-gamestation-maker-set-1533269
+
+
+https://www.aliexpress.com/item/10PCS-T10-Socket-Dashboard-Instrument-Panel-Socket-T10-W5W-168-192-194-Twist-Lock-Wedge-Bases/32842514069.html?spm=2114.10010108.1000023.3.517137d64prAIE
+https://www.aliexpress.com/item/10x-T10-W5W-168-194-Lamp-holder-Socket-glass-base-lamp-Socket-DIY-Black/32808693289.html?spm=2114.10010108.1000014.1.785137d6L9bLBs&gps-id=pcDetailBottomMoreOtherSeller&scm=1007.13338.106568.000000000000000&scm_id=1007.13338.106568.000000000000000&scm-url=1007.13338.106568.000000000000000&pvid=31bf1ae2-15db-424f-baa8-2173c261cae3
+
+lamps 555/194
+https://www.aliexpress.com/item/High-quality-6v-led-Indicator-lights-free-shipping-20pcs-lot/32620602025.html?spm=2114.search0204.3.140.3cf95115yLEIRY&ws_ab_test=searchweb0_0,searchweb201602_1_10152_10151_10065_10344_10068_10342_10343_10340_10341_10696_10084_10083_10618_10304_10307_10820_10821_10302_10869_10868_10059_100031_10103_10624_10623_10622_10621_10620,searchweb201603_45,ppcSwitch_5_ppcChannel&algo_expid=e447f70c-3447-4cde-8de4-f5e7d74fd278-22&algo_pvid=e447f70c-3447-4cde-8de4-f5e7d74fd278&priceBeautifyAB=0
+https://www.aliexpress.com/item/Hot-selling-6v-led-Indicator-light-t10-free-shipping-20pcs-lot/32621552612.html?spm=2114.search0204.3.189.3cf95115yLEIRY&ws_ab_test=searchweb0_0,searchweb201602_1_10152_10151_10065_10344_10068_10342_10343_10340_10341_10696_10084_10083_10618_10304_10307_10820_10821_10302_10869_10868_10059_100031_10103_10624_10623_10622_10621_10620,searchweb201603_45,ppcSwitch_5_ppcChannel&algo_expid=e447f70c-3447-4cde-8de4-f5e7d74fd278-30&algo_pvid=e447f70c-3447-4cde-8de4-f5e7d74fd278&priceBeautifyAB=0
+https://www.aliexpress.com/item/High-quality-5050-6V-led-instrument-lights-car-T10-158-168-194-912-w5w-w3w-led/32656443326.html?spm=2114.search0204.3.13.1d3a5cf88XFHQh&ws_ab_test=searchweb0_0,searchweb201602_1_10152_10151_10065_10344_10068_10342_10343_10340_10341_10696_10084_10083_10618_10304_10307_10820_10821_10302_10869_10868_10059_100031_10103_10624_10623_10622_10621_10620,searchweb201603_45,ppcSwitch_5_ppcChannel&algo_expid=71eb9858-2443-47d3-8af0-adb30989f0dc-2&algo_pvid=71eb9858-2443-47d3-8af0-adb30989f0dc&priceBeautifyAB=0
+
+Switch buttons
+https://www.aliexpress.com/item/10pcs-Limit-Switch-Push-Button-Switch-1A-125V-AC-2A-125V-AC-Mouse-Switch-3Pins-Micro/32840177333.html?spm=2114.search0204.3.207.4a5e7f45qID3G6&ws_ab_test=searchweb0_0,searchweb201602_1_10152_10151_10065_10344_10068_10342_10343_10340_10341_10696_10084_10083_10618_10304_10307_10820_10821_10302_10869_10868_10059_100031_10103_10624_10623_10622_10621_10620,searchweb201603_45,ppcSwitch_5_ppcChannel&algo_expid=5bb0c232-12fe-428b-8ff8-cc6b1394a9ba-19&algo_pvid=5bb0c232-12fe-428b-8ff8-cc6b1394a9ba&priceBeautifyAB=0
+https://www.aliexpress.com/item/10PCS-12MM-PBS-33B-Waterproof-Momentary-ON-OFF-Push-Button-Swithch-Mini-Switch-Self-resetting-No/32860464866.html?spm=2114.search0204.3.256.79f175d9miiHjg&ws_ab_test=searchweb0_0,searchweb201602_1_10152_10151_10065_10344_10068_10342_10343_10340_10341_10696_10084_10083_10618_10304_10307_10820_10821_10302_10869_10868_10059_100031_10103_10624_10623_10622_10621_10620,searchweb201603_45,ppcSwitch_5_ppcChannel&algo_expid=1de98965-6e97-4d63-8324-0519c0a04f06-35&algo_pvid=1de98965-6e97-4d63-8324-0519c0a04f06&priceBeautifyAB=0
+https://www.aliexpress.com/item/6pcs-7mm-Momentary-Push-button-Switch-Press-the-reset-switch-Momentary-On-Off-Push-Button-Micro/32798630944.html?spm=2114.search0204.3.205.17b87370vHvueJ&ws_ab_test=searchweb0_0,searchweb201602_1_10152_10151_10065_10344_10068_10342_10343_10340_10341_10696_10084_10083_10618_10304_10307_10820_10821_10302_10869_10868_10059_100031_10103_10624_10623_10622_10621_10620,searchweb201603_45,ppcSwitch_5_ppcChannel&algo_expid=56e73967-5bff-4d1f-8771-040d47d8711a-29&algo_pvid=56e73967-5bff-4d1f-8771-040d47d8711a&priceBeautifyAB=0
+https://www.aliexpress.com/item/5-Pcs-15A-250VAC-V-15-Push-Button-SPDT-1NO-1NC-Micro-Switch/32838142249.html?spm=2114.search0204.3.277.17b87370vHvueJ&ws_ab_test=searchweb0_0,searchweb201602_1_10152_10151_10065_10344_10068_10342_10343_10340_10341_10696_10084_10083_10618_10304_10307_10820_10821_10302_10869_10868_10059_100031_10103_10624_10623_10622_10621_10620,searchweb201603_45,ppcSwitch_5_ppcChannel&algo_expid=56e73967-5bff-4d1f-8771-040d47d8711a-39&algo_pvid=56e73967-5bff-4d1f-8771-040d47d8711a&priceBeautifyAB=0
+https://www.aliexpress.com/item/Laser-Machine-Micro-Limit-Sensor-Auto-Switch-KW11/32799242542.html?spm=2114.search0204.3.179.ecdf63bfobcGSZ&ws_ab_test=searchweb0_0,searchweb201602_1_10152_10151_10065_10344_10068_10342_10343_10340_10341_10696_10084_10083_10618_10304_10307_10820_10821_10302_10869_10868_10059_100031_10103_10624_10623_10622_10621_10620,searchweb201603_45,ppcSwitch_5_ppcChannel&algo_expid=916ce1b9-3137-46dc-ac47-8e20c50057ab-25&algo_pvid=916ce1b9-3137-46dc-ac47-8e20c50057ab&priceBeautifyAB=0
+https://www.aliexpress.com/item/16mm-High-Head-Waterproof-Metal-Push-Button-Switch-Reset-Button-Switch-Momentary-Horn-Car-Red-Green/32835312867.html?spm=2114.search0204.3.66.35e436bbi1tOEX&ws_ab_test=searchweb0_0,searchweb201602_1_10152_10151_10065_10344_10068_10342_10343_10340_10341_10696_10084_10083_10618_10304_10307_10820_10821_10302_10869_10868_10059_100031_10103_10624_10623_10622_10621_10620,searchweb201603_45,ppcSwitch_5_ppcChannel&algo_expid=0f8c0c58-b41d-47c2-8292-1d178c4a5f01-9&algo_pvid=0f8c0c58-b41d-47c2-8292-1d178c4a5f01&priceBeautifyAB=0
+https://www.aliexpress.com/item/6pcs-16MM-Self-Return-Momentary-Push-Button-Switch-6A-125VAC-3A-250VAC/32833175875.html?spm=2114.10010108.1000023.7.50513d94lByyT0
+https://www.aliexpress.com/item/Black-22mm-Metal-Stainless-Steel-Waterproof-Momentary-Doorebll-Bell-Horn-LED-Push-Button-Switch-Car-Auto/32823432056.html?spm=2114.search0204.3.135.34f84adedJGrXU&ws_ab_test=searchweb0_0,searchweb201602_1_10152_10151_10065_10344_10068_10342_10343_10340_10341_10696_10084_10083_10618_10304_10307_10820_10821_10302_10869_10868_10059_100031_10103_10624_10623_10622_10621_10620,searchweb201603_45,ppcSwitch_5_ppcChannel&algo_expid=dfd8601f-e456-415b-a657-72efa5220081-18&algo_pvid=dfd8601f-e456-415b-a657-72efa5220081&priceBeautifyAB=0
+https://www.aliexpress.com/item/5pcs-Momentary-Push-Button-Switch-16mm-Momentary-pushbutton-switches-3A-125VAC/32799485543.html?spm=2114.search0204.3.8.3a8a62b3hllcUz&ws_ab_test=searchweb0_0,searchweb201602_1_10152_10151_10065_10344_10068_10342_10343_10340_10341_10696_10084_10083_10618_10304_10307_10820_10821_10302_10869_10868_10059_100031_10103_10624_10623_10622_10621_10620,searchweb201603_45,ppcSwitch_5_ppcChannel&algo_expid=6399c05e-64b4-40bd-bb90-d220f41cee90-1&algo_pvid=6399c05e-64b4-40bd-bb90-d220f41cee90&priceBeautifyAB=0
+
+
+Sound
+https://www.arduino.cc/en/Tutorial/SimpleAudioPlayer
+
+
+
+Tinkercad.com
+	tandhjul
+#	r=10mm t=24, ø=62,8, 2,62
+	r=14mm t=36, ø=88,0, 2,44
+#   r=13mm t=36, ø=81,7, 2,27
+	r= 9mm t=24, ø=56,5, 2,36
+	r= 8mm t=20, ø=50,3, 2,52!
+	r= 6mm t=16, ø=37,7, 2,35!
+	r= 5mm t=12, ø=31,4, 2,61!
+	r= 3mm t= 8, ø=18,8, 2,35
+
+	
+	
+Bookkeepings
+		Main audits
+			Awarage ball time
+			total plays
+			replay awards
+			extra balls
+			precent extra balls
+		Standard audits
+			
+		Feature audits
+		Histograms
+		Time-stampt
+Test menu
+		Switch edge
+		Switch levels
+		Singles switch test
+		Solenoid test
+		Flasher test
+		G.I Test
+		Sound and music test
+		Single lamp test
+		All lamps test
+		Lamp and flasher test
+		Display test
+		Flipper coil test
+Utitlities
+		Clear audits
+		Reset H.S.T.D.
+		Set time and date
+		Set Custom message
+		Set game id
+		Factory adjustments
+		Factory reset
+Adjustments
+		Standard adjustements
+		Feature adjustments
+		H.S.T.D. adjustments
+		
+		
