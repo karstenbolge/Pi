@@ -1,6 +1,8 @@
 #include "pi.h"
 #include <wiringPi.h>
 #include <wiringShift.h>
+#include <stdlib.h>
+#include <time.h>
 
 #define COLUMN_DATA_PIN		7
 #define COLUMN_CLOCK_PIN 	8
@@ -15,6 +17,7 @@
 
 uint8_t leds;
 uint8_t inputRegister;
+struct timespec sleepValue = {0};
 
 void setup() {
   if (wiringPiSetup() == -1) {
@@ -30,11 +33,13 @@ void setup() {
   pinMode(INPUT_SWITCH_CLOCK_PIN, OUTPUT);
   pinMode(INPUT_SWITCH_LATCH_PIN, OUTPUT);
   pinMode(INPUT_SWITCH_ENABLE_PIN, OUTPUT);
+
+  sleepValue.tv_nsec = 10000;
 }
 
 void init() {
   readConfig();
-  leds = 0;
+  leds = 1;
   inputRegister = 0;
 }
 
@@ -44,21 +49,24 @@ void updateColumn(uint8_t column) {
   digitalWrite(COLUMN_LATCH_PIN, HIGH);
 }
 
+void sleep() {
+  nanosleep(&sleepValue, NULL);
+}
+
 void updateShiftIn() {
   long bitVal;
   digitalWrite(INPUT_SWITCH_ENABLE_PIN, HIGH);
   digitalWrite(INPUT_SWITCH_LATCH_PIN, LOW);
-  delay(5);
+  sleep();
   digitalWrite(INPUT_SWITCH_LATCH_PIN, HIGH);
   digitalWrite(INPUT_SWITCH_ENABLE_PIN, LOW);
-  delay(5);
+  sleep();
 
-  printf("0 1 2 3 4 5 6 7 8 9 a b c d e f\n", bitVal);
   for(int i = 0; i < 16; i++) {
     bitVal = digitalRead(INPUT_SWITCH_DATA_PIN);
     printf("%d ", bitVal);
     digitalWrite(INPUT_SWITCH_CLOCK_PIN, HIGH);
-    delay(5);
+    sleep();
     digitalWrite(INPUT_SWITCH_CLOCK_PIN, LOW);
   } 
   printf("\n");
@@ -66,20 +74,24 @@ void updateShiftIn() {
 
 
 int main(void) {
-  printf("start");
-
   setup();
   init();
 
   while(1) {
     updateColumn(leds);
-    leds++;
-    delay(DELAY);
+
+    if (leds == 1) {
+      system("@cls||clear");
+      printf("\n    0 1 2 3 4 5 6 7 8 9 a b c d e f\n");
+    }
+    printf("%3d ", leds);
     //inputRegister = digitalRead(INPUT_SWITCH_PIN);
     updateShiftIn();
     //printf("inputRegister %d\n", inputRegister);
     //printf("LOW %d HIGH %d\n", LOW, HIGH);
 
-    if (leds == 16) leds = 0;
+    //delay(5);
+    leds = leds << 1;
+    if (leds == 0) leds = 1;
   }
 };
