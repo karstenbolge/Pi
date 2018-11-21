@@ -53,14 +53,15 @@ void updateShiftIn() {
   digitalWrite(INPUT_SWITCH_ENABLE_PIN, LOW);
   delay(5);
 
-  for(int i = 0; i < 8; i++) {
+  printf("0 1 2 3 4 5 6 7 8 9 a b c d e f\n", bitVal);
+  for(int i = 0; i < 16; i++) {
     bitVal = digitalRead(INPUT_SWITCH_DATA_PIN);
-    printf("bitval %d %d\n", i, bitVal);
-
+    printf("%d ", bitVal);
     digitalWrite(INPUT_SWITCH_CLOCK_PIN, HIGH);
     delay(5);
     digitalWrite(INPUT_SWITCH_CLOCK_PIN, LOW);
   } 
+  printf("\n");
 }
 
 
@@ -76,7 +77,7 @@ int main(void) {
     delay(DELAY);
     //inputRegister = digitalRead(INPUT_SWITCH_PIN);
     updateShiftIn();
-    printf("inputRegister %d\n", inputRegister);
+    //printf("inputRegister %d\n", inputRegister);
     //printf("LOW %d HIGH %d\n", LOW, HIGH);
 
     if (leds == 16) leds = 0;
