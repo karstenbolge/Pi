@@ -1,6 +1,6 @@
 #include <stdlib.h>
-#include "log.h"
-#include "config.h"
+#include "../hdr/log.h"
+#include "../hdr/config.h"
 
 void initConfig() {
   config.version = 1;

@@ -1,8 +1,8 @@
-#include "pi.h"
 #include <wiringPi.h>
 #include <wiringShift.h>
 #include <stdlib.h>
 #include <time.h>
+#include "../hdr/pi.h"
 
 #define COLUMN_DATA_PIN		7
 #define COLUMN_CLOCK_PIN 	8

@@ -1,5 +1,5 @@
 #include <stdint.h>
-#include "sound.h"
+#include "../hdr/sound.h"
 
 uint8_t volumne = 8;
 

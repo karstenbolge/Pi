@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdint.h>
-#include "highScore.h"
-#include "display.h"
-#include "menu.h"
-#include "config.h"
+#include "../hdr/highScore.h"
+#include "../hdr/display.h"
+#include "../hdr/menu.h"
+#include "../hdr/config.h"
 
 #define IN_MODE_YEAR 0
 #define IN_MODE_MONTH 1

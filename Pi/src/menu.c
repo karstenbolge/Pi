@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
-#include "menu.h"
-#include "log.h"
-#include "sound.h"
-#include "switchEdgeTest.h"
-#include "highScore.h"
-#include "setTime.h"
-#include "display.h"
+#include "../hdr/menu.h"
+#include "../hdr/log.h"
+#include "../hdr/sound.h"
+#include "../hdr/switchEdgeTest.h"
+#include "../hdr/highScore.h"
+#include "../hdr/setTime.h"
+#include "../hdr/display.h"
 
 typedef struct itemFunctions {
   void (*open)(void);

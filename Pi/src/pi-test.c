@@ -1,5 +1,5 @@
-#include "pi.h"
 #include <stdlib.h>
+#include "../hdr/pi.h"
 
 uint16_t oldInputRegister[8];
 uint16_t newInputRegister;

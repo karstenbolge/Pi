@@ -1,7 +1,7 @@
 #include <string.h>
 #include <time.h>
 #include <stdlib.h>
-#include "log.h"
+#include "../hdr/log.h"
 
 void initLog() {
   pLog = fopen("log.txt", "a");

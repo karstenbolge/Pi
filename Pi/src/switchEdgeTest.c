@@ -1,4 +1,4 @@
-#include "switchEdgeTest.h"
+#include "../hdr/switchEdgeTest.h"
 
 void switchEdgeTestOpen() {
   printf("switchEdgeTestOpen");
