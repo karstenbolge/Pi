@@ -7,6 +7,7 @@
 #include "sound.h"
 #include "switchEdgeTest.h"
 #include "highScore.h"
+#include "setTime.h"
 #include "display.h"
 
 typedef struct itemFunctions {
@@ -264,6 +265,11 @@ void initMenu() {
   menu->next->next->child->next->next->id = MENU_SET_TIME_AND_DATE;
   menu->next->next->child->next->next->parrent = menu->next->next;
   menu->next->next->child->next->next->child = NULL;
+  menu->next->next->child->next->next->event = malloc(sizeof(itemFunctions_t));
+  menu->next->next->child->next->next->event->open = &setTimeOpen;
+  menu->next->next->child->next->next->event->up = &setTimeUp;
+  menu->next->next->child->next->next->event->down = &setTimeDown;
+  menu->next->next->child->next->next->event->enter = &setTimeEnter;
   menu->next->next->child->next->next->previous = menu->next->next->child->next;
   menu->next->next->child->next->next->next = malloc(sizeof(menuItem_t));
 
