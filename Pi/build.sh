@@ -1,1 +1,1 @@
-sudo gcc -o pi pi.c menu.c sound.c log.c switchEdgeTest.c config.c -lwiringPi display.c highScore.c setTime.c
+sudo gcc -o pi ./src/pi.c ./src/menu.c ./src/sound.c ./src/log.c ./src/switchEdgeTest.c ./src/config.c /src/display.c ./src/highScore.c ./src/setTime.c -lwiringPi
