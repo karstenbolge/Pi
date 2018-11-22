@@ -1,10 +1,81 @@
 #include "pi.h"
 #include <stdlib.h>
 
+uint16_t oldInputRegister[8];
+uint16_t newInputRegister;
+
+void displayRow(uint16_t row) {
+  uint16_t count = 32768;
+  
+  while(count) {
+    if (count & row) {
+      printf("X");
+    } else {
+	  printf(".");
+    }
+	count = count >> 1;
+  }
+  printf("\n");
+}
+
+void displayColumn(uint8_t column) {
+  uint8_t count = 1;
+  int n = 0;
+  
+  while(count) {
+    if (count & column) {
+      printf("%d", n);
+	  return;
+    }
+	n++;
+	count = count << 1;
+  }
+}
+
 int main(void) {
   readConfig();
   
-  printf("start");
+  printf("start\n");
+  
+  long bitVal;
+  for(int i = 0; i < 16; i++) {
+	if (i == 1 || i == 4 || i == 7 || i == 10 || i == 11) {
+      bitVal = 1;
+	} else {
+      bitVal = 0;
+	}
+	
+	newInputRegister = newInputRegister << 1;
+	newInputRegister += bitVal;
+    printf("%d ", bitVal);
+  }
+  printf("\n%d \n", newInputRegister);
+  displayRow(newInputRegister);
+  oldInputRegister[0] = newInputRegister;
+  
+  for(int i = 0; i < 16; i++) {
+	if (i == 1 || i == 4 || i == 7 || i == 10 || i == 11 || i == 15) {
+      bitVal = 1;
+	} else {
+      bitVal = 0;
+	}
+	
+	newInputRegister = newInputRegister << 1;
+	newInputRegister += bitVal;
+    printf("%d ", bitVal);
+  }
+  
+  printf("\n%d \n", newInputRegister);
+  printf("\n%d \n", oldInputRegister[0]);
+  printf("\nequal %d\n", oldInputRegister[0] == newInputRegister);
+  displayRow(newInputRegister);
+  
+  int leds = 1;
+  for(int i = 0; i < 8; i++) {
+    displayColumn(leds);
+	printf("\n");
+	leds = leds << 1;
+  }	
   
   while(1) {
     switch(getchar()) {
