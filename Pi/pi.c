@@ -13,10 +13,12 @@
 #define INPUT_SWITCH_LATCH_PIN 	16 //White 
 #define INPUT_SWITCH_ENABLE_PIN 4 //White 
  
-#define DELAY 500
-
 uint8_t leds;
-uint8_t inputRegister;
+uint8_t column;
+
+uint16_t oldInputRegister[8];
+uint16_t newInputRegister;
+
 struct timespec sleepValue = {0};
 
 void setup() {
@@ -64,14 +66,13 @@ void updateShiftIn() {
 
   for(int i = 0; i < 16; i++) {
     bitVal = digitalRead(INPUT_SWITCH_DATA_PIN);
-    printf("%d ", bitVal);
+	newInputRegister = newInputRegister << 1;
+	newInputRegister += bitVal;
     digitalWrite(INPUT_SWITCH_CLOCK_PIN, HIGH);
     sleep();
     digitalWrite(INPUT_SWITCH_CLOCK_PIN, LOW);
   } 
-  printf("\n");
 }
-
 
 int main(void) {
   setup();
@@ -82,7 +83,7 @@ int main(void) {
 
     if (leds == 1) {
       system("@cls||clear");
-      printf("\n    0 1 2 3 4 5 6 7 8 9 a b c d e f\n");
+      printf("\n   0 1 2 3 4 5 6 7 8 9 a b c d e f\n");
     }
     printf("%3d ", leds);
     //inputRegister = digitalRead(INPUT_SWITCH_PIN);
@@ -90,7 +91,6 @@ int main(void) {
     //printf("inputRegister %d\n", inputRegister);
     //printf("LOW %d HIGH %d\n", LOW, HIGH);
 
-    //delay(5);
     leds = leds << 1;
     if (leds == 0) leds = 1;
   }
