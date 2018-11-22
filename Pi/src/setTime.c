@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdint.h>
+#include <time.h>
 #include "../hdr/highScore.h"
 #include "../hdr/display.h"
 #include "../hdr/menu.h"
@@ -106,11 +107,17 @@ void validateTime() {
 }
 
 void setTimeOpen() {
-  year = 2018;
-  month = 11;
-  date = 21;
-  hour = 12;
-  minute = 0;
+  time_t rawtime;
+  struct tm * timeinfo;
+
+  time ( &rawtime );
+  timeinfo = localtime ( &rawtime );
+
+  year = timeinfo->tm_year + 1900;
+  month = timeinfo->tm_mon + 1;
+  date = timeinfo->tm_mday;
+  hour = timeinfo->tm_hour;
+  minute = timeinfo->tm_min;
   inMode = IN_MODE_YEAR;
   showTime();
 }
