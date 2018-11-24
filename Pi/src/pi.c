@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "../hdr/pi.h"
+#include "../hdr/switchEdgeTest.h"
 
 #define COLUMN_DATA_PIN		7
 #define COLUMN_CLOCK_PIN 	8
@@ -39,15 +40,10 @@ void setup() {
   sleepValue.tv_nsec = 10000;
 }
 
-void init() {
-  readConfig();
-  leds = 1;
-  inputRegister = 0;
-}
-
 void updateColumn(uint8_t column) {
+  int i = 1 << (column);
   digitalWrite(COLUMN_LATCH_PIN, LOW);
-  shiftOut(COLUMN_DATA_PIN, COLUMN_CLOCK_PIN, MSBFIRST, column);
+  shiftOut(COLUMN_DATA_PIN, COLUMN_CLOCK_PIN, MSBFIRST, i);
   digitalWrite(COLUMN_LATCH_PIN, HIGH);
 }
 
@@ -66,12 +62,24 @@ void updateShiftIn() {
 
   for(int i = 0; i < 16; i++) {
     bitVal = digitalRead(INPUT_SWITCH_DATA_PIN);
-	newInputRegister = newInputRegister << 1;
-	newInputRegister += bitVal;
+    newInputRegister = newInputRegister << 1;
+    newInputRegister += bitVal;
     digitalWrite(INPUT_SWITCH_CLOCK_PIN, HIGH);
     sleep();
     digitalWrite(INPUT_SWITCH_CLOCK_PIN, LOW);
   } 
+}
+
+void init() {
+  readConfig();
+  leds = 1;
+  column = 0;
+
+  for(int i = 0; i < 8; i++) {
+    updateColumn(i);
+    updateShiftIn();
+    oldInputRegister[i] = newInputRegister;
+  }
 }
 
 int main(void) {
@@ -79,19 +87,43 @@ int main(void) {
   init();
 
   while(1) {
-    updateColumn(leds);
+    updateColumn(column);
 
-    if (leds == 1) {
-      system("@cls||clear");
-      printf("\n   0 1 2 3 4 5 6 7 8 9 a b c d e f\n");
-    }
-    printf("%3d ", leds);
-    //inputRegister = digitalRead(INPUT_SWITCH_PIN);
     updateShiftIn();
-    //printf("inputRegister %d\n", inputRegister);
-    //printf("LOW %d HIGH %d\n", LOW, HIGH);
+    if (oldInputRegister[column] != newInputRegister) {
+      showMatrix(oldInputRegister);
+      switch(column) {
+        case 2: 
+          if ((oldInputRegister[column] & 1 << 2) != (newInputRegister & 1 << 2)) {
+            if (newInputRegister & 1 << 2);
+            else {
+              menuExit();
+            }
+          }
+          if ((oldInputRegister[column] & 1 << 3) != (newInputRegister & 1 << 3)) {
+            if (newInputRegister & 1 << 3);
+            else {
+              menuEnter();            
+            }
+          }
+          if ((oldInputRegister[column] & 1 << 12) != (newInputRegister & 1 << 12)) {
+            if (newInputRegister & 1 << 12);
+            else {
+              menuUp();
+            }
+          }
+          if ((oldInputRegister[column] & 1 << 15) != (newInputRegister & 1 << 15)) {
+            if (newInputRegister & 1 << 15);
+            else {
+              menuDown();
+            }
+          }
+        break;
+      }
+      oldInputRegister[column] = newInputRegister;
+    }
 
-    leds = leds << 1;
-    if (leds == 0) leds = 1;
+    column++;
+    if (column == 8) column = 0;
   }
 };
