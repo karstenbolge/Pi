@@ -91,7 +91,6 @@ int main(void) {
 
     updateShiftIn();
     if (oldInputRegister[column] != newInputRegister) {
-      showMatrix(oldInputRegister);
       switch(column) {
         case 2: 
           if ((oldInputRegister[column] & 1 << 2) != (newInputRegister & 1 << 2)) {
@@ -121,6 +120,7 @@ int main(void) {
         break;
       }
       oldInputRegister[column] = newInputRegister;
+      showMatrix(oldInputRegister);
     }
 
     column++;
