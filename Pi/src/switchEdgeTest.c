@@ -36,6 +36,7 @@ char *getSwitchName() {
         case 5: 
         case 6: 
         case 7: 
+				break; 
 	}
 	
 	return "Not used";

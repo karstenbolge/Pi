@@ -402,10 +402,12 @@ void showMenu() {
   menuItem_t *item = firstItem;
 
   do {
-	if (item == currentItem) printf("->");
-	else printf("  ");
-    printf(item->name);
-	printf("\n");
+	if (item == currentItem) {
+    printf("->");
+  } else {
+    printf("  ");
+  }
+  printf("%s\n", item->name);
 	item = item->next;
   } while(item != firstItem);
 }
@@ -453,7 +455,7 @@ void menuDown() {
 void menuExit() {
   if (menuOpen) {
     if (inItem != 0) {
-	  if (currentItem->event->exit()) {
+	  if (currentItem->event->exit) {
 	    currentItem->event->exit();
 	  }
       inItem = 0;

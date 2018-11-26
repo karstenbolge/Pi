@@ -138,29 +138,27 @@ int main(void) {
             }
           }
           if ((oldInputRegister[column] & 1 << 12) != (newInputRegister & 1 << 12)) {
-            if (newInputRegister & 1 << 12) (
-			  onUpDownHeld(UP_DOWN_HELD_UP);
-		    } else {
-			  if (upDownHasTicked == 0) {
+            if (newInputRegister & 1 << 12) {
+			        onUpDownHeld(UP_DOWN_HELD_UP);
+		        } else {
+			        if (upDownHasTicked == 0) {
                 menuUp();
-			  }
-			  upDownHeld = UP_DOWN_HELD_OFF;
-			  upDownLoops = 0;
-			  upDownHasTicked = 0;
-			  }
+			        }
+			        upDownHeld = UP_DOWN_HELD_OFF;
+			        upDownLoops = 0;
+			        upDownHasTicked = 0;
             }
           }
           if ((oldInputRegister[column] & 1 << 15) != (newInputRegister & 1 << 15)) {
             if (newInputRegister & 1 << 15) {
-			  onUpDownHeld(UP_DOWN_HELD_DOWN);
-			} else {
+			        onUpDownHeld(UP_DOWN_HELD_DOWN);
+			      } else {
               if (upDownHasTicked == 0) {
-				menuDown();
-			  }
-			  upDownHeld = UP_DOWN_HELD_OFF;
-			  upDownLoops = 0;
-			  upDownHasTicked = 0;
-			  }
+				        menuDown();
+    			  }
+		    	  upDownHeld = UP_DOWN_HELD_OFF;
+			      upDownLoops = 0;
+    			  upDownHasTicked = 0;
             }
           }
         break;

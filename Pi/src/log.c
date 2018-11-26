@@ -15,7 +15,7 @@ void closeLog() {
 }
 
 void writeLog(uint8_t id) {
-  fprintf(pLog, "%s\n", id);
+  fprintf(pLog, "%d\n", id);
 }
 
 void writeLogString(char *pString) {
