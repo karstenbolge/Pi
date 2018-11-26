@@ -14,8 +14,16 @@
 #define INPUT_SWITCH_LATCH_PIN 	16 //White 
 #define INPUT_SWITCH_ENABLE_PIN 4 //White 
  
+#define UP_DOWN_HELD_OFF 0
+#define UP_DOWN_HELD_UP 1
+#define UP_DOWN_HELD_DOWN 2
+#define UP_DOWN_HELD_LOOPS 1000
+
 uint8_t leds;
 uint8_t column;
+
+uint8_t upDownHeld;
+uint16_t upDownLoops;
 
 uint16_t oldInputRegister[8];
 uint16_t newInputRegister;
@@ -38,6 +46,7 @@ void setup() {
   pinMode(INPUT_SWITCH_ENABLE_PIN, OUTPUT);
 
   sleepValue.tv_nsec = 10000;
+  upDownLoops = 0;
 }
 
 void updateColumn(uint8_t column) {
@@ -74,11 +83,30 @@ void init() {
   readConfig();
   leds = 1;
   column = 0;
+  uint8_t upDownHeld = UP_DOWN_HELD_OFF;
 
   for(int i = 0; i < 8; i++) {
     updateColumn(i);
     updateShiftIn();
     oldInputRegister[i] = newInputRegister;
+  }
+}
+
+void upDownHeld(uint8_t upDown) {
+  if (upDownHeld == UP_DOWN_HELD_OFF) {
+	upDownHeld = upDown;
+  }
+
+  if (upDownHeld == upDown) {
+    upDownLoops++;
+	if (upDownLoops > UP_DOWN_HELD_LOOPS) {
+	  upDownLoops = 0;
+	  if (upDown == UP_DOWN_HELD_UP) {
+	    menuUp();
+	  } else {
+		menuDown();
+	  }
+	}
   }
 }
 
@@ -106,14 +134,22 @@ int main(void) {
             }
           }
           if ((oldInputRegister[column] & 1 << 12) != (newInputRegister & 1 << 12)) {
-            if (newInputRegister & 1 << 12);
+            if (newInputRegister & 1 << 12) (
+			  upDownHeld(UP_DOWN_HELD_UP);
+		    }
             else {
+			  upDownHeld = UP_DOWN_HELD_OFF;
+			  upDownLoops = 0;
               menuUp();
             }
           }
           if ((oldInputRegister[column] & 1 << 15) != (newInputRegister & 1 << 15)) {
-            if (newInputRegister & 1 << 15);
+            if (newInputRegister & 1 << 15) {
+			  upDownHeld(UP_DOWN_HELD_DOWN);
+			}				
             else {
+		      upDownHeld = UP_DOWN_HELD_OFF;
+			  upDownLoops = 0;
               menuDown();
             }
           }
