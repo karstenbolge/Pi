@@ -17,12 +17,14 @@
 #define UP_DOWN_HELD_OFF 0
 #define UP_DOWN_HELD_UP 1
 #define UP_DOWN_HELD_DOWN 2
+
 #define UP_DOWN_HELD_LOOPS 1000
 
 uint8_t leds;
 uint8_t column;
 
 uint8_t upDownHeld;
+uint8_t upDownHasTicked;
 uint16_t upDownLoops;
 
 uint16_t oldInputRegister[8];
@@ -46,7 +48,6 @@ void setup() {
   pinMode(INPUT_SWITCH_ENABLE_PIN, OUTPUT);
 
   sleepValue.tv_nsec = 10000;
-  upDownLoops = 0;
 }
 
 void updateColumn(uint8_t column) {
@@ -83,7 +84,9 @@ void init() {
   readConfig();
   leds = 1;
   column = 0;
-  uint8_t upDownHeld = UP_DOWN_HELD_OFF;
+  upDownHeld = UP_DOWN_HELD_OFF;
+  upDownHasTicked = 0;
+  upDownLoops = 0;
 
   for(int i = 0; i < 8; i++) {
     updateColumn(i);
@@ -92,7 +95,7 @@ void init() {
   }
 }
 
-void upDownHeld(uint8_t upDown) {
+void onUpDownHeld(uint8_t upDown) {
   if (upDownHeld == UP_DOWN_HELD_OFF) {
 	upDownHeld = upDown;
   }
@@ -101,6 +104,7 @@ void upDownHeld(uint8_t upDown) {
     upDownLoops++;
 	if (upDownLoops > UP_DOWN_HELD_LOOPS) {
 	  upDownLoops = 0;
+	  upDownHasTicked = 1;
 	  if (upDown == UP_DOWN_HELD_UP) {
 	    menuUp();
 	  } else {
@@ -135,22 +139,28 @@ int main(void) {
           }
           if ((oldInputRegister[column] & 1 << 12) != (newInputRegister & 1 << 12)) {
             if (newInputRegister & 1 << 12) (
-			  upDownHeld(UP_DOWN_HELD_UP);
-		    }
-            else {
+			  onUpDownHeld(UP_DOWN_HELD_UP);
+		    } else {
+			  if (upDownHasTicked == 0) {
+                menuUp();
+			  }
 			  upDownHeld = UP_DOWN_HELD_OFF;
 			  upDownLoops = 0;
-              menuUp();
+			  upDownHasTicked = 0;
+			  }
             }
           }
           if ((oldInputRegister[column] & 1 << 15) != (newInputRegister & 1 << 15)) {
             if (newInputRegister & 1 << 15) {
-			  upDownHeld(UP_DOWN_HELD_DOWN);
-			}				
-            else {
-		      upDownHeld = UP_DOWN_HELD_OFF;
+			  onUpDownHeld(UP_DOWN_HELD_DOWN);
+			} else {
+              if (upDownHasTicked == 0) {
+				menuDown();
+			  }
+			  upDownHeld = UP_DOWN_HELD_OFF;
 			  upDownLoops = 0;
-              menuDown();
+			  upDownHasTicked = 0;
+			  }
             }
           }
         break;
