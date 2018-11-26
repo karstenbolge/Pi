@@ -164,6 +164,12 @@ void initMenu() {
   menu->next->child->next->next->id = MENU_SINGLE_SWITCH_TEST;
   menu->next->child->next->next->parrent = menu->next;
   menu->next->child->next->next->child = NULL;
+  menu->next->child->next->next->event = malloc(sizeof(itemFunctions_t));
+  menu->next->child->next->next->event->open = &switchEdgeTestOpenSingle;
+  menu->next->child->next->next->event->up = &switchEdgeTestUp;
+  menu->next->child->next->next->event->down = &switchEdgeTestDown;
+  menu->next->child->next->next->event->enter = &switchEdgeTestEnter;
+  menu->next->child->next->next->event->exit = &switchEdgeTestExit;
   menu->next->child->next->next->previous = menu->next->child->next;
   menu->next->child->next->next->next = malloc(sizeof(menuItem_t));
 
