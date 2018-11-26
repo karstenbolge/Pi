@@ -15,6 +15,7 @@ typedef struct itemFunctions {
   void (*up)(void);
   void (*down)(void);
   void (*enter)(void);
+  void (*exit)(void);
 } itemFunctions_t;
 
 typedef struct menuItem {
@@ -146,6 +147,7 @@ void initMenu() {
   menu->next->child->event->up = &switchEdgeTestUp;
   menu->next->child->event->down = &switchEdgeTestDown;
   menu->next->child->event->enter = &switchEdgeTestEnter;
+  menu->next->child->event->exit = &switchEdgeTestExit;
   menu->next->child->previous = NULL;
   menu->next->child->next = malloc(sizeof(menuItem_t));
 
@@ -257,6 +259,7 @@ void initMenu() {
   menu->next->next->child->next->event->up = &resetHighScoreUp;
   menu->next->next->child->next->event->down = &resetHighScoreDown;
   menu->next->next->child->next->event->enter = &resetHighScoreEnter;
+  menu->next->next->child->next->event->exit = NULL;
   menu->next->next->child->next->previous = menu->next->next->child;
   menu->next->next->child->next->next = malloc(sizeof(menuItem_t));
 
@@ -270,6 +273,7 @@ void initMenu() {
   menu->next->next->child->next->next->event->up = &setTimeUp;
   menu->next->next->child->next->next->event->down = &setTimeDown;
   menu->next->next->child->next->next->event->enter = &setTimeEnter;
+  menu->next->next->child->next->next->event->enter = NULL;
   menu->next->next->child->next->next->previous = menu->next->next->child->next;
   menu->next->next->child->next->next->next = malloc(sizeof(menuItem_t));
 
@@ -443,6 +447,9 @@ void menuDown() {
 void menuExit() {
   if (menuOpen) {
     if (inItem != 0) {
+	  if (currentItem->event->exit()) {
+	    currentItem->event->exit();
+	  }
       inItem = 0;
 	  showMenu();
 	  return;
@@ -485,7 +492,9 @@ void menuEnter() {
   }
   
   if (inItem) {
-	if (currentItem->event->enter) currentItem->event->enter();
+	if (currentItem->event->enter) {
+	  currentItem->event->enter();
+	}
 	else playSoundWrong();
 	return;
   }
