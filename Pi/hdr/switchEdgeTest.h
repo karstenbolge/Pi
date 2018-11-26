@@ -6,3 +6,4 @@ void switchEdgeTestOpen();
 void switchEdgeTestUp();
 void switchEdgeTestDown();
 void switchEdgeTestEnter();
+void switchEdgeTestExit();

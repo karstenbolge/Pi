@@ -36,3 +36,7 @@ void switchEdgeTestDown() {
 
 void switchEdgeTestEnter() {
 }
+
+void switchEdgeTestExit() {
+  inMode = MODE_OFF;
+}
