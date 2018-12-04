@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "../hdr/pi.h"
+#include "../hdr/display.h"
 
 uint16_t oldInputRegister[8];
 uint16_t newInputRegister;
@@ -95,6 +96,7 @@ int main(void)
     leds = leds << 1;
   }
 
+  testDisplay();
   while (1)
   {
     switch (getchar())
