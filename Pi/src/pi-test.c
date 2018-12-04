@@ -60,7 +60,7 @@ int main(void)
 
     newInputRegister = newInputRegister << 1;
     newInputRegister += bitVal;
-    printf("%d ", bitVal);
+    printf("%ld ", bitVal);
   }
   printf("\n%d \n", newInputRegister);
   displayRow(newInputRegister);
@@ -79,7 +79,7 @@ int main(void)
 
     newInputRegister = newInputRegister << 1;
     newInputRegister += bitVal;
-    printf("%d ", bitVal);
+    printf("%ld ", bitVal);
   }
 
   printf("\n%d \n", newInputRegister);
