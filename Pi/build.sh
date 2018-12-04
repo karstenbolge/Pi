@@ -1,1 +1,1 @@
-gcc -o pi ./src/pi.c ./src/menu.c ./src/sound.c ./src/log.c ./src/switchEdgeTest.c ./src/config.c ./src/display.c ./src/highScore.c ./src/setTime.c -lwiringPi
+gcc -o pi ./src/pi.c ./src/menu.c ./src/sound.c ./src/log.c ./src/switchEdgeTest.c ./src/config.c ./src/display.c ./src/highScore.c ./src/setTime.c -lwiringPi -lpthread -lcrypt -lrt -lm
