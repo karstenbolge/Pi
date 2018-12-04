@@ -2,7 +2,8 @@
 #include "../hdr/log.h"
 #include "../hdr/config.h"
 
-void initConfig() {
+void initConfig()
+{
   config.version = 1;
   config.highScore[0].current.score = 50000;
   strcpy(config.highScore[0].current.name, "KUB");
@@ -28,76 +29,97 @@ void initConfig() {
 
 FILE *pConfig;
 
-int stringStart(char *str, char *in) {
+int stringStart(char *str, char *in)
+{
   return memcmp(str, in, strlen(in)) == 0;
 }
 
 #define IN_HIGH_SCORE 1
-#define VERSION     "version:"
-#define HIGHSCORE   "highscore:"
-#define GRANDCHAMP  "  grandchamp:"
-#define CURRENT     "    current:"
-#define SCORE       "      score:"
-#define NAME        "      name:"
-#define INITIAL     "    initial:"
-#define FIRST       "  first:"
-#define SECOND      "  second:"
-#define THRID       "  thrid:"
-#define FOURTH      "  forth:"
+#define VERSION "version:"
+#define HIGHSCORE "highscore:"
+#define GRANDCHAMP "  grandchamp:"
+#define CURRENT "    current:"
+#define SCORE "      score:"
+#define NAME "      name:"
+#define INITIAL "    initial:"
+#define FIRST "  first:"
+#define SECOND "  second:"
+#define THRID "  thrid:"
+#define FOURTH "  forth:"
 
-void readConfig() {
+void readConfig()
+{
   initLog();
   writeLogString("start");
   initConfig();
-  
+
   char readBuffer[CONFIG_BUFFER_SIZE];
   pConfig = fopen("config.yaml", "r");
-  if (pConfig != NULL) {
+  if (pConfig != NULL)
+  {
     int inGroup = 0;
-	  int elementNumber = 0;
-	  int subElementNumber = 0;
+    int elementNumber = 0;
+    int subElementNumber = 0;
     while (fgets(readBuffer, CONFIG_BUFFER_SIZE, pConfig) != NULL)
     {
-  	  char *value = strchr(readBuffer, ':') + 2;
-	  
-	    if (stringStart(readBuffer, VERSION)) config.version = atoi(value);
-	    if (stringStart(readBuffer, HIGHSCORE)) inGroup = IN_HIGH_SCORE;
-	    if (inGroup == IN_HIGH_SCORE) {
-  	    if (stringStart(readBuffer, GRANDCHAMP)) elementNumber = 0;
-	  	  if (stringStart(readBuffer, FIRST)) elementNumber = 1;
-		    if (stringStart(readBuffer, SECOND)) elementNumber = 2;
-		    if (stringStart(readBuffer, THRID)) elementNumber = 3;
-		   if (stringStart(readBuffer, FOURTH)) elementNumber = 4;
+      char *value = strchr(readBuffer, ':') + 2;
 
-  	    if (stringStart(readBuffer, CURRENT)) subElementNumber = 0;
-	  	  if (stringStart(readBuffer, INITIAL)) subElementNumber = 1;
-		
-  		  if (stringStart(readBuffer, SCORE) && atoi(value) != 0) {
-	    	  if (subElementNumber == 0) config.highScore[elementNumber].current.score = atoi(value);
-		      if (subElementNumber == 1) config.highScore[elementNumber].initial.score = atoi(value);
-		    }
-		    if (stringStart(readBuffer, NAME)) {
-		      if (subElementNumber == 0) memcpy(config.highScore[elementNumber].current.name, value, 3);
-		      if (subElementNumber == 1) memcpy(config.highScore[elementNumber].initial.name, value, 3);
-  	  	}
-	    }
+      if (stringStart(readBuffer, VERSION))
+        config.version = atoi(value);
+      if (stringStart(readBuffer, HIGHSCORE))
+        inGroup = IN_HIGH_SCORE;
+      if (inGroup == IN_HIGH_SCORE)
+      {
+        if (stringStart(readBuffer, GRANDCHAMP))
+          elementNumber = 0;
+        if (stringStart(readBuffer, FIRST))
+          elementNumber = 1;
+        if (stringStart(readBuffer, SECOND))
+          elementNumber = 2;
+        if (stringStart(readBuffer, THRID))
+          elementNumber = 3;
+        if (stringStart(readBuffer, FOURTH))
+          elementNumber = 4;
+
+        if (stringStart(readBuffer, CURRENT))
+          subElementNumber = 0;
+        if (stringStart(readBuffer, INITIAL))
+          subElementNumber = 1;
+
+        if (stringStart(readBuffer, SCORE) && atoi(value) != 0)
+        {
+          if (subElementNumber == 0)
+            config.highScore[elementNumber].current.score = atoi(value);
+          if (subElementNumber == 1)
+            config.highScore[elementNumber].initial.score = atoi(value);
+        }
+        if (stringStart(readBuffer, NAME))
+        {
+          if (subElementNumber == 0)
+            memcpy(config.highScore[elementNumber].current.name, value, 3);
+          if (subElementNumber == 1)
+            memcpy(config.highScore[elementNumber].initial.name, value, 3);
+        }
+      }
     }
     fclose(pConfig);
   }
 }
 
-void resetHighScore() {
+void resetHighScore()
+{
 }
 
-void saveConfig() {
-  pConfig = fopen("config.yaml" , "w");
-  
+void saveConfig()
+{
+  pConfig = fopen("config.yaml", "w");
+
   if (pConfig == NULL)
   {
     writeLog(SHOULD_NEVER_HAPPENS);
     exit(1);
   }
-  
+
   fprintf(pConfig, "%s %d\n", VERSION, config.version);
   fprintf(pConfig, "%s\n", HIGHSCORE);
   fprintf(pConfig, "%s\n", GRANDCHAMP);

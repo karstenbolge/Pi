@@ -10,7 +10,8 @@
 #include "../hdr/setTime.h"
 #include "../hdr/display.h"
 
-typedef struct itemFunctions {
+typedef struct itemFunctions
+{
   void (*open)(void);
   void (*up)(void);
   void (*down)(void);
@@ -18,7 +19,8 @@ typedef struct itemFunctions {
   void (*exit)(void);
 } itemFunctions_t;
 
-typedef struct menuItem {
+typedef struct menuItem
+{
   char name[32];
   uint8_t id;
   struct menuItem *parrent;
@@ -34,8 +36,9 @@ menuItem_t *currentItem = NULL;
 uint8_t inItem;
 uint8_t menuOpen;
 
-void initMenu() {
-// 0	
+void initMenu()
+{
+  // 0
   menu = malloc(sizeof(menuItem_t));
   memset(menu, 0, sizeof(menuItem_t));
   strcpy(menu->name, "Bookkeepings");
@@ -44,7 +47,7 @@ void initMenu() {
   menu->child = malloc(sizeof(menuItem_t));
   menu->previous = NULL;
   menu->next = malloc(sizeof(menuItem_t));
-// 1  
+  // 1
   memset(menu->child, 0, sizeof(menuItem_t));
   strcpy(menu->child->name, "Main audits");
   menu->child->id = MENU_MAIN_AUDITS;
@@ -52,7 +55,7 @@ void initMenu() {
   menu->child->child = malloc(sizeof(menuItem_t));
   menu->child->previous = NULL;
   menu->child->next = malloc(sizeof(menuItem_t));
-// 2
+  // 2
   memset(menu->child->child, 0, sizeof(menuItem_t));
   strcpy(menu->child->child->name, "Awarage ball time");
   menu->child->child->id = MENU_AWAREGE_BALL_TIME;
@@ -92,9 +95,9 @@ void initMenu() {
   menu->child->child->next->next->next->next->child = NULL;
   menu->child->child->next->next->next->next->previous = menu->child->child->next->next->next;
   menu->child->child->next->next->next->next->next = menu->child->child;
-// loop
+  // loop
   menu->child->child->previous = menu->child->child->next->next->next->next;
-// 1  
+  // 1
   memset(menu->child->next, 0, sizeof(menuItem_t));
   strcpy(menu->child->next->name, "Standard audits");
   menu->child->next->id = MENU_STANDARD_AUDITS;
@@ -126,9 +129,9 @@ void initMenu() {
   menu->child->next->next->next->next->child = NULL;
   menu->child->next->next->next->next->previous = menu->child->next->next->next;
   menu->child->next->next->next->next->next = menu->child;
-// loop
+  // loop
   menu->child->previous = menu->child->next->next->next->next;
-// 0	
+  // 0
   memset(menu->next, 0, sizeof(menuItem_t));
   strcpy(menu->next->name, "Test menu");
   menu->next->id = MENU_TEST_MENU;
@@ -136,7 +139,7 @@ void initMenu() {
   menu->next->child = malloc(sizeof(menuItem_t));
   menu->next->previous = menu;
   menu->next->next = malloc(sizeof(menuItem_t));
-// 1  
+  // 1
   memset(menu->next->child, 0, sizeof(menuItem_t));
   strcpy(menu->next->child->name, "Switch edge");
   menu->next->child->id = MENU_SWITCH_EDGE;
@@ -188,7 +191,7 @@ void initMenu() {
   menu->next->child->next->next->next->next->child = NULL;
   menu->next->child->next->next->next->next->previous = menu->next->child->next->next->next;
   menu->next->child->next->next->next->next->next = malloc(sizeof(menuItem_t));
-  
+
   memset(menu->next->child->next->next->next->next->next, 0, sizeof(menuItem_t));
   strcpy(menu->next->child->next->next->next->next->next->name, "G.I. Test");
   menu->next->child->next->next->next->next->next->id = MENU_G_I_TEST;
@@ -204,7 +207,7 @@ void initMenu() {
   menu->next->child->next->next->next->next->next->next->child = NULL;
   menu->next->child->next->next->next->next->next->next->previous = menu->next->child->next->next->next->next->next;
   menu->next->child->next->next->next->next->next->next->next = malloc(sizeof(menuItem_t));
-  
+
   memset(menu->next->child->next->next->next->next->next->next->next, 0, sizeof(menuItem_t));
   strcpy(menu->next->child->next->next->next->next->next->next->next->name, "Single lamp test");
   menu->next->child->next->next->next->next->next->next->next->id = MENU_SINGLE_LAMP_TEST;
@@ -236,9 +239,9 @@ void initMenu() {
   menu->next->child->next->next->next->next->next->next->next->next->next->next->child = NULL;
   menu->next->child->next->next->next->next->next->next->next->next->next->next->previous = menu->next->child->next->next->next->next->next->next->next->next->next;
   menu->next->child->next->next->next->next->next->next->next->next->next->next->next = menu->next->child;
-// loop
+  // loop
   menu->next->child->previous = menu->next->child->next->next->next->next->next->next->next->next->next->next;
-// 0	
+  // 0
   memset(menu->next->next, 0, sizeof(menuItem_t));
   strcpy(menu->next->next->name, "Utilities");
   menu->next->next->id = MENU_UTILITIES;
@@ -246,7 +249,7 @@ void initMenu() {
   menu->next->next->child = malloc(sizeof(menuItem_t));
   menu->next->next->previous = menu->next;
   menu->next->next->next = malloc(sizeof(menuItem_t));
-// 1  
+  // 1
   memset(menu->next->next->child, 0, sizeof(menuItem_t));
   strcpy(menu->next->next->child->name, "Clear audits");
   menu->next->next->child->id = MENU_CLEAR_AUTIDS;
@@ -298,7 +301,7 @@ void initMenu() {
   menu->next->next->child->next->next->next->next->child = NULL;
   menu->next->next->child->next->next->next->next->previous = menu->next->next->child->next->next->next;
   menu->next->next->child->next->next->next->next->next = malloc(sizeof(menuItem_t));
-  
+
   memset(menu->next->next->child->next->next->next->next->next, 0, sizeof(menuItem_t));
   strcpy(menu->next->next->child->next->next->next->next->next->name, "Factory adjustments");
   menu->next->next->child->next->next->next->next->next->id = MENU_FACTORY_ADJUSTMENTS;
@@ -314,9 +317,9 @@ void initMenu() {
   menu->next->next->child->next->next->next->next->next->next->child = NULL;
   menu->next->next->child->next->next->next->next->next->next->previous = menu->next->next->child->next->next->next->next->next;
   menu->next->next->child->next->next->next->next->next->next->next = menu->next->next->child;
-// loop  
+  // loop
   menu->next->next->child->previous = menu->next->next->child->next->next->next->next->next->next;
-// 0	
+  // 0
   memset(menu->next->next->next, 0, sizeof(menuItem_t));
   strcpy(menu->next->next->next->name, "Adjustments");
   menu->next->next->next->id = MENU_ADJUSTMENTS;
@@ -324,9 +327,9 @@ void initMenu() {
   menu->next->next->next->child = malloc(sizeof(menuItem_t));
   menu->next->next->next->previous = menu->next->next;
   menu->next->next->next->next = NULL;
-// loop
+  // loop
   menu->previous = menu->next->next->next;
-// 1  
+  // 1
   memset(menu->next->next->next->child, 0, sizeof(menuItem_t));
   strcpy(menu->next->next->next->child->name, "Standard adjustements");
   menu->next->next->next->child->id = MENU_STANDARD_ADJUSTMENTS;
@@ -334,7 +337,7 @@ void initMenu() {
   menu->next->next->next->child->child = NULL;
   menu->next->next->next->child->previous = NULL;
   menu->next->next->next->child->next = malloc(sizeof(menuItem_t));
-  
+
   memset(menu->next->next->next->child->next, 0, sizeof(menuItem_t));
   strcpy(menu->next->next->next->child->next->name, "Feature adjustments");
   menu->next->next->next->child->next->id = MENU_FEATURE_ADJUSTMENTS;
@@ -350,10 +353,10 @@ void initMenu() {
   menu->next->next->next->child->next->next->child = NULL;
   menu->next->next->next->child->next->next->previous = menu->next->next->next->child->next;
   menu->next->next->next->child->next->next->next = menu->next->next->next->child;
-// loop
+  // loop
   menu->next->next->next->child->previous = menu->next->next->next->child->next->next;
   menu->next->next->next->next = menu;
-}  
+}
 /*Bookkeepings
 		Main audits
 			Awarage ball time
@@ -391,121 +394,151 @@ Adjustments
 		Feature adjustments
 		H.S.T.D. adjustments*/
 
-void showMenu() {
+void showMenu()
+{
   clearScreen();
   menuItem_t *firstItem;
-  if (currentItem->parrent) {
+  if (currentItem->parrent)
+  {
     firstItem = currentItem->parrent->child;
-  } else {
+  }
+  else
+  {
     firstItem = menu;
   }
   menuItem_t *item = firstItem;
 
-  do {
-	if (item == currentItem) {
-    printf("->");
-  } else {
-    printf("  ");
-  }
-  printf("%s\n", item->name);
-	item = item->next;
-  } while(item != firstItem);
+  do
+  {
+    if (item == currentItem)
+    {
+      printf("->");
+    }
+    else
+    {
+      printf("  ");
+    }
+    printf("%s\n", item->name);
+    item = item->next;
+  } while (item != firstItem);
 }
 
-void menuUp() {
-  if (menuOpen) {
-	if (inItem) {
-	  if (currentItem->event->up) {
-	    currentItem->event->up();
-		return;
-	  }
-	  
-	  playSoundWrong();
-	  return;
-	}
-	
+void menuUp()
+{
+  if (menuOpen)
+  {
+    if (inItem)
+    {
+      if (currentItem->event->up)
+      {
+        currentItem->event->up();
+        return;
+      }
+
+      playSoundWrong();
+      return;
+    }
+
     currentItem = currentItem->previous;
     showMenu();
-	return;
+    return;
   }
-  
+
   volumnUp();
 }
 
-void menuDown() {
-  if (menuOpen) {
-	if (inItem) {
-	  if (currentItem->event->down) {
-	    currentItem->event->down();
-		return;
-	  }
-	  
-	  playSoundWrong();
-	  return;
-	}
+void menuDown()
+{
+  if (menuOpen)
+  {
+    if (inItem)
+    {
+      if (currentItem->event->down)
+      {
+        currentItem->event->down();
+        return;
+      }
+
+      playSoundWrong();
+      return;
+    }
 
     currentItem = currentItem->next;
     showMenu();
-	return;
+    return;
   }
 
   volumnUp();
 }
 
-void menuExit() {
-  if (menuOpen) {
-    if (inItem != 0) {
-	  if (currentItem->event->exit) {
-	    currentItem->event->exit();
-	  }
+void menuExit()
+{
+  if (menuOpen)
+  {
+    if (inItem != 0)
+    {
+      if (currentItem->event->exit)
+      {
+        currentItem->event->exit();
+      }
       inItem = 0;
-	  showMenu();
-	  return;
+      showMenu();
+      return;
     }
-  
-    if (currentItem->parrent) {
+
+    if (currentItem->parrent)
+    {
       currentItem = currentItem->parrent;
-	  showMenu();
-	  return;
+      showMenu();
+      return;
     }
-  
+
     menuOpen = 0;
-  }	
+  }
 }
 
-void menuEnter() {
-  if (!menuOpen) {
+void menuEnter()
+{
+  if (!menuOpen)
+  {
     menuOpen = 1;
-    if (!menu) initMenu();
+    if (!menu)
+      initMenu();
     currentItem = menu;
     inItem = 0;
     showMenu();
-	return;
+    return;
   }
 
-  if (inItem == 0) {
-	if (currentItem->child) {
+  if (inItem == 0)
+  {
+    if (currentItem->child)
+    {
       currentItem = currentItem->child;
-	  showMenu();
-	  return;
-	}
-	
-	if (currentItem->event->open) {
-	  currentItem->event->open();
-	  inItem = 1;
-	  return;
-	}
-	
-	writeLog(SHOULD_NEVER_HAPPENS);
+      showMenu();
+      return;
+    }
+
+    if (currentItem->event->open)
+    {
+      currentItem->event->open();
+      inItem = 1;
+      return;
+    }
+
+    writeLog(SHOULD_NEVER_HAPPENS);
   }
-  
-  if (inItem) {
-	if (currentItem->event->enter) {
-	  currentItem->event->enter();
-	}
-	else playSoundWrong();
-	return;
+
+  if (inItem)
+  {
+    if (currentItem->event->enter)
+    {
+      currentItem->event->enter();
+    }
+    else
+      playSoundWrong();
+    return;
   }
-  
+
   writeLog(SHOULD_NEVER_HAPPENS);
 }
