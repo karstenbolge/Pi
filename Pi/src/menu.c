@@ -282,7 +282,7 @@ void initMenu()
   menu->next->next->child->next->next->event->up = &setTimeUp;
   menu->next->next->child->next->next->event->down = &setTimeDown;
   menu->next->next->child->next->next->event->enter = &setTimeEnter;
-  menu->next->next->child->next->next->event->enter = NULL;
+  menu->next->next->child->next->next->event->exit = NULL;
   menu->next->next->child->next->next->previous = menu->next->next->child->next;
   menu->next->next->child->next->next->next = malloc(sizeof(menuItem_t));
 
