@@ -78,9 +78,9 @@ void testDisplay()
   y = 100; // Where we are going to put the pixel
 
   // Figure out where in memory to put the pixel
-  for (y = 300; y < 350; y++)
+  for (y = 0; y < 50; y++)
   {
-    for (x = 300; x < 400; x++)
+    for (x = 10; x < 90; x++)
     {
 
       location = (x + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) +
@@ -90,9 +90,9 @@ void testDisplay()
       {
         //printf("%ld %d\n", location, *(fbp + location));
         //printf("%ld %d\n", location + 1, *(fbp + location + 1));
-        *(fbp + location) = 100;     // Some blue
-        *(fbp + location + 1) = 15;  // + (x - 100) / 2;  // A little green
-        *(fbp + location + 2) = 200; //  - (y - 100) / 5; // A lot of red
+        *(fbp + location) = 255;     // Some blue
+        *(fbp + location + 1) = 0;  // + (x - 100) / 2;  // A little green
+        *(fbp + location + 2) = 0; //  - (y - 100) / 5; // A lot of red
         *(fbp + location + 3) = 0;   // No transparency
         //location += 4;
       }
@@ -107,6 +107,5 @@ void testDisplay()
     }
   }
   int rc = munmap(fbp, screensize);
-  printf("rc %d\n", rc);
   close(fbfd);
 }
