@@ -61,10 +61,10 @@ int main(void)
 
     newInputRegister = newInputRegister << 1;
     newInputRegister += bitVal;
-    printf("%ld ", bitVal);
+//    printf("%ld ", bitVal);
   }
-  printf("\n%d \n", newInputRegister);
-  displayRow(newInputRegister);
+//  printf("\n%d \n", newInputRegister);
+//  displayRow(newInputRegister);
   oldInputRegister[0] = newInputRegister;
 
   for (int i = 0; i < 16; i++)
@@ -80,25 +80,26 @@ int main(void)
 
     newInputRegister = newInputRegister << 1;
     newInputRegister += bitVal;
-    printf("%ld ", bitVal);
+//    printf("%ld ", bitVal);
   }
 
-  printf("\n%d \n", newInputRegister);
-  printf("\n%d \n", oldInputRegister[0]);
-  printf("\nequal %d\n", oldInputRegister[0] == newInputRegister);
-  displayRow(newInputRegister);
+//  printf("\n%d \n", newInputRegister);
+//  printf("\n%d \n", oldInputRegister[0]);
+//  printf("\nequal %d\n", oldInputRegister[0] == newInputRegister);
+//  displayRow(newInputRegister);
 
   int leds = 1;
   for (int i = 0; i < 8; i++)
   {
-    displayColumn(leds);
-    printf("\n");
+//    displayColumn(leds);
+//    printf("\n");
     leds = leds << 1;
   }
 
   testDisplay();
   while (1)
   {
+    testDisplay();
     switch (getchar())
     {
     case 'a':
