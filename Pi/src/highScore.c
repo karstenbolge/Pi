@@ -8,17 +8,17 @@
 #define IN_MODE_YES 1
 #define IN_MODE_NO 0
 #define IN_MODE_DONE 2
-uint8_t inMode;
+uint8_t inHighScoreMode;
 
 void show()
 {
   clearScreen();
   printf("Clear H.S.T.D\n");
-  if (inMode == IN_MODE_YES)
+  if (inHighScoreMode == IN_MODE_YES)
     printf("->Yes\n");
   else
     printf("  Yes\n");
-  if (inMode == IN_MODE_YES)
+  if (inHighScoreMode == IN_MODE_YES)
     printf("  No\n");
   else
     printf("->No\n");
@@ -26,18 +26,18 @@ void show()
 
 void resetHighScoreOpen()
 {
-  inMode = IN_MODE_YES;
+  inHighScoreMode = IN_MODE_YES;
   show();
 }
 
 void resetHighScoreUp()
 {
-  if (inMode == IN_MODE_DONE)
+  if (inHighScoreMode == IN_MODE_DONE)
   {
     return menuExit();
   }
 
-  inMode = inMode == IN_MODE_YES ? IN_MODE_NO : IN_MODE_YES;
+  inHighScoreMode = inHighScoreMode == IN_MODE_YES ? IN_MODE_NO : IN_MODE_YES;
   show();
 }
 
@@ -48,13 +48,13 @@ void resetHighScoreDown()
 
 void resetHighScoreEnter()
 {
-  if (inMode != IN_MODE_YES)
+  if (inHighScoreMode != IN_MODE_YES)
   {
     menuExit();
     return;
   }
 
-  inMode = IN_MODE_DONE;
+  inHighScoreMode = IN_MODE_DONE;
   for (int i = 0; i < 5; i++)
   {
     config.highScore[0].current.score = config.highScore[0].initial.score;

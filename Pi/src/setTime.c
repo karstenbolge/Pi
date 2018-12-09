@@ -14,7 +14,7 @@
 #define IN_MODE_DONE 6
 #define ACTION_UP 0
 #define ACTION_DOWN 1
-uint8_t inMode;
+uint8_t inSetTimeMode;
 
 uint16_t year;
 uint8_t month;
@@ -27,23 +27,23 @@ void showTime()
 {
   clearScreen();
   printf("Set date and time :\n");
-  if (inMode == IN_MODE_YEAR)
+  if (inSetTimeMode == IN_MODE_YEAR)
   {
     printf(" >%04d-%02d-%02d %02d:%02d\n", year, month, date, hour, minute);
   }
-  if (inMode == IN_MODE_MONTH)
+  if (inSetTimeMode == IN_MODE_MONTH)
   {
     printf("  %04d>%02d-%02d %02d:%02d\n", year, month, date, hour, minute);
   }
-  if (inMode == IN_MODE_DATE)
+  if (inSetTimeMode == IN_MODE_DATE)
   {
     printf("  %04d-%02d>%02d %02d:%02d\n", year, month, date, hour, minute);
   }
-  if (inMode == IN_MODE_HOUR)
+  if (inSetTimeMode == IN_MODE_HOUR)
   {
     printf("  %04d-%02d-%02d>%02d:%02d\n", year, month, date, hour, minute);
   }
-  if (inMode == IN_MODE_MINUTE)
+  if (inSetTimeMode == IN_MODE_MINUTE)
   {
     printf("  %04d-%02d-%02d %02d>%02d\n", year, month, date, hour, minute);
   }
@@ -145,40 +145,40 @@ void setTimeOpen()
   date = timeinfo->tm_mday;
   hour = timeinfo->tm_hour;
   minute = timeinfo->tm_min;
-  inMode = IN_MODE_YEAR;
+  inSetTimeMode = IN_MODE_YEAR;
   showTime();
 }
 
 void setTimeUp()
 {
-  if (inMode == IN_MODE_DONE)
+  if (inSetTimeMode == IN_MODE_DONE)
   {
     return menuExit();
   }
 
   lastAction = ACTION_UP;
 
-  if (inMode == IN_MODE_YEAR)
+  if (inSetTimeMode == IN_MODE_YEAR)
   {
     year++;
   }
 
-  if (inMode == IN_MODE_MONTH)
+  if (inSetTimeMode == IN_MODE_MONTH)
   {
     month++;
   }
 
-  if (inMode == IN_MODE_DATE)
+  if (inSetTimeMode == IN_MODE_DATE)
   {
     date++;
   }
 
-  if (inMode == IN_MODE_HOUR)
+  if (inSetTimeMode == IN_MODE_HOUR)
   {
     hour++;
   }
 
-  if (inMode == IN_MODE_MINUTE)
+  if (inSetTimeMode == IN_MODE_MINUTE)
   {
     minute++;
   }
@@ -189,34 +189,34 @@ void setTimeUp()
 
 void setTimeDown()
 {
-  if (inMode == IN_MODE_DONE)
+  if (inSetTimeMode == IN_MODE_DONE)
   {
     return menuExit();
   }
 
   lastAction = ACTION_DOWN;
 
-  if (inMode == IN_MODE_YEAR)
+  if (inSetTimeMode == IN_MODE_YEAR)
   {
     year--;
   }
 
-  if (inMode == IN_MODE_MONTH)
+  if (inSetTimeMode == IN_MODE_MONTH)
   {
     month--;
   }
 
-  if (inMode == IN_MODE_DATE)
+  if (inSetTimeMode == IN_MODE_DATE)
   {
     date--;
   }
 
-  if (inMode == IN_MODE_HOUR)
+  if (inSetTimeMode == IN_MODE_HOUR)
   {
     hour--;
   }
 
-  if (inMode == IN_MODE_MINUTE)
+  if (inSetTimeMode == IN_MODE_MINUTE)
   {
     minute--;
   }
@@ -228,41 +228,41 @@ void setTimeDown()
 void setTimeEnter()
 {
   printf("her");
-  if (inMode == IN_MODE_DONE)
+  if (inSetTimeMode == IN_MODE_DONE)
   {
     menuExit();
     return;
   }
 
-  if (inMode == IN_MODE_YEAR)
+  if (inSetTimeMode == IN_MODE_YEAR)
   {
-    inMode = IN_MODE_MONTH;
+    inSetTimeMode = IN_MODE_MONTH;
     showTime();
     return;
   }
 
-  if (inMode == IN_MODE_MONTH)
+  if (inSetTimeMode == IN_MODE_MONTH)
   {
-    inMode = IN_MODE_DATE;
+    inSetTimeMode = IN_MODE_DATE;
     showTime();
     return;
   }
 
-  if (inMode == IN_MODE_DATE)
+  if (inSetTimeMode == IN_MODE_DATE)
   {
-    inMode = IN_MODE_HOUR;
+    inSetTimeMode = IN_MODE_HOUR;
     showTime();
     return;
   }
 
-  if (inMode == IN_MODE_HOUR)
+  if (inSetTimeMode == IN_MODE_HOUR)
   {
-    inMode = IN_MODE_MINUTE;
+    inSetTimeMode = IN_MODE_MINUTE;
     showTime();
     return;
   }
 
-  inMode = IN_MODE_DONE;
+  inSetTimeMode = IN_MODE_DONE;
 
   clearScreen();
   printf("Time set to :\n");

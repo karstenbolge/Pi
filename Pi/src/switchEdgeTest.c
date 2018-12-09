@@ -5,7 +5,7 @@
 #define MODE_SHOW 1
 #define MODE_SHOW_SINGLE 2
 
-uint8_t inMode = MODE_OFF;
+uint8_t inSwitchEdgeTestMode = MODE_OFF;
 uint8_t showColumn, showRow;
 
 char *getSwitchName()
@@ -51,7 +51,7 @@ char *getSwitchName()
 
 void showMatrix(uint16_t oldInputRegister[8])
 {
-	if (inMode != MODE_OFF)
+	if (inSwitchEdgeTestMode != MODE_OFF)
 	{
 		clearScreen();
 		printf("  0 1 2 3 4 5 6 7 8 9 a b c d e f\n");
@@ -62,7 +62,7 @@ void showMatrix(uint16_t oldInputRegister[8])
 			{
 				if (oldInputRegister[i] & 1 << j)
 				{
-					if (inMode == MODE_SHOW_SINGLE && showColumn == i && showRow == j)
+					if (inSwitchEdgeTestMode == MODE_SHOW_SINGLE && showColumn == i && showRow == j)
 					{
 						printf("X ");
 					}
@@ -73,7 +73,7 @@ void showMatrix(uint16_t oldInputRegister[8])
 				}
 				else
 				{
-					if (inMode == MODE_SHOW_SINGLE && showColumn == i && showRow == j)
+					if (inSwitchEdgeTestMode == MODE_SHOW_SINGLE && showColumn == i && showRow == j)
 					{
 						printf("- ");
 					}
@@ -85,7 +85,7 @@ void showMatrix(uint16_t oldInputRegister[8])
 			}
 			printf("\n");
 
-			if (inMode == MODE_SHOW_SINGLE)
+			if (inSwitchEdgeTestMode == MODE_SHOW_SINGLE)
 			{
 				printf("%s\n", getSwitchName());
 			}
@@ -95,12 +95,12 @@ void showMatrix(uint16_t oldInputRegister[8])
 
 void switchEdgeTestOpen()
 {
-	inMode = MODE_SHOW;
+	inSwitchEdgeTestMode = MODE_SHOW;
 }
 
 void switchEdgeTestOpenSingle()
 {
-	inMode = MODE_SHOW_SINGLE;
+	inSwitchEdgeTestMode = MODE_SHOW_SINGLE;
 	showColumn = 0;
 	showRow = 0;
 }
@@ -141,5 +141,5 @@ void switchEdgeTestEnter()
 
 void switchEdgeTestExit()
 {
-	inMode = MODE_OFF;
+	inSwitchEdgeTestMode = MODE_OFF;
 }
