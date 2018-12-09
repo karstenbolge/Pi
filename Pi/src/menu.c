@@ -494,6 +494,7 @@ void menuExit()
     }
 
     menuOpen = 0;
+    clearScreen();
   }
 }
 
