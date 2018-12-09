@@ -15,7 +15,7 @@ char *getSwitchName()
 	case 0:
 	case 1:
 	case 2:
-		switch (showColumn)
+		switch (showRow)
 		{
 		case 0:
 		case 1:
@@ -85,11 +85,11 @@ void showMatrix(uint16_t oldInputRegister[8])
 			}
 			printf("\n");
 
+		}
 			if (inSwitchEdgeTestMode == MODE_SHOW_SINGLE)
 			{
 				printf("%s\n", getSwitchName());
 			}
-		}
 	}
 }
 
@@ -108,13 +108,13 @@ void switchEdgeTestOpenSingle()
 void switchEdgeTestUp()
 {
 	showColumn--;
-	if (showColumn < 0)
+	if (showColumn == 255)
 	{
 		showColumn = 7;
 		showRow--;
 	}
 
-	if (showRow < 0)
+	if (showRow == 255)
 	{
 		showRow = 15;
 	}
