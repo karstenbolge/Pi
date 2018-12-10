@@ -7,6 +7,7 @@
 #include <sys/ioctl.h>
 #include <stdint.h>
 #include "../hdr/display.h"
+#include "../hdr/data70.h"
 
 void clearScreen()
 {
