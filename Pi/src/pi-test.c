@@ -98,7 +98,7 @@ int main(void)
 
   testDisplay();
 
-  printAtLine("01", 0, 1000, 0);
+  printAtLine("012", 0, 1000, 0);
   while (1)
   {
     testDisplay();

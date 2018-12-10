@@ -27,75 +27,75 @@ uint8_t printCharAt(char chr, uint8_t position, uint8_t line, uint32_t color, ui
   {
   case '0':
     dmd[position + 0][10 * line + 0] = bgColor;
-    dmd[position + 1][10 * line + 0] = bgColor;
-    dmd[position + 2][10 * line + 0] = bgColor;
-    dmd[position + 3][10 * line + 0] = bgColor;
-    dmd[position + 4][10 * line + 0] = bgColor;
-    dmd[position + 5][10 * line + 0] = bgColor;
-    dmd[position + 6][10 * line + 0] = bgColor;
+    dmd[position + 1][10 * line + 0] = color;
+    dmd[position + 2][10 * line + 0] = color;
+    dmd[position + 3][10 * line + 0] = color;
+    dmd[position + 4][10 * line + 0] = color;
+    dmd[position + 5][10 * line + 0] = color;
+    dmd[position + 6][10 * line + 0] = color;
     dmd[position + 7][10 * line + 0] = bgColor;
 
     dmd[position + 0][10 * line + 1] = bgColor;
-    dmd[position + 1][10 * line + 1] = bgColor;
+    dmd[position + 1][10 * line + 1] = color;
     dmd[position + 2][10 * line + 1] = bgColor;
     dmd[position + 3][10 * line + 1] = bgColor;
     dmd[position + 4][10 * line + 1] = bgColor;
     dmd[position + 5][10 * line + 1] = bgColor;
-    dmd[position + 6][10 * line + 1] = bgColor;
+    dmd[position + 6][10 * line + 1] = color;
     dmd[position + 7][10 * line + 1] = bgColor;
 
     dmd[position + 0][10 * line + 2] = bgColor;
-    dmd[position + 1][10 * line + 2] = bgColor;
+    dmd[position + 1][10 * line + 2] = color;
     dmd[position + 2][10 * line + 2] = bgColor;
     dmd[position + 3][10 * line + 2] = bgColor;
     dmd[position + 4][10 * line + 2] = bgColor;
     dmd[position + 5][10 * line + 2] = bgColor;
-    dmd[position + 6][10 * line + 2] = bgColor;
+    dmd[position + 6][10 * line + 2] = color;
     dmd[position + 7][10 * line + 2] = bgColor;
 
     dmd[position + 0][10 * line + 3] = bgColor;
-    dmd[position + 1][10 * line + 3] = bgColor;
+    dmd[position + 1][10 * line + 3] = color;
     dmd[position + 2][10 * line + 3] = bgColor;
     dmd[position + 3][10 * line + 3] = bgColor;
     dmd[position + 4][10 * line + 3] = bgColor;
-    dmd[position + 5][10 * line + 3] = bgColor;
-    dmd[position + 6][10 * line + 3] = bgColor;
+    dmd[position + 5][10 * line + 3] = color;
+    dmd[position + 6][10 * line + 3] = color;
     dmd[position + 7][10 * line + 3] = bgColor;
 
     dmd[position + 0][10 * line + 4] = bgColor;
-    dmd[position + 1][10 * line + 4] = bgColor;
+    dmd[position + 1][10 * line + 4] = color;
     dmd[position + 2][10 * line + 4] = bgColor;
     dmd[position + 3][10 * line + 4] = bgColor;
     dmd[position + 4][10 * line + 4] = bgColor;
-    dmd[position + 5][10 * line + 4] = bgColor;
-    dmd[position + 6][10 * line + 4] = bgColor;
+    dmd[position + 5][10 * line + 4] = color;
+    dmd[position + 6][10 * line + 4] = color;
     dmd[position + 7][10 * line + 4] = bgColor;
 
     dmd[position + 0][10 * line + 5] = bgColor;
-    dmd[position + 1][10 * line + 5] = bgColor;
+    dmd[position + 1][10 * line + 5] = color;
     dmd[position + 2][10 * line + 5] = bgColor;
     dmd[position + 3][10 * line + 5] = bgColor;
     dmd[position + 4][10 * line + 5] = bgColor;
-    dmd[position + 5][10 * line + 5] = bgColor;
-    dmd[position + 6][10 * line + 5] = bgColor;
+    dmd[position + 5][10 * line + 5] = color;
+    dmd[position + 6][10 * line + 5] = color;
     dmd[position + 7][10 * line + 5] = bgColor;
 
     dmd[position + 0][10 * line + 6] = bgColor;
-    dmd[position + 1][10 * line + 6] = bgColor;
+    dmd[position + 1][10 * line + 6] = color;
     dmd[position + 2][10 * line + 6] = bgColor;
     dmd[position + 3][10 * line + 6] = bgColor;
     dmd[position + 4][10 * line + 6] = bgColor;
-    dmd[position + 5][10 * line + 6] = bgColor;
-    dmd[position + 6][10 * line + 6] = bgColor;
+    dmd[position + 5][10 * line + 6] = color;
+    dmd[position + 6][10 * line + 6] = color;
     dmd[position + 7][10 * line + 6] = bgColor;
 
     dmd[position + 0][10 * line + 7] = bgColor;
-    dmd[position + 1][10 * line + 7] = bgColor;
-    dmd[position + 2][10 * line + 7] = bgColor;
-    dmd[position + 3][10 * line + 7] = bgColor;
-    dmd[position + 4][10 * line + 7] = bgColor;
-    dmd[position + 5][10 * line + 7] = bgColor;
-    dmd[position + 6][10 * line + 7] = bgColor;
+    dmd[position + 1][10 * line + 7] = color;
+    dmd[position + 2][10 * line + 7] = color;
+    dmd[position + 3][10 * line + 7] = color;
+    dmd[position + 4][10 * line + 7] = color;
+    dmd[position + 5][10 * line + 7] = color;
+    dmd[position + 6][10 * line + 7] = color;
     dmd[position + 7][10 * line + 7] = bgColor;
 
     dmd[position + 0][10 * line + 8] = bgColor;
@@ -123,7 +123,7 @@ uint8_t printCharAt(char chr, uint8_t position, uint8_t line, uint32_t color, ui
     dmd[position + 1][10 * line + 0] = bgColor;
     dmd[position + 2][10 * line + 0] = bgColor;
     dmd[position + 3][10 * line + 0] = bgColor;
-    dmd[position + 4][10 * line + 0] = bgColor;
+    dmd[position + 4][10 * line + 0] = color;
     dmd[position + 5][10 * line + 0] = bgColor;
     dmd[position + 6][10 * line + 0] = bgColor;
     dmd[position + 7][10 * line + 0] = bgColor;
@@ -132,7 +132,7 @@ uint8_t printCharAt(char chr, uint8_t position, uint8_t line, uint32_t color, ui
     dmd[position + 1][10 * line + 1] = bgColor;
     dmd[position + 2][10 * line + 1] = bgColor;
     dmd[position + 3][10 * line + 1] = bgColor;
-    dmd[position + 4][10 * line + 1] = bgColor;
+    dmd[position + 4][10 * line + 1] = color;
     dmd[position + 5][10 * line + 1] = bgColor;
     dmd[position + 6][10 * line + 1] = bgColor;
     dmd[position + 7][10 * line + 1] = bgColor;
@@ -141,9 +141,102 @@ uint8_t printCharAt(char chr, uint8_t position, uint8_t line, uint32_t color, ui
     dmd[position + 1][10 * line + 2] = bgColor;
     dmd[position + 2][10 * line + 2] = bgColor;
     dmd[position + 3][10 * line + 2] = bgColor;
-    dmd[position + 4][10 * line + 2] = bgColor;
+    dmd[position + 4][10 * line + 2] = color;
     dmd[position + 5][10 * line + 2] = bgColor;
     dmd[position + 6][10 * line + 2] = bgColor;
+    dmd[position + 7][10 * line + 2] = bgColor;
+
+    dmd[position + 0][10 * line + 3] = bgColor;
+    dmd[position + 1][10 * line + 3] = bgColor;
+    dmd[position + 2][10 * line + 3] = bgColor;
+    dmd[position + 3][10 * line + 3] = color;
+    dmd[position + 4][10 * line + 3] = color;
+    dmd[position + 5][10 * line + 3] = bgColor;
+    dmd[position + 6][10 * line + 3] = bgColor;
+    dmd[position + 7][10 * line + 3] = bgColor;
+
+    dmd[position + 0][10 * line + 4] = bgColor;
+    dmd[position + 1][10 * line + 4] = bgColor;
+    dmd[position + 2][10 * line + 4] = bgColor;
+    dmd[position + 3][10 * line + 4] = color;
+    dmd[position + 4][10 * line + 4] = color;
+    dmd[position + 5][10 * line + 4] = bgColor;
+    dmd[position + 6][10 * line + 4] = bgColor;
+    dmd[position + 7][10 * line + 4] = bgColor;
+
+    dmd[position + 0][10 * line + 5] = bgColor;
+    dmd[position + 1][10 * line + 5] = bgColor;
+    dmd[position + 2][10 * line + 5] = bgColor;
+    dmd[position + 3][10 * line + 5] = color;
+    dmd[position + 4][10 * line + 5] = color;
+    dmd[position + 5][10 * line + 5] = bgColor;
+    dmd[position + 6][10 * line + 5] = bgColor;
+    dmd[position + 7][10 * line + 5] = bgColor;
+
+    dmd[position + 0][10 * line + 6] = bgColor;
+    dmd[position + 1][10 * line + 6] = bgColor;
+    dmd[position + 2][10 * line + 6] = bgColor;
+    dmd[position + 3][10 * line + 6] = color;
+    dmd[position + 4][10 * line + 6] = color;
+    dmd[position + 5][10 * line + 6] = bgColor;
+    dmd[position + 6][10 * line + 6] = bgColor;
+    dmd[position + 7][10 * line + 6] = bgColor;
+
+    dmd[position + 0][10 * line + 7] = bgColor;
+    dmd[position + 1][10 * line + 7] = bgColor;
+    dmd[position + 2][10 * line + 7] = bgColor;
+    dmd[position + 3][10 * line + 7] = color;
+    dmd[position + 4][10 * line + 7] = color;
+    dmd[position + 5][10 * line + 7] = bgColor;
+    dmd[position + 6][10 * line + 7] = bgColor;
+    dmd[position + 7][10 * line + 7] = bgColor;
+
+    dmd[position + 0][10 * line + 8] = bgColor;
+    dmd[position + 1][10 * line + 8] = bgColor;
+    dmd[position + 2][10 * line + 8] = bgColor;
+    dmd[position + 3][10 * line + 8] = bgColor;
+    dmd[position + 4][10 * line + 8] = bgColor;
+    dmd[position + 5][10 * line + 8] = bgColor;
+    dmd[position + 6][10 * line + 8] = bgColor;
+    dmd[position + 7][10 * line + 8] = bgColor;
+
+    dmd[position + 0][10 * line + 9] = bgColor;
+    dmd[position + 1][10 * line + 9] = bgColor;
+    dmd[position + 2][10 * line + 9] = bgColor;
+    dmd[position + 3][10 * line + 9] = bgColor;
+    dmd[position + 4][10 * line + 9] = bgColor;
+    dmd[position + 5][10 * line + 9] = bgColor;
+    dmd[position + 6][10 * line + 9] = bgColor;
+    dmd[position + 7][10 * line + 9] = bgColor;
+
+    return 8;
+
+  case '2':
+    dmd[position + 0][10 * line + 0] = bgColor;
+    dmd[position + 1][10 * line + 0] = color;
+    dmd[position + 2][10 * line + 0] = color;
+    dmd[position + 3][10 * line + 0] = color;
+    dmd[position + 4][10 * line + 0] = color;
+    dmd[position + 5][10 * line + 0] = color;
+    dmd[position + 6][10 * line + 0] = color;
+    dmd[position + 7][10 * line + 0] = bgColor;
+
+    dmd[position + 0][10 * line + 1] = bgColor;
+    dmd[position + 1][10 * line + 1] = color;
+    dmd[position + 2][10 * line + 1] = bgColor;
+    dmd[position + 3][10 * line + 1] = bgColor;
+    dmd[position + 4][10 * line + 1] = bgColor;
+    dmd[position + 5][10 * line + 1] = bgColor;
+    dmd[position + 6][10 * line + 1] = color;
+    dmd[position + 7][10 * line + 1] = bgColor;
+
+    dmd[position + 0][10 * line + 2] = bgColor;
+    dmd[position + 1][10 * line + 2] = bgColor;
+    dmd[position + 2][10 * line + 2] = bgColor;
+    dmd[position + 3][10 * line + 2] = bgColor;
+    dmd[position + 4][10 * line + 2] = bgColor;
+    dmd[position + 5][10 * line + 2] = bgColor;
+    dmd[position + 6][10 * line + 2] = color;
     dmd[position + 7][10 * line + 2] = bgColor;
 
     dmd[position + 0][10 * line + 3] = bgColor;
@@ -152,21 +245,21 @@ uint8_t printCharAt(char chr, uint8_t position, uint8_t line, uint32_t color, ui
     dmd[position + 3][10 * line + 3] = bgColor;
     dmd[position + 4][10 * line + 3] = bgColor;
     dmd[position + 5][10 * line + 3] = bgColor;
-    dmd[position + 6][10 * line + 3] = bgColor;
+    dmd[position + 6][10 * line + 3] = color;
     dmd[position + 7][10 * line + 3] = bgColor;
 
     dmd[position + 0][10 * line + 4] = bgColor;
-    dmd[position + 1][10 * line + 4] = bgColor;
-    dmd[position + 2][10 * line + 4] = bgColor;
-    dmd[position + 3][10 * line + 4] = bgColor;
-    dmd[position + 4][10 * line + 4] = bgColor;
-    dmd[position + 5][10 * line + 4] = bgColor;
-    dmd[position + 6][10 * line + 4] = bgColor;
+    dmd[position + 1][10 * line + 4] = color;
+    dmd[position + 2][10 * line + 4] = color;
+    dmd[position + 3][10 * line + 4] = color;
+    dmd[position + 4][10 * line + 4] = color;
+    dmd[position + 5][10 * line + 4] = color;
+    dmd[position + 6][10 * line + 4] = color;
     dmd[position + 7][10 * line + 4] = bgColor;
 
     dmd[position + 0][10 * line + 5] = bgColor;
-    dmd[position + 1][10 * line + 5] = bgColor;
-    dmd[position + 2][10 * line + 5] = bgColor;
+    dmd[position + 1][10 * line + 5] = color;
+    dmd[position + 2][10 * line + 5] = color;
     dmd[position + 3][10 * line + 5] = bgColor;
     dmd[position + 4][10 * line + 5] = bgColor;
     dmd[position + 5][10 * line + 5] = bgColor;
@@ -174,8 +267,8 @@ uint8_t printCharAt(char chr, uint8_t position, uint8_t line, uint32_t color, ui
     dmd[position + 7][10 * line + 5] = bgColor;
 
     dmd[position + 0][10 * line + 6] = bgColor;
-    dmd[position + 1][10 * line + 6] = bgColor;
-    dmd[position + 2][10 * line + 6] = bgColor;
+    dmd[position + 1][10 * line + 6] = color;
+    dmd[position + 2][10 * line + 6] = color;
     dmd[position + 3][10 * line + 6] = bgColor;
     dmd[position + 4][10 * line + 6] = bgColor;
     dmd[position + 5][10 * line + 6] = bgColor;
@@ -183,12 +276,12 @@ uint8_t printCharAt(char chr, uint8_t position, uint8_t line, uint32_t color, ui
     dmd[position + 7][10 * line + 6] = bgColor;
 
     dmd[position + 0][10 * line + 7] = bgColor;
-    dmd[position + 1][10 * line + 7] = bgColor;
-    dmd[position + 2][10 * line + 7] = bgColor;
-    dmd[position + 3][10 * line + 7] = bgColor;
-    dmd[position + 4][10 * line + 7] = bgColor;
-    dmd[position + 5][10 * line + 7] = bgColor;
-    dmd[position + 6][10 * line + 7] = bgColor;
+    dmd[position + 1][10 * line + 7] = color;
+    dmd[position + 2][10 * line + 7] = color;
+    dmd[position + 3][10 * line + 7] = color;
+    dmd[position + 4][10 * line + 7] = color;
+    dmd[position + 5][10 * line + 7] = color;
+    dmd[position + 6][10 * line + 7] = color;
     dmd[position + 7][10 * line + 7] = bgColor;
 
     dmd[position + 0][10 * line + 8] = bgColor;
@@ -324,26 +417,13 @@ void showDmd()
   {
     for (int x = 0; x < 80; x++)
     {
-      location = (8 * x + 2 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + vinfo.yoffset) * finfo.line_length;
-      *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
-      location = (8 * x + 3 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + vinfo.yoffset) * finfo.line_length;
-      *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
-      location = (8 * x + 4 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + vinfo.yoffset) * finfo.line_length;
-      *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
-
-      location = (8 * x + 1 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 1 + vinfo.yoffset) * finfo.line_length;
-      *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
       location = (8 * x + 2 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 1 + vinfo.yoffset) * finfo.line_length;
       *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
       location = (8 * x + 3 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 1 + vinfo.yoffset) * finfo.line_length;
       *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
       location = (8 * x + 4 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 1 + vinfo.yoffset) * finfo.line_length;
       *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
-      location = (8 * x + 5 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 1 + vinfo.yoffset) * finfo.line_length;
-      *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
 
-      location = (8 * x + 0 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 2 + vinfo.yoffset) * finfo.line_length;
-      *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
       location = (8 * x + 1 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 2 + vinfo.yoffset) * finfo.line_length;
       *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
       location = (8 * x + 2 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 2 + vinfo.yoffset) * finfo.line_length;
@@ -353,8 +433,6 @@ void showDmd()
       location = (8 * x + 4 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 2 + vinfo.yoffset) * finfo.line_length;
       *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
       location = (8 * x + 5 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 2 + vinfo.yoffset) * finfo.line_length;
-      *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
-      location = (8 * x + 6 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 2 + vinfo.yoffset) * finfo.line_length;
       *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
 
       location = (8 * x + 0 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 3 + vinfo.yoffset) * finfo.line_length;
@@ -387,6 +465,8 @@ void showDmd()
       location = (8 * x + 6 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 4 + vinfo.yoffset) * finfo.line_length;
       *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
 
+      location = (8 * x + 0 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 5 + vinfo.yoffset) * finfo.line_length;
+      *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
       location = (8 * x + 1 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 5 + vinfo.yoffset) * finfo.line_length;
       *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
       location = (8 * x + 2 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 5 + vinfo.yoffset) * finfo.line_length;
@@ -397,12 +477,25 @@ void showDmd()
       *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
       location = (8 * x + 5 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 5 + vinfo.yoffset) * finfo.line_length;
       *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
+      location = (8 * x + 6 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 5 + vinfo.yoffset) * finfo.line_length;
+      *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
 
+      location = (8 * x + 1 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 6 + vinfo.yoffset) * finfo.line_length;
+      *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
       location = (8 * x + 2 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 6 + vinfo.yoffset) * finfo.line_length;
       *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
       location = (8 * x + 3 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 6 + vinfo.yoffset) * finfo.line_length;
       *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
       location = (8 * x + 4 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 6 + vinfo.yoffset) * finfo.line_length;
+      *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
+      location = (8 * x + 5 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 6 + vinfo.yoffset) * finfo.line_length;
+      *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
+
+      location = (8 * x + 2 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 7 + vinfo.yoffset) * finfo.line_length;
+      *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
+      location = (8 * x + 3 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 7 + vinfo.yoffset) * finfo.line_length;
+      *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
+      location = (8 * x + 4 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 7 + vinfo.yoffset) * finfo.line_length;
       *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
     }
   }
