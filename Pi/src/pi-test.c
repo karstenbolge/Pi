@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include "../hdr/pi.h"
 #include "../hdr/display.h"
+#include "../hdr/wifi.h"
 
 uint16_t oldInputRegister[8];
 uint16_t newInputRegister;
@@ -95,6 +96,8 @@ int main(void)
     //    printf("\n");
     leds = leds << 1;
   }
+
+  testWifi();
 
   testDisplay();
 
