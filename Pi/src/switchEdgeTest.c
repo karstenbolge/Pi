@@ -14,11 +14,13 @@ char *getSwitchName()
 	{
 	case 0:
 	case 1:
+		return "Not used";
 	case 2:
 		switch (showRow)
 		{
 		case 0:
 		case 1:
+			return "Not used";
 		case 2:
 			return "Escape";
 		case 3:
@@ -31,10 +33,12 @@ char *getSwitchName()
 		case 9:
 		case 10:
 		case 11:
+			return "Not used";
 		case 12:
 			return "Up";
 		case 13:
 		case 14:
+			return "Not used";
 		case 15:
 			return "Down";
 		}
@@ -84,12 +88,11 @@ void showMatrix(uint16_t oldInputRegister[8])
 				}
 			}
 			printf("\n");
-
 		}
-			if (inSwitchEdgeTestMode == MODE_SHOW_SINGLE)
-			{
-				printf("%s\n", getSwitchName());
-			}
+		if (inSwitchEdgeTestMode == MODE_SHOW_SINGLE)
+		{
+			printf("%s\n", getSwitchName());
+		}
 	}
 }
 
@@ -137,6 +140,11 @@ void switchEdgeTestDown()
 
 void switchEdgeTestEnter()
 {
+	showRow++;
+	if (showRow > 15)
+	{
+		showRow = 0;
+	}
 }
 
 void switchEdgeTestExit()
