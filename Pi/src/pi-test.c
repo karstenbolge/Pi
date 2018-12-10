@@ -97,12 +97,14 @@ int main(void)
     leds = leds << 1;
   }
 
-  testWifi();
+//  testWifi();
 
   testDisplay();
 
-  printAtLine("0123456789", 0, 1000, 0);
-  printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, 1000, 0);
+  printAtLine("0123456789", 0, 1000000, 0);
+  printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, 1000000, 0);
+  showDmd();
+
   while (1)
   {
     testDisplay();

@@ -143,7 +143,7 @@ uint8_t printCharAt(char chr, uint8_t position, uint8_t line, uint32_t color, ui
 
 void printAtLine(char *str, uint8_t line, uint32_t color, uint32_t bgColor)
 {
-  printf("her \n");
+  printf("her %s\n", str);
   int position = 0;
   while (*str != 0)
   {
@@ -154,13 +154,22 @@ void printAtLine(char *str, uint8_t line, uint32_t color, uint32_t bgColor)
 
 void showDmd()
 {
+  printf("Start show dmd\n");
   // Figure out where in memory to put the pixel
   for (int y = 0; y < 60; y++)
   {
+  printf("Start show dmd y %d\n", y);
     for (int x = 0; x < 80; x++)
     {
+  printf("Start show dmd x %d\n", x);
       location = (8 * x + 2 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 1 + vinfo.yoffset) * finfo.line_length;
-      *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
+  printf("Start show dmd x %d\n", dmd);
+  printf("Start show dmd x %d\n", dmd[x][y]);
+  printf("Start show dmd location %d\n", location);
+  printf("Start show dmd fbp %d\n", fbp);
+  printf("Start show dmd fbp + location %d\n", fbp + location);
+      *(fbp + location) = 255;//dmd[x][y]; // blue, green, red, transparency
+printf("Crash \n");
       location = (8 * x + 3 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 1 + vinfo.yoffset) * finfo.line_length;
       *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
       location = (8 * x + 4 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 1 + vinfo.yoffset) * finfo.line_length;
@@ -299,14 +308,14 @@ void testDisplay()
   // Figure out where in memory to put the pixel
   for (y = 0; y < 50; y++)
   {
-    for (x = 10; x < 90; x++)
+    for (x = 0; x < 90; x++)
     {
 
       location = (x + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (y + vinfo.yoffset) * finfo.line_length;
 
       if (vinfo.bits_per_pixel == 32)
       {
-        //printf("%ld %d\n", location, *(fbp + location));
+        printf("init values %d %d\n", location, fbp);
         //printf("%ld %d\n", location + 1, *(fbp + location + 1));
         *(fbp + location) = 255;   // Some blue
         *(fbp + location + 1) = 0; // + (x - 100) / 2;  // A little green
@@ -325,5 +334,6 @@ void testDisplay()
     }
   }
   int rc = munmap(fbp, screensize);
+  // what does this do, and is it needed in showDmd() ?
   //  close(fbfd);
 }
