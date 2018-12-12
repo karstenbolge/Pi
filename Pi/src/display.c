@@ -155,21 +155,69 @@ void printAtLine(char *str, uint8_t line, uint32_t color, uint32_t bgColor)
 void showDmd()
 {
   printf("Start show dmd\n");
+
+  fbfd = 0;
+  screensize = 0;
+  int x = 0, y = 0;
+  location = 0;
+
+  // Open the file for reading and writing
+  fbfd = open("/dev/fb0", O_RDWR);
+  if (fbfd == -1)
+  {
+    perror("Error: cannot open framebuffer device");
+    exit(1);
+  }
+  printf("The framebuffer device was opened successfully.\n");
+
+  // Get fixed screen information
+  if (ioctl(fbfd, FBIOGET_FSCREENINFO, &finfo) == -1)
+  {
+    perror("Error reading fixed information");
+    exit(2);
+  }
+
+  // Get variable screen information
+  if (ioctl(fbfd, FBIOGET_VSCREENINFO, &vinfo) == -1)
+  {
+    perror("Error reading variable information");
+    exit(3);
+  }
+
+  printf("1) %dx%d, %dbpp\n", vinfo.xres, vinfo.yres, vinfo.bits_per_pixel);
+  // 1) 800 : 480, 32 bpp
+  printf("2) %dx%d, %dbpp\n", vinfo.xres_virtual, vinfo.yres_virtual, vinfo.bits_per_pixel);
+
+  printf("%dx%d, line length %d\n", vinfo.xoffset, vinfo.yoffset, finfo.line_length);
+  // Figure out the size of the screen in bytes
+  screensize = vinfo.xres * vinfo.yres * vinfo.bits_per_pixel / 8;
+
+  printf("screensize %ld\n", screensize);
+
+  // Map the device to memory
+  fbp = (char *)mmap(0, screensize, PROT_READ | PROT_WRITE, MAP_SHARED, fbfd, 0);
+  if ((long)fbp == -1)
+  {
+    perror("Error: failed to map framebuffer device to memory");
+    exit(4);
+  }
+  printf("The framebuffer device was mapped to memory successfully.\n");
+
   // Figure out where in memory to put the pixel
   for (int y = 0; y < 60; y++)
   {
-  printf("Start show dmd y %d\n", y);
+    printf("Start show dmd y %d\n", y);
     for (int x = 0; x < 80; x++)
     {
-  printf("Start show dmd x %d\n", x);
+      printf("Start show dmd x %d\n", x);
       location = (8 * x + 2 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 1 + vinfo.yoffset) * finfo.line_length;
-  printf("Start show dmd x %d\n", dmd);
-  printf("Start show dmd x %d\n", dmd[x][y]);
-  printf("Start show dmd location %d\n", location);
-  printf("Start show dmd fbp %d\n", fbp);
-  printf("Start show dmd fbp + location %d\n", fbp + location);
-      *(fbp + location) = 255;//dmd[x][y]; // blue, green, red, transparency
-printf("Crash \n");
+      printf("Start show dmd x %d\n", dmd);
+      printf("Start show dmd x %d\n", dmd[x][y]);
+      printf("Start show dmd location %d\n", location);
+      printf("Start show dmd fbp %d\n", fbp);
+      printf("Start show dmd fbp + location %d\n", fbp + location);
+      *(fbp + location) = 255; //dmd[x][y]; // blue, green, red, transparency
+      printf("Crash \n");
       location = (8 * x + 3 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 1 + vinfo.yoffset) * finfo.line_length;
       *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
       location = (8 * x + 4 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 1 + vinfo.yoffset) * finfo.line_length;
