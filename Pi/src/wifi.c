@@ -100,3 +100,8 @@ int scanForWifi(void)
 
     return 0;
 }
+
+int connectToWifi()
+{
+    // iwconfig wlp5s0 essid anne-guest key SimMan3G
+}
