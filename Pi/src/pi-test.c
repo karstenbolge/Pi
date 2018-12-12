@@ -108,7 +108,7 @@ int main(void)
 
   //testDisplay();
 
-  printAtLine("0123456789", 0, 10000, 0);
+  printAtLine("0", 0, 16711680, 65280);
   //  printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, 1000000, 0);
   showDmd();
 

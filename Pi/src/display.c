@@ -26,7 +26,8 @@ uint8_t printCharAt(char chr, uint8_t position, uint8_t line, uint32_t color, ui
 {
   switch (chr)
   {
-  case '0':
+  case '0': 
+    printf("printg 0 dmd = %d value %d color %d\n", dmd, dmd[0][0], color);
     return print0At(dmd, position, line, color, bgColor);
   case '1':
     return print1At(dmd, position, line, color, bgColor);
@@ -147,7 +148,8 @@ void printAtLine(char *str, uint8_t line, uint32_t color, uint32_t bgColor)
   int position = 0;
   while (*str != 0)
   {
-    position = +printCharAt(*str, position, line, color, bgColor);
+    printf("her %c %d %d\n", *str, position, color);
+    position += printCharAt(*str, position, line, color, bgColor);
     str++;
   }
 }
@@ -204,20 +206,20 @@ void showDmd()
   printf("The framebuffer device was mapped to memory successfully.\n");
 
   // Figure out where in memory to put the pixel
-  for (int y = 0; y < 60; y++)
+  for (int y = 0; y < 1; y++)
   {
-    printf("Start show dmd y %d\n", y);
-    for (int x = 0; x < 80; x++)
+    //printf("Start show dmd y %d\n", y);
+    for (int x = 0; x < 2; x++)
     {
-      printf("Start show dmd x %d\n", x);
+      //printf("Start show dmd x %d\n", x);
       location = (8 * x + 2 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 1 + vinfo.yoffset) * finfo.line_length;
-      printf("Start show dmd x %ld\n", (long)dmd);
-      printf("Start show dmd x %d\n", dmd[x][y]);
+      //printf("Start show dmd %ld\n", (long)dmd);
+      printf("Start show dmd value %d\n", dmd[x][y]);
       printf("Start show dmd location %ld\n", (long)location);
-      printf("Start show dmd fbp %ld\n", (long)fbp);
-      printf("Start show dmd fbp + location %ld\n", (long)(fbp + location));
-      *(fbp + location) = 255; //dmd[x][y]; // blue, green, red, transparency
-      printf("Crash \n");
+      //printf("Start show dmd fbp %ld\n", (long)fbp);
+      //printf("Start show dmd fbp + location %ld\n", (long)(fbp + location));
+      *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
+      //printf("Crash \n");
       location = (8 * x + 3 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 1 + vinfo.yoffset) * finfo.line_length;
       *(fbp + location) = dmd[x][y]; // blue, green, red, transparency
       location = (8 * x + 4 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 1 + vinfo.yoffset) * finfo.line_length;
