@@ -15,13 +15,21 @@ void show()
   clearScreen();
   printf("Clear H.S.T.D\n");
   if (inHighScoreMode == IN_MODE_YES)
+  {
     printf("->Yes\n");
+  }
   else
+  {
     printf("  Yes\n");
+  }
   if (inHighScoreMode == IN_MODE_YES)
+  {
     printf("  No\n");
+  }
   else
+  {
     printf("->No\n");
+  }
 }
 
 void resetHighScoreOpen()
