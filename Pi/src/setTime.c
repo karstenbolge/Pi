@@ -227,7 +227,6 @@ void setTimeDown()
 
 void setTimeEnter()
 {
-  printf("her");
   if (inSetTimeMode == IN_MODE_DONE)
   {
     menuExit();
@@ -267,4 +266,26 @@ void setTimeEnter()
   clearScreen();
   printf("Time set to :\n");
   printf("  %04d-%02d-%02d %02d:%02d\n", year, month, date, hour, minute);
+  // sudo date --set="2015-09-30 10:05:59.990"
+  // sudo hwclock --systohc
+
+  FILE *fp;
+  char cmd[120];
+
+  // set the time
+  sprintf(cmd, "sudo date --set=\"%04d-%02d-%02d %02d:%02d.000\"", year, month, date, hour, minute);
+  fp = popen(cmd, "r");
+  if (fp == NULL)
+  {
+    printf("Failed to set time\n");
+    return;
+  }
+
+  // apply the set time to bios
+  fp = popen("sudo hwclock --systohc", "r");
+  if (fp == NULL)
+  {
+    printf("Failed to set time to bios\n");
+    return;
+  }
 }
