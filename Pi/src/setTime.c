@@ -266,8 +266,6 @@ void setTimeEnter()
   clearScreen();
   printf("Time set to :\n");
   printf("  %04d-%02d-%02d %02d:%02d\n", year, month, date, hour, minute);
-  // sudo date --set="2015-09-30 10:05:59.990"
-  // sudo hwclock --systohc
 
   FILE *fp;
   char cmd[120];
