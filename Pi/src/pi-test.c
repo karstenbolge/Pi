@@ -97,17 +97,24 @@ int main(void)
     leds = leds << 1;
   }
 
-//  testWifi();
+  scanForWifi();
+  wifiItem_t *wifiList = getWifiList();
+  printf("WifiList : %ld\n", (long)wifiList);
+  while (wifiList)
+  {
+    printf("Wifi : %s\n", wifiList->name);
+    wifiList = wifiList->next;
+  }
 
-  testDisplay();
+  //  testDisplay();
 
-  printAtLine("0123456789", 0, 1000000, 0);
-  printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, 1000000, 0);
-  showDmd();
+  //  printAtLine("0123456789", 0, 1000000, 0);
+  //  printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, 1000000, 0);
+  //  showDmd();
 
   while (1)
   {
-    testDisplay();
+    //testDisplay();
     switch (getchar())
     {
     case 'a':

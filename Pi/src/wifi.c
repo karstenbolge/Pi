@@ -8,29 +8,60 @@
 #include <stdio.h>
 #include <string.h>
 #include <fcntl.h>
-
-typedef struct wifiItem
-{
-    char name[32];
-    struct wifiItem *next;
-} wifiItem_t;
+#include "../hdr/wifi.h"
 
 wifiItem_t *wifiList = NULL;
 
+wifiItem_t *getWifiList()
+{
+    return wifiList;
+}
+
 void deallocList()
 {
+    printf("Start\n");
     while (wifiList)
     {
         wifiItem_t *currentItem = wifiList;
-        while (currentItem->next)
-        {
-            currentItem = currentItem->next;
-        }
+        wifiList = currentItem->next;
         free(currentItem);
     }
 }
 
-int testWifi(void)
+void addWifiToList(wifiItem_t *wifi)
+{
+    // set list to first item
+    if (!wifiList)
+    {
+        wifiList = wifi;
+        return;
+    }
+
+    wifiItem_t *currentItem = wifiList;
+    // check if item already exists
+    while (currentItem && strcmp(currentItem->name, wifi->name))
+    {
+        currentItem = currentItem->next;
+    }
+
+    // if already in list the return
+    if (currentItem)
+    {
+        // free this item
+        free(wifi);
+        return;
+    }
+
+    // Add to end of list
+    currentItem = wifiList;
+    while (currentItem->next)
+    {
+        currentItem = currentItem->next;
+    }
+    currentItem->next = wifi;
+}
+
+int scanForWifi(void)
 {
     deallocList();
 
@@ -38,33 +69,30 @@ int testWifi(void)
     char path[1035];
 
     /* Open the command for reading. */
-    fp = popen("nmcli dev wifi", "r");
+    fp = popen("sudo iwlist scan | grep ESSID", "r");
     if (fp == NULL)
     {
         printf("Failed to run command\n");
-        exit(1);
+        return 1;
     }
 
     int firstLine = 1;
     /* Read the output a line at a time - output it. */
     while (fgets(path, sizeof(path) - 1, fp) != NULL)
     {
-        if (firstLine == 1)
+        char *name = strstr(path, "ESSID:\"");
+        if (name)
         {
-            firstLine = 0;
-            continue;
-        }
-        printf("%s", path);
-        int len = 8;
-        while (*(path + len) != 0 && *(path + len) != ' ')
-        {
-            len++;
-        }
-        printf("%d", len);
+            // move past ESSID:
+            name += 7;
+            char *end = strstr(name, "\"");
 
-        wifiItem_t *wifi = malloc(sizeof(wifiItem_t));
-        memset(wifi, 0, sizeof(wifiItem_t));
-        memcpy(path + 8, wifi->name, len - 9);
+            wifiItem_t *wifi = malloc(sizeof(wifiItem_t));
+            memset(wifi, 0, sizeof(wifiItem_t));
+            memcpy(wifi->name, name, end - name);
+
+            addWifiToList(wifi);
+        }
     }
 
     /* close */

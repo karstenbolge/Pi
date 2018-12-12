@@ -211,11 +211,11 @@ void showDmd()
     {
       printf("Start show dmd x %d\n", x);
       location = (8 * x + 2 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 1 + vinfo.yoffset) * finfo.line_length;
-      printf("Start show dmd x %d\n", dmd);
+      printf("Start show dmd x %ld\n", (long)dmd);
       printf("Start show dmd x %d\n", dmd[x][y]);
-      printf("Start show dmd location %d\n", location);
-      printf("Start show dmd fbp %d\n", fbp);
-      printf("Start show dmd fbp + location %d\n", fbp + location);
+      printf("Start show dmd location %ld\n", (long)location);
+      printf("Start show dmd fbp %ld\n", (long)fbp);
+      printf("Start show dmd fbp + location %ld\n", (long)(fbp + location));
       *(fbp + location) = 255; //dmd[x][y]; // blue, green, red, transparency
       printf("Crash \n");
       location = (8 * x + 3 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 1 + vinfo.yoffset) * finfo.line_length;
@@ -363,7 +363,7 @@ void testDisplay()
 
       if (vinfo.bits_per_pixel == 32)
       {
-        printf("init values %d %d\n", location, fbp);
+        printf("init values %ld %ld\n", location, (long)fbp);
         //printf("%ld %d\n", location + 1, *(fbp + location + 1));
         *(fbp + location) = 255;   // Some blue
         *(fbp + location + 1) = 0; // + (x - 100) / 2;  // A little green
