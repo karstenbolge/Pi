@@ -19,7 +19,6 @@ wifiItem_t *getWifiList()
 
 void deallocList()
 {
-  printf("Start\n");
   while (wifiList)
   {
     wifiItem_t *currentItem = wifiList;
@@ -101,7 +100,7 @@ int scanForWifi(void)
   return 0;
 }
 
-int connectToWifi()
+int connectToWifi(wifiItem_t *wifi)
 {
   // get first arg for iwconfig
   // ip link sho | grep w

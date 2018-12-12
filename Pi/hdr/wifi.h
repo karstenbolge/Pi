@@ -5,5 +5,6 @@ typedef struct wifiItem
 } wifiItem_t;
 
 int scanForWifi(void);
+int connectToWifi(wifiItem_t *wifi);
 
 wifiItem_t *getWifiList();
