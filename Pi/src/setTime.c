@@ -225,6 +225,47 @@ void setTimeDown()
   showTime();
 }
 
+void setTime()
+{
+  clearScreen();
+  printf("Time set to :\n");
+  printf("  %04d-%02d-%02d %02d:%02d\n", year, month, date, hour, minute);
+
+  struct tm tmVar;
+  time_t epochSec;
+
+  tmVar.tm_year = year - 1900;
+  tmVar.tm_mon = month - 1;
+  tmVar.tm_mday = date;
+  tmVar.tm_hour = hour;
+  tmVar.tm_min = minute;
+  tmVar.tm_sec = 0;
+
+  epochSec = mktime(&tmVar);
+
+  printf("epoch %ld\n", epochSec);
+
+  FILE *fp;
+  char cmd[120];
+
+  // set the time
+  sprintf(cmd, "sudo date --set=%ld", epochSec);
+  fp = popen(cmd, "r");
+  if (fp == NULL)
+  {
+    printf("Failed to set time\n");
+    return;
+  }
+
+  // apply the set time to bios
+  fp = popen("sudo hwclock --systohc", "r");
+  if (fp == NULL)
+  {
+    printf("Failed to set time to bios\n");
+    return;
+  }
+}
+
 void setTimeEnter()
 {
   if (inSetTimeMode == IN_MODE_DONE)
@@ -263,27 +304,5 @@ void setTimeEnter()
 
   inSetTimeMode = IN_MODE_DONE;
 
-  clearScreen();
-  printf("Time set to :\n");
-  printf("  %04d-%02d-%02d %02d:%02d\n", year, month, date, hour, minute);
-
-  FILE *fp;
-  char cmd[120];
-
-  // set the time
-  sprintf(cmd, "sudo date --set=\"%04d-%02d-%02d %02d:%02d.000\"", year, month, date, hour, minute);
-  fp = popen(cmd, "r");
-  if (fp == NULL)
-  {
-    printf("Failed to set time\n");
-    return;
-  }
-
-  // apply the set time to bios
-  fp = popen("sudo hwclock --systohc", "r");
-  if (fp == NULL)
-  {
-    printf("Failed to set time to bios\n");
-    return;
-  }
+  setTime();
 }
