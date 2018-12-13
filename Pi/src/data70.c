@@ -4,7 +4,7 @@
 
 // http://www.identifont.com/similar?2SS
 
-uint8_t print0At(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t print0At(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -15,8 +15,8 @@ uint8_t print0At(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   dmd[position + 6][10 * line + 0] = color;
   dmd[position + 7][10 * line + 0] = bgColor;
 
-  printf("color %d bgColor %d position %d line %d dmd[0][0] %d\n", color, bgColor, position, line, dmd[0][0]);
-  printf("color %d bgColor %d position %d line %d dmd[1][0] %d\n", color, bgColor, position, line, dmd[1][0]);
+  printf("color %02x%02x%02x bgColor %02x%02x%02x position %d line %d dmd[0][0] %02x%02x%02x\n", color.red, color.green, color.blue, bgColor.red, bgColor.green, bgColor.blue, position, line, dmd[0][0].red, dmd[0][0].green, dmd[0][0].blue);
+  printf("color %02x%02x%02x bgColor %02x%02x%02x position %d line %d dmd[1][0] %02x%02x%02x\n", color.red, color.green, color.blue, bgColor.red, bgColor.green, bgColor.blue, position, line, dmd[1][0].red, dmd[1][0].green, dmd[1][0].blue);
 
   dmd[position + 0][10 * line + 1] = bgColor;
   dmd[position + 1][10 * line + 1] = color;
@@ -102,7 +102,7 @@ uint8_t print0At(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t print1At(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t print1At(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = bgColor;
@@ -197,7 +197,7 @@ uint8_t print1At(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t print2At(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t print2At(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -292,7 +292,7 @@ uint8_t print2At(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t print3At(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t print3At(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -387,7 +387,7 @@ uint8_t print3At(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t print4At(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t print4At(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -482,7 +482,7 @@ uint8_t print4At(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t print5At(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t print5At(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -577,7 +577,7 @@ uint8_t print5At(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t print6At(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t print6At(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -672,7 +672,7 @@ uint8_t print6At(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t print7At(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t print7At(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -767,7 +767,7 @@ uint8_t print7At(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t print8At(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t print8At(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = bgColor;
@@ -862,7 +862,7 @@ uint8_t print8At(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t print9At(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t print9At(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -957,7 +957,7 @@ uint8_t print9At(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printAAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printAAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = bgColor;
@@ -1052,7 +1052,7 @@ uint8_t printAAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printBAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printBAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -1147,7 +1147,7 @@ uint8_t printBAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printCAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printCAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -1242,7 +1242,7 @@ uint8_t printCAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printDAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printDAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -1337,7 +1337,7 @@ uint8_t printDAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printEAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printEAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -1432,7 +1432,7 @@ uint8_t printEAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printFAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printFAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -1527,7 +1527,7 @@ uint8_t printFAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printGAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printGAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -1622,7 +1622,7 @@ uint8_t printGAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printHAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printHAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -1717,7 +1717,7 @@ uint8_t printHAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printIAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printIAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -1812,7 +1812,7 @@ uint8_t printIAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 3;
 }
 
-uint8_t printJAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printJAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = bgColor;
@@ -1907,7 +1907,7 @@ uint8_t printJAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printKAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printKAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -2002,7 +2002,7 @@ uint8_t printKAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printLAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printLAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -2097,7 +2097,7 @@ uint8_t printLAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printMAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printMAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -2202,7 +2202,7 @@ uint8_t printMAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 9;
 }
 
-uint8_t printNAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printNAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -2297,7 +2297,7 @@ uint8_t printNAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printOAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printOAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -2392,7 +2392,7 @@ uint8_t printOAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printPAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printPAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -2487,7 +2487,7 @@ uint8_t printPAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printQAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printQAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -2582,7 +2582,7 @@ uint8_t printQAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printRAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printRAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -2677,7 +2677,7 @@ uint8_t printRAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printSAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printSAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -2772,7 +2772,7 @@ uint8_t printSAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printTAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printTAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -2867,7 +2867,7 @@ uint8_t printTAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printUAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printUAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -2962,7 +2962,7 @@ uint8_t printUAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printVAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printVAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -3057,7 +3057,7 @@ uint8_t printVAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printWAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printWAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -3162,7 +3162,7 @@ uint8_t printWAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 9;
 }
 
-uint8_t printXAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printXAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -3257,7 +3257,7 @@ uint8_t printXAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printYAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printYAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;
@@ -3352,7 +3352,7 @@ uint8_t printYAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t 
   return 7;
 }
 
-uint8_t printZAt(uint32_t dmd[80][60], uint8_t position, uint8_t line, uint32_t color, uint32_t bgColor)
+uint8_t printZAt(rgb_t dmd[80][60], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   dmd[position + 0][10 * line + 0] = bgColor;
   dmd[position + 1][10 * line + 0] = color;

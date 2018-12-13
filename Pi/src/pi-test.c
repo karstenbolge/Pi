@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "../hdr/pi.h"
+#include "../hdr/color.h"
 #include "../hdr/display.h"
 #include "../hdr/wifi.h"
 
@@ -108,7 +109,11 @@ int main(void)
 
   //testDisplay();
 
-  printAtLine("0", 0, 16711680, 65280);
+  rgb_t color, bgColor;
+  setColorType(color, COLOR_RED);
+  setColor(bgColor, 0, 255, 255);
+
+  printAtLine("0", 0, color, bgColor);
   //  printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, 1000000, 0);
   showDmd();
 
