@@ -110,12 +110,14 @@ int main(void)
   //testDisplay();
 
   rgb_t color, bgColor;
-  setColorType(color, COLOR_RED);
-  setColor(bgColor, 0, 255, 255);
+  setColorType(&color, COLOR_RED);
+  setColor(&bgColor, 0, 255, 255);
+  setColorType(&bgColor, COLOR_BLACK);
 
-  printAtLine("0", 0, color, bgColor);
-  //  printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, 1000000, 0);
-  showDmd();
+  printAtLine("0123456789", 0, color, bgColor);
+  printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, color, bgColor);
+  showDmdTest();
+  //showDmd();
 
   while (1)
   {

@@ -15,7 +15,7 @@ typedef struct rgb
   uint8_t blue;
 } rgb_t;
 
-void setColor(rgb_t color, uint8_t red, uint8_t green, uint8_t blue);
-void setColorType(rgb_t color, uint8_t type);
+void setColor(rgb_t *color, uint8_t red, uint8_t green, uint8_t blue);
+void setColorType(rgb_t *color, uint8_t type);
 
 #endif

@@ -1,6 +1,6 @@
 #include "../hdr/color.h"
 
-void setColorType(rgb_t color, uint8_t type)
+void setColorType(rgb_t *color, uint8_t type)
 {
   switch (type)
   {
@@ -17,9 +17,9 @@ void setColorType(rgb_t color, uint8_t type)
   }
 }
 
-void setColor(rgb_t color, uint8_t red, uint8_t green, uint8_t blue)
+void setColor(rgb_t *color, uint8_t red, uint8_t green, uint8_t blue)
 {
-  color.red = red;
-  color.green = green;
-  color.blue = blue;
+  color->red = red;
+  color->green = green;
+  color->blue = blue;
 }

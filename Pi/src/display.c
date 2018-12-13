@@ -14,7 +14,6 @@ void clearScreen()
   system("@cls||clear");
 }
 
-rgb_t dmd[80][60];
 int fbfd;
 char *fbp;
 long int location;
@@ -55,6 +54,58 @@ uint8_t printCharAt(char chr, uint16_t position, uint8_t line, rgb_t color, rgb_
     return print8At(dmd, position, line, color, bgColor);
   case '9':
     return print9At(dmd, position, line, color, bgColor);
+  case 'A':
+    return printAAt(dmd, position, line, color, bgColor);
+  case 'B':
+    return printBAt(dmd, position, line, color, bgColor);
+  case 'C':
+    return printCAt(dmd, position, line, color, bgColor);
+  case 'D':
+    return printDAt(dmd, position, line, color, bgColor);
+  case 'E':
+    return printEAt(dmd, position, line, color, bgColor);
+  case 'F':
+    return printFAt(dmd, position, line, color, bgColor);
+  case 'G':
+    return printGAt(dmd, position, line, color, bgColor);
+  case 'H':
+    return printHAt(dmd, position, line, color, bgColor);
+  case 'I':
+    return printIAt(dmd, position, line, color, bgColor);
+  case 'J':
+    return printJAt(dmd, position, line, color, bgColor);
+  case 'K':
+    return printKAt(dmd, position, line, color, bgColor);
+  case 'L':
+    return printLAt(dmd, position, line, color, bgColor);
+  case 'M':
+    return printMAt(dmd, position, line, color, bgColor);
+  case 'N':
+    return printNAt(dmd, position, line, color, bgColor);
+  case 'O':
+    return printOAt(dmd, position, line, color, bgColor);
+  case 'P':
+    return printPAt(dmd, position, line, color, bgColor);
+  case 'Q':
+    return printQAt(dmd, position, line, color, bgColor);
+  case 'R':
+    return printRAt(dmd, position, line, color, bgColor);
+  case 'S':
+    return printSAt(dmd, position, line, color, bgColor);
+  case 'T':
+    return printTAt(dmd, position, line, color, bgColor);
+  case 'U':
+    return printUAt(dmd, position, line, color, bgColor);
+  case 'V':
+    return printVAt(dmd, position, line, color, bgColor);
+  case 'W':
+    return printWAt(dmd, position, line, color, bgColor);
+  case 'X':
+    return printXAt(dmd, position, line, color, bgColor);
+  case 'Y':
+    return printYAt(dmd, position, line, color, bgColor);
+  case 'Z':
+    return printZAt(dmd, position, line, color, bgColor);
   default:
     printf("Never here!!");
     dmd[position + 0][10 * line + 0] = bgColor;
@@ -396,4 +447,37 @@ void testDisplay()
   int rc = munmap(fbp, screensize);
   // what does this do, and is it needed in showDmd() ?
   //  close(fbfd);
+}
+
+void showDmdTest()
+{
+  //clearScreen();
+  printf("+");
+  for (int x = 0; x < DMD_WIDTH; x++)
+  {
+    printf("-");
+  }
+  printf("+\n");
+  for (int y = 0; y < DMD_HEIGHT; y++)
+  {
+    printf("|");
+    for (int x = 0; x < DMD_WIDTH; x++)
+    {
+      if (dmd[x][y].red || dmd[x][y].green || dmd[x][y].blue)
+      {
+        printf("X");
+      }
+      else
+      {
+        printf(" ");
+      }
+    }
+    printf("|\n");
+  }
+  printf("+");
+  for (int x = 0; x < DMD_WIDTH; x++)
+  {
+    printf("-");
+  }
+  printf("+\n");
 }
