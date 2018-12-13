@@ -75,8 +75,6 @@ int scanForWifi(void)
     return 1;
   }
 
-  int firstLine = 1;
-  /* Read the output a line at a time - output it. */
   while (fgets(path, sizeof(path) - 1, fp) != NULL)
   {
     char *name = strstr(path, "ESSID:\"");

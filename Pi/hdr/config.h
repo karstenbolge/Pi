@@ -1,7 +1,14 @@
+#ifndef _CONFIG_H_
+#define _CONFIG_H_
+
 #include <stdint.h>
 #include <string.h>
 
 #define CONFIG_BUFFER_SIZE 120
+
+#define SYSTEM_NOT_DETECTED 0
+#define SYSTEM_UBUNTU 1
+#define SYSTEM_RASPBERRY 2
 
 typedef struct scoreItem
 {
@@ -26,3 +33,8 @@ config_t config;
 void readConfig();
 void saveConfig();
 void resetHighScore();
+
+uint8_t thisSystem;
+uint8_t getSystem();
+
+#endif

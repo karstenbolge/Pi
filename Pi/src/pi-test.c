@@ -119,6 +119,8 @@ int main(void)
   showDmdTest();
   //showDmd();
 
+  printf("System %d\n", getSystem());
+
   while (1)
   {
     //testDisplay();

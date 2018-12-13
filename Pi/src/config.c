@@ -4,6 +4,8 @@
 
 void initConfig()
 {
+  thisSystem = SYSTEM_NOT_DETECTED;
+
   config.version = 1;
   config.highScore[0].current.score = 50000;
   strcpy(config.highScore[0].current.name, "KUB");
@@ -157,4 +159,44 @@ void saveConfig()
   fprintf(pConfig, "%s\n", INITIAL);
   fprintf(pConfig, "%s %d\n", SCORE, config.highScore[4].initial.score);
   fprintf(pConfig, "%s %s\n", NAME, config.highScore[4].initial.name);
+}
+
+uint8_t getSystem()
+{
+  if (thisSystem == SYSTEM_NOT_DETECTED)
+  {
+    FILE *fp;
+    char path[1035];
+
+    /* Open the command for reading. */
+    fp = popen("lsb_release -a | grep Distributor", "r");
+    if (fp == NULL)
+    {
+      writeLogString("Failed to run command, lsb_release -a\n");
+      return SYSTEM_NOT_DETECTED;
+    }
+
+    while (fgets(path, sizeof(path) - 1, fp) != NULL)
+    {
+      char *name = strstr(path, "Distributor ID:");
+      if (name)
+      {
+        // move past key:
+        name += 16;
+        if (strlen(name) > 6 && memcmp(name, "Ubuntu", 6) == 0)
+        {
+          thisSystem = SYSTEM_UBUNTU;
+        }
+        if (strcmp(name, "Ubuntu") != 0)
+        {
+          thisSystem = SYSTEM_RASPBERRY;
+        }
+      }
+    }
+
+    /* close */
+    pclose(fp);
+  }
+
+  return thisSystem;
 }
