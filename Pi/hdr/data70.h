@@ -65,3 +65,7 @@ uint8_t printwAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t position, uint8_t lin
 uint8_t printxAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor);
 uint8_t printyAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor);
 uint8_t printzAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor);
+
+uint8_t printEsclamationAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor);
+uint8_t printGooseEyesAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor);
+uint8_t printHashAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t position, uint8_t line, rgb_t color, rgb_t bgColor);
