@@ -106,6 +106,59 @@ uint8_t printCharAt(char chr, uint16_t position, uint8_t line, rgb_t color, rgb_
     return printYAt(dmd, position, line, color, bgColor);
   case 'Z':
     return printZAt(dmd, position, line, color, bgColor);
+
+  case 'a':
+    return printaAt(dmd, position, line, color, bgColor);
+  case 'b':
+    return printbAt(dmd, position, line, color, bgColor);
+  case 'c':
+    return printcAt(dmd, position, line, color, bgColor);
+  case 'd':
+    return printdAt(dmd, position, line, color, bgColor);
+  case 'e':
+    return printeAt(dmd, position, line, color, bgColor);
+  case 'f':
+    return printfAt(dmd, position, line, color, bgColor);
+  case 'g':
+    return printgAt(dmd, position, line, color, bgColor);
+  case 'h':
+    return printhAt(dmd, position, line, color, bgColor);
+  case 'i':
+    return printiAt(dmd, position, line, color, bgColor);
+  case 'j':
+    return printjAt(dmd, position, line, color, bgColor);
+  case 'k':
+    return printkAt(dmd, position, line, color, bgColor);
+  case 'l':
+    return printlAt(dmd, position, line, color, bgColor);
+  case 'm':
+    return printmAt(dmd, position, line, color, bgColor);
+  case 'n':
+    return printnAt(dmd, position, line, color, bgColor);
+  case 'o':
+    return printoAt(dmd, position, line, color, bgColor);
+  case 'p':
+    return printpAt(dmd, position, line, color, bgColor);
+  case 'q':
+    return printqAt(dmd, position, line, color, bgColor);
+  case 'r':
+    return printrAt(dmd, position, line, color, bgColor);
+  case 's':
+    return printsAt(dmd, position, line, color, bgColor);
+  case 't':
+    return printtAt(dmd, position, line, color, bgColor);
+  case 'u':
+    return printuAt(dmd, position, line, color, bgColor);
+  case 'v':
+    return printvAt(dmd, position, line, color, bgColor);
+  case 'w':
+    return printwAt(dmd, position, line, color, bgColor);
+  case 'x':
+    return printxAt(dmd, position, line, color, bgColor);
+  case 'y':
+    return printyAt(dmd, position, line, color, bgColor);
+  case 'z':
+    return printzAt(dmd, position, line, color, bgColor);
   default:
     printf("Never here!!");
     dmd[position + 0][10 * line + 0] = bgColor;

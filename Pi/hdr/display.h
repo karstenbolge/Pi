@@ -8,6 +8,8 @@
 #define DMD_WIDTH 200
 #define DMD_HEIGHT 60
 
+#define LINE_HEIGHT 10
+
 rgb_t dmd[DMD_WIDTH][DMD_HEIGHT];
 
 void clearScreen();

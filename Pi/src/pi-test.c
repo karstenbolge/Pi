@@ -116,6 +116,7 @@ int main(void)
 
   printAtLine("0123456789", 0, color, bgColor);
   printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, color, bgColor);
+  printAtLine("abcdefghijklmnopqrstuvwxyz", 2, color, bgColor);
   showDmdTest();
   //showDmd();
 
