@@ -15,9 +15,6 @@ uint8_t print0At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t position, uint8_t lin
   dmd[position + 6][10 * line + 0] = color;
   dmd[position + 7][10 * line + 0] = bgColor;
 
-  printf("color %02x%02x%02x bgColor %02x%02x%02x position %d line %d dmd[0][0] %02x%02x%02x\n", color.red, color.green, color.blue, bgColor.red, bgColor.green, bgColor.blue, position, line, dmd[0][0].red, dmd[0][0].green, dmd[0][0].blue);
-  printf("color %02x%02x%02x bgColor %02x%02x%02x position %d line %d dmd[1][0] %02x%02x%02x\n", color.red, color.green, color.blue, bgColor.red, bgColor.green, bgColor.blue, position, line, dmd[1][0].red, dmd[1][0].green, dmd[1][0].blue);
-
   dmd[position + 0][10 * line + 1] = bgColor;
   dmd[position + 1][10 * line + 1] = color;
   dmd[position + 2][10 * line + 1] = bgColor;

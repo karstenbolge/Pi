@@ -187,7 +187,7 @@ uint8_t getSystem()
         {
           thisSystem = SYSTEM_UBUNTU;
         }
-        if (strcmp(name, "Ubuntu") != 0)
+        if (strcmp(name, "Raspbian") != 0)
         {
           thisSystem = SYSTEM_RASPBERRY;
         }

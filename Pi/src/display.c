@@ -34,7 +34,6 @@ uint8_t printCharAt(char chr, uint16_t position, uint8_t line, rgb_t color, rgb_
   switch (chr)
   {
   case '0':
-    printf("printg 0 dmd = %ld, %02x%02x%02x, %02x%02x%02x\n", (long)dmd, dmd[0][0].red, dmd[0][0].green, dmd[0][0].blue, color.red, color.green, color.blue);
     return print0At(dmd, position, line, color, bgColor);
   case '1':
     return print1At(dmd, position, line, color, bgColor);
@@ -258,11 +257,9 @@ uint8_t printCharAt(char chr, uint16_t position, uint8_t line, rgb_t color, rgb_
 //void printAtLine(char *str, uint8_t line, uint8_t red, uint8_t green, uint8_t blue, uint8_t bgRed, uint8_t bgGreen, uint8_t bgBlue)
 void printAtLine(char *str, uint8_t line, rgb_t color, rgb_t bgColor)
 {
-  printf("her %s\n", str);
   uint16_t position = 0;
   while (*str != 0)
   {
-    printf("her %c %d, %02x%02x%02x, %02x%02x%02x\n", *str, position, color.red, color.green, color.blue, bgColor.red, bgColor.green, bgColor.blue);
     position += printCharAt(*str, position, line, color, bgColor);
     str++;
   }
@@ -270,8 +267,6 @@ void printAtLine(char *str, uint8_t line, rgb_t color, rgb_t bgColor)
 
 void showDmd()
 {
-  printf("Start show dmd\n");
-
   fbfd = 0;
   screensize = 0;
   int x = 0, y = 0;
@@ -284,7 +279,7 @@ void showDmd()
     perror("Error: cannot open framebuffer device");
     exit(1);
   }
-  printf("The framebuffer device was opened successfully.\n");
+  //printf("The framebuffer device was opened successfully.\n");
 
   // Get fixed screen information
   if (ioctl(fbfd, FBIOGET_FSCREENINFO, &finfo) == -1)
@@ -300,15 +295,8 @@ void showDmd()
     exit(3);
   }
 
-  printf("1) %dx%d, %dbpp\n", vinfo.xres, vinfo.yres, vinfo.bits_per_pixel);
-  // 1) 800 : 480, 32 bpp
-  printf("2) %dx%d, %dbpp\n", vinfo.xres_virtual, vinfo.yres_virtual, vinfo.bits_per_pixel);
-
-  printf("%dx%d, line length %d\n", vinfo.xoffset, vinfo.yoffset, finfo.line_length);
   // Figure out the size of the screen in bytes
   screensize = vinfo.xres * vinfo.yres * vinfo.bits_per_pixel / 8;
-
-  printf("screensize %ld\n", screensize);
 
   // Map the device to memory
   fbp = (char *)mmap(0, screensize, PROT_READ | PROT_WRITE, MAP_SHARED, fbfd, 0);
@@ -317,19 +305,34 @@ void showDmd()
     perror("Error: failed to map framebuffer device to memory");
     exit(4);
   }
-  printf("The framebuffer device was mapped to memory successfully.\n");
+  //printf("The framebuffer device was mapped to memory successfully.\n");
 
+  // black out area
   // Figure out where in memory to put the pixel
-  for (int y = 0; y < 1; y++)
+
+  rgb_t black;
+  setColorType(&black, COLOR_BLACK);
+  for (int y = 0; y < 40 *8; y++)
   {
     //printf("Start show dmd y %d\n", y);
-    for (int x = 0; x < 2; x++)
+    for (int x = 0; x < 80 * 8; x++)
+    {
+      location = (x + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (y + vinfo.yoffset) * finfo.line_length;
+      setScreenBufferColor(fbp + location, black);
+    }
+  }
+
+  // Figure out where in memory to put the pixel
+  for (int y = 0; y < 40; y++)
+  {
+    //printf("Start show dmd y %d\n", y);
+    for (int x = 0; x < 80; x++)
     {
       //printf("Start show dmd x %d\n", x);
       location = (8 * x + 2 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 1 + vinfo.yoffset) * finfo.line_length;
       //printf("Start show dmd %ld\n", (long)dmd);
-      printf("Start show dmd value %02x%02x%02x\n", dmd[x][y].red, dmd[x][y].green, dmd[x][y].blue);
-      printf("Start show dmd location %ld\n", (long)location);
+      //printf("Start show dmd value %02x%02x%02x\n", dmd[x][y].red, dmd[x][y].green, dmd[x][y].blue);
+      //printf("Start show dmd location %ld\n", (long)location);
       //printf("Start show dmd fbp %ld\n", (long)fbp);
       //printf("Start show dmd fbp + location %ld\n", (long)(fbp + location));
       setScreenBufferColor(fbp + location, dmd[x][y]);

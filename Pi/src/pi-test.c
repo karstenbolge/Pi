@@ -100,12 +100,14 @@ int main(void)
 
   //scanForWifi();
   wifiItem_t *wifiList = getWifiList();
-  printf("WifiList : %ld\n", (long)wifiList);
   while (wifiList)
   {
     printf("Wifi : %s\n", wifiList->name);
     wifiList = wifiList->next;
   }
+
+  //printf("System %d\n", getSystem());
+
 
   //testDisplay();
 
@@ -117,12 +119,10 @@ int main(void)
   printAtLine("0123456789", 0, color, bgColor);
   printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, color, bgColor);
   printAtLine("abcdefghijklmnopqrstuvwxyz", 2, color, bgColor);
-  printAtLine("!\"#\%&/()=?@£$€{[]}|", 3, color, bgColor);
-  printAtLine("<>\\,.-;:_'*", 4, color, bgColor);
-  showDmdTest();
-  //showDmd();
-
-  printf("System %d\n", getSystem());
+  //printAtLine("!\"#\%&/()=?@£$€{[]}|", 3, color, bgColor);
+  //printAtLine("<>\\,.-;:_'*", 4, color, bgColor);
+  //showDmdTest();
+  showDmd();
 
   while (1)
   {
