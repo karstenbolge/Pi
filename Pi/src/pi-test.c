@@ -108,7 +108,6 @@ int main(void)
 
   //printf("System %d\n", getSystem());
 
-
   //testDisplay();
 
   rgb_t color, bgColor;
@@ -119,10 +118,10 @@ int main(void)
   printAtLine("0123456789", 0, color, bgColor);
   printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, color, bgColor);
   printAtLine("abcdefghijklmnopqrstuvwxyz", 2, color, bgColor);
-  //printAtLine("!\"#\%&/()=?@£$€{[]}|", 3, color, bgColor);
-  //printAtLine("<>\\,.-;:_'*", 4, color, bgColor);
-  //showDmdTest();
-  showDmd();
+  printAtLine("!\"#\%&/()=?@£$€{[]}|", 3, color, bgColor);
+  printAtLine("<>\\,.-;:_'*", 4, color, bgColor);
+  showDmdTest();
+  //showDmd();
 
   while (1)
   {
