@@ -32,7 +32,7 @@ void setScreenBufferColor(char *p, rgb_t color)
 
 uint8_t printCharAt(char chr, uint16_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
-  line *= 11;
+  line *= 12;
   switch (chr)
   {
   case '0':
@@ -294,7 +294,7 @@ uint8_t printCharAt(char chr, uint16_t position, uint8_t line, rgb_t color, rgb_
   }
 }
 
-//void printAtLine(char *str, uint8_t line, uint8_t red, uint8_t green, uint8_t blue, uint8_t bgRed, uint8_t bgGreen, uint8_t bgBlue)
+
 void printAtLine(char *str, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   uint16_t position = 0;
@@ -302,6 +302,27 @@ void printAtLine(char *str, uint8_t line, rgb_t color, rgb_t bgColor)
   {
     position += printCharAt(*str, position, line, color, bgColor);
     str++;
+  }
+}
+
+void printAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t color, rgb_t bgColor)
+{
+  uint16_t position = xPosition;
+  while (*str != 0)
+  {
+    position += printCharAt(*str, position, line, color, bgColor);
+    str++;
+  }
+}
+
+void fillLineWithColor(uint8_t line, rgb_t bgColor)
+{
+  for(uint8_t j = line * 12; j < (line + 1) * 12; j++) 
+  {
+    for(uint16_t i = 0; i < DMD_WIDTH; i++)
+    {
+      dmd[i][j] = bgColor;
+    }
   }
 }
 
@@ -358,63 +379,64 @@ void showDmd()
   {
     for (int x = 0; x < DMD_WIDTH; x++)
     {
-      location = (8 * x + 0 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 0 + vinfo.yoffset) * finfo.line_length;
+      location = (5 * x + 0 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 60 + vinfo.yoffset) * finfo.line_length;
       setScreenBufferColor(fbp + location, black);
-      location = (8 * x + 1 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 0 + vinfo.yoffset) * finfo.line_length;
+      location = (5 * x + 1 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 60 + vinfo.yoffset) * finfo.line_length;
       setScreenBufferColor(fbp + location, black);
-      location = (8 * x + 2 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 0 + vinfo.yoffset) * finfo.line_length;
+      location = (5 * x + 2 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 60 + vinfo.yoffset) * finfo.line_length;
       setScreenBufferColor(fbp + location, black);
-      location = (8 * x + 3 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 0 + vinfo.yoffset) * finfo.line_length;
+      location = (5 * x + 3 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 60 + vinfo.yoffset) * finfo.line_length;
       setScreenBufferColor(fbp + location, black);
-      location = (8 * x + 4 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 0 + vinfo.yoffset) * finfo.line_length;
-      setScreenBufferColor(fbp + location, black);
-
-      location = (8 * x + 0 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 0 + vinfo.yoffset) * finfo.line_length;
-      setScreenBufferColor(fbp + location, black);
-      location = (8 * x + 1 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 0 + vinfo.yoffset) * finfo.line_length;
-      setScreenBufferColor(fbp + location, black);
-      location = (8 * x + 2 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 1 + vinfo.yoffset) * finfo.line_length;
-      setScreenBufferColor(fbp + location, dmd[x][y]);
-      location = (8 * x + 3 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 1 + vinfo.yoffset) * finfo.line_length;
-      setScreenBufferColor(fbp + location, dmd[x][y]);
-      location = (8 * x + 4 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 1 + vinfo.yoffset) * finfo.line_length;
+      location = (5 * x + 4 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 60 + vinfo.yoffset) * finfo.line_length;
       setScreenBufferColor(fbp + location, black);
 
-      location = (8 * x + 0 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 2 + vinfo.yoffset) * finfo.line_length;
+      location = (5 * x + 0 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 61 + vinfo.yoffset) * finfo.line_length;
       setScreenBufferColor(fbp + location, black);
-      location = (8 * x + 1 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 2 + vinfo.yoffset) * finfo.line_length;
+      location = (5 * x + 1 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 61 + vinfo.yoffset) * finfo.line_length;
+      setScreenBufferColor(fbp + location, black);
+      location = (5 * x + 2 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 61 + vinfo.yoffset) * finfo.line_length;
       setScreenBufferColor(fbp + location, dmd[x][y]);
-      location = (8 * x + 2 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 2 + vinfo.yoffset) * finfo.line_length;
+      location = (5 * x + 3 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 61 + vinfo.yoffset) * finfo.line_length;
       setScreenBufferColor(fbp + location, dmd[x][y]);
-      location = (8 * x + 3 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 2 + vinfo.yoffset) * finfo.line_length;
+      location = (5 * x + 4 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 61 + vinfo.yoffset) * finfo.line_length;
+      setScreenBufferColor(fbp + location, black);
+
+      location = (5 * x + 0 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 62 + vinfo.yoffset) * finfo.line_length;
+      setScreenBufferColor(fbp + location, black);
+      location = (5 * x + 1 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 62 + vinfo.yoffset) * finfo.line_length;
       setScreenBufferColor(fbp + location, dmd[x][y]);
-      location = (8 * x + 4 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 2 + vinfo.yoffset) * finfo.line_length;
+      location = (5 * x + 2 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 62 + vinfo.yoffset) * finfo.line_length;
+      setScreenBufferColor(fbp + location, dmd[x][y]);
+      location = (5 * x + 3 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 62 + vinfo.yoffset) * finfo.line_length;
+      setScreenBufferColor(fbp + location, dmd[x][y]);
+      location = (5 * x + 4 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 62 + vinfo.yoffset) * finfo.line_length;
       setScreenBufferColor(fbp + location, dmd[x][y]);
 
-      location = (8 * x + 0 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 3 + vinfo.yoffset) * finfo.line_length;
+      location = (5 * x + 0 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 63 + vinfo.yoffset) * finfo.line_length;
       setScreenBufferColor(fbp + location, black);
-      location = (8 * x + 1 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 3 + vinfo.yoffset) * finfo.line_length;
+      location = (5 * x + 1 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 63 + vinfo.yoffset) * finfo.line_length;
       setScreenBufferColor(fbp + location, dmd[x][y]);
-      location = (8 * x + 2 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 3 + vinfo.yoffset) * finfo.line_length;
+      location = (5 * x + 2 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 63 + vinfo.yoffset) * finfo.line_length;
       setScreenBufferColor(fbp + location, dmd[x][y]);
-      location = (8 * x + 3 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 3 + vinfo.yoffset) * finfo.line_length;
+      location = (5 * x + 3 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 63 + vinfo.yoffset) * finfo.line_length;
       setScreenBufferColor(fbp + location, dmd[x][y]);
-      location = (8 * x + 4 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 3 + vinfo.yoffset) * finfo.line_length;
+      location = (5 * x + 4 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 63 + vinfo.yoffset) * finfo.line_length;
+      setScreenBufferColor(fbp + location, dmd[x][y]);
 
-      location = (8 * x + 0 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 4 + vinfo.yoffset) * finfo.line_length;
+      location = (5 * x + 0 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 64 + vinfo.yoffset) * finfo.line_length;
       setScreenBufferColor(fbp + location, black);
-      location = (8 * x + 1 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 4 + vinfo.yoffset) * finfo.line_length;
+      location = (5 * x + 1 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 64 + vinfo.yoffset) * finfo.line_length;
       setScreenBufferColor(fbp + location, black);
-      location = (8 * x + 2 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 4 + vinfo.yoffset) * finfo.line_length;
+      location = (5 * x + 2 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 64 + vinfo.yoffset) * finfo.line_length;
       setScreenBufferColor(fbp + location, dmd[x][y]);
-      location = (8 * x + 3 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 4 + vinfo.yoffset) * finfo.line_length;
+      location = (5 * x + 3 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 64 + vinfo.yoffset) * finfo.line_length;
       setScreenBufferColor(fbp + location, dmd[x][y]);
-      location = (8 * x + 4 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 4 + vinfo.yoffset) * finfo.line_length;
-      setScreenBufferColor(fbp + location, black);
-      location = (8 * x + 5 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (8 * y + 4 + vinfo.yoffset) * finfo.line_length;
+      location = (5 * x + 4 + vinfo.xoffset) * (vinfo.bits_per_pixel / 8) + (5 * y + 64 + vinfo.yoffset) * finfo.line_length;
+      setScreenBufferColor(fbp + location, dmd[x][y]);
     }
   }
   int rc = munmap(fbp, screensize);
+  close(fbfd);
 }
 
 void testDisplay()

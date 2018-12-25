@@ -5,10 +5,10 @@
 #include <stdint.h>
 #include "../hdr/color.h"
 
-#define DMD_WIDTH 200
+#define DMD_WIDTH 160
 #define DMD_HEIGHT 60
 
-#define LINE_HEIGHT 10
+#define LINE_HEIGHT 12
 
 rgb_t dmd[DMD_WIDTH][DMD_HEIGHT];
 
@@ -17,6 +17,9 @@ void clearScreen();
 void testDisplay();
 
 void printAtLine(char *str, uint8_t line, rgb_t color, rgb_t bgColor);
+void printAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t color, rgb_t bgColor);
+
+void fillLineWithColor(uint8_t line, rgb_t bgColor);
 
 void showDmd();
 

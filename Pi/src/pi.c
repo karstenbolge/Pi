@@ -4,6 +4,7 @@
 #include <time.h>
 #include "../hdr/pi.h"
 #include "../hdr/switchEdgeTest.h"
+#include "../hdr/displayTest.h"
 
 #define COLUMN_DATA_PIN 7
 #define COLUMN_CLOCK_PIN 8
@@ -31,6 +32,7 @@ uint16_t oldInputRegister[8];
 uint16_t newInputRegister;
 
 struct timespec sleepValue = {0};
+
 
 void setup()
 {
@@ -134,6 +136,10 @@ int main(void)
   setup();
   init();
 
+  struct timespec lastTime;
+  struct timespec currentTime;
+  uint8_t tick = 0;
+
   while (1)
   {
     updateColumn(column);
@@ -200,6 +206,18 @@ int main(void)
       }
       oldInputRegister[column] = newInputRegister;
       showMatrix(oldInputRegister);
+    }
+
+    timespec_get(&currentTime, TIME_UTC);
+    if (lastTime.tv_sec != currentTime.tv_sec) {
+      tick = 0;
+    }
+    if (tick == 0 || lastTime.tv_nsec + 62500000 < currentTime.tv_nsec) 
+    {
+      tick++;
+      lastTime = currentTime;
+      // new frame every 1/16 of a second
+      displayTestTick(tick);
     }
 
     column++;
