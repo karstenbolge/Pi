@@ -20,25 +20,26 @@ void displayTestOpen()
   setColorType(&bgColor, COLOR_BLACK);
 }
 
-void displayTestExit() 
+void displayTestExit()
 {
   inDisplayTestMode = MODE_OFF;
 }
 
-void displayTestTick(uint8_t tick) 
+void displayTestTick(uint8_t tick)
 {
-  if (inDisplayTestMode == MODE_SHOW) {
-    if (currentPosition == 0) 
+  if (inDisplayTestMode == MODE_SHOW)
+  {
+    if (currentPosition == 0)
     {
       fillLineWithColor(currentLine, bgColor);
       currentLine++;
       currentPosition = DMD_WIDTH;
-      if (currentLine > 5) 
+      if (currentLine > 5)
       {
         currentLine = 0;
       }
     }
-    if (currentPosition > 0) 
+    if (currentPosition > 0)
     {
       currentPosition--;
     }

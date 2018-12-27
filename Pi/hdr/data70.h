@@ -1,3 +1,6 @@
+#ifndef _DATA70_H_
+#define _DATA70_H_
+
 #include "../hdr/color.h"
 #include "../hdr/display.h"
 
@@ -85,3 +88,5 @@ uint8_t printForwardSquareAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_
 uint8_t printBackwardSquareAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t color, rgb_t bgColor);
 uint8_t printBackwardBraceAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t color, rgb_t bgColor);
 uint8_t printPipeAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t color, rgb_t bgColor);
+
+#endif

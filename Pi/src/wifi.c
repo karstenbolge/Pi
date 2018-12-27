@@ -66,7 +66,7 @@ int scanForWifi(void)
 
   FILE *fp;
   char path[1035];
- 
+
   /* Open the command for reading. */
   fp = popen("sudo iwlist scan | grep ESSID", "r");
   if (fp == NULL)

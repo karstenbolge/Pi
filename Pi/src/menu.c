@@ -10,6 +10,7 @@
 #include "../hdr/setTime.h"
 #include "../hdr/display.h"
 #include "../hdr/displayTest.h"
+#include "../hdr/awarageBallTime.h"
 
 typedef struct itemFunctions
 {
@@ -62,6 +63,11 @@ void initMenu()
   menu->child->child->id = MENU_AWAREGE_BALL_TIME;
   menu->child->child->parrent = menu->child;
   menu->child->child->child = NULL;
+  menu->child->child->event->open = &awarageBallTimeOpen;
+  menu->child->child->event->up = NULL;
+  menu->child->child->event->down = NULL;
+  menu->child->child->event->enter = NULL;
+  menu->child->child->event->exit = &awarageBallTimeExit;
   menu->child->child->previous = NULL;
   menu->child->child->next = malloc(sizeof(menuItem_t));
 

@@ -22,7 +22,7 @@ void printAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t c
 void fillLineWithColor(uint8_t line, rgb_t bgColor);
 
 void showDmd();
-
+void initDmd();
 void showDmdTest();
 
 #endif

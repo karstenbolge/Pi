@@ -294,7 +294,6 @@ uint8_t printCharAt(char chr, uint16_t position, uint8_t line, rgb_t color, rgb_
   }
 }
 
-
 void printAtLine(char *str, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   uint16_t position = 0;
@@ -317,16 +316,16 @@ void printAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t c
 
 void fillLineWithColor(uint8_t line, rgb_t bgColor)
 {
-  for(uint8_t j = line * 12; j < (line + 1) * 12; j++) 
+  for (uint8_t j = line * 12; j < (line + 1) * 12; j++)
   {
-    for(uint16_t i = 0; i < DMD_WIDTH; i++)
+    for (uint16_t i = 0; i < DMD_WIDTH; i++)
     {
       dmd[i][j] = bgColor;
     }
   }
 }
 
-void showDmd()
+void initDmd()
 {
   fbfd = 0;
   screensize = 0;
@@ -366,6 +365,10 @@ void showDmd()
     perror("Error: failed to map framebuffer device to memory");
     exit(4);
   }
+}
+
+void showDmd()
+{
   //printf("The framebuffer device was mapped to memory successfully.\n");
 
   // black out area
@@ -435,8 +438,8 @@ void showDmd()
       setScreenBufferColor(fbp + location, dmd[x][y]);
     }
   }
-  int rc = munmap(fbp, screensize);
-  close(fbfd);
+  //  int rc = munmap(fbp, screensize);
+  //  close(fbfd);
 }
 
 void testDisplay()

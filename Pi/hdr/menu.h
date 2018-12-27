@@ -1,3 +1,6 @@
+#ifndef _MENU_H_
+#define _MENU_H_
+
 void openMenu();
 void menuUp();
 void menuDown();
@@ -77,3 +80,5 @@ Adjustments
 		Standard adjustements
 		Feature adjustments
 		H.S.T.D. adjustments*/
+
+#endif
