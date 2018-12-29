@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "../hdr/color.h"
 #include "../hdr/display.h"
 #include "../hdr/displayTest.h"
@@ -34,7 +35,7 @@ void displayTestTick(uint8_t tick)
       fillLineWithColor(currentLine, bgColor);
       currentLine++;
       currentPosition = DMD_WIDTH;
-      if (currentLine > 5)
+      if (currentLine > 4)
       {
         currentLine = 0;
       }

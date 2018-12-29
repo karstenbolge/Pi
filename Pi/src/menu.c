@@ -63,6 +63,7 @@ void initMenu()
   menu->child->child->id = MENU_AWAREGE_BALL_TIME;
   menu->child->child->parrent = menu->child;
   menu->child->child->child = NULL;
+  menu->child->child->event = malloc(sizeof(itemFunctions_t));
   menu->child->child->event->open = &awarageBallTimeOpen;
   menu->child->child->event->up = NULL;
   menu->child->child->event->down = NULL;
@@ -516,8 +517,10 @@ void menuEnter()
   if (!menuOpen)
   {
     menuOpen = 1;
-    if (!menu)
+    if (!menu) 
+    {
       initMenu();
+    }
     currentItem = menu;
     inItem = 0;
     showMenu();

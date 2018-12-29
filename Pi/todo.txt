@@ -1,0 +1,9 @@
+Make a frame local frame buffer and use memcpy before display
+
+Try to use sound effects
+
+Check image vs dot resolution
+
+Make menu use dmd, when in rasparian mode, no more pi-test
+
+Make the last charaters in font

@@ -199,7 +199,7 @@ uint8_t printCharAt(char chr, uint16_t position, uint8_t line, rgb_t color, rgb_
   case '|':
     return printPipeAt(dmd, position, line, color, bgColor);
   default:
-    printf("Never here!!");
+    printf("Never here!! %c\n", chr);
     dmd[position + 0][10 * line + 0] = bgColor;
     dmd[position + 1][10 * line + 0] = bgColor;
     dmd[position + 2][10 * line + 0] = bgColor;

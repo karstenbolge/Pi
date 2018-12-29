@@ -6,6 +6,7 @@
 #include "../hdr/switchEdgeTest.h"
 #include "../hdr/displayTest.h"
 #include "../hdr/display.h"
+#include "../hdr/awarageBallTime.h"
 
 #define COLUMN_DATA_PIN 7
 #define COLUMN_CLOCK_PIN 8
@@ -218,6 +219,7 @@ int main(void)
       tick = 0;
       lastLoopsPrSecond = currentLoopsPrSecond;
       currentLoopsPrSecond = 0;
+      awarageBallTimeCount(lastLoopsPrSecond);
     }
     // new frame every 1/16 of a second
     if (tick == 0 || lastTime.tv_nsec + 62500000 < currentTime.tv_nsec)

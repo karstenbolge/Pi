@@ -27,7 +27,7 @@ void awarageBallTimeCount(uint32_t count)
   if (inAwarageBallTimeMode == MODE_SHOW)
   {
     char str[32];
-    sprintf(str, "Loops per second %d.", count);
+    sprintf(str, "Loops per second %d", count);
     printAtLineAndPosition(str, 0, 0, color, bgColor);
     showDmd();
   }

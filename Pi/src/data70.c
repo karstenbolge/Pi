@@ -5622,11 +5622,11 @@ uint8_t printsAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t c
 
   y++; //4
   dmd[x + 0][y] = bgColor;
-  dmd[x + 1][y] = bgColor;
+  dmd[x + 1][y] = color;
   dmd[x + 2][y] = bgColor;
   dmd[x + 3][y] = bgColor;
   dmd[x + 4][y] = bgColor;
-  dmd[x + 5][y] = color;
+  dmd[x + 5][y] = bgColor;
 
   y++; //5
   dmd[x + 0][y] = bgColor;
@@ -5638,11 +5638,11 @@ uint8_t printsAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t c
 
   y++; //6
   dmd[x + 0][y] = bgColor;
-  dmd[x + 1][y] = color;
-  dmd[x + 2][y] = color;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
   dmd[x + 3][y] = bgColor;
-  dmd[x + 4][y] = bgColor;
-  dmd[x + 5][y] = bgColor;
+  dmd[x + 4][y] = color;
+  dmd[x + 5][y] = color;
 
   y++; //7
   dmd[x + 0][y] = bgColor;
