@@ -367,6 +367,8 @@ void initDmd()
   }
 }
 
+//https://www.raspberrypi.org/forums/viewtopic.php?t=213964
+//http://raspberrycompote.blogspot.com/2013/01/low-level-graphics-on-raspberry-pi-part.html
 void showDmd()
 {
   //printf("The framebuffer device was mapped to memory successfully.\n");
