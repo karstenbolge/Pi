@@ -61,7 +61,13 @@ int main()
             {
                 close_x();
             }
-            printf("You pressed the %c key!\n", text[0]);
+            if (text[0] == 'f')
+            {
+            }
+            else
+            {
+                printf("You pressed the %c key!\n", text[0]);
+            }
         }
         if (event.type == ButtonPress)
         {
@@ -83,10 +89,11 @@ void init_x()
 
     dis = XOpenDisplay((char *)0);
     screen = DefaultScreen(dis);
+    printf("screen %d \n", screen);
     black = BlackPixel(dis, screen),
     white = WhitePixel(dis, screen);
-    win = XCreateSimpleWindow(dis, DefaultRootWindow(dis), 0, 0,
-                              300, 300, 5, black, white);
+    //win = XCreateSimpleWindow(dis, DefaultRootWindow(dis), 0, 0, 300, 300, 5, black, white);
+    win = XCreateWindow(dis, DefaultRootWindow(dis), 0, 0, 400, 300, 0, 0, 0, NULL, 0, NULL);
     XSetStandardProperties(dis, win, "Howdy", "Hi", None, NULL, 0, NULL);
     XSelectInput(dis, win, ExposureMask | ButtonPressMask | KeyPressMask);
     gc = XCreateGC(dis, win, 0, 0);
@@ -94,6 +101,28 @@ void init_x()
     XSetForeground(dis, gc, black);
     XClearWindow(dis, win);
     XMapRaised(dis, win);
+
+    //Herfra
+    XWindowAttributes xwa;
+    XGetWindowAttributes(dis, win, &xwa);
+    printf("%d %d\n", xwa.x, xwa.y);
+
+    Atom wm_state = XInternAtom(dis, "_NET_WM_STATE", False);
+    Atom fullscreen = XInternAtom(dis, "_NET_WM_STATE_FULLSCREEN", False);
+
+    XEvent xev;
+    memset(&xev, 0, sizeof(xev));
+    xev.type = ClientMessage;
+    xev.xclient.window = win;
+    xev.xclient.message_type = wm_state;
+    xev.xclient.format = 32;
+    xev.xclient.data.l[0] = 1;
+    xev.xclient.data.l[1] = fullscreen;
+    xev.xclient.data.l[2] = 0;
+
+    XMapWindow(dis, win);
+
+    XSendEvent(dis, DefaultRootWindow(dis), False, SubstructureRedirectMask | SubstructureNotifyMask, &xev);
 };
 
 void close_x()
