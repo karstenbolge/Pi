@@ -19,16 +19,19 @@ https://www.geeks3d.com/20120102/programming-tutorial-simple-x11-x-window-code-s
 #include <stdio.h>
 #include <stdlib.h>
 
+#define MAX_FONTS 30000
 /* here are our X variables */
 Display *dis;
 int screen;
 Window win;
 GC gc;
+XFontStruct *fontinfo;
 
 /* here are our X routines declared! */
 void init_x();
 void close_x();
 void redraw();
+void showFonts();
 
 int main()
 {
@@ -61,8 +64,11 @@ int main()
             {
                 close_x();
             }
-            if (text[0] == 'f')
+            if (text[0] == 'a')
             {
+                XSetForeground(dis, gc, WhitePixel(dis, screen));
+                XDrawLine(dis, win, gc, 10, 10, 190, 190); //from-to
+                XDrawLine(dis, win, gc, 10, 190, 190, 10); //from-to
             }
             else
             {
@@ -97,6 +103,12 @@ void init_x()
     XSetStandardProperties(dis, win, "Howdy", "Hi", None, NULL, 0, NULL);
     XSelectInput(dis, win, ExposureMask | ButtonPressMask | KeyPressMask);
     gc = XCreateGC(dis, win, 0, 0);
+
+    showFonts();
+
+    fontinfo = XLoadQueryFont(dis, "6x10");
+    printf("font %ld\n", (long)fontinfo);
+    int rc = XSetFont(dis, gc, fontinfo->fid);
     XSetBackground(dis, gc, white);
     XSetForeground(dis, gc, black);
     XClearWindow(dis, win);
@@ -125,8 +137,27 @@ void init_x()
     XSendEvent(dis, DefaultRootWindow(dis), False, SubstructureRedirectMask | SubstructureNotifyMask, &xev);
 };
 
+void showFonts()
+{
+    int nFonts;
+    char **szaFontNames;
+    szaFontNames = XListFonts(dis, "*", MAX_FONTS, &nFonts);
+    if (nFonts == MAX_FONTS)
+    {
+        printf("Many fonts on your system.  Not displaying all.");
+    }
+
+    for (int i = 0; i < nFonts; i++)
+    {
+        printf("%s\n", szaFontNames[i]);
+    }
+
+    XFreeFontNames(szaFontNames);
+}
+
 void close_x()
 {
+    XFreeFont(dis, fontinfo);
     XFreeGC(dis, gc);
     XDestroyWindow(dis, win);
     XCloseDisplay(dis);
