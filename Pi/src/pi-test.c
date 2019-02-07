@@ -3,6 +3,7 @@
 #include "../hdr/color.h"
 #include "../hdr/display.h"
 #include "../hdr/wifi.h"
+#include "../hdr/sound.h"
 
 uint16_t oldInputRegister[8];
 uint16_t newInputRegister;
@@ -48,6 +49,9 @@ int main(void)
   readConfig();
 
   printf("start\n");
+  playSoundEnter();
+
+  printf("efter\n");
 
   long bitVal;
   for (int i = 0; i < 16; i++)
@@ -121,7 +125,7 @@ int main(void)
   //printAtLine("!\"#\%&/()=?@£$€{[]}|", 3, color, bgColor);
   //printAtLine("<>\\,.-;:_'*", 4, color, bgColor);
   //showDmdTest();
-  showDmd();
+  //showDmd();
 
   while (1)
   {
