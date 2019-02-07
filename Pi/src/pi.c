@@ -7,6 +7,7 @@
 #include "../hdr/displayTest.h"
 #include "../hdr/display.h"
 #include "../hdr/awarageBallTime.h"
+#include "../hdr/sound.h"
 
 #define COLUMN_DATA_PIN 7
 #define COLUMN_CLOCK_PIN 8
@@ -137,6 +138,8 @@ int main(void)
 {
   setup();
   init();
+
+  //playSoundEnter();
 
   struct timespec lastTime;
   struct timespec currentTime;
