@@ -30,141 +30,149 @@ XFontStruct *fontinfo;
 /* here are our X routines declared! */
 void init_x();
 void close_x();
+void full_x();
 void redraw();
 void showFonts();
 
 int main()
 {
-    XEvent event;   /* the XEvent declaration !!! */
-    KeySym key;     /* a dealie-bob to handle KeyPress Events */
-    char text[255]; /* a char buffer for KeyPress Events */
+  XEvent event;   /* the XEvent declaration !!! */
+  KeySym key;     /* a dealie-bob to handle KeyPress Events */
+  char text[255]; /* a char buffer for KeyPress Events */
 
-    init_x();
+  init_x();
 
-    /* look for events forever... */
-    while (1)
-    {
-        /* get the next event and stuff it into our event variable.
+  /* look for events forever... */
+  while (1)
+  {
+    /* get the next event and stuff it into our event variable.
 		   Note:  only events we set the mask for are detected!
 		*/
-        XNextEvent(dis, &event);
+    XNextEvent(dis, &event);
 
-        if (event.type == Expose && event.xexpose.count == 0)
-        {
-            /* the window was exposed redraw it! */
-            redraw();
-        }
-        if (event.type == KeyPress &&
-            XLookupString(&event.xkey, text, 255, &key, 0) == 1)
-        {
-            /* use the XLookupString routine to convert the invent
+    if (event.type == Expose && event.xexpose.count == 0)
+    {
+      /* the window was exposed redraw it! */
+      redraw();
+    }
+    if (event.type == KeyPress &&
+        XLookupString(&event.xkey, text, 255, &key, 0) == 1)
+    {
+      /* use the XLookupString routine to convert the invent
 		   KeyPress data into regular text.  Weird but necessary...
 		*/
-            if (text[0] == 'q')
-            {
-                close_x();
-            }
-            if (text[0] == 'a')
-            {
-                XSetForeground(dis, gc, WhitePixel(dis, screen));
-                XDrawLine(dis, win, gc, 10, 10, 190, 190); //from-to
-                XDrawLine(dis, win, gc, 10, 190, 190, 10); //from-to
-            }
-            else
-            {
-                printf("You pressed the %c key!\n", text[0]);
-            }
-        }
-        if (event.type == ButtonPress)
-        {
-            /* tell where the mouse Button was Pressed */
-            int x = event.xbutton.x,
-                y = event.xbutton.y;
-
-            strcpy(text, "X is FUN!");
-            XSetForeground(dis, gc, rand() % event.xbutton.x % 255);
-            XDrawString(dis, win, gc, x, y, text, strlen(text));
-        }
+      if (text[0] == 'q')
+      {
+        close_x();
+      }
+      if (text[0] == 'f')
+      {
+        full_x();
+      }
+      if (text[0] == 'a')
+      {
+        XSetForeground(dis, gc, WhitePixel(dis, screen));
+        XDrawLine(dis, win, gc, 10, 10, 190, 190); //from-to
+        XDrawLine(dis, win, gc, 10, 190, 190, 10); //from-to
+      }
+      else
+      {
+        printf("You pressed the %c key!\n", text[0]);
+      }
     }
+    if (event.type == ButtonPress)
+    {
+      /* tell where the mouse Button was Pressed */
+      int x = event.xbutton.x,
+          y = event.xbutton.y;
+
+      strcpy(text, "X is FUN!");
+      XSetForeground(dis, gc, rand() % event.xbutton.x % 255);
+      XDrawString(dis, win, gc, x, y, text, strlen(text));
+    }
+  }
 }
 
 void init_x()
 {
-    /* get the colors black and white (see section for details) */
-    unsigned long black, white;
+  /* get the colors black and white (see section for details) */
+  unsigned long black, white;
 
-    dis = XOpenDisplay((char *)0);
-    screen = DefaultScreen(dis);
-    printf("screen %d \n", screen);
-    black = BlackPixel(dis, screen),
-    white = WhitePixel(dis, screen);
-    //win = XCreateSimpleWindow(dis, DefaultRootWindow(dis), 0, 0, 300, 300, 5, black, white);
-    win = XCreateWindow(dis, DefaultRootWindow(dis), 0, 0, 400, 300, 0, 0, 0, NULL, 0, NULL);
-    XSetStandardProperties(dis, win, "Howdy", "Hi", None, NULL, 0, NULL);
-    XSelectInput(dis, win, ExposureMask | ButtonPressMask | KeyPressMask);
-    gc = XCreateGC(dis, win, 0, 0);
+  dis = XOpenDisplay((char *)0);
+  screen = DefaultScreen(dis);
+  printf("screen %d \n", screen);
+  black = BlackPixel(dis, screen),
+  white = WhitePixel(dis, screen);
+  //win = XCreateSimpleWindow(dis, DefaultRootWindow(dis), 0, 0, 300, 300, 5, black, white);
+  win = XCreateWindow(dis, DefaultRootWindow(dis), 0, 0, 400, 300, 0, 0, 0, NULL, 0, NULL);
+  XSetStandardProperties(dis, win, "Howdy", "Hi", None, NULL, 0, NULL);
+  XSelectInput(dis, win, ExposureMask | ButtonPressMask | KeyPressMask);
+  gc = XCreateGC(dis, win, 0, 0);
 
-    showFonts();
+  //showFonts();
 
-    fontinfo = XLoadQueryFont(dis, "6x10");
-    printf("font %ld\n", (long)fontinfo);
-    int rc = XSetFont(dis, gc, fontinfo->fid);
-    XSetBackground(dis, gc, white);
-    XSetForeground(dis, gc, black);
-    XClearWindow(dis, win);
-    XMapRaised(dis, win);
+  fontinfo = XLoadQueryFont(dis, "6x10");
+  printf("font %ld\n", (long)fontinfo);
+  int rc = XSetFont(dis, gc, fontinfo->fid);
+  XSetBackground(dis, gc, white);
+  XSetForeground(dis, gc, black);
+  XClearWindow(dis, win);
+  XMapRaised(dis, win);
 
-    //Herfra
-    XWindowAttributes xwa;
-    XGetWindowAttributes(dis, win, &xwa);
-    printf("%d %d\n", xwa.x, xwa.y);
-
-    Atom wm_state = XInternAtom(dis, "_NET_WM_STATE", False);
-    Atom fullscreen = XInternAtom(dis, "_NET_WM_STATE_FULLSCREEN", False);
-
-    XEvent xev;
-    memset(&xev, 0, sizeof(xev));
-    xev.type = ClientMessage;
-    xev.xclient.window = win;
-    xev.xclient.message_type = wm_state;
-    xev.xclient.format = 32;
-    xev.xclient.data.l[0] = 1;
-    xev.xclient.data.l[1] = fullscreen;
-    xev.xclient.data.l[2] = 0;
-
-    XMapWindow(dis, win);
-
-    XSendEvent(dis, DefaultRootWindow(dis), False, SubstructureRedirectMask | SubstructureNotifyMask, &xev);
+  //Herfra
+  XWindowAttributes xwa;
+  XGetWindowAttributes(dis, win, &xwa);
+  printf("%d %d\n", xwa.x, xwa.y);
 };
 
 void showFonts()
 {
-    int nFonts;
-    char **szaFontNames;
-    szaFontNames = XListFonts(dis, "*", MAX_FONTS, &nFonts);
-    if (nFonts == MAX_FONTS)
-    {
-        printf("Many fonts on your system.  Not displaying all.");
-    }
+  int nFonts;
+  char **szaFontNames;
+  szaFontNames = XListFonts(dis, "*", MAX_FONTS, &nFonts);
+  if (nFonts == MAX_FONTS)
+  {
+    printf("Many fonts on your system.  Not displaying all.");
+  }
 
-    for (int i = 0; i < nFonts; i++)
-    {
-        printf("%s\n", szaFontNames[i]);
-    }
+  for (int i = 0; i < nFonts; i++)
+  {
+    printf("%s\n", szaFontNames[i]);
+  }
 
-    XFreeFontNames(szaFontNames);
+  XFreeFontNames(szaFontNames);
+}
+
+void full_x()
+{
+  Atom wm_state = XInternAtom(dis, "_NET_WM_STATE", False);
+  Atom fullscreen = XInternAtom(dis, "_NET_WM_STATE_FULLSCREEN", False);
+
+  XEvent xev;
+  memset(&xev, 0, sizeof(xev));
+  xev.type = ClientMessage;
+  xev.xclient.window = win;
+  xev.xclient.message_type = wm_state;
+  xev.xclient.format = 32;
+  xev.xclient.data.l[0] = 1;
+  xev.xclient.data.l[1] = fullscreen;
+  xev.xclient.data.l[2] = 0;
+
+  //  XMapWindow(dis, win);
+
+  XSendEvent(dis, DefaultRootWindow(dis), False, SubstructureRedirectMask | SubstructureNotifyMask, &xev);
 }
 
 void close_x()
 {
-    XFreeFont(dis, fontinfo);
-    XFreeGC(dis, gc);
-    XDestroyWindow(dis, win);
-    XCloseDisplay(dis);
-    exit(1);
+  XFreeFont(dis, fontinfo);
+  XFreeGC(dis, gc);
+  XDestroyWindow(dis, win);
+  XCloseDisplay(dis);
+  exit(1);
 };
 
 void redraw()
 {
-    XClearWindow(dis, win);
+  XClearWindow(dis, win);
 };
