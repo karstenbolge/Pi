@@ -18,8 +18,10 @@ int playFile(char *p)
   pid = fork();
   if (pid == 0)
   {
+    printf("1.\n");
     /* This is the child process.  Execute the shell command. */
     execl("/usr/bin/omxplayer", " ", p, NULL);
+    printf("2.\n");
     _exit(EXIT_FAILURE);
   }
   else if (pid < 0)
