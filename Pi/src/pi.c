@@ -7,6 +7,7 @@
 #include "../hdr/awarageBallTime.h"
 #include "../hdr/sound.h"
 #include "../hdr/platform.h"
+#include "../hdr/window.h"
 
 #define UP_DOWN_HELD_OFF 0
 #define UP_DOWN_HELD_UP 1
@@ -14,15 +15,9 @@
 
 #define UP_DOWN_HELD_LOOPS 1000
 
-uint8_t leds;
-uint8_t column;
-
 uint8_t upDownHeld;
 uint8_t upDownHasTicked;
 uint16_t upDownLoops;
-
-uint16_t oldInputRegister[8];
-uint16_t newInputRegister;
 
 struct timespec sleepValue = {0};
 
@@ -32,15 +27,16 @@ void setup()
   sleepValue.tv_nsec = 10000;
 }
 
-void sleep()
+void piSleep()
 {
   nanosleep(&sleepValue, NULL);
 }
 
 void init()
 {
-  //initDmd();
+  createWindow();
   readConfig();
+
   leds = 1;
   column = 0;
   upDownHeld = UP_DOWN_HELD_OFF;
@@ -88,6 +84,14 @@ int main(void)
 
   platform();
   //playSoundEnter();
+
+  rgb_t color, bgColor;
+  setColorType(&color, COLOR_RED);
+  setColor(&bgColor, 0, 255, 255);
+  setColorType(&bgColor, COLOR_BLACK);
+
+  printAtLine("0123456789", 0, color, bgColor);
+  refreshDmd();
 
   struct timespec lastTime;
   struct timespec currentTime;

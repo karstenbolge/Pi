@@ -34,10 +34,10 @@ void updateShiftIn()
   long bitVal;
   digitalWrite(INPUT_SWITCH_ENABLE_PIN, HIGH);
   digitalWrite(INPUT_SWITCH_LATCH_PIN, LOW);
-  sleep();
+  piSleep();
   digitalWrite(INPUT_SWITCH_LATCH_PIN, HIGH);
   digitalWrite(INPUT_SWITCH_ENABLE_PIN, LOW);
-  sleep();
+  piSleep();
 
   for (int i = 0; i < 16; i++)
   {
@@ -45,7 +45,7 @@ void updateShiftIn()
     newInputRegister = newInputRegister << 1;
     newInputRegister += bitVal;
     digitalWrite(INPUT_SWITCH_CLOCK_PIN, HIGH);
-    sleep();
+    piSleep();
     digitalWrite(INPUT_SWITCH_CLOCK_PIN, LOW);
   }
 }
@@ -53,4 +53,9 @@ void updateShiftIn()
 void platform()
 {
   printf("Running Raspberry\n");
+}
+
+char *getDefaultFont()
+{
+  return "6x13";
 }
