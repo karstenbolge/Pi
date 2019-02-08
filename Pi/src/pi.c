@@ -1,5 +1,3 @@
-#include <wiringPi.h>
-#include <wiringShift.h>
 #include <stdlib.h>
 #include <time.h>
 #include "../hdr/pi.h"
@@ -8,15 +6,7 @@
 #include "../hdr/display.h"
 #include "../hdr/awarageBallTime.h"
 #include "../hdr/sound.h"
-
-#define COLUMN_DATA_PIN 7
-#define COLUMN_CLOCK_PIN 8
-#define COLUMN_LATCH_PIN 9
-
-#define INPUT_SWITCH_DATA_PIN 1   //green
-#define INPUT_SWITCH_CLOCK_PIN 15 //yellow
-#define INPUT_SWITCH_LATCH_PIN 16 //White
-#define INPUT_SWITCH_ENABLE_PIN 4 //White
+#include "../hdr/platform.h"
 
 #define UP_DOWN_HELD_OFF 0
 #define UP_DOWN_HELD_UP 1
@@ -38,30 +28,8 @@ struct timespec sleepValue = {0};
 
 void setup()
 {
-  if (wiringPiSetup() == -1)
-  {
-    printf("Failed to start");
-    exit(1);
-  }
-
-  pinMode(COLUMN_DATA_PIN, OUTPUT);
-  pinMode(COLUMN_CLOCK_PIN, OUTPUT);
-  pinMode(COLUMN_LATCH_PIN, OUTPUT);
-
-  pinMode(INPUT_SWITCH_DATA_PIN, INPUT);
-  pinMode(INPUT_SWITCH_CLOCK_PIN, OUTPUT);
-  pinMode(INPUT_SWITCH_LATCH_PIN, OUTPUT);
-  pinMode(INPUT_SWITCH_ENABLE_PIN, OUTPUT);
-
+  setupWiring();
   sleepValue.tv_nsec = 10000;
-}
-
-void updateColumn(uint8_t column)
-{
-  int i = 1 << (column);
-  digitalWrite(COLUMN_LATCH_PIN, LOW);
-  shiftOut(COLUMN_DATA_PIN, COLUMN_CLOCK_PIN, MSBFIRST, i);
-  digitalWrite(COLUMN_LATCH_PIN, HIGH);
 }
 
 void sleep()
@@ -69,30 +37,9 @@ void sleep()
   nanosleep(&sleepValue, NULL);
 }
 
-void updateShiftIn()
-{
-  long bitVal;
-  digitalWrite(INPUT_SWITCH_ENABLE_PIN, HIGH);
-  digitalWrite(INPUT_SWITCH_LATCH_PIN, LOW);
-  sleep();
-  digitalWrite(INPUT_SWITCH_LATCH_PIN, HIGH);
-  digitalWrite(INPUT_SWITCH_ENABLE_PIN, LOW);
-  sleep();
-
-  for (int i = 0; i < 16; i++)
-  {
-    bitVal = digitalRead(INPUT_SWITCH_DATA_PIN);
-    newInputRegister = newInputRegister << 1;
-    newInputRegister += bitVal;
-    digitalWrite(INPUT_SWITCH_CLOCK_PIN, HIGH);
-    sleep();
-    digitalWrite(INPUT_SWITCH_CLOCK_PIN, LOW);
-  }
-}
-
 void init()
 {
-  initDmd();
+  //initDmd();
   readConfig();
   leds = 1;
   column = 0;
@@ -139,6 +86,7 @@ int main(void)
   setup();
   init();
 
+  platform();
   //playSoundEnter();
 
   struct timespec lastTime;
