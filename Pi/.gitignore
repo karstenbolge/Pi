@@ -2,5 +2,6 @@ config.yaml
 log.txt
 *.exe
 *.stackdump
-pi
-pi-test
+*.o
+*.h.gch
+funk
