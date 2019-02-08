@@ -2,6 +2,7 @@
 http://math.msu.su/~vvb/2course/Borisenko/CppProjects/GWindow/xintro.html
 https://www.geeks3d.com/20120102/programming-tutorial-simple-x11-x-window-code-sample-for-linux-and-mac-os-x/
 
+sudo apt install libx11-dev
 	Remember to compile try:
 		1) gcc hi.c -o hi -lX11
 		2) gcc hi.c -I /usr/include/X11 -L /usr/X11/lib -lX11
@@ -111,7 +112,7 @@ void init_x()
 
   //showFonts();
 
-  fontinfo = XLoadQueryFont(dis, "6x10");
+  fontinfo = XLoadQueryFont(dis, "6x13"); // 6x10 ubuntu font size
   printf("font %ld\n", (long)fontinfo);
   int rc = XSetFont(dis, gc, fontinfo->fid);
   XSetBackground(dis, gc, white);
@@ -123,6 +124,23 @@ void init_x()
   XWindowAttributes xwa;
   XGetWindowAttributes(dis, win, &xwa);
   printf("%d %d\n", xwa.x, xwa.y);
+
+  Atom wm_state = XInternAtom(dis, "_NET_WM_STATE", False);
+  Atom fullscreen = XInternAtom(dis, "_NET_WM_STATE_FULLSCREEN", False);
+
+  XEvent xev;
+  memset(&xev, 0, sizeof(xev));
+  xev.type = ClientMessage;
+  xev.xclient.window = win;
+  xev.xclient.message_type = wm_state;
+  xev.xclient.format = 32;
+  xev.xclient.data.l[0] = 1;
+  xev.xclient.data.l[1] = fullscreen;
+  xev.xclient.data.l[2] = 0;
+
+  XMapWindow(dis, win);
+
+  XSendEvent(dis, DefaultRootWindow(dis), False, SubstructureRedirectMask | SubstructureNotifyMask, &xev);
 };
 
 void showFonts()
@@ -158,7 +176,7 @@ void full_x()
   xev.xclient.data.l[1] = fullscreen;
   xev.xclient.data.l[2] = 0;
 
-  //  XMapWindow(dis, win);
+  XMapWindow(dis, win);
 
   XSendEvent(dis, DefaultRootWindow(dis), False, SubstructureRedirectMask | SubstructureNotifyMask, &xev);
 }
