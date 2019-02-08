@@ -27,6 +27,7 @@ int screen;
 Window win;
 GC gc;
 XFontStruct *fontinfo;
+XEvent event; /* the XEvent declaration !!! */
 
 /* here are our X routines declared! */
 void init_x();
@@ -37,7 +38,7 @@ void showFonts();
 
 int main()
 {
-  XEvent event;   /* the XEvent declaration !!! */
+
   KeySym key;     /* a dealie-bob to handle KeyPress Events */
   char text[255]; /* a char buffer for KeyPress Events */
 
@@ -50,6 +51,7 @@ int main()
 		   Note:  only events we set the mask for are detected!
 		*/
     XNextEvent(dis, &event);
+    printf("XNextEvent %d\n", event.type);
 
     if (event.type == Expose && event.xexpose.count == 0)
     {
@@ -62,6 +64,11 @@ int main()
       /* use the XLookupString routine to convert the invent
 		   KeyPress data into regular text.  Weird but necessary...
 		*/
+      if (text[0] == 'r')
+      {
+        printf("redraw\n");
+        redraw();
+      }
       if (text[0] == 'q')
       {
         close_x();
@@ -73,7 +80,9 @@ int main()
       if (text[0] == 'a')
       {
         XSetForeground(dis, gc, WhitePixel(dis, screen));
-        XDrawLine(dis, win, gc, 10, 10, 190, 190); //from-to
+        int rc;
+        rc = XDrawLine(dis, win, gc, 10, 10, 190, 190); //from-to
+        printf("drawline %d\n", rc);
         XDrawLine(dis, win, gc, 10, 190, 190, 10); //from-to
       }
       else
@@ -103,7 +112,9 @@ void init_x()
   screen = DefaultScreen(dis);
   printf("screen %d \n", screen);
   black = BlackPixel(dis, screen),
+  printf("black %ld \n", black);
   white = WhitePixel(dis, screen);
+  printf("white %ld \n", white);
   //win = XCreateSimpleWindow(dis, DefaultRootWindow(dis), 0, 0, 300, 300, 5, black, white);
   win = XCreateWindow(dis, DefaultRootWindow(dis), 0, 0, 400, 300, 0, 0, 0, NULL, 0, NULL);
   XSetStandardProperties(dis, win, "Howdy", "Hi", None, NULL, 0, NULL);
@@ -124,6 +135,18 @@ void init_x()
   XWindowAttributes xwa;
   XGetWindowAttributes(dis, win, &xwa);
   printf("%d %d\n", xwa.x, xwa.y);
+  printf("%ld %ld\n", (long)dis, win);
+
+  // wait for event created
+  XNextEvent(dis, &event);
+  printf("EVEnt %d %d\n", event.type, event.type);
+  // start drawing
+  XSetForeground(dis, gc, WhitePixel(dis, screen));
+  rc = XDrawLine(dis, win, gc, 10, 10, 10, 190); //from-to
+  printf("drawline now %d\n", rc);
+  XDrawLine(dis, win, gc, 10, 190, 190, 190); //from-to
+
+  return;
 
   Atom wm_state = XInternAtom(dis, "_NET_WM_STATE", False);
   Atom fullscreen = XInternAtom(dis, "_NET_WM_STATE_FULLSCREEN", False);
