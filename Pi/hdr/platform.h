@@ -12,10 +12,18 @@
 #define INPUT_SWITCH_LATCH_PIN 16 //White
 #define INPUT_SWITCH_ENABLE_PIN 4 //White
 
+uint16_t oldInputRegister[8];
+uint16_t newInputRegister;
+
+uint8_t leds;
+uint8_t column;
+
 void setupWiring();
 void updateColumn(uint8_t column);
 void updateShiftIn();
 
 void platform();
+
+char *getDefaultFont();
 
 #endif
