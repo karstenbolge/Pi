@@ -1,5 +1,7 @@
 #include "../hdr/platform.h"
+#include "../hdr/pi.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <wiringPi.h>
 #include <wiringShift.h>
 
@@ -58,4 +60,14 @@ void platform()
 char *getDefaultFont()
 {
   return "6x13";
+}
+
+int getWindowWitdh()
+{
+  return 400;
+}
+
+int getWindowHeight()
+{
+  return 240;
 }
