@@ -18,4 +18,6 @@ void redrawWindow();
 
 void refreshDmd();
 
+void windowTestDraw();
+
 #endif
