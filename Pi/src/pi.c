@@ -21,15 +21,15 @@ uint16_t upDownLoops;
 
 struct timespec sleepValue = {0};
 
+void piSleep()
+{
+  nanosleep(&sleepValue, NULL);
+}
+
 void setup()
 {
   setupWiring();
   sleepValue.tv_nsec = 10000;
-}
-
-void piSleep()
-{
-  nanosleep(&sleepValue, NULL);
 }
 
 void init()
