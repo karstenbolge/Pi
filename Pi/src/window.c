@@ -21,12 +21,15 @@ void createWindow()
   white = WhitePixel(display, screen);
   printf("white %ld \n", white);
 
-  win = XCreateWindow(display, DefaultRootWindow(display), 0, 0, 800, 480, 0, 0, 0, NULL, 0, NULL);
+//  win = XCreateWindow(display, DefaultRootWindow(display), 0, 0, getWindowWitdh(), getWindowHeight(), 0, 0, 0, NULL, 0, NULL);
+  win = XCreateSimpleWindow(display,DefaultRootWindow(display),0,0, 400, 100, 5, white, black);
+
   XSetStandardProperties(display, win, "DrFunkenstein", "Hi", None, NULL, 0, NULL);
   XSelectInput(display, win, ExposureMask | ButtonPressMask | KeyPressMask);
   gc = XCreateGC(display, win, 0, 0);
+  printf("created gc %d\n", gc);
 
-  fontinfo = XLoadQueryFont(display, "6x10"); //getDefaultFont());
+  fontinfo = XLoadQueryFont(display, getDefaultFont());
   printf("font %ld\n", (long)fontinfo);
   int rc = XSetFont(display, gc, fontinfo->fid);
   XSetBackground(display, gc, white);
@@ -67,6 +70,18 @@ void redrawWindow()
 {
   XClearWindow(display, win);
 };
+
+void windowTestDraw()
+{
+char text[255];
+      strcpy(text, "X is FUN!");
+printf("win %d\n", win);
+printf("display %d\n", display);
+      XSetForeground(display, gc, rand() % 120 % 255);
+printf("gc %d\n", gc);
+printf("text %s\n", text);
+      XDrawString(display, win, gc, 10, 10, text, strlen(text));
+}
 
 void refreshDmd()
 {
