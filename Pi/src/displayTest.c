@@ -2,6 +2,7 @@
 #include "../hdr/color.h"
 #include "../hdr/display.h"
 #include "../hdr/displayTest.h"
+#include "../hdr/window.h"
 
 #define MODE_OFF 0
 #define MODE_SHOW 1
@@ -19,6 +20,8 @@ void displayTestOpen()
   currentLine = 0;
   setColorType(&color, COLOR_RED);
   setColorType(&bgColor, COLOR_BLACK);
+
+  windowTestDraw();
 }
 
 void displayTestExit()
