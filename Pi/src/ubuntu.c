@@ -105,3 +105,13 @@ char *getDefaultFont()
 {
   return "6x10";
 }
+
+int getWindowWitdh()
+{
+  return 800;
+}
+
+int getWindowHeight()
+{
+  return 480;
+}
