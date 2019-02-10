@@ -6,4 +6,6 @@
 #include "menu.h"
 #include "config.h"
 
+void piSleep();
+
 #endif
