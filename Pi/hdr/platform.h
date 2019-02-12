@@ -28,5 +28,7 @@ char *getDefaultFont();
 int getWindowWitdh();
 int getWindowHeight();
 
+void (*onBeat)(int);
+void onBeatFunction(int beat);
 
 #endif

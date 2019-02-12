@@ -43,6 +43,14 @@ void setupColors()
     exit(1);
   }
   printf("white color mapped %d %d %d\n", color_white.red, color_white.green, color_white.blue);
+
+  rc = XAllocNamedColor(display, screen_colormap, "black", &color_black, &color_black);
+  if (rc == 0)
+  {
+    fprintf(stderr, "XAllocNamedColor - failed to allocated 'black' color.\n");
+    exit(1);
+  }
+  printf("black color mapped %d %d %d\n", color_black.red, color_black.green, color_black.blue);
 }
 
 void createWindow()

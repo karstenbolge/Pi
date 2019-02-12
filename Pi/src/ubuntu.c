@@ -14,6 +14,10 @@ const int button3x = 130;
 const int button3y = 420;
 const int button4x = 190;
 const int button4y = 420;
+
+const int buttonBeatX = 250;
+const int buttonBeatY = 420;
+
 const int buttonWidth = 50;
 const int buttonHeight = 50;
 int onButton = 0;
@@ -22,6 +26,7 @@ int oldCursorX, oldCursorY;
 
 void setupWiring()
 {
+  onBeat = &onBeatFunction;
   XSetForeground(display, gc, color_white.pixel);
   XFillRectangle(display, win, gc, button1x, button1y, buttonWidth, buttonHeight);
 
@@ -136,4 +141,20 @@ int getWindowWitdh()
 int getWindowHeight()
 {
   return 480;
+}
+
+void onBeatFunction(int beat)
+{
+  // printf("On beat %d %d %d\n", beat, beat % 4, beat / 4);
+
+  XSetForeground(display, gc, color_black.pixel);
+  XFillRectangle(display, win, gc, buttonBeatX, buttonBeatY, buttonWidth, buttonHeight);
+
+  XSetForeground(display, gc, color_blue.pixel);
+  for (int i = 0; i <= beat % 4; i++)
+  {
+    XFillRectangle(display, win, gc, buttonBeatX + 3 * i, buttonBeatY, 2, 2);
+  }
+
+  XFillRectangle(display, win, gc, buttonBeatX + 3 * (beat / 4), buttonBeatY + 3, 2, 2);
 }

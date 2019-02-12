@@ -97,7 +97,7 @@ int main(void)
   struct timespec currentTime;
   uint32_t lastLoopsPrSecond = 0;
   uint32_t currentLoopsPrSecond = 0;
-  uint8_t tick = 0;
+  uint8_t beat = 0;
 
   while (1)
   {
@@ -171,21 +171,33 @@ int main(void)
     timespec_get(&currentTime, TIME_UTC);
     if (lastTime.tv_sec != currentTime.tv_sec)
     {
-      tick = 0;
       lastLoopsPrSecond = currentLoopsPrSecond;
       currentLoopsPrSecond = 0;
       awarageBallTimeCount(lastLoopsPrSecond);
     }
-    // new frame every 1/16 of a second
-    if (tick == 0 || lastTime.tv_nsec + 62500000 < currentTime.tv_nsec)
+
+    // new frame every 1/15 of a second, equal 10 frame per beat as 90 beat per minute
+    if (lastTime.tv_sec != currentTime.tv_sec)
     {
-      tick++;
+      lastTime.tv_nsec = lastTime.tv_nsec - 100000000;
+    }
+
+    if (lastTime.tv_nsec + 66660000 < currentTime.tv_nsec)
+    {
+      beat++;
+      if (beat == 160)
+      {
+        beat = 0;
+      }
+      onBeat(beat / 10);
+
       lastTime = currentTime;
-      displayTestTick(tick);
     }
 
     column++;
     if (column == 8)
+    {
       column = 0;
+    }
   }
 };

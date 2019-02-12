@@ -15,7 +15,7 @@ int screen;
 Window win;
 GC gc;
 
-XColor color_red, color_white, color_blue, color_green;
+XColor color_red, color_white, color_blue, color_green, color_black;
 Colormap screen_colormap;
 
 void createWindow();
