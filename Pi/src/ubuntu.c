@@ -5,54 +5,38 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/select.h>
-#include <termios.h>
 
-struct termios origTermios;
+const int button1x = 10;
+const int button1y = 420;
+const int button2x = 70;
+const int button2y = 420;
+const int button3x = 130;
+const int button3y = 420;
+const int button4x = 190;
+const int button4y = 420;
+const int buttonWidth = 50;
+const int buttonHeight = 50;
+int onButton = 0;
 
-void resetTerminalMode()
-{
-  tcsetattr(0, TCSANOW, &origTermios);
-}
+int oldCursorX, oldCursorY;
 
 void setupWiring()
 {
-  struct termios newTermios;
+  XSetForeground(display, gc, color_white.pixel);
+  XFillRectangle(display, win, gc, button1x, button1y, buttonWidth, buttonHeight);
 
-  /* take two copies - one for now, one for later */
-  tcgetattr(0, &origTermios);
-  memcpy(&newTermios, &origTermios, sizeof(newTermios));
+  XSetForeground(display, gc, color_red.pixel);
+  XFillRectangle(display, win, gc, button2x, button2y, buttonWidth, buttonHeight);
 
-  /* register cleanup handler, and set the new terminal mode */
-  atexit(resetTerminalMode);
-  cfmakeraw(&newTermios);
-  tcsetattr(0, TCSANOW, &newTermios);
+  XSetForeground(display, gc, color_green.pixel);
+  XFillRectangle(display, win, gc, button3x, button3y, buttonWidth, buttonHeight);
+
+  XSetForeground(display, gc, color_blue.pixel);
+  XFillRectangle(display, win, gc, button4x, button4y, buttonWidth, buttonHeight);
 }
 
 void updateColumn(uint8_t column)
 {
-}
-
-int keyboardHit()
-{
-  struct timeval tv = {0L, 0L};
-  fd_set fds;
-  FD_ZERO(&fds);
-  FD_SET(0, &fds);
-  return select(1, &fds, NULL, NULL, &tv);
-}
-
-int getch()
-{
-  int r;
-  unsigned char c;
-  if ((r = read(0, &c, sizeof(c))) < 0)
-  {
-    return r;
-  }
-  else
-  {
-    return c;
-  }
 }
 
 void updateShiftIn()
@@ -64,35 +48,73 @@ void updateShiftIn()
     return;
   }
 
-  if (keyboardHit())
-  {
-    switch (getch())
-    {
-    case 120:
-      exit(0);
-      break;
-    case 97:
-      // set escape pressed
-      newInputRegister = 1 << 2;
-      break;
-    case 115:
-      // set up pressed
-      newInputRegister = 1 << 12;
-      break;
-    case 100:
-      // set down pressed
-      newInputRegister = 1 << 15;
-      break;
-    case 102:
-      // set enter pressed
-      newInputRegister = 1 << 3;
-      printf("Enter\n");
-      break;
-    default:
-      printf("get char %d\n", getch());
+  int cursorX, cursorY, rootWindowX, rootWindowY = 0;
+  unsigned int mask = 0;
+  Window childWindow, rootWindow;
+  XQueryPointer(display, XRootWindow(display, screen),
+                &childWindow, &rootWindow,
+                &rootWindowX, &rootWindowX, &cursorX, &cursorY, &mask);
 
-      break;
+  XWindowAttributes xwa;
+  Window child;
+  int x, y;
+  XTranslateCoordinates(display, win, DefaultRootWindow(display), 0, 0, &x, &y, &child);
+  XGetWindowAttributes(display, win, &xwa);
+
+  if (oldCursorX != cursorX || oldCursorY != cursorY)
+  {
+    // check button 1
+    if (cursorX >= x + button1x && cursorX <= x + button1x + buttonWidth &&
+        cursorY >= y + button1y && cursorY <= y + button1y + buttonHeight)
+    {
+      onButton = 1;
     }
+    else if (cursorX >= x + button2x && cursorX <= x + button2x + buttonWidth &&
+             cursorY >= y + button2y && cursorY <= y + button2y + buttonHeight)
+    {
+      onButton = 2;
+    }
+    else if (cursorX >= x + button3x && cursorX <= x + button3x + buttonWidth &&
+             cursorY >= y + button3y && cursorY <= y + button3y + buttonHeight)
+    {
+      onButton = 3;
+    }
+    else if (cursorX >= x + button4x && cursorX <= x + button4x + buttonWidth &&
+             cursorY >= y + button4y && cursorY <= y + button4y + buttonHeight)
+    {
+      onButton = 4;
+    }
+    else
+    {
+      onButton = 0;
+    }
+
+    oldCursorX = cursorX;
+    oldCursorY = cursorY;
+  }
+
+  switch (onButton)
+  {
+  case 1:
+    // set escape pressed
+    newInputRegister = 1 << 2;
+    break;
+  case 2:
+    // set up pressed
+    newInputRegister = 1 << 12;
+    break;
+  case 3:
+    // set down pressed
+    newInputRegister = 1 << 15;
+    break;
+  case 4:
+    // set enter pressed
+    newInputRegister = 1 << 3;
+    break;
+  default:
+    newInputRegister = 0;
+
+    break;
   }
 }
 

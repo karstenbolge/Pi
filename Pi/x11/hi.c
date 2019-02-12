@@ -46,6 +46,7 @@ int main()
 
   /* look for events forever... */
   while (1)
+    ;
   {
     /* get the next event and stuff it into our event variable.
 		   Note:  only events we set the mask for are detected!

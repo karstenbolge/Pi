@@ -79,8 +79,8 @@ void onUpDownHeld(uint8_t upDown)
 
 int main(void)
 {
-  setup();
   init();
+  setup();
 
   platform();
   //playSoundEnter();
@@ -91,7 +91,7 @@ int main(void)
   setColorType(&bgColor, COLOR_BLACK);
 
   printAtLine("0123456789", 0, color, bgColor);
-  refreshDmd();
+  //refreshDmd();
 
   struct timespec lastTime;
   struct timespec currentTime;

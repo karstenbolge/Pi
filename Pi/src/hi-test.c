@@ -34,6 +34,20 @@ void full_x();
 void redraw();
 void showFonts();
 
+int getWindowWitdh()
+{
+  return 400;
+}
+int getWindowHeight()
+{
+  return 240;
+}
+
+char *getDefaultFont()
+{
+  return "6x13";
+}
+
 int main()
 {
   KeySym key;     /* a dealie-bob to handle KeyPress Events */
@@ -55,6 +69,7 @@ int main()
   printf("Cursor %d %d\n", root_x, root_y);
   /* look for events forever... */
   while (1)
+    ;
   {
     /* get the next event and stuff it into our event variable.
 		   Note:  only events we set the mask for are detected!

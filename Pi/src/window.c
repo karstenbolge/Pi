@@ -3,11 +3,47 @@
 #include "../hdr/window.h"
 #include "../hdr/display.h"
 
-int screen;
-Window win;
-GC gc;
 XFontStruct *fontinfo;
 unsigned long black, white;
+
+void setupColors()
+{
+  // get access to the screen's color map.
+  screen_colormap = DefaultColormap(display, DefaultScreen(display));
+
+  // setup colors
+  int rc = XAllocNamedColor(display, screen_colormap, "blue", &color_blue, &color_blue);
+  if (rc == 0)
+  {
+    fprintf(stderr, "XAllocNamedColor - failed to allocated 'blue' color.\n");
+    exit(1);
+  }
+  printf("Blue color mapped %d %d %d\n", color_blue.red, color_blue.green, color_blue.blue);
+
+  rc = XAllocNamedColor(display, screen_colormap, "red", &color_red, &color_red);
+  if (rc == 0)
+  {
+    fprintf(stderr, "XAllocNamedColor - failed to allocated 'red' color.\n");
+    exit(1);
+  }
+  printf("red color mapped %d %d %d\n", color_red.red, color_red.green, color_red.blue);
+
+  rc = XAllocNamedColor(display, screen_colormap, "green", &color_green, &color_green);
+  if (rc == 0)
+  {
+    fprintf(stderr, "XAllocNamedColor - failed to allocated 'green' color.\n");
+    exit(1);
+  }
+  printf("green color mapped %d %d %d\n", color_green.red, color_green.green, color_green.blue);
+
+  rc = XAllocNamedColor(display, screen_colormap, "white", &color_white, &color_white);
+  if (rc == 0)
+  {
+    fprintf(stderr, "XAllocNamedColor - failed to allocated 'white' color.\n");
+    exit(1);
+  }
+  printf("white color mapped %d %d %d\n", color_white.red, color_white.green, color_white.blue);
+}
 
 void createWindow()
 {
@@ -21,13 +57,13 @@ void createWindow()
   white = WhitePixel(display, screen);
   printf("white %ld \n", white);
 
-//  win = XCreateWindow(display, DefaultRootWindow(display), 0, 0, getWindowWitdh(), getWindowHeight(), 0, 0, 0, NULL, 0, NULL);
-  win = XCreateSimpleWindow(display,DefaultRootWindow(display),0,0, 400, 100, 5, white, black);
+  win = XCreateWindow(display, DefaultRootWindow(display), 0, 0, getWindowWitdh(), getWindowHeight(), 0, 0, 0, NULL, 0, NULL);
+  //win = XCreateSimpleWindow(display, DefaultRootWindow(display), 0, 0, getWindowWitdh(), getWindowHeight(), 5, white, black);
 
   XSetStandardProperties(display, win, "DrFunkenstein", "Hi", None, NULL, 0, NULL);
   XSelectInput(display, win, ExposureMask | ButtonPressMask | KeyPressMask);
   gc = XCreateGC(display, win, 0, 0);
-  printf("created gc %d\n", gc);
+  printf("created gc %ld\n", (long)gc);
 
   fontinfo = XLoadQueryFont(display, getDefaultFont());
   printf("font %ld\n", (long)fontinfo);
@@ -36,10 +72,6 @@ void createWindow()
   XSetForeground(display, gc, black);
   XClearWindow(display, win);
   XMapRaised(display, win);
-
-  XWindowAttributes xwa;
-  XGetWindowAttributes(display, win, &xwa);
-  printf("%d %d\n", xwa.x, xwa.y);
 
   printf("%ld %ld\n", (long)display, win);
 
@@ -51,10 +83,16 @@ void createWindow()
     printf("EVEnt %d\n", exposed.type);
   }
 
+  XWindowAttributes xwa;
+  XGetWindowAttributes(display, win, &xwa);
+  printf("window position : %d %d\n", xwa.x, xwa.y);
+
   XSetForeground(display, gc, WhitePixel(display, screen));
   rc = XDrawLine(display, win, gc, 10, 10, 10, 190); //from-to
   printf("drawline now %d\n", rc);
   XDrawLine(display, win, gc, 10, 190, 190, 190); //from-to
+
+  setupColors();
 };
 
 void closeWindow()
@@ -73,14 +111,14 @@ void redrawWindow()
 
 void windowTestDraw()
 {
-char text[255];
-      strcpy(text, "X is FUN!");
-printf("win %d\n", win);
-printf("display %d\n", display);
-      XSetForeground(display, gc, rand() % 120 % 255);
-printf("gc %d\n", gc);
-printf("text %s\n", text);
-      XDrawString(display, win, gc, 10, 10, text, strlen(text));
+  char text[255];
+  strcpy(text, "X is FUN!");
+  printf("win %ld\n", win);
+  printf("display %ld\n", (long)display);
+  XSetForeground(display, gc, rand() % 120 % 255);
+  printf("gc %ld\n", (long)gc);
+  printf("text %s\n", text);
+  XDrawString(display, win, gc, 10, 10, text, strlen(text));
 }
 
 void refreshDmd()
