@@ -91,7 +91,16 @@ int main(void)
   setColorType(&bgColor, COLOR_BLACK);
 
   printAtLine("0123456789", 0, color, bgColor);
-  //refreshDmd();
+  printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, color, bgColor);
+  printAtLine("abcdefghijklmnopqrstuvwxyz", 2, color, bgColor);
+  printAtLine("0123456789", 3, color, bgColor);
+  printAtLine("0123456789", 4, color, bgColor);
+  printAtLine("0123456789", 5, color, bgColor);
+  printAtLine("0123456789", 6, color, bgColor);
+  printAtLine("0123456789", 7, color, bgColor);
+  printAtLine("0123456789", 8, color, bgColor);
+  printAtLine("0123456789", 9, color, bgColor);
+  refreshDmd();
 
   struct timespec lastTime;
   struct timespec currentTime;
@@ -190,6 +199,7 @@ int main(void)
         beat = 0;
       }
       onBeat(beat / 10);
+      displayTestTick(beat % 15);
 
       lastTime = currentTime;
     }

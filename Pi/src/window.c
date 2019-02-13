@@ -9,48 +9,48 @@ unsigned long black, white;
 void setupColors()
 {
   // get access to the screen's color map.
-  screen_colormap = DefaultColormap(display, DefaultScreen(display));
+  screenColorMap = DefaultColormap(display, DefaultScreen(display));
 
   // setup colors
-  int rc = XAllocNamedColor(display, screen_colormap, "blue", &color_blue, &color_blue);
+  int rc = XAllocNamedColor(display, screenColorMap, "blue", &colorBlue, &colorBlue);
   if (rc == 0)
   {
     fprintf(stderr, "XAllocNamedColor - failed to allocated 'blue' color.\n");
     exit(1);
   }
-  printf("Blue color mapped %d %d %d\n", color_blue.red, color_blue.green, color_blue.blue);
+  printf("Blue color mapped %d %d %d\n", colorBlue.red, colorBlue.green, colorBlue.blue);
 
-  rc = XAllocNamedColor(display, screen_colormap, "red", &color_red, &color_red);
+  rc = XAllocNamedColor(display, screenColorMap, "red", &colorRed, &colorRed);
   if (rc == 0)
   {
     fprintf(stderr, "XAllocNamedColor - failed to allocated 'red' color.\n");
     exit(1);
   }
-  printf("red color mapped %d %d %d\n", color_red.red, color_red.green, color_red.blue);
+  printf("red color mapped %d %d %d\n", colorRed.red, colorRed.green, colorRed.blue);
 
-  rc = XAllocNamedColor(display, screen_colormap, "green", &color_green, &color_green);
+  rc = XAllocNamedColor(display, screenColorMap, "green", &colorGreen, &colorGreen);
   if (rc == 0)
   {
     fprintf(stderr, "XAllocNamedColor - failed to allocated 'green' color.\n");
     exit(1);
   }
-  printf("green color mapped %d %d %d\n", color_green.red, color_green.green, color_green.blue);
+  printf("green color mapped %d %d %d\n", colorGreen.red, colorGreen.green, colorGreen.blue);
 
-  rc = XAllocNamedColor(display, screen_colormap, "white", &color_white, &color_white);
+  rc = XAllocNamedColor(display, screenColorMap, "white", &colorWhite, &colorWhite);
   if (rc == 0)
   {
     fprintf(stderr, "XAllocNamedColor - failed to allocated 'white' color.\n");
     exit(1);
   }
-  printf("white color mapped %d %d %d\n", color_white.red, color_white.green, color_white.blue);
+  printf("white color mapped %d %d %d\n", colorWhite.red, colorWhite.green, colorWhite.blue);
 
-  rc = XAllocNamedColor(display, screen_colormap, "black", &color_black, &color_black);
+  rc = XAllocNamedColor(display, screenColorMap, "black", &colorBlack, &colorBlack);
   if (rc == 0)
   {
     fprintf(stderr, "XAllocNamedColor - failed to allocated 'black' color.\n");
     exit(1);
   }
-  printf("black color mapped %d %d %d\n", color_black.red, color_black.green, color_black.blue);
+  printf("black color mapped %d %d %d\n", colorBlack.red, colorBlack.green, colorBlack.blue);
 }
 
 void createWindow()
@@ -130,6 +130,24 @@ void windowTestDraw()
 }
 
 void refreshDmd()
+{
+  XSetForeground(display, gc, colorBlack.pixel);
+  XFillRectangle(display, win, gc, 0, 0, 799, 479);
+
+  XSetForeground(display, gc, colorRed.pixel);
+  for (int y = 0; y < DMD_HEIGHT; y++)
+  {
+    for (int x = 0; x < DMD_WIDTH; x++)
+    {
+      if (dmd[x][y].red || dmd[x][y].green || dmd[x][y].blue)
+      {
+        XFillRectangle(display, win, gc, 4 * x, 4 * y, 3, 3);
+      }
+    }
+  }
+}
+
+void refreshDmd2()
 {
   int rc;
   printf("refresh %ld %ld\n", (long)display, win);

@@ -15,13 +15,12 @@ rgb_t color, bgColor;
 
 void displayTestOpen()
 {
+  printf("displayTestOpen\n");
   inDisplayTestMode = MODE_SHOW;
   currentPosition = DMD_WIDTH;
   currentLine = 0;
   setColorType(&color, COLOR_RED);
   setColorType(&bgColor, COLOR_BLACK);
-
-  windowTestDraw();
 }
 
 void displayTestExit()
@@ -35,10 +34,11 @@ void displayTestTick(uint8_t tick)
   {
     if (currentPosition == 0)
     {
+      // TODO OPTIMIZE memset
       fillLineWithColor(currentLine, bgColor);
       currentLine++;
       currentPosition = DMD_WIDTH;
-      if (currentLine > 4)
+      if (currentLine >= LINE_COUNT)
       {
         currentLine = 0;
       }
@@ -48,8 +48,9 @@ void displayTestTick(uint8_t tick)
       currentPosition--;
     }
 
+    // TODO OPTIMIZE memset
     fillLineWithColor(currentLine, bgColor);
     printAtLineAndPosition("0123456789", currentLine, currentPosition, color, bgColor);
-    showDmd();
+    refreshDmd();
   }
 }

@@ -7,16 +7,16 @@
 #include <sys/select.h>
 
 const int button1x = 10;
-const int button1y = 420;
+const int button1y = 484;
 const int button2x = 70;
-const int button2y = 420;
+const int button2y = 484;
 const int button3x = 130;
-const int button3y = 420;
+const int button3y = 484;
 const int button4x = 190;
-const int button4y = 420;
+const int button4y = 484;
 
 const int buttonBeatX = 250;
-const int buttonBeatY = 420;
+const int buttonBeatY = 484;
 
 const int buttonWidth = 50;
 const int buttonHeight = 50;
@@ -26,17 +26,20 @@ int oldCursorX, oldCursorY;
 
 void setupWiring()
 {
+  XSetForeground(display, gc, colorWhite.pixel);
+  XDrawLine(display, win, gc, 0, 480, 799, 480);
+
   onBeat = &onBeatFunction;
-  XSetForeground(display, gc, color_white.pixel);
+  XSetForeground(display, gc, colorWhite.pixel);
   XFillRectangle(display, win, gc, button1x, button1y, buttonWidth, buttonHeight);
 
-  XSetForeground(display, gc, color_red.pixel);
+  XSetForeground(display, gc, colorRed.pixel);
   XFillRectangle(display, win, gc, button2x, button2y, buttonWidth, buttonHeight);
 
-  XSetForeground(display, gc, color_green.pixel);
+  XSetForeground(display, gc, colorGreen.pixel);
   XFillRectangle(display, win, gc, button3x, button3y, buttonWidth, buttonHeight);
 
-  XSetForeground(display, gc, color_blue.pixel);
+  XSetForeground(display, gc, colorBlue.pixel);
   XFillRectangle(display, win, gc, button4x, button4y, buttonWidth, buttonHeight);
 }
 
@@ -140,21 +143,19 @@ int getWindowWitdh()
 
 int getWindowHeight()
 {
-  return 480;
+  return 530;
 }
 
 void onBeatFunction(int beat)
 {
-  // printf("On beat %d %d %d\n", beat, beat % 4, beat / 4);
-
-  XSetForeground(display, gc, color_black.pixel);
+  XSetForeground(display, gc, colorBlack.pixel);
   XFillRectangle(display, win, gc, buttonBeatX, buttonBeatY, buttonWidth, buttonHeight);
 
-  XSetForeground(display, gc, color_blue.pixel);
+  XSetForeground(display, gc, colorBlue.pixel);
   for (int i = 0; i <= beat % 4; i++)
   {
-    XFillRectangle(display, win, gc, buttonBeatX + 3 * i, buttonBeatY, 2, 2);
+    XFillRectangle(display, win, gc, buttonBeatX + 4 * i, buttonBeatY, 3, 3);
   }
 
-  XFillRectangle(display, win, gc, buttonBeatX + 3 * (beat / 4), buttonBeatY + 3, 2, 2);
+  XFillRectangle(display, win, gc, buttonBeatX + 4 * (beat / 4), buttonBeatY + 4, 3, 3);
 }
