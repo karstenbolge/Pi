@@ -99,7 +99,7 @@ int main(void)
   printAtLine("0123456789", 6, color, bgColor);
   printAtLine("0123456789", 7, color, bgColor);
   printAtLine("0123456789", 8, color, bgColor);
-  printAtLine("0123456789", 9, color, bgColor);
+  printAtLine("!\"", 9, color, bgColor);
   refreshDmd();
 
   struct timespec lastTime;

@@ -1,5 +1,6 @@
 #include "../hdr/platform.h"
 #include "../hdr/pi.h"
+#include "../hdr/window.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <wiringPi.h>
@@ -12,6 +13,12 @@ void setupWiring()
     printf("Failed to start");
     exit(1);
   }
+
+  XSetForeground(display, gc, colorRed.pixel);
+  XDrawLine(display, win, gc, 10, 10, 780, 10);
+
+  XSetForeground(display, gc, colorGreen.pixel);
+  XFillRectangle(display, win, gc, 20, 20, 30, 40);
 
   pinMode(COLUMN_DATA_PIN, OUTPUT);
   pinMode(COLUMN_CLOCK_PIN, OUTPUT);
