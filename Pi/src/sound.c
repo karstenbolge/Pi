@@ -56,9 +56,9 @@ char *loadWavFile(char *file, long *fileLength)
 
 void initSounds()
 {
-  sounds[WRONG_SOUND].data = loadWavFile("./sounds/boing_x.wav", &sounds[WRONG_SOUND].length);
-  sounds[OK_SOUND].data = loadWavFile("./sounds/cash_register_x.wav", &sounds[OK_SOUND].length);
-  sounds[ENTER_SOUND].data = loadWavFile("./sounds/whah_whah.wav", &sounds[ENTER_SOUND].length);
+  sounds[WRONG_SOUND].data = loadWavFile("./sounds/Yamaha-V50-Woosh.wav", &sounds[WRONG_SOUND].length);
+  sounds[OK_SOUND].data = loadWavFile("./sounds/Finger-Snaps.wav", &sounds[OK_SOUND].length);
+  sounds[ENTER_SOUND].data = loadWavFile("./sounds/Electro-Chord.wav", &sounds[ENTER_SOUND].length);
   sounds[BACK_SOUND].data = loadWavFile("./sounds/Roland-JD-990-Windchimes.wav", &sounds[BACK_SOUND].length);
 }
 
