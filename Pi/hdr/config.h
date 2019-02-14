@@ -26,6 +26,7 @@ typedef struct config
 {
   uint8_t version;
   highScoreItem_t highScore[5];
+  uint8_t volumn;
 } config_t;
 
 config_t config;
