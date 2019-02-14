@@ -37,6 +37,8 @@ void init()
   createWindow();
   readConfig();
 
+  initSounds();
+
   leds = 1;
   column = 0;
   upDownHeld = UP_DOWN_HELD_OFF;
@@ -83,7 +85,7 @@ int main(void)
   setup();
 
   platform();
-  //playSoundEnter();
+  playSoundBack();
 
   rgb_t color, bgColor;
   setColorType(&color, COLOR_RED);
