@@ -7,3 +7,12 @@ Check image vs dot resolution
 Make menu use dmd, when in rasparian mode, no more pi-test
 
 Make the last charaters in font
+
+Load image to x11 window
+https://stackoverflow.com/questions/36365528/animation-issue-on-x11-window
+XInitImage(&image);
+    XPutImage(display, window, fGc, &image,
+              0, 0,
+              0, 0,
+              Width, Height);
+https://stackoverflow.com/questions/30861472/libx11-xputimage-first-call              
