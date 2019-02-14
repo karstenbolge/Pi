@@ -14,8 +14,8 @@
 #include <sys/stat.h>
 
 #include "../hdr/sound.h"
+#include "../hdr/config.h"
 
-long volumne = 8;
 int soundNo;
 
 pthread_t soundThread;
@@ -231,7 +231,7 @@ void playSoundBack()
 
 void setVolume()
 {
-  printf("volumn seet to %ld\n", volumne);
+  printf("volumn seet to %d\n", config.volumn);
   long min, max;
   snd_mixer_t *handle;
   snd_mixer_selem_id_t *pSelemId;
@@ -249,16 +249,16 @@ void setVolume()
   snd_mixer_elem_t *pElement = snd_mixer_find_selem(handle, pSelemId);
 
   snd_mixer_selem_get_playback_volume_range(pElement, &min, &max);
-  snd_mixer_selem_set_playback_volume_all(pElement, volumne * max / MAX_VOLUMN);
+  snd_mixer_selem_set_playback_volume_all(pElement, config.volumn * max / MAX_VOLUMN);
 
   snd_mixer_close(handle);
 }
 
 void volumnUp()
 {
-  if (volumne < MAX_VOLUMN)
+  if (config.volumn < MAX_VOLUMN)
   {
-    volumne++;
+    config.volumn++;
   }
 
   setVolume();
@@ -266,9 +266,9 @@ void volumnUp()
 
 void volumnDown()
 {
-  if (volumne > 1)
+  if (config.volumn > 1)
   {
-    volumne--;
+    config.volumn--;
   }
 
   setVolume();
