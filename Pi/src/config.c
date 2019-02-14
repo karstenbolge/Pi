@@ -27,6 +27,8 @@ void initConfig()
   strcpy(config.highScore[4].current.name, "DDD");
   config.highScore[4].initial.score = 25000;
   strcpy(config.highScore[4].initial.name, "DDD");
+
+  config.volumn = 8;
 }
 
 FILE *pConfig;
@@ -48,6 +50,7 @@ int stringStart(char *str, char *in)
 #define SECOND "  second:"
 #define THRID "  thrid:"
 #define FOURTH "  forth:"
+#define VOLUMN "volumn:"
 
 void readConfig()
 {
@@ -68,6 +71,8 @@ void readConfig()
 
       if (stringStart(readBuffer, VERSION))
         config.version = atoi(value);
+      if (stringStart(readBuffer, VOLUMN))
+        config.volumn = atoi(value);
       if (stringStart(readBuffer, HIGHSCORE))
         inGroup = IN_HIGH_SCORE;
       if (inGroup == IN_HIGH_SCORE)
@@ -159,6 +164,7 @@ void saveConfig()
   fprintf(pConfig, "%s\n", INITIAL);
   fprintf(pConfig, "%s %d\n", SCORE, config.highScore[4].initial.score);
   fprintf(pConfig, "%s %s\n", NAME, config.highScore[4].initial.name);
+  fprintf(pConfig, "%s %d\n", VOLUMN, config.volumn);
 }
 
 uint8_t getSystem()
