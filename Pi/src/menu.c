@@ -446,6 +446,7 @@ void menuUp()
     {
       if (currentItem->event->up)
       {
+        playSoundOk();
         currentItem->event->up();
         return;
       }
@@ -455,6 +456,7 @@ void menuUp()
     }
 
     currentItem = currentItem->previous;
+    playSoundOk();
     showMenu();
     return;
   }
@@ -470,6 +472,7 @@ void menuDown()
     {
       if (currentItem->event->down)
       {
+        playSoundOk();
         currentItem->event->down();
         return;
       }
@@ -479,6 +482,7 @@ void menuDown()
     }
 
     currentItem = currentItem->next;
+    playSoundOk();
     showMenu();
     return;
   }
@@ -497,6 +501,7 @@ void menuExit()
         currentItem->event->exit();
       }
       inItem = 0;
+      playSoundBack();
       showMenu();
       return;
     }
@@ -504,6 +509,7 @@ void menuExit()
     if (currentItem->parrent)
     {
       currentItem = currentItem->parrent;
+      playSoundBack();
       showMenu();
       return;
     }
@@ -511,6 +517,7 @@ void menuExit()
     menuOpen = 0;
     printf("Safe config\n");
     saveConfig();
+    playSoundBack();
     clearScreen();
   }
 }
@@ -526,6 +533,7 @@ void menuEnter()
     }
     currentItem = menu;
     inItem = 0;
+    playSoundEnter();
     showMenu();
     return;
   }
@@ -535,12 +543,14 @@ void menuEnter()
     if (currentItem->child)
     {
       currentItem = currentItem->child;
+      playSoundOK();
       showMenu();
       return;
     }
 
     if (currentItem->event->open)
     {
+      playSoundOK();
       currentItem->event->open();
       inItem = 1;
       return;
@@ -553,10 +563,14 @@ void menuEnter()
   {
     if (currentItem->event->enter)
     {
+      playSoundEnter();
       currentItem->event->enter();
     }
     else
+    {
       playSoundWrong();
+    }
+
     return;
   }
 
