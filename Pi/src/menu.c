@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <string.h>
 #include "../hdr/menu.h"
+#include "../hdr/config.h"
 #include "../hdr/log.h"
 #include "../hdr/sound.h"
 #include "../hdr/switchEdgeTest.h"
@@ -508,6 +509,8 @@ void menuExit()
     }
 
     menuOpen = 0;
+    printf("Safe config\n");
+    saveConfig();
     clearScreen();
   }
 }
@@ -517,7 +520,7 @@ void menuEnter()
   if (!menuOpen)
   {
     menuOpen = 1;
-    if (!menu) 
+    if (!menu)
     {
       initMenu();
     }
