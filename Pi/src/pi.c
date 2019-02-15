@@ -104,6 +104,8 @@ int main(void)
   printAtLine("!\"", 9, color, bgColor);
   refreshDmd();
 
+  loadImage();
+
   struct timespec lastTime;
   struct timespec currentTime;
   uint32_t lastLoopsPrSecond = 0;
