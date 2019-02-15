@@ -165,6 +165,8 @@ void saveConfig()
   fprintf(pConfig, "%s %d\n", SCORE, config.highScore[4].initial.score);
   fprintf(pConfig, "%s %s\n", NAME, config.highScore[4].initial.name);
   fprintf(pConfig, "%s %d\n", VOLUMN, config.volumn);
+
+  fclose(pConfig);
 }
 
 uint8_t getSystem()
