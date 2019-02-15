@@ -6,8 +6,13 @@
 #include <wiringPi.h>
 #include <wiringShift.h>
 
+void onBeatFunction(int beat)
+{
+}
+
 void setupWiring()
 {
+  onBeat = &onBeatFunction;
   if (wiringPiSetup() == -1)
   {
     printf("Failed to start");

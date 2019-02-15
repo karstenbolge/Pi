@@ -543,14 +543,14 @@ void menuEnter()
     if (currentItem->child)
     {
       currentItem = currentItem->child;
-      playSoundOK();
+      playSoundOk();
       showMenu();
       return;
     }
 
     if (currentItem->event->open)
     {
-      playSoundOK();
+      playSoundOk();
       currentItem->event->open();
       inItem = 1;
       return;

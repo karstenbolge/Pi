@@ -148,10 +148,12 @@ void *initAlsa(void *pSoundNumber)
     }
     else if (rc < 0)
     {
+      // TODO handle this
       printf("error from writei: %d\n", rc);
     }
     else if (rc != (int)frames)
     {
+      // TODO handle this
       printf("short write, write %d frames\n", rc);
     }
 
@@ -161,6 +163,7 @@ void *initAlsa(void *pSoundNumber)
   printf("done playing\n");
   snd_pcm_drain(pcm_handle);
   printf("drained\n");
+  
   snd_pcm_close(pcm_handle);
   printf("closed\n");
 
@@ -229,9 +232,14 @@ void playSoundBack()
   }
 }
 
+typedef enum {
+    AUDIO_VOLUME_SET,
+    AUDIO_VOLUME_GET,
+} audio_volume_action;
+
 void setVolume()
 {
-  printf("volumn seet to %d\n", config.volumn);
+  printf("volumn set to %d\n", config.volumn);
   long min, max;
   snd_mixer_t *handle;
   snd_mixer_selem_id_t *pSelemId;
@@ -246,8 +254,17 @@ void setVolume()
   snd_mixer_selem_id_alloca(&pSelemId);
   snd_mixer_selem_id_set_index(pSelemId, 0);
   snd_mixer_selem_id_set_name(pSelemId, pSelemName);
+  printf("handle %p pSelemId %p\n", handle, pSelemId);
+  
   snd_mixer_elem_t *pElement = snd_mixer_find_selem(handle, pSelemId);
+  printf("pElement %p\n", pElement);
+  if (pElement == NULL) 
+  {
+    // fails on pi maybe because as root?
+    snd_mixer_close(handle);
+  }
 
+  //snd_mixer_handle_events(handle); 
   snd_mixer_selem_get_playback_volume_range(pElement, &min, &max);
   snd_mixer_selem_set_playback_volume_all(pElement, config.volumn * max / MAX_VOLUMN);
 

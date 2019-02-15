@@ -202,7 +202,6 @@ int main(void)
       }
       onBeat(beat / 10);
       displayTestTick(beat % 15);
-
       lastTime = currentTime;
     }
 
