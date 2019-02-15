@@ -487,7 +487,7 @@ void menuDown()
     return;
   }
 
-  volumnUp();
+  volumnDown();
 }
 
 void menuExit()
