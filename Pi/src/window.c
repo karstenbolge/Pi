@@ -51,6 +51,14 @@ void setupColors()
     exit(1);
   }
   printf("black color mapped %d %d %d\n", colorBlack.red, colorBlack.green, colorBlack.blue);
+
+  rc = XAllocNamedColor(display, screenColorMap, "yellow", &colorYellow, &colorYellow);
+  if (rc == 0)
+  {
+    fprintf(stderr, "XAllocNamedColor - failed to allocated 'Yellow' color.\n");
+    exit(1);
+  }
+  printf("Yellow color mapped %d %d %d\n", colorYellow.red, colorYellow.green, colorYellow.blue);
 }
 
 void createWindow()
@@ -145,6 +153,33 @@ void refreshDmd()
       }
     }
   }
+}
+
+void loadImage()
+{
+  // ./graphics/SoulTrain/vlcsnap-00035.png
+  // https://github.com/ImageMagick/png/blob/master/example.c
+
+  /*int screen_num = DefaultScreen(display);
+  Visual *visual = DefaultVisual(display, screen_num);
+  char *data = (char *)malloc(256 * 256 * 4);
+
+  XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, data, 256, 256, 32, 0);
+
+  int count = 256 * 256;
+  for (int i = 0; i < count; ++i)
+  {
+    XAddPixel(ximage, (long)i);
+  }
+  printf("end\n");*/
+
+  printf("image %d %d %d\n", gimp_image.width, gimp_image.height, gimp_image.bytes_per_pixel);
+
+  int screen_num = DefaultScreen(display);
+  Visual *visual = DefaultVisual(display, screen_num);
+  XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, header_data, 640, 360, 32, 0);
+
+  XPutImage(display, win, gc, ximage, 0, 0, 0, 0, 640, 360);
 }
 
 void refreshDmd2()
