@@ -60,6 +60,11 @@ void initSounds()
   sounds[OK_SOUND].data = loadWavFile("./sounds/Finger-Snaps.wav", &sounds[OK_SOUND].length);
   sounds[ENTER_SOUND].data = loadWavFile("./sounds/Electro-Chord.wav", &sounds[ENTER_SOUND].length);
   sounds[BACK_SOUND].data = loadWavFile("./sounds/Roland-JD-990-Windchimes.wav", &sounds[BACK_SOUND].length);
+
+  sounds[MUSIC_BASS_DRUM].data = loadWavFile("./sounds/music/Bass-Drum-1.wav", &sounds[MUSIC_BASS_DRUM].length);
+  sounds[MUSIC_SNARE].data = loadWavFile("./sounds/music/Ensoniq-ESQ-1-Snare-2.wav", &sounds[MUSIC_SNARE].length);
+  sounds[MUSIC_HI_HAT].data = loadWavFile("./sounds/music/Open-Hi-Hat-1.wav", &sounds[MUSIC_HI_HAT].length);
+  sounds[MUSIC_HI_HAT_CLOSED].data = loadWavFile("./sounds/music/Closed-Hi-Hat-1.wav", &sounds[MUSIC_HI_HAT_CLOSED].length);
 }
 
 void *initAlsa(void *pSoundNumber)
@@ -292,4 +297,87 @@ void volumnDown()
 
   setVolume();
   saveConfig();
+}
+
+void musicBassDrum()
+{
+  soundNo = MUSIC_BASS_DRUM;
+  if (pthread_create(&soundThread, NULL, initAlsa, &soundNo))
+  {
+    fprintf(stderr, "Error creating thread\n");
+  }
+}
+
+void musicSnare()
+{
+  soundNo = MUSIC_SNARE;
+  if (pthread_create(&soundThread, NULL, initAlsa, &soundNo))
+  {
+    fprintf(stderr, "Error creating thread\n");
+  }
+}
+
+void musicHiHat()
+{
+  soundNo = MUSIC_HI_HAT;
+  if (pthread_create(&soundThread, NULL, initAlsa, &soundNo))
+  {
+    fprintf(stderr, "Error creating thread\n");
+  }
+}
+
+void musicHiHatClosed()
+{
+  soundNo = MUSIC_HI_HAT_CLOSED;
+  if (pthread_create(&soundThread, NULL, initAlsa, &soundNo))
+  {
+    fprintf(stderr, "Error creating thread\n");
+  }
+}
+
+// funky drummer
+// sex machine
+// funky president
+void musicBeat(int beat)
+{
+  switch (beat % 16)
+  {
+  case 0:
+    musicBassDrum();
+    break;
+  case 1:
+    break;
+  case 2:
+    break;
+  case 3:
+    break;
+  case 4:
+    musicBassDrum();
+    break;
+  case 5:
+    break;
+  case 6:
+    break;
+  case 7:
+    break;
+  case 8:
+    musicBassDrum();
+    break;
+  case 9:
+    break;
+  case 10:
+    break;
+  case 11:
+    break;
+  case 12:
+    musicBassDrum();
+    break;
+  case 13:
+    break;
+  case 14:
+    break;
+  case 15:
+    break;
+  default:
+  }
 }

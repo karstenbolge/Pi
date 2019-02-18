@@ -150,6 +150,8 @@ int getWindowHeight()
 
 void onBeatFunction(int beat)
 {
+  musicBeat(beat);
+
   int fullBeat = beat / 4;
   printf("fullbeat %d %d\n", fullBeat, beat);
   XSetForeground(display, gc, colorRed.pixel);
