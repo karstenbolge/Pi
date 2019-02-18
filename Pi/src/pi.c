@@ -110,7 +110,7 @@ int main(void)
   struct timespec currentTime;
   uint32_t lastLoopsPrSecond = 0;
   uint32_t currentLoopsPrSecond = 0;
-  uint8_t beat = 0;
+  uint16_t beat = 0;
 
   while (1)
   {
@@ -190,20 +190,22 @@ int main(void)
     }
 
     // new frame every 1/15 of a second, equal 10 frame per beat as 90 beat per minute
+    // 90 beat with 1/4 = 360 per minute = 6 per second
     if (lastTime.tv_sec != currentTime.tv_sec)
     {
-      lastTime.tv_nsec = lastTime.tv_nsec - 100000000;
+      lastTime.tv_nsec = lastTime.tv_nsec - 1000000000;
+      lastTime.tv_sec = currentTime.tv_sec;
     }
 
-    if (lastTime.tv_nsec + 66660000 < currentTime.tv_nsec)
+    if (lastTime.tv_nsec + 33330000 < currentTime.tv_nsec)
     {
       beat++;
-      if (beat == 160)
+      if (beat == 320)
       {
         beat = 0;
       }
-      onBeat(beat / 10);
-      displayTestTick(beat % 15);
+      onBeat(beat / 5);
+      displayTestTick(beat % 2);
       lastTime = currentTime;
     }
 

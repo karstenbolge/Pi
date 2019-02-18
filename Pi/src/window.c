@@ -173,6 +173,8 @@ void loadImage()
   }
   printf("end\n");*/
 
+  return;
+
   printf("image %d %d %d\n", gimp_image.width, gimp_image.height, gimp_image.bytes_per_pixel);
 
   int screen_num = DefaultScreen(display);

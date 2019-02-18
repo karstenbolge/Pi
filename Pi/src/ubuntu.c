@@ -150,11 +150,13 @@ int getWindowHeight()
 
 void onBeatFunction(int beat)
 {
+  int fullBeat = beat / 4;
+  printf("fullbeat %d %d\n", fullBeat, beat);
   XSetForeground(display, gc, colorRed.pixel);
   XFillRectangle(display, win, gc, buttonBeatX, buttonBeatY, buttonWidth, buttonHeight);
 
   XSetForeground(display, gc, colorYellow.pixel);
-  for (int i = 0; i <= beat % 4; i++)
+  for (int i = 0; i <= fullBeat % 4; i++)
   {
     XFillRectangle(display, win, gc, buttonBeatX + 12 * i, buttonBeatY, 3, 3);
     XFillRectangle(display, win, gc, buttonBeatX + 4 + 12 * i, buttonBeatY, 3, 3);
@@ -162,8 +164,8 @@ void onBeatFunction(int beat)
     XFillRectangle(display, win, gc, buttonBeatX + 4 + 12 * i, buttonBeatY + 4, 3, 3);
   }
 
-  XFillRectangle(display, win, gc, buttonBeatX + 12 * (beat / 4), buttonBeatY + 12, 3, 3);
-  XFillRectangle(display, win, gc, buttonBeatX + 4 + 12 * (beat / 4), buttonBeatY + 12, 3, 3);
-  XFillRectangle(display, win, gc, buttonBeatX + 12 * (beat / 4), buttonBeatY + 16, 3, 3);
-  XFillRectangle(display, win, gc, buttonBeatX + 4 + 12 * (beat / 4), buttonBeatY + 16, 3, 3);
+  XFillRectangle(display, win, gc, buttonBeatX + 12 * (fullBeat / 4), buttonBeatY + 12, 3, 3);
+  XFillRectangle(display, win, gc, buttonBeatX + 4 + 12 * (fullBeat / 4), buttonBeatY + 12, 3, 3);
+  XFillRectangle(display, win, gc, buttonBeatX + 12 * (fullBeat / 4), buttonBeatY + 16, 3, 3);
+  XFillRectangle(display, win, gc, buttonBeatX + 4 + 12 * (fullBeat / 4), buttonBeatY + 16, 3, 3);
 }
