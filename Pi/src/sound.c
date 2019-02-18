@@ -338,46 +338,56 @@ void musicHiHatClosed()
 // funky drummer
 // sex machine
 // funky president
+
 void musicBeat(int beat)
 {
+  // sex machine john 'jabo' starks
+  // http://tartelet.dk/musikanalyse/soul/GetUpSexMachineGrooves.pdf
   switch (beat % 16)
   {
   case 0:
     musicBassDrum();
+    musicHiHatClosed();
     break;
   case 1:
     break;
   case 2:
     break;
+    musicHiHat();
   case 3:
     break;
   case 4:
-    musicBassDrum();
+    musicSnare();
+    musicHiHatClosed();
     break;
   case 5:
     break;
   case 6:
-    break;
+    musicHiHatClosed();
   case 7:
-    break;
+    musicHiHatClosed();
   case 8:
-    musicBassDrum();
+    musicHiHatClosed();
     break;
   case 9:
     break;
   case 10:
-    break;
+    musicBassDrum();
+    musicHiHat();
   case 11:
     break;
   case 12:
-    musicBassDrum();
+    musicSnare();
+    musicHiHat();
     break;
   case 13:
     break;
   case 14:
+    musicHiHat();
     break;
   case 15:
     break;
   default:
+    break;
   }
 }

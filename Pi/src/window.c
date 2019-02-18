@@ -137,6 +137,11 @@ void windowTestDraw()
   XDrawString(display, win, gc, 10, 10, text, strlen(text));
 }
 
+void clearDmd()
+{
+  memset(dmd, sizeof dmd, 0);
+}
+
 void refreshDmd()
 {
   XSetForeground(display, gc, colorBlack.pixel);

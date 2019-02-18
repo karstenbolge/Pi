@@ -10,6 +10,7 @@
 #include "../hdr/highScore.h"
 #include "../hdr/setTime.h"
 #include "../hdr/display.h"
+#include "../hdr/window.h"
 #include "../hdr/displayTest.h"
 #include "../hdr/awarageBallTime.h"
 
@@ -412,6 +413,12 @@ Adjustments
 void showMenu()
 {
   clearScreen();
+  clearDmd();
+  rgb_t color, bgColor;
+  setColorType(&color, COLOR_RED);
+  setColor(&bgColor, 0, 255, 255);
+  setColorType(&bgColor, COLOR_BLACK);
+
   menuItem_t *firstItem;
   if (currentItem->parrent)
   {
@@ -423,19 +430,50 @@ void showMenu()
   }
   menuItem_t *item = firstItem;
 
+  uint8_t countItems = 0;
+  uint8_t selectedItem = 0;
+  do
+  {
+    if (item == currentItem)
+    {
+      selectedItem = countItems;
+    }
+    countItems++;
+  } while (item != firstItem);
+  printf("menue items %d\n", countItems);
+
+  uint8_t currentItemNumber = 0;
+  item = firstItem;
   do
   {
     if (item == currentItem)
     {
       printf("->");
+      printAtLineAndPosition("->", currentItemNumber, 0, color, bgColor);
     }
     else
     {
       printf("  ");
     }
     printf("%s\n", item->name);
+    printAtLineAndPosition(item->name, currentItemNumber, 20, color, bgColor);
     item = item->next;
-  } while (item != firstItem);
+    currentItemNumber++;
+  } while (item != firstItem && currentItemNumber < 7);
+
+  /*
+  printAtLine("0123456789", 0, color, bgColor);
+  printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, color, bgColor);
+  printAtLine("abcdefghijklmnopqrstuvwxyz", 2, color, bgColor);
+  printAtLine("0123456789", 3, color, bgColor);
+  printAtLine("0123456789", 4, color, bgColor);
+  printAtLine("0123456789", 5, color, bgColor);
+  printAtLine("0123456789", 6, color, bgColor);
+  printAtLine("0123456789", 7, color, bgColor);
+  printAtLine("0123456789", 8, color, bgColor);
+  printAtLine("!\"", 9, color, bgColor);
+  refreshDmd();
+*/
 }
 
 void menuUp()
