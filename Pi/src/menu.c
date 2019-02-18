@@ -479,6 +479,7 @@ void showMenu()
     currentItemNumber++;
   } while (item != firstItem || countItems && currentItemNumber < 7);
 
+  refreshDmd();
   /*
   printAtLine("0123456789", 0, color, bgColor);
   printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, color, bgColor);
