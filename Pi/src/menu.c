@@ -410,6 +410,18 @@ Adjustments
 		Feature adjustments
 		H.S.T.D. adjustments*/
 
+menuItem_t *moveToItem(menuItem_t *menu, uint8_t number)
+{
+  menuItem_t *newItem = menu;
+  uint8_t current = 0;
+  while (current < number && newItem->next)
+  {
+    newItem = newItem->next;
+  }
+
+  return newItem;
+}
+
 void showMenu()
 {
   clearScreen();
@@ -440,10 +452,16 @@ void showMenu()
     }
     countItems++;
   } while (item != firstItem);
-  printf("menue items %d\n", countItems);
+  printf("menu items %d\n", countItems);
 
   uint8_t currentItemNumber = 0;
   item = firstItem;
+  // if selected item is far from start then move star item
+  if (selectedItem > 5)
+  {
+    item = moveToItem(firstItem, selectedItem - 5);
+  }
+
   do
   {
     if (item == currentItem)
@@ -459,7 +477,7 @@ void showMenu()
     printAtLineAndPosition(item->name, currentItemNumber, 20, color, bgColor);
     item = item->next;
     currentItemNumber++;
-  } while (item != firstItem && currentItemNumber < 7);
+  } while (item != firstItem || countItems && currentItemNumber < 7);
 
   /*
   printAtLine("0123456789", 0, color, bgColor);
