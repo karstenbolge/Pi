@@ -43,6 +43,8 @@ void menuEnter();
 #define MENU_FEATURE_ADJUSTMENTS 34
 #define MENU_H_S_T_D_ADJUSTMENTS 35
 
+#define MENU_LINES_COUNT 8
+
 /*Bookkeepings
 		Main audits
 			Awarage ball time

@@ -92,16 +92,15 @@ int main(void)
   setColor(&bgColor, 0, 255, 255);
   setColorType(&bgColor, COLOR_BLACK);
 
-  printAtLine("0123456789", 0, color, bgColor);
+  printAtLine("¤€£0123456789", 0, color, bgColor);
   printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, color, bgColor);
   printAtLine("abcdefghijklmnopqrstuvwxyz", 2, color, bgColor);
-  printAtLine("0123456789", 3, color, bgColor);
-  printAtLine("0123456789", 4, color, bgColor);
-  printAtLine("0123456789", 5, color, bgColor);
+  printAtLine("!\"#¤%&/()=?", 3, color, bgColor);
+  printAtLine("@€£${[]}|~\\", 4, color, bgColor);
+  printAtLine("A.,-+±*'^", 5, color, bgColor);
   printAtLine("0123456789", 6, color, bgColor);
   printAtLine("0123456789", 7, color, bgColor);
-  printAtLine("0123456789", 8, color, bgColor);
-  printAtLine("!\"", 9, color, bgColor);
+  printAtLine("!\"", 8, color, bgColor);
   refreshDmd();
 
   loadImage();

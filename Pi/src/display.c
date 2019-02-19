@@ -182,12 +182,20 @@ uint8_t printCharAt(char chr, uint16_t position, uint8_t line, rgb_t color, rgb_
     return printQuestionAt(dmd, position, line, color, bgColor);
   case '@':
     return printAtAt(dmd, position, line, color, bgColor);
-    /*  case '£':
-    return printPoundAt(dmd, position, line, color, bgColor);*/
+  case -62: //£, ¤
+    return 0;
+  case -93: //£
+    return printPoundAt(dmd, position, line, color, bgColor);
+  case -92: //¤
+    return printTurtleAt(dmd, position, line, color, bgColor);
   case '$':
     return printDollarAt(dmd, position, line, color, bgColor);
-    /* case '€':
-    return printEuroAt(dmd, position, line, color, bgColor);*/
+  case -30: //€
+    return 0;
+  case -126: //€
+    return 0;
+  case -84: //€
+    return printEuroAt(dmd, position, line, color, bgColor);
   case '{':
     return printForwardBraceAt(dmd, position, line, color, bgColor);
   case '[':
@@ -198,8 +206,31 @@ uint8_t printCharAt(char chr, uint16_t position, uint8_t line, rgb_t color, rgb_
     return printBackwardBraceAt(dmd, position, line, color, bgColor);
   case '|':
     return printPipeAt(dmd, position, line, color, bgColor);
+  case '~':
+    return printTilteAt(dmd, position, line, color, bgColor);
+  case '\\':
+    return printBackSlashAt(dmd, position, line, color, bgColor);
+  case '.':
+    return printPointAt(dmd, position, line, color, bgColor);
+  case ',':
+    return printCommaAt(dmd, position, line, color, bgColor);
+  case '-':
+    return printMinusAt(dmd, position, line, color, bgColor);
+  case '+':
+    return printPlusAt(dmd, position, line, color, bgColor);
+  case -79: //±
+    return printPlusMinusAt(dmd, position, line, color, bgColor);
+  case '*':
+    return printAsterixAt(dmd, position, line, color, bgColor);
+  case '\'':
+    return printFnutAt(dmd, position, line, color, bgColor);
+  case '^':
+    return printHatAt(dmd, position, line, color, bgColor);
+  case ' ':
+    return printEmptyAt(dmd, position, line, color, bgColor);
   default:
-    printf("Never here!! %c\n", chr);
+    printf("Never here!! %c %d\n", chr, chr);
+    return 7;
     dmd[position + 0][10 * line + 0] = bgColor;
     dmd[position + 1][10 * line + 0] = bgColor;
     dmd[position + 2][10 * line + 0] = bgColor;
