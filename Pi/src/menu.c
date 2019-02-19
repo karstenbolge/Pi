@@ -454,7 +454,6 @@ void showMenu()
     countItems++;
     item = item->next;
   } while (item != firstItem);
-  printf("menu items %d\n", countItems);
 
   uint8_t currentItemNumber = 0;
   item = firstItem;
@@ -463,14 +462,15 @@ void showMenu()
   {
     item = moveToItem(firstItem, selectedItem + 1 - MENU_LINES_COUNT);
   }
-  printf("moved\n");
 
   do
   {
     if (item == currentItem)
     {
       printf("->");
-      printAtLineAndPosition("x ", currentItemNumber, 0, color, bgColor);
+      // printAtLineAndPosition("x ", currentItemNumber, 0, color, bgColor);
+      // test inverted
+      printAtLineAndPosition("x ", currentItemNumber, 0, bgColor, color);
     }
     else
     {

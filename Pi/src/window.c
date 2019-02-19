@@ -164,6 +164,8 @@ void loadImage()
 {
   // ./graphics/SoulTrain/vlcsnap-00035.png
   // https://github.com/ImageMagick/png/blob/master/example.c
+  //https://www.disk91.com/2014/technology/programming/use-create-thegimp-header-file-format/
+  //https://sighack.com/post/averaging-rgb-colors-the-right-way
 
   /*int screen_num = DefaultScreen(display);
   Visual *visual = DefaultVisual(display, screen_num);
@@ -180,11 +182,23 @@ void loadImage()
 
   return;
 
+  int k = 0;
+  uint8_t pixel_data2[640 * 360 + 1][3];
+  for (int i = 0; i < 640; i++)
+  {
+    for (int j = 0; j < 360; j++)
+    {
+      HEADER_PIXEL(header_data, pixel_data2[k]);
+      k++;
+    }
+  }
+
   printf("image %d %d %d\n", gimp_image.width, gimp_image.height, gimp_image.bytes_per_pixel);
 
   int screen_num = DefaultScreen(display);
   Visual *visual = DefaultVisual(display, screen_num);
-  XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, header_data, 640, 360, 32, 0);
+  //XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, header_data, 640, 360, 32, 0);
+  XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, (char *)pixel_data2, 640, 360, 32, 0);
 
   XPutImage(display, win, gc, ximage, 0, 0, 0, 0, 640, 360);
 }
