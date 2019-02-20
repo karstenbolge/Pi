@@ -180,25 +180,36 @@ void loadImage()
   }
   printf("end\n");*/
 
-  return;
+  //return;
 
   int k = 0;
-  uint8_t pixel_data2[640 * 360 + 1][3];
+  char *data = header_data;
+  //uint8_t pixel_data2[640 * 360 * 3 + 1];
   for (int i = 0; i < 640; i++)
   {
     for (int j = 0; j < 360; j++)
     {
-      HEADER_PIXEL(header_data, pixel_data2[k]);
-      k++;
+      HEADER_PIXEL(data, &header_data2[k]);
+      header_data2[k + 3] = header_data2[k + 2]; // header_data2[k];
+      header_data2[k + 2] = header_data2[k];     //header_data2[k + 1]; // red
+      header_data2[k + 1] = header_data2[k + 1]; //header_data2[k + 2]; // green
+      header_data2[k] = header_data2[k + 3];     // blue
+      header_data2[k + 3] = 0;
+
+      k = k + 4;
     }
   }
 
   printf("image %d %d %d\n", gimp_image.width, gimp_image.height, gimp_image.bytes_per_pixel);
 
+  printf("1 pixel %d %d %d %d\n", *header_data, *(header_data + 1), *(header_data + 2), *(header_data + 3));
+  printf("1 pixel %d %d %d\n", header_data2[0], header_data2[1], header_data2[2]);
+
   int screen_num = DefaultScreen(display);
   Visual *visual = DefaultVisual(display, screen_num);
   //XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, header_data, 640, 360, 32, 0);
-  XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, (char *)pixel_data2, 640, 360, 32, 0);
+  XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, header_data2, 640, 360, 32, 0);
+  printf("can create image\n");
 
   XPutImage(display, win, gc, ximage, 0, 0, 0, 0, 640, 360);
 }
