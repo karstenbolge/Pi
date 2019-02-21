@@ -6,6 +6,8 @@
 XFontStruct *fontinfo;
 unsigned long black, white;
 
+char *getImage00150(); //if using c files
+
 void setupColors()
 {
   // get access to the screen's color map.
@@ -207,11 +209,15 @@ void loadImage()
 
   int screen_num = DefaultScreen(display);
   Visual *visual = DefaultVisual(display, screen_num);
-  //XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, header_data, 640, 360, 32, 0);
-  XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, header_data2, 640, 360, 32, 0);
+  // XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, header_data, 640, 360, 32, 0);
+  // XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, header_data2, 640, 360, 32, 0);
+
+  //#include "../graphics/SoulTrain/00150-v4.h"
+  //  XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, image00150, 800, 480, 32, 0);
+  XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, getImage00150(), 640, 360, 32, 0);
   printf("can create image\n");
 
-  XPutImage(display, win, gc, ximage, 0, 0, 0, 0, 640, 360);
+  XPutImage(display, win, gc, ximage, 0, 0, 0, 0, 480, 360);
 }
 
 void refreshDmd2()
