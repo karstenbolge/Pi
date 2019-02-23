@@ -217,7 +217,9 @@ void loadImage()
   XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, getImage00150(), 640, 360, 32, 0);
   printf("can create image\n");
 
-  XPutImage(display, win, gc, ximage, 0, 0, 0, 0, 480, 360);
+  XPutImage(display, win, gc, ximage, 0, 0, 0, 0, 640, 360);
+
+  // video 150, 152, 155, 158, 161, 163
 }
 
 void refreshDmd2()
