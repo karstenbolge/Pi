@@ -150,14 +150,14 @@ int main(void)
   fprintf(pOutputFile, "};\n");
   fclose(pOutputFile);
 
-  // just corped, and split to tiles
+  // split to tiles
   pOutputFile = fopen("./SoulTrain/00150-v3.h", "w");
-  fprintf(pOutputFile, "unsigned char image00150[800 * 480 * 4 + 1] = {\n");
+  fprintf(pOutputFile, "unsigned char image00150[800 * 450 * 4 + 1] = {\n");
   for (int j = 0; j < 360; j++)
   {
-    for (int i = 20; i < 620; i++)
+    for (int i = 0; i < 640; i++)
     {
-      if (i % 3 == 2)
+      if (i % 4 == 3)
       {
         fprintf(pOutputFile, "    0x%02x, \n", 0);
         fprintf(pOutputFile, "    0x%02x, \n", 0);
@@ -170,7 +170,7 @@ int main(void)
       fprintf(pOutputFile, "    0x%02x, \n", pixel[((j * 640) + i) * 4 + 3]);
     }
 
-    if (j % 3 == 2)
+    if (j % 4 == 3)
     {
       for (int i = 0; i < 800; i++)
       {
@@ -185,31 +185,34 @@ int main(void)
   fprintf(pOutputFile, "};\n");
   fclose(pOutputFile);
 
-  // pixel average colors 200 x 120
-  for (int i = 0; i < 200; i++)
+  // pixel average colors 160 x 90
+  for (int i = 0; i < 160; i++)
   {
-    for (int j = 0; j < 120; j++)
+    for (int j = 0; j < 90; j++)
     {
       long redAverage = 0;
       long greenAverage = 0;
       long blueAverage = 0;
-      for (int k = 0; k < 3; k++)
+      for (int k = 0; k < 4; k++)
       {
-        for (int l = 0; l < 3; l++)
+        for (int l = 0; l < 4; l++)
         {
-          redAverage += pixel[(j * 3 + l) * 640 + 20 + (i * 3 + k)];
-          greenAverage += pixel[(j * 3 + l) * 640 + 20 + (i * 3 + k) + 1];
-          blueAverage += pixel[(j * 3 + l) * 640 + 20 + (i * 3 + k) + 2];
+          printf("red %d\n", pixel[((j * 4 + l) * 640 + (i * 4 + k)) * 4]);
+          redAverage += pixel[((j * 4 + l) * 640 + (i * 4 + k)) * 4];
+          greenAverage += pixel[((j * 4 + l) * 640 + (i * 4 + k)) * 4 + 1];
+          blueAverage += pixel[((j * 4 + l) * 640 + (i * 4 + k)) * 4 + 2];
         }
       }
 
-      for (int k = 0; k < 3; k++)
+      for (int k = 0; k < 4; k++)
       {
-        for (int l = 0; l < 3; l++)
+        for (int l = 0; l < 4; l++)
         {
-          pixel[(j * 3 + l) * 640 + 20 + (i * 3 + k)] = redAverage / 9;
-          pixel[(j * 3 + l) * 640 + 20 + (i * 3 + k) + 1] = greenAverage / 9;
-          pixel[(j * 3 + l) * 640 + 20 + (i * 3 + k) + 2] = blueAverage / 9;
+          printf("red %ld average  %ld\n", redAverage, redAverage / 16);
+          pixel[((j * 4 + l) * 640 + (i * 4 + k)) * 4] = redAverage / 16;
+          pixel[((j * 4 + l) * 640 + (i * 4 + k)) * 4 + 1] = greenAverage / 16;
+          pixel[((j * 4 + l) * 640 + (i * 4 + k)) * 4 + 2] = blueAverage / 16;
+          pixel[((j * 4 + l) * 640 + (i * 4 + k)) * 4 + 3] = 0;
         }
       }
     }
@@ -217,25 +220,25 @@ int main(void)
 
   // corped, split to tiles and average color
   pOutputFile = fopen("./SoulTrain/00150-v4.h", "w");
-  fprintf(pOutputFile, "unsigned char image00150[800 * 480 * 4 + 1] = {\n");
+  fprintf(pOutputFile, "unsigned char image00150[800 * 450 * 4 + 1] = {\n");
   for (int j = 0; j < 360; j++)
   {
-    for (int i = 20; i < 620; i++)
+    for (int i = 0; i < 640; i++)
     {
-      if (i % 3 == 2)
+      fprintf(pOutputFile, "    0x%02x, \n", pixel[((j * 640) + i) * 4]);
+      fprintf(pOutputFile, "    0x%02x, \n", pixel[((j * 640) + i) * 4 + 1]);
+      fprintf(pOutputFile, "    0x%02x, \n", pixel[((j * 640) + i) * 4 + 2]);
+      fprintf(pOutputFile, "    0x%02x, \n", pixel[((j * 640) + i) * 4 + 3]);
+      if (i % 4 == 3)
       {
         fprintf(pOutputFile, "    0x%02x, \n", 0);
         fprintf(pOutputFile, "    0x%02x, \n", 0);
         fprintf(pOutputFile, "    0x%02x, \n", 0);
         fprintf(pOutputFile, "    0x%02x, \n", 0);
       }
-      fprintf(pOutputFile, "    0x%02x, \n", pixel[((j * 640) + i) * 4]);
-      fprintf(pOutputFile, "    0x%02x, \n", pixel[((j * 640) + i) * 4 + 1]);
-      fprintf(pOutputFile, "    0x%02x, \n", pixel[((j * 640) + i) * 4 + 2]);
-      fprintf(pOutputFile, "    0x%02x, \n", pixel[((j * 640) + i) * 4 + 3]);
     }
 
-    if (j % 3 == 2)
+    if (j % 4 == 3)
     {
       for (int i = 0; i < 800; i++)
       {
