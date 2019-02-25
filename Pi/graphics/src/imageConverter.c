@@ -29,7 +29,7 @@ char *getImage00150()
 unsigned char pixel[640 * 360 * 4 + 1];
 long pixelNumber;
 
-void processLine(char *pLine, FILE *pOutputFile, FILE *pOutputSrcFile)
+void processLine(char *pLine, FILE *pOutputFile)
 {
   char byte[64];
   int count = 0;
@@ -65,11 +65,6 @@ void processLine(char *pLine, FILE *pOutputFile, FILE *pOutputSrcFile)
     fprintf(pOutputFile, "    0x%02x, \n", pixel[pixelNumber + 1]);
     fprintf(pOutputFile, "    0x%02x, \n", pixel[pixelNumber + 2]);
     fprintf(pOutputFile, "    0x%02x, \n", pixel[pixelNumber + 3]);
-
-    fprintf(pOutputSrcFile, "      image00150[%ld] = 0x%02x;\n", pixelNumber, pixel[pixelNumber]);
-    fprintf(pOutputSrcFile, "      image00150[%ld] = 0x%02x;\n", pixelNumber + 1, pixel[pixelNumber + 1]);
-    fprintf(pOutputSrcFile, "      image00150[%ld] = 0x%02x;\n", pixelNumber + 2, pixel[pixelNumber + 2]);
-    fprintf(pOutputSrcFile, "      image00150[%ld] = 0x%02x;\n", pixelNumber + 3, pixel[pixelNumber + 3]);
 
     pixelNumber += 4;
     count += 4;
@@ -114,17 +109,7 @@ void processFile(char *pFileName)
   }
 
   inputFilePath[strlen(inputFilePath) - 1] = 'c';
-  FILE *pOutputSrcFile = fopen(inputFilePath, "w");
   int inLine = 0;
-
-  fprintf(pOutputFile, "unsigned char image00150[640 * 360 * 4 + 1] = {\n");
-
-  fprintf(pOutputSrcFile, "unsigned char image00150[640 * 360 * 4 + 1];\n");
-  fprintf(pOutputSrcFile, "int image00150created = 0;\n\n");
-
-  fprintf(pOutputSrcFile, "void createImage00150()\n");
-  fprintf(pOutputSrcFile, "{\n");
-  fprintf(pOutputSrcFile, "  int i = 0;\n");
 
   while (fgets(readBuffer, CONFIG_BUFFER_SIZE, pInputFile) != NULL)
   {
@@ -135,7 +120,7 @@ void processFile(char *pFileName)
 
     if (inLine == 1)
     {
-      processLine(readBuffer + 5, pOutputFile, pOutputSrcFile);
+      processLine(readBuffer + 5, pOutputFile);
       if (DEBUG)
       {
         printf("line1 %s\n", readBuffer);
@@ -150,19 +135,8 @@ void processFile(char *pFileName)
 
   fprintf(pOutputFile, "  };\n");
 
-  fprintf(pOutputSrcFile, "  }\n\n");
-  fprintf(pOutputSrcFile, "char *getImage00150()\n");
-  fprintf(pOutputSrcFile, "{\n");
-  fprintf(pOutputSrcFile, "  if (!image00150created)\n");
-  fprintf(pOutputSrcFile, "  {\n");
-  fprintf(pOutputSrcFile, "    createImage00150();\n");
-  fprintf(pOutputSrcFile, "  }\n");
-  fprintf(pOutputSrcFile, "  return image00150;\n");
-  fprintf(pOutputSrcFile, "}\n");
-
   fclose(pInputFile);
   fclose(pOutputFile);
-  fclose(pOutputSrcFile);
 
   // just corped
   pOutputFile = fopen("./SoulTrain/00150-v2.h", "w");
@@ -282,6 +256,36 @@ void processFile(char *pFileName)
 
   fprintf(pOutputFile, "};\n");
   fclose(pOutputFile);
+
+  inputFilePath[strlen(inputFilePath) - 1] = 'c';
+  FILE *pOutputSrcFile = fopen(inputFilePath, "w");
+  inLine = 0;
+
+  fprintf(pOutputFile, "unsigned char image00150[640 * 360 * 4 + 1] = {\n");
+
+  fprintf(pOutputSrcFile, "unsigned char image00150[640 * 360 * 4 + 1];\n");
+  fprintf(pOutputSrcFile, "int image00150created = 0;\n\n");
+
+  fprintf(pOutputSrcFile, "void createImage00150()\n");
+  fprintf(pOutputSrcFile, "{\n");
+  fprintf(pOutputSrcFile, "  int i = 0;\n");
+
+  fprintf(pOutputSrcFile, "      image00150[%ld] = 0x%02x;\n", pixelNumber, pixel[pixelNumber]);
+  fprintf(pOutputSrcFile, "      image00150[%ld] = 0x%02x;\n", pixelNumber + 1, pixel[pixelNumber + 1]);
+  fprintf(pOutputSrcFile, "      image00150[%ld] = 0x%02x;\n", pixelNumber + 2, pixel[pixelNumber + 2]);
+  fprintf(pOutputSrcFile, "      image00150[%ld] = 0x%02x;\n", pixelNumber + 3, pixel[pixelNumber + 3]);
+
+  fprintf(pOutputSrcFile, "  }\n\n");
+  fprintf(pOutputSrcFile, "char *getImage00150()\n");
+  fprintf(pOutputSrcFile, "{\n");
+  fprintf(pOutputSrcFile, "  if (!image00150created)\n");
+  fprintf(pOutputSrcFile, "  {\n");
+  fprintf(pOutputSrcFile, "    createImage00150();\n");
+  fprintf(pOutputSrcFile, "  }\n");
+  fprintf(pOutputSrcFile, "  return image00150;\n");
+  fprintf(pOutputSrcFile, "}\n");
+
+  fclose(pOutputSrcFile);
 };
 
 int main(int argc, char **argv)
