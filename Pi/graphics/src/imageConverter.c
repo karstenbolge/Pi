@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <dirent.h>
 
 #define CONFIG_BUFFER_SIZE 120
 #define DEBUG 0
@@ -75,16 +76,45 @@ void processLine(char *pLine, FILE *pOutputFile, FILE *pOutputSrcFile)
   }
 }
 
-int main(void)
+static char *strrstr(const char *haystack, const char *needle)
+{
+  if (*needle == '\0')
+    return (char *)haystack;
+
+  char *result = NULL;
+  for (;;)
+  {
+    char *p = strstr(haystack, needle);
+    if (p == NULL)
+      break;
+    result = p;
+    haystack = p + 1;
+  }
+
+  return result;
+}
+
+void processFile(char *pFileName)
 {
   char *data;
   char readBuffer[CONFIG_BUFFER_SIZE];
   pixelNumber = 0;
 
-  printf("start\n");
+  printf("%s ", pFileName);
+
   FILE *pOutputFile = fopen("./SoulTrain/00150.h", "w");
-  FILE *pOutputSrcFile = fopen("./SoulTrain/image00150.c", "w");
-  FILE *pInputFile = fopen("./SoulTrain/vlcsnap-00150.h", "r");
+
+  char inputFilePath[200];
+  sprintf(inputFilePath, "./SoulTrain/%s", pFileName);
+  FILE *pInputFile = fopen(inputFilePath, "r");
+  if (pInputFile == NULL)
+  {
+    printf("- File not found!\n");
+    return;
+  }
+
+  inputFilePath[strlen(inputFilePath) - 1] = 'c';
+  FILE *pOutputSrcFile = fopen(inputFilePath, "w");
   int inLine = 0;
 
   fprintf(pOutputFile, "unsigned char image00150[640 * 360 * 4 + 1] = {\n");
@@ -253,3 +283,28 @@ int main(void)
   fprintf(pOutputFile, "};\n");
   fclose(pOutputFile);
 };
+
+int main(int argc, char **argv)
+{
+  if (argc == 2)
+  {
+    processFile(argv[1]);
+    return 0;
+  };
+
+  DIR *directory;
+  struct dirent *directoryFile;
+  directory = opendir("./SoulTrain/");
+  if (directory)
+  {
+    while ((directoryFile = readdir(directory)) != NULL)
+    {
+      char *pLastSlash = strrstr(directoryFile->d_name, ".");
+      if (pLastSlash != NULL && strcmp(pLastSlash, ".h") == 0)
+      {
+        processFile(directoryFile->d_name);
+      }
+    }
+    closedir(directory);
+  }
+}
