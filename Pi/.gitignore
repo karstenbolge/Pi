@@ -5,3 +5,4 @@ log.txt
 *.o
 *.h.gch
 funk
+imageConverter
