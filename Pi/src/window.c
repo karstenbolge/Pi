@@ -2,11 +2,10 @@
 
 #include "../hdr/window.h"
 #include "../hdr/display.h"
+#include "../graphics/image.h"
 
 XFontStruct *fontinfo;
 unsigned long black, white;
-
-char *getImage00150(); //if using c files
 
 void setupColors()
 {
@@ -212,9 +211,9 @@ void loadImage()
   // XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, header_data, 640, 360, 32, 0);
   // XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, header_data2, 640, 360, 32, 0);
 
-  #include "../graphics/SoulTrain/00150-v4.h"
-    XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, image00150, 800, 450, 32, 0);
-  //XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, getImage00150(), 800, 450, 32, 0);
+  //#include "../graphics/SoulTrain/00150-v4.h"
+  //  XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, image00150, 800, 450, 32, 0);
+  XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, getImage00155(), 800, 450, 32, 0);
   printf("can create image\n");
 
   XPutImage(display, win, gc, ximage, 0, 0, 0, 0, 800, 450);
