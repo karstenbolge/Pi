@@ -1,5 +1,5 @@
 converter:
-	gcc -o imageConverter ./src/imageConverter.c
+	gcc -o converter ./src/converter.c
 
 image00161:
 	gcc -c ./SoulTrain/image00161.c
@@ -25,5 +25,5 @@ image00163:
 all: image00161 image00158 image00155 image00152 image00035 image00150 image00163
 
 clean:
-	rm -f imageConverter *.o
+	rm -f converter *.o
 

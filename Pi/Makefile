@@ -1,6 +1,11 @@
 ubuntu: ubuntu.o
 	gcc -o funk ./ubuntu.o ./src/pi.c ./src/window.c ./src/menu.c ./src/sound.c ./src/log.c ./src/switchEdgeTest.c ./src/config.c ./src/display.c ./src/highScore.c ./src/setTime.c  ./src/data70.c  ./src/wifi.c ./src/color.c ./src/displayTest.c ./src/awarageBallTime.c \
+	./graphics/SoulTrain/image00150.c \
+	./graphics/SoulTrain/image00152.c \
 	./graphics/SoulTrain/image00155.c \
+	./graphics/SoulTrain/image00158.c \
+	./graphics/SoulTrain/image00161.c \
+	./graphics/SoulTrain/image00163.c \
 	-lpthread -lcrypt -lrt -lm -lX11 -lasound
 
 ubuntu.o: ./hdr/platform.h ./src/ubuntu.c

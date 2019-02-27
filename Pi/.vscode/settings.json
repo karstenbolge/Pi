@@ -2,6 +2,8 @@
   "editor.tabSize": 2,
   "files.associations": {
     "sound.h": "c",
-    "asoundlib.h": "c"
+    "asoundlib.h": "c",
+    "00150-v4.h": "c",
+    "image.h": "c"
   },
 }

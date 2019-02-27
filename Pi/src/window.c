@@ -213,7 +213,7 @@ void loadImage()
 
   //#include "../graphics/SoulTrain/00150-v4.h"
   //  XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, image00150, 800, 450, 32, 0);
-  XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, getImage00155(), 800, 450, 32, 0);
+  XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, getImage00161(), 800, 450, 32, 0);
   printf("can create image\n");
 
   XPutImage(display, win, gc, ximage, 0, 0, 0, 0, 800, 450);
