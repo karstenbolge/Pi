@@ -103,7 +103,7 @@ int main(void)
   printAtLine("!\"", 8, color, bgColor);
   refreshDmd();
 
-  loadImage();
+  //loadImage();
 
   struct timespec lastTime;
   struct timespec currentTime;

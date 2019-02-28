@@ -1,5 +1,5 @@
 converter:
-	gcc -o converter ./src/converter.c
+	gcc -o converter ./src/converter.c -lm
 
 image00161:
 	gcc -c ./SoulTrain/image00161.c

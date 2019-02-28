@@ -5,11 +5,11 @@
 #include <stdint.h>
 #include "../hdr/color.h"
 
-#define DMD_WIDTH 200
-#define DMD_HEIGHT 120
+#define DMD_WIDTH 160
+#define DMD_HEIGHT 96
 
 #define LINE_HEIGHT 15
-#define LINE_COUNT 8
+#define LINE_COUNT 6
 
 rgb_t dmd[DMD_WIDTH][DMD_HEIGHT];
 

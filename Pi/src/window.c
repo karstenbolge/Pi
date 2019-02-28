@@ -155,7 +155,9 @@ void refreshDmd()
     {
       if (dmd[x][y].red || dmd[x][y].green || dmd[x][y].blue)
       {
-        XFillRectangle(display, win, gc, 4 * x, 4 * y, 3, 3);
+        // TODO OPTIMIZE
+        XFillRectangle(display, win, gc, 5 * x + 1, 5 * y, 2, 4);
+        XFillRectangle(display, win, gc, 5 * x, 5 * y + 1, 4, 2);
       }
     }
   }
@@ -213,7 +215,7 @@ void loadImage()
 
   //#include "../graphics/SoulTrain/00150-v4.h"
   //  XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, image00150, 800, 450, 32, 0);
-  XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, getImage00161(), 800, 450, 32, 0);
+  XImage *ximage; // = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, getImage00161(), 800, 450, 32, 0);
   printf("can create image\n");
 
   XPutImage(display, win, gc, ximage, 0, 0, 0, 0, 800, 450);

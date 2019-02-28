@@ -175,10 +175,21 @@ void processFile(char *pFileName, char *pImageName)
       {
         for (int l = 0; l < 4; l++)
         {
-          pixel[((j * 4 + l) * 640 + (i * 4 + k)) * 4] = sqrt(redAverage / 16);
-          pixel[((j * 4 + l) * 640 + (i * 4 + k)) * 4 + 1] = sqrt(greenAverage / 16);
-          pixel[((j * 4 + l) * 640 + (i * 4 + k)) * 4 + 2] = sqrt(blueAverage / 16);
-          pixel[((j * 4 + l) * 640 + (i * 4 + k)) * 4 + 3] = 0;
+          // round corners
+          if ((k == 0 || k == 3) && (l == 0 || l == 3))
+          {
+            pixel[((j * 4 + l) * 640 + (i * 4 + k)) * 4] = 0;
+            pixel[((j * 4 + l) * 640 + (i * 4 + k)) * 4 + 1] = 0;
+            pixel[((j * 4 + l) * 640 + (i * 4 + k)) * 4 + 2] = 0;
+            pixel[((j * 4 + l) * 640 + (i * 4 + k)) * 4 + 3] = 0;
+          }
+          else
+          {
+            pixel[((j * 4 + l) * 640 + (i * 4 + k)) * 4] = sqrt(redAverage / 16);
+            pixel[((j * 4 + l) * 640 + (i * 4 + k)) * 4 + 1] = sqrt(greenAverage / 16);
+            pixel[((j * 4 + l) * 640 + (i * 4 + k)) * 4 + 2] = sqrt(blueAverage / 16);
+            pixel[((j * 4 + l) * 640 + (i * 4 + k)) * 4 + 3] = 0;
+          }
         }
       }
     }
