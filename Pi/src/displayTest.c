@@ -3,6 +3,7 @@
 #include "../hdr/display.h"
 #include "../hdr/displayTest.h"
 #include "../hdr/window.h"
+#include "../hdr/video.h"
 
 #define MODE_OFF 0
 #define MODE_SHOW 1
@@ -21,6 +22,8 @@ void displayTestOpen()
   currentLine = 0;
   setColorType(&color, COLOR_RED);
   setColorType(&bgColor, COLOR_BLACK);
+
+  startWheelVideo();
 }
 
 void displayTestExit()
@@ -32,6 +35,12 @@ void displayTestTick(uint8_t tick)
 {
   if (inDisplayTestMode == MODE_SHOW)
   {
+    if (tick % 2 == 0)
+    {
+      showImage(getNextWheelFrame());
+    }
+    return;
+
     if (currentPosition == 0)
     {
       // TODO OPTIMIZE memset

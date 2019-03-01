@@ -4,6 +4,7 @@
     "sound.h": "c",
     "asoundlib.h": "c",
     "00150-v4.h": "c",
-    "image.h": "c"
+    "image.h": "c",
+    "display.h": "c"
   },
 }

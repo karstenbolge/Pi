@@ -23,6 +23,8 @@ void createWindow();
 void closeWindow();
 void redrawWindow();
 
+void showImage(char *image);
+
 void refreshDmd();
 
 void clearDmd();
