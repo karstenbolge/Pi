@@ -3,9 +3,13 @@
 
 #include <stdint.h>
 
-uint8_t wheelFrame;
-
 void startWheelVideo();
 char *getNextWheelFrame();
+
+void startTrainSide();
+char *getNextTrainSide();
+
+void startSoulTrain();
+char *getNextSoulTrain();
 
 #endif
