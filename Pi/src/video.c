@@ -3,7 +3,7 @@
 
 uint8_t wheelFrame;
 uint8_t sideTrainFrame;
-uint8_t sideTrainFrame;
+uint8_t sideSoulTrain;
 
 void startWheelVideo()
 {
@@ -48,7 +48,7 @@ char *getNextTrainSide()
     sideTrainFrame = 0;
   }
 
-  switch (sideTrainFrame)
+  /*  switch (sideTrainFrame)
   {
   case 0:
     return getImage00123();
@@ -70,23 +70,23 @@ char *getNextTrainSide()
     return getImage00137();
   case 9:
     return getImage00139();
-  }
+  }*/
 }
 
 void startSoulTrain()
 {
-  sideTrainFrame = 9;
+  sideSoulTrain = 87;
 }
 
 char *getNextSoulTrain()
 {
-  sideTrainFrame++;
-  if (sideTrainFrame > 9)
+  sideSoulTrain++;
+  if (sideSoulTrain > 87)
   {
-    sideTrainFrame = 0;
+    sideSoulTrain = 0;
   }
 
-  switch (sideTrainFrame)
+  /*  switch (sideSoulTrain)
   {
   case 0:
     return getImage00587();
@@ -264,4 +264,5 @@ char *getNextSoulTrain()
     return getImage00673();
   case 87:
     return getImage00674();
-  }
+  }*/
+}
