@@ -12,6 +12,10 @@ In ubuntu make output matrix 8 * 256.
 
 Move input switch matrix from console to display.
 
+Add cables to control and make start and extra ball button.
+
+Make volumn up down work on pi.
+
 // Make better physical boards, matrix 16 x 16 input, 16 X 24
 
 
