@@ -16,7 +16,7 @@ raspberry.o: ./hdr/platform.h ./src/raspberry.c
 
 pi: raspberry.o
 	gcc -o funk ./raspberry.o ./src/pi.c ./src/window.c ./src/video.c ./src/menu.c ./src/sound.c ./src/log.c ./src/switchEdgeTest.c ./src/config.c ./src/display.c ./src/highScore.c ./src/setTime.c  ./src/data70.c  ./src/wifi.c ./src/color.c ./src/displayTest.c ./src/awarageBallTime.c \
-	-lwiringPi -lpthread -lcrypt -lrt -lm -lX11 -lasound
+	-lwiringPi -lpthread -lcrypt -lrt -lm -lX11 -lasound 
 
 test:
 	gcc -o test-x11 ./src/window.c ./src/hi-test.c -lX11
