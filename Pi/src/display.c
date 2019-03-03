@@ -182,19 +182,19 @@ uint8_t printCharAt(char chr, uint16_t position, uint8_t line, rgb_t color, rgb_
     return printQuestionAt(dmd, position, line, color, bgColor);
   case '@':
     return printAtAt(dmd, position, line, color, bgColor);
-  case -62: //£, ¤
+  case 256 -62: //£, ¤
     return 0;
-  case -93: //£
+  case 256-93: //£
     return printPoundAt(dmd, position, line, color, bgColor);
-  case -92: //¤
+  case 256-92: //¤
     return printTurtleAt(dmd, position, line, color, bgColor);
   case '$':
     return printDollarAt(dmd, position, line, color, bgColor);
-  case -30: //€
+  case 256-30: //€
     return 0;
-  case -126: //€
+  case 256-126: //€
     return 0;
-  case -84: //€
+  case 256-84: //€
     return printEuroAt(dmd, position, line, color, bgColor);
   case '{':
     return printForwardBraceAt(dmd, position, line, color, bgColor);
@@ -218,7 +218,7 @@ uint8_t printCharAt(char chr, uint16_t position, uint8_t line, rgb_t color, rgb_
     return printMinusAt(dmd, position, line, color, bgColor);
   case '+':
     return printPlusAt(dmd, position, line, color, bgColor);
-  case -79: //±
+  case 256-79: //±
     return printPlusMinusAt(dmd, position, line, color, bgColor);
   case '*':
     return printAsterixAt(dmd, position, line, color, bgColor);
