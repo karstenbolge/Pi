@@ -76,10 +76,10 @@ char *getDefaultFont()
 
 int getWindowWitdh()
 {
-  return 400;
+  return 800;
 }
 
 int getWindowHeight()
 {
-  return 240;
+  return 480;
 }
