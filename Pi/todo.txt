@@ -1,3 +1,5 @@
+Make Raspberry fullscreen
+
 Try store image as dmd in source and convert to image when getting.
 
 Invert menu item to select.
@@ -9,6 +11,8 @@ Make test menu of video.
 In ubuntu make output matrix 8 * 256.
 
 Move input switch matrix from console to display.
+
+// Make better physical boards, matrix 16 x 16 input, 16 X 24
 
 
 
