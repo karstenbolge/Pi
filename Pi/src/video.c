@@ -18,7 +18,7 @@ char *getNextWheelFrame()
     wheelFrame = 0;
   }
 
-  switch (wheelFrame)
+/*  switch (wheelFrame)
   {
   case 0:
     return getImage00150();
@@ -32,7 +32,7 @@ char *getNextWheelFrame()
     return getImage00161();
   case 5:
     return getImage00163();
-  }
+  }*/
 }
 
 void startTrainSide()
