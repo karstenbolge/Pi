@@ -319,12 +319,8 @@ int main(int argc, char **argv)
     return 0;
   };
 
-  FILE *pMakeFile = fopen("./Makefile", "w");
   FILE *pHeaderFile = fopen("./image.h", "w");
   strcpy(pNameLong, "all:");
-
-  fprintf(pMakeFile, "converter:\n");
-  fprintf(pMakeFile, "\tgcc -o converter ./src/converter.c -lm\n\n");
 
   fprintf(pHeaderFile, "#ifndef _IMAGE_H_\n");
   fprintf(pHeaderFile, "#define _IMAGE_H_\n");
@@ -346,8 +342,6 @@ int main(int argc, char **argv)
 
         strcpy(pNameLong + strlen(pNameLong), " image");
         strcpy(pNameLong + strlen(pNameLong), pName);
-        fprintf(pMakeFile, "image%s:\n", pName);
-        fprintf(pMakeFile, "\tgcc -c ./SoulTrain/image%s.c\n\n", pName);
         fprintf(pHeaderFile, "char *getImage%s();\n", pName);
 
         processFile(directoryFile->d_name, pName);
@@ -356,13 +350,7 @@ int main(int argc, char **argv)
     closedir(directory);
   }
 
-  fprintf(pMakeFile, "%s\n\n", pNameLong);
-
-  fprintf(pMakeFile, "clean:\n");
-  fprintf(pMakeFile, "\trm -f converter *.o\n\n");
-
   fprintf(pHeaderFile, "#endif\n\n");
 
-  fclose(pMakeFile);
   fclose(pHeaderFile);
 }
