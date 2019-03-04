@@ -470,14 +470,15 @@ void showMenu()
       printf("->");
       // printAtLineAndPosition("x ", currentItemNumber, 0, color, bgColor);
       // test inverted
-      printAtLineAndPosition("x ", currentItemNumber, 0, bgColor, color);
+      printAtLineAndPosition(item->name, currentItemNumber, 0, bgColor, color);
     }
     else
     {
       printf("  ");
+      printAtLineAndPosition(item->name, currentItemNumber, 0, color, bgColor);
     }
     printf("%s\n", item->name);
-    printAtLineAndPosition(item->name, currentItemNumber, 20, color, bgColor);
+
     item = item->next;
     currentItemNumber++;
   } while ((item != firstItem || countItems > MENU_LINES_COUNT) && currentItemNumber < MENU_LINES_COUNT && currentItemNumber < countItems);

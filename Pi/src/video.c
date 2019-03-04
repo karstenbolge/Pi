@@ -48,7 +48,7 @@ char *getNextTrainSide()
     sideTrainFrame = 0;
   }
 
-  /*  switch (sideTrainFrame)
+  switch (sideTrainFrame)
   {
   case 0:
     return getImage00123();
@@ -70,7 +70,7 @@ char *getNextTrainSide()
     return getImage00137();
   case 9:
     return getImage00139();
-  }*/
+  }
 }
 
 void startSoulTrain()
@@ -86,7 +86,7 @@ char *getNextSoulTrain()
     sideSoulTrain = 0;
   }
 
-  /*  switch (sideSoulTrain)
+  switch (sideSoulTrain)
   {
   case 0:
     return getImage00587();
@@ -264,5 +264,5 @@ char *getNextSoulTrain()
     return getImage00673();
   case 87:
     return getImage00674();
-  }*/
+  }
 }

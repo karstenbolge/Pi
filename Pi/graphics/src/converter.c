@@ -10,7 +10,6 @@
 unsigned char pixel[640 * 360 * 4 + 1];
 long pixelNumber;
 char pName[120];
-char pNameLong[100000];
 
 void processLine(char *pLine)
 {
@@ -320,7 +319,6 @@ int main(int argc, char **argv)
   };
 
   FILE *pHeaderFile = fopen("./image.h", "w");
-  strcpy(pNameLong, "all:");
 
   fprintf(pHeaderFile, "#ifndef _IMAGE_H_\n");
   fprintf(pHeaderFile, "#define _IMAGE_H_\n");
@@ -339,9 +337,6 @@ int main(int argc, char **argv)
         strcpy(pName, pLastDash + 1);
 
         pName[pLastDot - pLastDash - 1] = 0;
-
-        strcpy(pNameLong + strlen(pNameLong), " image");
-        strcpy(pNameLong + strlen(pNameLong), pName);
         fprintf(pHeaderFile, "char *getImage%s();\n", pName);
 
         processFile(directoryFile->d_name, pName);

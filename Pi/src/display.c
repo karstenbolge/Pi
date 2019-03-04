@@ -31,7 +31,7 @@ void setScreenBufferColor(char *p, rgb_t color)
   *(p + 3) = 0;
 }
 
-uint8_t printCharAt(char chr, uint16_t position, uint8_t line, rgb_t color, rgb_t bgColor)
+uint8_t printCharAt(unsigned char chr, uint16_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
   line = 12 * line + 2;
   switch (chr)

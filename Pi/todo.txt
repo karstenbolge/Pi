@@ -2,8 +2,6 @@ Make Raspberry fullscreen
 
 Invert menu item to select.
 
-Make image via GIMP.
-
 Make test menu of video.
 
 In ubuntu make output matrix 16 * 24.
