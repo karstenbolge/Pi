@@ -470,7 +470,8 @@ void showMenu()
       printf("->");
       // printAtLineAndPosition("x ", currentItemNumber, 0, color, bgColor);
       // test inverted
-      printAtLineAndPosition(item->name, currentItemNumber, 0, bgColor, color);
+      uint16_t length = printAtLineAndPosition(item->name, currentItemNumber, 0, bgColor, color);
+      frameLine(currentItemNumber, length, color);
     }
     else
     {

@@ -174,7 +174,7 @@ void processFile(char *pFileName, char *pImageName)
         }
       }
 
-      for (int k = 0; k < 4; k++)
+      /*for (int k = 0; k < 4; k++)
       {
         for (int l = 0; l < 4; l++)
         {
@@ -194,10 +194,10 @@ void processFile(char *pFileName, char *pImageName)
             pixel[((j * 4 + l) * 640 + (i * 4 + k)) * 4 + 3] = 0;
           }
         }
-      }
-      char redChar = sqrt(redAverage / 16);
-      char greenChar = sqrt(redAverage / 16);
-      char blueChar = sqrt(redAverage / 16);
+      }*/
+      unsigned char redChar = sqrt(redAverage / 16);
+      unsigned char greenChar = sqrt(greenAverage / 16);
+      unsigned char blueChar = sqrt(blueAverage / 16);
 
       fwrite(&redChar, 1, 1, pOutputBinFile);
       fwrite(&greenChar, 1, 1, pOutputBinFile);
@@ -264,9 +264,9 @@ void processFile(char *pFileName, char *pImageName)
   fprintf(pOutputSrcFile, "  {\n");
   fprintf(pOutputSrcFile, "    for (int j = 0; j < 90; j++)\n");
   fprintf(pOutputSrcFile, "    {\n");
-  fprintf(pOutputSrcFile, "      char redChar;\n");
-  fprintf(pOutputSrcFile, "      char greenChar;\n");
-  fprintf(pOutputSrcFile, "      char blueChar;\n");
+  fprintf(pOutputSrcFile, "      unsigned char redChar;\n");
+  fprintf(pOutputSrcFile, "      unsigned char greenChar;\n");
+  fprintf(pOutputSrcFile, "      unsigned char blueChar;\n");
   fprintf(pOutputSrcFile, "      fread(&redChar, 1, 1, pOutputBinFile);\n");
   fprintf(pOutputSrcFile, "      fread(&greenChar, 1, 1, pOutputBinFile);\n");
   fprintf(pOutputSrcFile, "      fread(&blueChar, 1, 1, pOutputBinFile);\n\n");

@@ -23,7 +23,7 @@ void displayTestOpen()
   setColorType(&color, COLOR_RED);
   setColorType(&bgColor, COLOR_BLACK);
 
-  startWheelVideo();
+  startSoulTrain();
 }
 
 void displayTestExit()
@@ -37,7 +37,7 @@ void displayTestTick(uint8_t tick)
   {
     if (tick % 2 == 0)
     {
-      showImage(getNextWheelFrame());
+      showImage(getNextSoulTrain());
     }
     return;
 

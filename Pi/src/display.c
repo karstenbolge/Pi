@@ -33,7 +33,7 @@ void setScreenBufferColor(char *p, rgb_t color)
 
 uint8_t printCharAt(unsigned char chr, uint16_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
-  line = 12 * line + 2;
+  line = 12 * line + 1;
   switch (chr)
   {
   case '0':
@@ -336,13 +336,31 @@ void printAtLine(char *str, uint8_t line, rgb_t color, rgb_t bgColor)
   }
 }
 
-void printAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t color, rgb_t bgColor)
+uint16_t printAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t color, rgb_t bgColor)
 {
   uint16_t position = xPosition;
   while (*str != 0)
   {
     position += printCharAt(*str, position, line, color, bgColor);
     str++;
+  }
+
+  return position;
+}
+
+void frameLine(uint8_t line, uint16_t length, rgb_t bgColor)
+{
+  line *= 12;
+  for (uint16_t i = 0; i < DMD_WIDTH && i < length; i++)
+  {
+    dmd[i][line] = bgColor;
+  }
+  if (length < DMD_WIDTH)
+  {
+    for (uint8_t i = line; i < DMD_HEIGHT && i < line + 12; i++)
+    {
+      dmd[length][i] = bgColor;
+    }
   }
 }
 
