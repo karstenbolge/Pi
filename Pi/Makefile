@@ -5,8 +5,8 @@ ubuntu: ubuntu.o
 	./graphics/SoulTrain/image00152.c \
 	./graphics/SoulTrain/image00155.c \
 	./graphics/SoulTrain/image00158.c \
-	./graphics/SoulTrain/image00163.c \
 	./graphics/SoulTrain/image00161.c \
+	./graphics/SoulTrain/image00163.c 
 
 ubuntu.o: ./hdr/platform.h ./src/ubuntu.c
 	gcc -c ./hdr/platform.h ./src/ubuntu.c
