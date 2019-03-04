@@ -100,7 +100,7 @@ void processFile(char *pFileName, char *pImageName)
 
   fclose(pInputFile);
 
-  printf("converted ");
+  printf(".");
   fflush(stdout);
 
   /* just corped
@@ -154,6 +154,10 @@ void processFile(char *pFileName, char *pImageName)
   fclose(pOutputFile);*/
 
   // pixel average colors 160 x 90
+
+  sprintf(inputFilePath, "./SoulTrain/image%s.o", pImageName);
+  FILE *pOutputBinFile = fopen(inputFilePath, "w");
+
   for (int i = 0; i < 160; i++)
   {
     for (int j = 0; j < 90; j++)
@@ -192,11 +196,23 @@ void processFile(char *pFileName, char *pImageName)
           }
         }
       }
+      char redChar = sqrt(redAverage / 16);
+      char greenChar = sqrt(redAverage / 16);
+      char blueChar = sqrt(redAverage / 16);
+
+      fwrite(&redChar, 1, 1, pOutputBinFile);
+      fwrite(&greenChar, 1, 1, pOutputBinFile);
+      fwrite(&blueChar, 1, 1, pOutputBinFile);
+    }
+
+    if (i % 40 == 0)
+    {
+      printf(".");
+      fflush(stdout);
     }
   }
 
-  printf("averaged ");
-  fflush(stdout);
+  fclose(pOutputBinFile);
 
   /* corped, split to tiles and average color
   pOutputFile = fopen("./SoulTrain/00150-v4.h", "w");
@@ -233,62 +249,59 @@ void processFile(char *pFileName, char *pImageName)
   fprintf(pOutputFile, "};\n");
   fclose(pOutputFile);*/
   sprintf(inputFilePath, "./SoulTrain/image%s.c", pImageName);
-
   FILE *pOutputSrcFile = fopen(inputFilePath, "w");
 
+  fprintf(pOutputSrcFile, "#include <stdio.h>\n");
+  fprintf(pOutputSrcFile, "#include <string.h>\n\n");
   fprintf(pOutputSrcFile, "unsigned char image%s[800 * 450 * 4 + 1];\n", pImageName);
   fprintf(pOutputSrcFile, "int image%screated = 0;\n\n", pImageName);
 
   fprintf(pOutputSrcFile, "void createImage%s()\n", pImageName);
   fprintf(pOutputSrcFile, "{\n");
-  fprintf(pOutputSrcFile, "  int i = 0;\n");
+  fprintf(pOutputSrcFile, "  memset(&image%s, 0, 1440000);\n", pImageName);
 
-  pixelNumber = 0;
-  for (int j = 0; j < 360; j++)
-  {
-    for (int i = 0; i < 640; i++)
-    {
-      fprintf(pOutputSrcFile, "  image%s[%ld] = 0x%02x;\n", pImageName, pixelNumber, pixel[((j * 640) + i) * 4]);
-      fprintf(pOutputSrcFile, "  image%s[%ld] = 0x%02x;\n", pImageName, pixelNumber + 1, pixel[((j * 640) + i) * 4 + 1]);
-      fprintf(pOutputSrcFile, "  image%s[%ld] = 0x%02x;\n", pImageName, pixelNumber + 2, pixel[((j * 640) + i) * 4 + 2]);
-      fprintf(pOutputSrcFile, "  image%s[%ld] = 0x%02x;\n", pImageName, pixelNumber + 3, pixel[((j * 640) + i) * 4 + 3]);
-      pixelNumber += 4;
-      if (i % 4 == 3)
-      {
-        fprintf(pOutputSrcFile, "  image%s[%ld] = 0x00;\n", pImageName, pixelNumber);
-        fprintf(pOutputSrcFile, "  image%s[%ld] = 0x00;\n", pImageName, pixelNumber + 1);
-        fprintf(pOutputSrcFile, "  image%s[%ld] = 0x00;\n", pImageName, pixelNumber + 2);
-        fprintf(pOutputSrcFile, "  image%s[%ld] = 0x00;\n", pImageName, pixelNumber + 3);
-        pixelNumber += 4;
-      }
-    }
-
-    if (j % 4 == 3)
-    {
-      for (int i = 0; i < 800; i++)
-      {
-        fprintf(pOutputSrcFile, "  image%s[%ld] = 0x00;\n", pImageName, pixelNumber);
-        fprintf(pOutputSrcFile, "  image%s[%ld] = 0x00;\n", pImageName, pixelNumber + 1);
-        fprintf(pOutputSrcFile, "  image%s[%ld] = 0x00;\n", pImageName, pixelNumber + 2);
-        fprintf(pOutputSrcFile, "  image%s[%ld] = 0x00;\n", pImageName, pixelNumber + 3);
-        pixelNumber += 4;
-      }
-    }
-  }
-
+  fprintf(pOutputSrcFile, "  FILE *pOutputBinFile = fopen(\"./graphics/SoulTrain/image%s.o\", \"rb\");\n", pImageName);
+  fprintf(pOutputSrcFile, "  for (int i = 0; i < 160; i++)\n");
+  fprintf(pOutputSrcFile, "  {\n");
+  fprintf(pOutputSrcFile, "    for (int j = 0; j < 90; j++)\n");
+  fprintf(pOutputSrcFile, "    {\n");
+  fprintf(pOutputSrcFile, "      char redChar;\n");
+  fprintf(pOutputSrcFile, "      char greenChar;\n");
+  fprintf(pOutputSrcFile, "      char blueChar;\n");
+  fprintf(pOutputSrcFile, "      fread(&redChar, 1, 1, pOutputBinFile);\n");
+  fprintf(pOutputSrcFile, "      fread(&greenChar, 1, 1, pOutputBinFile);\n");
+  fprintf(pOutputSrcFile, "      fread(&blueChar, 1, 1, pOutputBinFile);\n\n");
+  fprintf(pOutputSrcFile, "      for (int k = 0; k < 4; k++)\n");
+  fprintf(pOutputSrcFile, "      {\n");
+  fprintf(pOutputSrcFile, "        for (int l = 0; l < 4; l++)\n");
+  fprintf(pOutputSrcFile, "        {\n");
+  fprintf(pOutputSrcFile, "          // round corners\n");
+  fprintf(pOutputSrcFile, "          if ((k == 0 || k == 3) && (l == 0 || l == 3));\n");
+  fprintf(pOutputSrcFile, "          else\n");
+  fprintf(pOutputSrcFile, "          {\n");
+  fprintf(pOutputSrcFile, "            image%s[((j * 5 + l) * 800 + (i * 5 + k)) * 4] = redChar;\n", pImageName);
+  fprintf(pOutputSrcFile, "            image%s[((j * 5 + l) * 800 + (i * 5 + k)) * 4 + 1] = greenChar;\n", pImageName);
+  fprintf(pOutputSrcFile, "            image%s[((j * 5 + l) * 800 + (i * 5 + k)) * 4 + 2] = blueChar;\n", pImageName);
+  fprintf(pOutputSrcFile, "          }\n");
+  fprintf(pOutputSrcFile, "        }\n");
+  fprintf(pOutputSrcFile, "      }\n");
+  fprintf(pOutputSrcFile, "    }\n");
+  fprintf(pOutputSrcFile, "  }\n\n");
+  fprintf(pOutputSrcFile, "  fclose(pOutputBinFile);\n");
   fprintf(pOutputSrcFile, "}\n\n");
   fprintf(pOutputSrcFile, "char *getImage%s()\n", pImageName);
   fprintf(pOutputSrcFile, "{\n");
   fprintf(pOutputSrcFile, "  if (!image%screated)\n", pImageName);
   fprintf(pOutputSrcFile, "  {\n");
   fprintf(pOutputSrcFile, "    createImage%s();\n", pImageName);
+  fprintf(pOutputSrcFile, "    image%screated = 1;\n", pImageName);
   fprintf(pOutputSrcFile, "  }\n");
   fprintf(pOutputSrcFile, "  return image%s;\n", pImageName);
   fprintf(pOutputSrcFile, "}\n");
 
   fclose(pOutputSrcFile);
 
-  printf("written\n");
+  printf("!\n");
   fflush(stdout);
 };
 
