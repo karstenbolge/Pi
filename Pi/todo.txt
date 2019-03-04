@@ -1,14 +1,12 @@
 Make Raspberry fullscreen
 
-Try store image as dmd in source and convert to image when getting.
-
 Invert menu item to select.
 
 Make image via GIMP.
 
 Make test menu of video.
 
-In ubuntu make output matrix 8 * 256.
+In ubuntu make output matrix 16 * 24.
 
 Move input switch matrix from console to display.
 
