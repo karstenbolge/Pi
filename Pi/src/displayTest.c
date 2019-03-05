@@ -10,20 +10,12 @@
 
 uint8_t inDisplayTestMode = MODE_OFF;
 
-uint16_t currentPosition;
-uint8_t currentLine;
-rgb_t color, bgColor;
-
 void displayTestOpen()
 {
-  printf("displayTestOpen\n");
-  inDisplayTestMode = MODE_SHOW;
-  currentPosition = DMD_WIDTH;
-  currentLine = 0;
-  setColorType(&color, COLOR_RED);
-  setColorType(&bgColor, COLOR_BLACK);
+  clearDmd();
+  refreshDmd();
 
-  startSoulTrain();
+  startSoulTrainVideo();
 }
 
 void displayTestExit()
@@ -40,26 +32,5 @@ void displayTestTick(uint8_t tick)
       showImage(getNextSoulTrain());
     }
     return;
-
-    if (currentPosition == 0)
-    {
-      // TODO OPTIMIZE memset
-      fillLineWithColor(currentLine, bgColor);
-      currentLine++;
-      currentPosition = DMD_WIDTH;
-      if (currentLine >= LINE_COUNT)
-      {
-        currentLine = 0;
-      }
-    }
-    if (currentPosition > 0)
-    {
-      currentPosition--;
-    }
-
-    // TODO OPTIMIZE memset
-    fillLineWithColor(currentLine, bgColor);
-    printAtLineAndPosition("0123456789", currentLine, currentPosition, color, bgColor);
-    refreshDmd();
   }
 }

@@ -6,10 +6,10 @@
 void startWheelVideo();
 char *getNextWheelFrame();
 
-void startTrainSide();
+void startTrainSideVideo();
 char *getNextTrainSide();
 
-void startSoulTrain();
+void startSoulTrainVideo();
 char *getNextSoulTrain();
 
 #endif

@@ -35,7 +35,7 @@ char *getNextWheelFrame()
   }
 }
 
-void startTrainSide()
+void Video()
 {
   sideTrainFrame = 9;
 }
@@ -73,7 +73,7 @@ char *getNextTrainSide()
   }
 }
 
-void startSoulTrain()
+void startSoulTrainVideo()
 {
   sideSoulTrain = 87;
 }
