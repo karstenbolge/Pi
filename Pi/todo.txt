@@ -1,10 +1,8 @@
 Make Raspberry fullscreen
 
-Make test menu of video.
+Make more test menu of video.
 
-In ubuntu make output matrix 16 * 24.
-
-Move input switch matrix from console to display.
+In ubuntu make output matrix 2 * 8 * 24 ?
 
 Add cables to control and make start and extra ball button.
 
