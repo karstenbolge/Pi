@@ -61,51 +61,51 @@ void drawDmdFrame(rgb_t *pColor)
   {
     for (int j = 1; j < 10; j++)
     {
-      dmd[i][j * 8 + 1] = *pColor;
+      dmd[i][j * 9 + 1] = *pColor;
     }
   }
 
   // vertical
   for (int i = 1; i < 18; i++)
   {
-    for (int j = 9; j < 65; j++)
+    for (int j = 9; j < 82; j++)
     {
-      dmd[i * 8 + 1][j] = *pColor;
+      dmd[i * 9 + 1][j] = *pColor;
     }
   }
 }
 
 void drawDotIn(int i, int j, rgb_t *pColor)
 {
-  dmd[i * 8 + 3][j * 8 + 2] = *pColor;
-  dmd[i * 8 + 4][j * 8 + 2] = *pColor;
+  dmd[i * 9 + 3][j * 9 + 2] = *pColor;
+  dmd[i * 9 + 4][j * 9 + 2] = *pColor;
 
-  dmd[i * 8 + 2][j * 8 + 3] = *pColor;
-  dmd[i * 8 + 3][j * 8 + 3] = *pColor;
-  dmd[i * 8 + 4][j * 8 + 3] = *pColor;
-  dmd[i * 8 + 5][j * 8 + 3] = *pColor;
+  dmd[i * 9 + 2][j * 9 + 3] = *pColor;
+  dmd[i * 9 + 3][j * 9 + 3] = *pColor;
+  dmd[i * 9 + 4][j * 9 + 3] = *pColor;
+  dmd[i * 9 + 5][j * 9 + 3] = *pColor;
 
-  dmd[i * 8 + 1][j * 8 + 4] = *pColor;
-  dmd[i * 8 + 2][j * 8 + 4] = *pColor;
-  dmd[i * 8 + 3][j * 8 + 4] = *pColor;
-  dmd[i * 8 + 4][j * 8 + 4] = *pColor;
-  dmd[i * 8 + 5][j * 8 + 4] = *pColor;
-  dmd[i * 8 + 6][j * 8 + 4] = *pColor;
+  dmd[i * 9 + 1][j * 9 + 4] = *pColor;
+  dmd[i * 9 + 2][j * 9 + 4] = *pColor;
+  dmd[i * 9 + 3][j * 9 + 4] = *pColor;
+  dmd[i * 9 + 4][j * 9 + 4] = *pColor;
+  dmd[i * 9 + 5][j * 9 + 4] = *pColor;
+  dmd[i * 9 + 6][j * 9 + 4] = *pColor;
 
-  dmd[i * 8 + 1][j * 8 + 5] = *pColor;
-  dmd[i * 8 + 2][j * 8 + 5] = *pColor;
-  dmd[i * 8 + 3][j * 8 + 5] = *pColor;
-  dmd[i * 8 + 4][j * 8 + 5] = *pColor;
-  dmd[i * 8 + 5][j * 8 + 5] = *pColor;
-  dmd[i * 8 + 6][j * 8 + 5] = *pColor;
+  dmd[i * 9 + 1][j * 9 + 5] = *pColor;
+  dmd[i * 9 + 2][j * 9 + 5] = *pColor;
+  dmd[i * 9 + 3][j * 9 + 5] = *pColor;
+  dmd[i * 9 + 4][j * 9 + 5] = *pColor;
+  dmd[i * 9 + 5][j * 9 + 5] = *pColor;
+  dmd[i * 9 + 6][j * 9 + 5] = *pColor;
 
-  dmd[i * 8 + 2][j * 8 + 6] = *pColor;
-  dmd[i * 8 + 3][j * 8 + 6] = *pColor;
-  dmd[i * 8 + 4][j * 8 + 6] = *pColor;
-  dmd[i * 8 + 5][j * 8 + 6] = *pColor;
+  dmd[i * 9 + 2][j * 9 + 6] = *pColor;
+  dmd[i * 9 + 3][j * 9 + 6] = *pColor;
+  dmd[i * 9 + 4][j * 9 + 6] = *pColor;
+  dmd[i * 9 + 5][j * 9 + 6] = *pColor;
 
-  dmd[i * 8 + 3][j * 8 + 7] = *pColor;
-  dmd[i * 8 + 4][j * 8 + 7] = *pColor;
+  dmd[i * 9 + 3][j * 9 + 7] = *pColor;
+  dmd[i * 9 + 4][j * 9 + 7] = *pColor;
 }
 
 void drawHithlightIn(int i, int j, rgb_t *pColor)
@@ -113,15 +113,15 @@ void drawHithlightIn(int i, int j, rgb_t *pColor)
   // horizontal
   for (int k = 1; k < 9; k++)
   {
-    dmd[i * 8 + 2][j * 8 + k] = *pColor;
-    dmd[i * 8 + 2][j * 8 + 9 + k] = *pColor;
+    dmd[i * 9 + 2][j * 9 + k] = *pColor;
+    dmd[i * 9 + 2][j * 9 + 9 + k] = *pColor;
   }
 
   // vertical
   for (int k = 1; k < 9; k++)
   {
-    dmd[i * 8 + k][j * 8 + 2] = *pColor;
-    dmd[i * 8 + 9 + k][j * 8 + 2] = *pColor;
+    dmd[i * 9 + k][j * 9 + 2] = *pColor;
+    dmd[i * 9 + 9 + k][j * 9 + 2] = *pColor;
   }
 }
 
@@ -131,9 +131,8 @@ void showMatrix(uint16_t oldInputRegister[8])
   {
     clearDmd();
     clearScreen();
-    rgb_t color;
+    rgb_t color, colorBlue;
     setColorType(&color, COLOR_RED);
-    rgb_t colorBlue;
     setColorType(&colorBlue, COLOR_BLUE);
 
     // draw frame in loop draw actual

@@ -9,17 +9,20 @@
 
 const int button1x = 10;
 const int button1y = 485;
-const int button2x = 70;
+const int button2x = 60;
 const int button2y = 485;
-const int button3x = 130;
+const int button3x = 110;
 const int button3y = 485;
-const int button4x = 190;
+const int button4x = 160;
 const int button4y = 485;
 
 const int buttonBeatX = 250;
 const int buttonBeatY = 485;
 
-const int buttonWidth = 50;
+const int gridViewX = 300;
+const int gridViewY = 480;
+
+const int buttonWidth = 40;
 const int buttonHeight = 40;
 int onButton = 0;
 
@@ -33,17 +36,38 @@ void setupWiring()
   XSetForeground(display, gc, colorRed.pixel);
   XFillRectangle(display, win, gc, 0, 480, 799, 529);
 
-  XSetForeground(display, gc, colorBlack.pixel);
+  XSetForeground(display, gc, colorRed.pixel);
   XFillRectangle(display, win, gc, button1x, button1y, buttonWidth, buttonHeight);
+  XSetForeground(display, gc, colorBlack.pixel);
+  XFillRectangle(display, win, gc, button1x + 2, button1y + 2, buttonWidth - 4, buttonHeight - 4);
 
-  XSetForeground(display, gc, colorGreen.pixel);
+  XSetForeground(display, gc, colorRed.pixel);
   XFillRectangle(display, win, gc, button2x, button2y, buttonWidth, buttonHeight);
+  XSetForeground(display, gc, colorGreen.pixel);
+  XFillRectangle(display, win, gc, button2x + 2, button2y + 2, buttonWidth - 4, buttonHeight - 4);
+
+  XSetForeground(display, gc, colorRed.pixel);
+  XFillRectangle(display, win, gc, button3x, button3y, buttonWidth, buttonHeight);
+  XSetForeground(display, gc, colorWhite.pixel);
+  XFillRectangle(display, win, gc, button3x + 2, button3y + 2, buttonWidth - 4, buttonHeight - 4);
+
+  XSetForeground(display, gc, colorRed.pixel);
+  XFillRectangle(display, win, gc, button4x, button4y, buttonWidth, buttonHeight);
+  XSetForeground(display, gc, colorBlue.pixel);
+  XFillRectangle(display, win, gc, button4x + 2, button4y + 2, buttonWidth - 4, buttonHeight - 4);
 
   XSetForeground(display, gc, colorWhite.pixel);
-  XFillRectangle(display, win, gc, button3x, button3y, buttonWidth, buttonHeight);
+  // horizontal
+  for (int i = 0; i < 17; i++)
+  {
+    XDrawLine(display, win, gc, gridViewX, gridViewY + i * 3, gridViewX + 24 * 3, gridViewY + i * 3);
+  }
 
-  XSetForeground(display, gc, colorBlue.pixel);
-  XFillRectangle(display, win, gc, button4x, button4y, buttonWidth, buttonHeight);
+  // vertical
+  for (int i = 0; i < 25; i++)
+  {
+    XDrawLine(display, win, gc, gridViewX + i * 3, gridViewY, gridViewX + i * 3, gridViewY + 49);
+  }
 }
 
 void updateColumn(uint8_t column)
