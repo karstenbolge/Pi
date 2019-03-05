@@ -57,11 +57,11 @@ char *getSwitchName()
 void drawDmdFrame(rgb_t *pColor)
 {
   // horizontal
-  for (int i = 9; i < 138; i++)
+  for (int i = 9; i < 154; i++)
   {
     for (int j = 1; j < 10; j++)
     {
-      dmd[i][j * 9 + 1] = *pColor;
+      dmd[i][j * 9] = *pColor;
     }
   }
 
@@ -70,58 +70,59 @@ void drawDmdFrame(rgb_t *pColor)
   {
     for (int j = 9; j < 82; j++)
     {
-      dmd[i * 9 + 1][j] = *pColor;
+      dmd[i * 9][j] = *pColor;
     }
   }
 }
 
-void drawDotIn(int i, int j, rgb_t *pColor)
+void drawDotIn(int j, int i, rgb_t *pColor)
 {
-  dmd[i * 9 + 3][j * 9 + 2] = *pColor;
+  printf("Dot in %d %d\n", i, j);
   dmd[i * 9 + 4][j * 9 + 2] = *pColor;
+  dmd[i * 9 + 5][j * 9 + 2] = *pColor;
 
-  dmd[i * 9 + 2][j * 9 + 3] = *pColor;
   dmd[i * 9 + 3][j * 9 + 3] = *pColor;
   dmd[i * 9 + 4][j * 9 + 3] = *pColor;
   dmd[i * 9 + 5][j * 9 + 3] = *pColor;
+  dmd[i * 9 + 6][j * 9 + 3] = *pColor;
 
-  dmd[i * 9 + 1][j * 9 + 4] = *pColor;
   dmd[i * 9 + 2][j * 9 + 4] = *pColor;
   dmd[i * 9 + 3][j * 9 + 4] = *pColor;
   dmd[i * 9 + 4][j * 9 + 4] = *pColor;
   dmd[i * 9 + 5][j * 9 + 4] = *pColor;
   dmd[i * 9 + 6][j * 9 + 4] = *pColor;
+  dmd[i * 9 + 7][j * 9 + 4] = *pColor;
 
-  dmd[i * 9 + 1][j * 9 + 5] = *pColor;
   dmd[i * 9 + 2][j * 9 + 5] = *pColor;
   dmd[i * 9 + 3][j * 9 + 5] = *pColor;
   dmd[i * 9 + 4][j * 9 + 5] = *pColor;
   dmd[i * 9 + 5][j * 9 + 5] = *pColor;
   dmd[i * 9 + 6][j * 9 + 5] = *pColor;
+  dmd[i * 9 + 7][j * 9 + 5] = *pColor;
 
-  dmd[i * 9 + 2][j * 9 + 6] = *pColor;
   dmd[i * 9 + 3][j * 9 + 6] = *pColor;
   dmd[i * 9 + 4][j * 9 + 6] = *pColor;
   dmd[i * 9 + 5][j * 9 + 6] = *pColor;
+  dmd[i * 9 + 6][j * 9 + 6] = *pColor;
 
-  dmd[i * 9 + 3][j * 9 + 7] = *pColor;
   dmd[i * 9 + 4][j * 9 + 7] = *pColor;
+  dmd[i * 9 + 5][j * 9 + 7] = *pColor;
 }
 
-void drawHithlightIn(int i, int j, rgb_t *pColor)
+void drawHithlightIn(int j, int i, rgb_t *pColor)
 {
   // horizontal
-  for (int k = 1; k < 9; k++)
+  for (int k = 1; k < 7; k++)
   {
-    dmd[i * 9 + 2][j * 9 + k] = *pColor;
-    dmd[i * 9 + 2][j * 9 + 9 + k] = *pColor;
+    dmd[i * 9 + 10 + k][j * 9 + 10] = *pColor;
+    dmd[i * 9 + 10 + k][j * 9 + 17] = *pColor;
   }
 
   // vertical
   for (int k = 1; k < 9; k++)
   {
-    dmd[i * 9 + k][j * 9 + 2] = *pColor;
-    dmd[i * 9 + 9 + k][j * 9 + 2] = *pColor;
+    dmd[i * 9 + 10][j * 9 + 9 + k] = *pColor;
+    dmd[i * 9 + 17][j * 9 + 9 + k] = *pColor;
   }
 }
 
@@ -131,9 +132,10 @@ void showMatrix(uint16_t oldInputRegister[8])
   {
     clearDmd();
     clearScreen();
-    rgb_t color, colorBlue;
+    rgb_t color, colorYellow, bgColor;
     setColorType(&color, COLOR_RED);
-    setColorType(&colorBlue, COLOR_BLUE);
+    setColorType(&colorYellow, COLOR_YELLOW);
+    setColorType(&bgColor, COLOR_BLACK);
 
     // draw frame in loop draw actual
     drawDmdFrame(&color);
@@ -148,7 +150,7 @@ void showMatrix(uint16_t oldInputRegister[8])
         {
           if (inSwitchEdgeTestMode == MODE_SHOW_SINGLE && showColumn == i && showRow == j)
           {
-            drawDotIn(i, j, &colorBlue);
+            drawDotIn(i, j, &colorYellow);
             printf("X ");
           }
           else
@@ -161,7 +163,7 @@ void showMatrix(uint16_t oldInputRegister[8])
         {
           if (inSwitchEdgeTestMode == MODE_SHOW_SINGLE && showColumn == i && showRow == j)
           {
-            drawHithlightIn(i, j, &colorBlue);
+            drawHithlightIn(i, j, &colorYellow);
             printf("- ");
           }
           else
@@ -175,6 +177,7 @@ void showMatrix(uint16_t oldInputRegister[8])
     if (inSwitchEdgeTestMode == MODE_SHOW_SINGLE)
     {
       printf("%s\n", getSwitchName());
+      printAtLineAndPosition(getSwitchName(), 7, 10, colorYellow, bgColor);
     }
     refreshDmd();
   }

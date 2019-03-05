@@ -7,6 +7,7 @@
 #define COLOR_RED 1
 #define COLOR_GREEN 2
 #define COLOR_BLUE 3
+#define COLOR_YELLOW 4
 
 typedef struct rgb
 {

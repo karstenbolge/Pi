@@ -12,6 +12,8 @@ void setColorType(rgb_t *color, uint8_t type)
     return setColor(color, 0, 255, 0);
   case COLOR_BLUE:
     return setColor(color, 0, 0, 255);
+  case COLOR_YELLOW:
+    return setColor(color, 255, 255, 0);
   default:
     return setColor(color, 255, 255, 255);
   }

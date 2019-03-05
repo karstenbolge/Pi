@@ -147,9 +147,17 @@ void refreshDmd()
   {
     for (int x = 0; x < DMD_WIDTH; x++)
     {
-      if (dmd[x][y].red || dmd[x][y].green || dmd[x][y].blue)
+      if (dmd[x][y].red == 255 && dmd[x][y].green == 255 && dmd[x][y].blue == 0)
       {
         // TODO OPTIMIZE
+        XSetForeground(display, gc, colorYellow.pixel);
+        XFillRectangle(display, win, gc, 5 * x + 1, 5 * y, 2, 4);
+        XFillRectangle(display, win, gc, 5 * x, 5 * y + 1, 4, 2);
+      }
+      else if (dmd[x][y].red || dmd[x][y].green || dmd[x][y].blue)
+      {
+        // TODO OPTIMIZE
+        XSetForeground(display, gc, colorRed.pixel);
         XFillRectangle(display, win, gc, 5 * x + 1, 5 * y, 2, 4);
         XFillRectangle(display, win, gc, 5 * x, 5 * y + 1, 4, 2);
       }
