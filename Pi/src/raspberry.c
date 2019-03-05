@@ -25,6 +25,23 @@ void setupWiring()
   XSetForeground(display, gc, colorGreen.pixel);
   XFillRectangle(display, win, gc, 20, 20, 30, 40);
 
+  Atom wm_state = XInternAtom(display, "_NET_WM_STATE", False);
+  Atom fullscreen = XInternAtom(display, "_NET_WM_STATE_FULLSCREEN", False);
+
+  XEvent xev;
+  memset(&xev, 0, sizeof(xev));
+  xev.type = ClientMessage;
+  xev.xclient.window = win;
+  xev.xclient.message_type = wm_state;
+  xev.xclient.format = 32;
+  xev.xclient.data.l[0] = 1;
+  xev.xclient.data.l[1] = fullscreen;
+  xev.xclient.data.l[2] = 0;
+
+  XMapWindow(display, win);
+
+  XSendEvent(display, DefaultRootWindow(display), False, SubstructureRedirectMask | SubstructureNotifyMask, &xev);
+
   pinMode(COLUMN_DATA_PIN, OUTPUT);
   pinMode(COLUMN_CLOCK_PIN, OUTPUT);
   pinMode(COLUMN_LATCH_PIN, OUTPUT);

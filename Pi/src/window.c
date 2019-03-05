@@ -19,7 +19,6 @@ void setupColors()
     fprintf(stderr, "XAllocNamedColor - failed to allocated 'blue' color.\n");
     exit(1);
   }
-  printf("Blue color mapped %d %d %d\n", colorBlue.red, colorBlue.green, colorBlue.blue);
 
   rc = XAllocNamedColor(display, screenColorMap, "red", &colorRed, &colorRed);
   if (rc == 0)
@@ -27,7 +26,6 @@ void setupColors()
     fprintf(stderr, "XAllocNamedColor - failed to allocated 'red' color.\n");
     exit(1);
   }
-  printf("red color mapped %d %d %d\n", colorRed.red, colorRed.green, colorRed.blue);
 
   rc = XAllocNamedColor(display, screenColorMap, "green", &colorGreen, &colorGreen);
   if (rc == 0)
@@ -35,7 +33,6 @@ void setupColors()
     fprintf(stderr, "XAllocNamedColor - failed to allocated 'green' color.\n");
     exit(1);
   }
-  printf("green color mapped %d %d %d\n", colorGreen.red, colorGreen.green, colorGreen.blue);
 
   rc = XAllocNamedColor(display, screenColorMap, "white", &colorWhite, &colorWhite);
   if (rc == 0)
@@ -43,7 +40,6 @@ void setupColors()
     fprintf(stderr, "XAllocNamedColor - failed to allocated 'white' color.\n");
     exit(1);
   }
-  printf("white color mapped %d %d %d\n", colorWhite.red, colorWhite.green, colorWhite.blue);
 
   rc = XAllocNamedColor(display, screenColorMap, "black", &colorBlack, &colorBlack);
   if (rc == 0)
@@ -51,7 +47,6 @@ void setupColors()
     fprintf(stderr, "XAllocNamedColor - failed to allocated 'black' color.\n");
     exit(1);
   }
-  printf("black color mapped %d %d %d\n", colorBlack.red, colorBlack.green, colorBlack.blue);
 
   rc = XAllocNamedColor(display, screenColorMap, "yellow", &colorYellow, &colorYellow);
   if (rc == 0)
@@ -59,7 +54,6 @@ void setupColors()
     fprintf(stderr, "XAllocNamedColor - failed to allocated 'Yellow' color.\n");
     exit(1);
   }
-  printf("Yellow color mapped %d %d %d\n", colorYellow.red, colorYellow.green, colorYellow.blue);
 }
 
 void createWindow()
@@ -215,7 +209,7 @@ void loadImage()
 
   //#include "../graphics/SoulTrain/00150-v4.h"
   //  XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, image00150, 800, 450, 32, 0);
-  XImage *ximage;// = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, getImage00150(), 800, 450, 32, 0);
+  XImage *ximage; // = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, getImage00150(), 800, 450, 32, 0);
   printf("can create image\n");
 
   XPutImage(display, win, gc, ximage, 0, 0, 0, 0, 800, 450);

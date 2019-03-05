@@ -69,7 +69,6 @@ int main()
   printf("Cursor %d %d\n", root_x, root_y);
   /* look for events forever... */
   while (1)
-    ;
   {
     /* get the next event and stuff it into our event variable.
 		   Note:  only events we set the mask for are detected!
@@ -170,7 +169,7 @@ void init_x()
   printf("drawline now %d\n", rc);
   XDrawLine(display, win, gc, 10, 190, 190, 190); //from-to
 
-  return;
+  //return;
 
   Atom wm_state = XInternAtom(display, "_NET_WM_STATE", False);
   Atom fullscreen = XInternAtom(display, "_NET_WM_STATE_FULLSCREEN", False);
