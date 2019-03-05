@@ -1,5 +1,6 @@
 #include "../hdr/display.h"
 #include "../hdr/switchEdgeTest.h"
+#include "../hdr/window.h"
 
 #define MODE_OFF 0
 #define MODE_SHOW 1
@@ -53,11 +54,91 @@ char *getSwitchName()
   return "Not used";
 }
 
+void drawDmdFrame(rgb_t *pColor)
+{
+  // horizontal
+  for (int i = 9; i < 138; i++)
+  {
+    for (int j = 1; j < 10; j++)
+    {
+      dmd[i][j * 8 + 1] = *pColor;
+    }
+  }
+
+  // vertical
+  for (int i = 1; i < 18; i++)
+  {
+    for (int j = 9; j < 65; j++)
+    {
+      dmd[i * 8 + 1][j] = *pColor;
+    }
+  }
+}
+
+void drawDotIn(int i, int j, rgb_t *pColor)
+{
+  dmd[i * 8 + 3][j * 8 + 2] = *pColor;
+  dmd[i * 8 + 4][j * 8 + 2] = *pColor;
+
+  dmd[i * 8 + 2][j * 8 + 3] = *pColor;
+  dmd[i * 8 + 3][j * 8 + 3] = *pColor;
+  dmd[i * 8 + 4][j * 8 + 3] = *pColor;
+  dmd[i * 8 + 5][j * 8 + 3] = *pColor;
+
+  dmd[i * 8 + 1][j * 8 + 4] = *pColor;
+  dmd[i * 8 + 2][j * 8 + 4] = *pColor;
+  dmd[i * 8 + 3][j * 8 + 4] = *pColor;
+  dmd[i * 8 + 4][j * 8 + 4] = *pColor;
+  dmd[i * 8 + 5][j * 8 + 4] = *pColor;
+  dmd[i * 8 + 6][j * 8 + 4] = *pColor;
+
+  dmd[i * 8 + 1][j * 8 + 5] = *pColor;
+  dmd[i * 8 + 2][j * 8 + 5] = *pColor;
+  dmd[i * 8 + 3][j * 8 + 5] = *pColor;
+  dmd[i * 8 + 4][j * 8 + 5] = *pColor;
+  dmd[i * 8 + 5][j * 8 + 5] = *pColor;
+  dmd[i * 8 + 6][j * 8 + 5] = *pColor;
+
+  dmd[i * 8 + 2][j * 8 + 6] = *pColor;
+  dmd[i * 8 + 3][j * 8 + 6] = *pColor;
+  dmd[i * 8 + 4][j * 8 + 6] = *pColor;
+  dmd[i * 8 + 5][j * 8 + 6] = *pColor;
+
+  dmd[i * 8 + 3][j * 8 + 7] = *pColor;
+  dmd[i * 8 + 4][j * 8 + 7] = *pColor;
+}
+
+void drawHithlightIn(int i, int j, rgb_t *pColor)
+{
+  // horizontal
+  for (int k = 1; k < 9; k++)
+  {
+    dmd[i * 8 + 2][j * 8 + k] = *pColor;
+    dmd[i * 8 + 2][j * 8 + 9 + k] = *pColor;
+  }
+
+  // vertical
+  for (int k = 1; k < 9; k++)
+  {
+    dmd[i * 8 + k][j * 8 + 2] = *pColor;
+    dmd[i * 8 + 9 + k][j * 8 + 2] = *pColor;
+  }
+}
+
 void showMatrix(uint16_t oldInputRegister[8])
 {
   if (inSwitchEdgeTestMode != MODE_OFF)
   {
+    clearDmd();
     clearScreen();
+    rgb_t color;
+    setColorType(&color, COLOR_RED);
+    rgb_t colorBlue;
+    setColorType(&colorBlue, COLOR_BLUE);
+
+    // draw frame in loop draw actual
+    drawDmdFrame(&color);
+
     printf("  0 1 2 3 4 5 6 7 8 9 a b c d e f\n");
     for (int i = 0; i < 8; i++)
     {
@@ -68,10 +149,12 @@ void showMatrix(uint16_t oldInputRegister[8])
         {
           if (inSwitchEdgeTestMode == MODE_SHOW_SINGLE && showColumn == i && showRow == j)
           {
+            drawDotIn(i, j, &colorBlue);
             printf("X ");
           }
           else
           {
+            drawDotIn(i, j, &color);
             printf("x ");
           }
         }
@@ -79,6 +162,7 @@ void showMatrix(uint16_t oldInputRegister[8])
         {
           if (inSwitchEdgeTestMode == MODE_SHOW_SINGLE && showColumn == i && showRow == j)
           {
+            drawHithlightIn(i, j, &colorBlue);
             printf("- ");
           }
           else
@@ -93,6 +177,7 @@ void showMatrix(uint16_t oldInputRegister[8])
     {
       printf("%s\n", getSwitchName());
     }
+    refreshDmd();
   }
 }
 
