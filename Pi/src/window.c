@@ -164,7 +164,7 @@ void refreshDmd()
   }
 }
 
-void loadImage()
+void loadImage2()
 {
   // ./graphics/SoulTrain/vlcsnap-00035.png
   // https://github.com/ImageMagick/png/blob/master/example.c

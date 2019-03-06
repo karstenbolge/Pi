@@ -30,7 +30,7 @@ void refreshDmd();
 void clearDmd();
 
 void windowTestDraw();
-void loadImage();
+void loadImage2();
 
 static char header_data2[640 * 360 * 4 + 1];
 

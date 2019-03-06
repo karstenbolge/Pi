@@ -31,17 +31,17 @@ char *getNextWheelFrame()
   switch (wheelFrame)
   {
   case 0:
-    return getImage00150();
+    return image00150;
   case 1:
-    return getImage00152();
+    return image00152;
   case 2:
-    return getImage00155();
+    return image00155;
   case 3:
-    return getImage00158();
+    return image00158;
   case 4:
-    return getImage00161();
+    return image00161;
   case 5:
-    return getImage00163();
+    return image00163;
   }
 }
 
@@ -61,25 +61,25 @@ char *getNextTrainSide()
   switch (sideTrainFrame)
   {
   case 0:
-    return getImage00123();
+    return image00123;
   case 1:
-    return getImage00124();
+    return image00124;
   case 2:
-    return getImage00125();
+    return image00125;
   case 3:
-    return getImage00127();
+    return image00127;
   case 4:
-    return getImage00128();
+    return image00128;
   case 5:
-    return getImage00130();
+    return image00130;
   case 6:
-    return getImage00133();
+    return image00133;
   case 7:
-    return getImage00135();
+    return image00135;
   case 8:
-    return getImage00137();
+    return image00137;
   case 9:
-    return getImage00139();
+    return image00139;
   }
 }
 
@@ -99,180 +99,180 @@ char *getNextSoulTrain()
   switch (sideSoulTrain)
   {
   case 0:
-    return getImage00587();
+    return image00587;
   case 1:
-    return getImage00588();
+    return image00588;
   case 2:
-    return getImage00589();
+    return image00589;
   case 3:
-    return getImage00590();
+    return image00590;
   case 4:
-    return getImage00591();
+    return image00591;
   case 5:
-    return getImage00592();
+    return image00592;
   case 6:
-    return getImage00593();
+    return image00593;
   case 7:
-    return getImage00594();
+    return image00594;
   case 8:
-    return getImage00595();
+    return image00595;
   case 9:
-    return getImage00596();
+    return image00596;
   case 10:
-    return getImage00597();
+    return image00597;
   case 11:
-    return getImage00598();
+    return image00598;
   case 12:
-    return getImage00599();
+    return image00599;
   case 13:
-    return getImage00600();
+    return image00600;
   case 14:
-    return getImage00601();
+    return image00601;
   case 15:
-    return getImage00602();
+    return image00602;
   case 16:
-    return getImage00603();
+    return image00603;
   case 17:
-    return getImage00604();
+    return image00604;
   case 18:
-    return getImage00605();
+    return image00605;
   case 19:
-    return getImage00606();
+    return image00606;
   case 20:
-    return getImage00607();
+    return image00607;
   case 21:
-    return getImage00608();
+    return image00608;
   case 22:
-    return getImage00609();
+    return image00609;
   case 23:
-    return getImage00610();
+    return image00610;
   case 24:
-    return getImage00611();
+    return image00611;
   case 25:
-    return getImage00612();
+    return image00612;
   case 26:
-    return getImage00613();
+    return image00613;
   case 27:
-    return getImage00614();
+    return image00614;
   case 28:
-    return getImage00615();
+    return image00615;
   case 29:
-    return getImage00616();
+    return image00616;
   case 30:
-    return getImage00617();
+    return image00617;
   case 31:
-    return getImage00618();
+    return image00618;
   case 32:
-    return getImage00619();
+    return image00619;
   case 33:
-    return getImage00620();
+    return image00620;
   case 34:
-    return getImage00621();
+    return image00621;
   case 35:
-    return getImage00622();
+    return image00622;
   case 36:
-    return getImage00623();
+    return image00623;
   case 37:
-    return getImage00624();
+    return image00624;
   case 38:
-    return getImage00625();
+    return image00625;
   case 39:
-    return getImage00626();
+    return image00626;
   case 40:
-    return getImage00627();
+    return image00627;
   case 41:
-    return getImage00628();
+    return image00628;
   case 42:
-    return getImage00629();
+    return image00629;
   case 43:
-    return getImage00630();
+    return image00630;
   case 44:
-    return getImage00631();
+    return image00631;
   case 45:
-    return getImage00632();
+    return image00632;
   case 46:
-    return getImage00633();
+    return image00633;
   case 47:
-    return getImage00634();
+    return image00634;
   case 48:
-    return getImage00635();
+    return image00635;
   case 49:
-    return getImage00636();
+    return image00636;
   case 50:
-    return getImage00637();
+    return image00637;
   case 51:
-    return getImage00638();
+    return image00638;
   case 52:
-    return getImage00639();
+    return image00639;
   case 53:
-    return getImage00640();
+    return image00640;
   case 54:
-    return getImage00641();
+    return image00641;
   case 55:
-    return getImage00642();
+    return image00642;
   case 56:
-    return getImage00643();
+    return image00643;
   case 57:
-    return getImage00644();
+    return image00644;
   case 58:
-    return getImage00645();
+    return image00645;
   case 59:
-    return getImage00646();
+    return image00646;
   case 60:
-    return getImage00647();
+    return image00647;
   case 61:
-    return getImage00648();
+    return image00648;
   case 62:
-    return getImage00649();
+    return image00649;
   case 63:
-    return getImage00650();
+    return image00650;
   case 64:
-    return getImage00651();
+    return image00651;
   case 65:
-    return getImage00652();
+    return image00652;
   case 66:
-    return getImage00653();
+    return image00653;
   case 67:
-    return getImage00654();
+    return image00654;
   case 68:
-    return getImage00655();
+    return image00655;
   case 69:
-    return getImage00656();
+    return image00656;
   case 70:
-    return getImage00657();
+    return image00657;
   case 71:
-    return getImage00658();
+    return image00658;
   case 72:
-    return getImage00659();
+    return image00659;
   case 73:
-    return getImage00660();
+    return image00660;
   case 74:
-    return getImage00661();
+    return image00661;
   case 75:
-    return getImage00662();
+    return image00662;
   case 76:
-    return getImage00663();
+    return image00663;
   case 77:
-    return getImage00664();
+    return image00664;
   case 78:
-    return getImage00665();
+    return image00665;
   case 79:
-    return getImage00666();
+    return image00666;
   case 80:
-    return getImage00667();
+    return image00667;
   case 81:
-    return getImage00668();
+    return image00668;
   case 82:
-    return getImage00669();
+    return image00669;
   case 83:
-    return getImage00670();
+    return image00670;
   case 84:
-    return getImage00671();
+    return image00671;
   case 85:
-    return getImage00672();
+    return image00672;
   case 86:
-    return getImage00673();
+    return image00673;
   case 87:
-    return getImage00674();
+    return image00674;
   }
 }
