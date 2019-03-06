@@ -5,6 +5,11 @@ uint8_t wheelFrame;
 uint8_t sideTrainFrame;
 uint8_t sideSoulTrain;
 
+//00002 - 00014
+//00017 - 00033
+//00033 - 00048
+//00049 - 00120
+
 //01430 - 01529
 //01530 - 01611
 //01612 - 01754
