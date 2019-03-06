@@ -1,3 +1,5 @@
+Make one source code for reading image files, and one header for all image buffers
+
 Make Raspberry fullscreen
 
 Make more test menu of video.
