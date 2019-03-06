@@ -76,14 +76,13 @@ void createWindow()
   gc = XCreateGC(display, win, 0, 0);
   printf("created gc %ld\n", (long)gc);
 
-  fontinfo = XLoadQueryFont(display, getDefaultFont());
+  /*  fontinfo = XLoadQueryFont(display, getDefaultFont());
   printf("font %ld\n", (long)fontinfo);
-  int rc = XSetFont(display, gc, fontinfo->fid);
+  int rc = XSetFont(display, gc, fontinfo->fid);*/
   XSetBackground(display, gc, white);
   XSetForeground(display, gc, black);
   XClearWindow(display, win);
   XMapRaised(display, win);
-
   printf("%ld %ld\n", (long)display, win);
 
   XEvent exposed;
@@ -99,7 +98,7 @@ void createWindow()
   printf("window position : %d %d\n", xwa.x, xwa.y);
 
   XSetForeground(display, gc, WhitePixel(display, screen));
-  rc = XDrawLine(display, win, gc, 10, 10, 10, 190); //from-to
+  int rc = XDrawLine(display, win, gc, 10, 10, 10, 190); //from-to
   printf("drawline now %d\n", rc);
   XDrawLine(display, win, gc, 10, 190, 190, 190); //from-to
 

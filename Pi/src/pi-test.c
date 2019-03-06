@@ -112,8 +112,6 @@ int main(void)
 
   //printf("System %d\n", getSystem());
 
-  //testDisplay();
-
   rgb_t color, bgColor;
   setColorType(&color, COLOR_RED);
   setColor(&bgColor, 0, 255, 255);
@@ -124,12 +122,9 @@ int main(void)
   printAtLine("abcdefghijklmnopqrstuvwxyz", 2, color, bgColor);
   //printAtLine("!\"#\%&/()=?@£$€{[]}|", 3, color, bgColor);
   //printAtLine("<>\\,.-;:_'*", 4, color, bgColor);
-  //showDmdTest();
-  //showDmd();
 
   while (1)
   {
-    //testDisplay();
     switch (getchar())
     {
     case 'a':

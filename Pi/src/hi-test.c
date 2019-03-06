@@ -43,11 +43,6 @@ int getWindowHeight()
   return 240;
 }
 
-char *getDefaultFont()
-{
-  return "6x13";
-}
-
 int main()
 {
   KeySym key;     /* a dealie-bob to handle KeyPress Events */

@@ -24,7 +24,6 @@ void updateShiftIn();
 
 void platform();
 
-char *getDefaultFont();
 int getWindowWitdh();
 int getWindowHeight();
 

@@ -86,11 +86,6 @@ void platform()
   printf("Running Raspberry\n");
 }
 
-char *getDefaultFont()
-{
-  return "6x13";
-}
-
 int getWindowWitdh()
 {
   return 800;

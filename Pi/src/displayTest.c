@@ -16,6 +16,7 @@ void displayTestOpen()
   refreshDmd();
 
   startSoulTrainVideo();
+  inDisplayTestMode = MODE_SHOW;
 }
 
 void displayTestExit()

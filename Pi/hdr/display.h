@@ -15,8 +15,6 @@ rgb_t dmd[DMD_WIDTH][DMD_HEIGHT];
 
 void clearScreen();
 
-void testDisplay();
-
 void printAtLine(char *str, uint8_t line, rgb_t color, rgb_t bgColor);
 uint16_t printAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t color, rgb_t bgColor);
 
@@ -24,8 +22,6 @@ void frameLine(uint8_t line, uint16_t length, rgb_t bgColor);
 
 void fillLineWithColor(uint8_t line, rgb_t bgColor);
 
-void showDmd();
 void initDmd();
-void showDmdTest();
 
 #endif

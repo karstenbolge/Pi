@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "../hdr/color.h"
 #include "../hdr/display.h"
+#include "../hdr/window.h"
 #include "../hdr/awarageBallTime.h"
 
 #define MODE_OFF 0
@@ -26,9 +27,10 @@ void awarageBallTimeCount(uint32_t count)
 {
   if (inAwarageBallTimeMode == MODE_SHOW)
   {
+    clearDmd();
     char str[32];
     sprintf(str, "Loops per second %d", count);
     printAtLineAndPosition(str, 0, 0, color, bgColor);
-    showDmd();
+    refreshDmd();
   }
 }
