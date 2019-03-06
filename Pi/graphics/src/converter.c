@@ -320,15 +320,15 @@ int main(int argc, char **argv)
     return 0;
   };
 
-  FILE *pHeaderFile = fopen("./image.h", "w");
-  FILE *pSourceFile = fopen("./image.c", "w");
+  FILE *pHeaderFile = fopen("../hdr/image.h", "w");
+  FILE *pSourceFile = fopen("../src/image.c", "w");
 
   fprintf(pHeaderFile, "#ifndef _IMAGE_H_\n");
   fprintf(pHeaderFile, "#define _IMAGE_H_\n\n");
   fprintf(pHeaderFile, "void loadAllImages();\n");
   fprintf(pHeaderFile, "void loadImage(char image[], char *pName);\n\n");
 
-  fprintf(pSourceFile, "#include \"./image.h\"\n\n");
+  fprintf(pSourceFile, "#include \"../hdr/image.h\"\n\n");
   fprintf(pSourceFile, "void loadAllImages()\n");
   fprintf(pSourceFile, "{\n");
 
