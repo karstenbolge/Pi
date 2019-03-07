@@ -45,7 +45,7 @@ char *getNextWheelFrame()
   }
 }
 
-void Video()
+void startTrainSideVideo()
 {
   sideTrainFrame = 9;
 }

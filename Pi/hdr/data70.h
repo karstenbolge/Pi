@@ -101,4 +101,7 @@ uint8_t printFnutAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_
 uint8_t printHatAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t color, rgb_t bgColor);
 uint8_t printEmptyAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t color, rgb_t bgColor);
 
+uint8_t printLarge0At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t color, rgb_t bgColor);
+uint8_t printLarge1At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t color, rgb_t bgColor);
+
 #endif

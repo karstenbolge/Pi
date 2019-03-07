@@ -8,6 +8,8 @@
 #include "../hdr/sound.h"
 #include "../hdr/platform.h"
 #include "../hdr/window.h"
+#include "../hdr/image.h"
+#include "../hdr/data70.h"
 
 #define UP_DOWN_HELD_OFF 0
 #define UP_DOWN_HELD_UP 1
@@ -38,6 +40,7 @@ void init()
   readConfig();
 
   initSounds();
+  loadAllImages();
 
   leds = 1;
   column = 0;
@@ -96,11 +99,15 @@ int main(void)
   printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, color, bgColor);
   printAtLine("abcdefghijklmnopqrstuvwxyz", 2, color, bgColor);
   printAtLine("!\"#¤%&/()=?", 3, color, bgColor);
-  printAtLine("@€£${[]}|~\\", 4, color, bgColor);
-  printAtLine("A.,-+±*'^", 5, color, bgColor);
-  printAtLine("0123456789", 6, color, bgColor);
-  printAtLine("0123456789", 7, color, bgColor);
-  printAtLine("!\"", 8, color, bgColor);
+  //printAtLine("@€£${[]}|~\\", 4, color, bgColor);
+  //printAtLine("A.,-+±*'^", 5, color, bgColor);
+  //printAtLine("0123456789", 6, color, bgColor);
+  //printAtLine("0123456789", 7, color, bgColor);
+  //printAtLine("!\"", 8, color, bgColor);
+
+  u_int8_t pos = 0;
+  pos = printLarge0At(dmd, pos, 48, color, bgColor);
+  pos = printLarge1At(dmd, pos, 48, color, bgColor);
   refreshDmd();
 
   //loadImage();

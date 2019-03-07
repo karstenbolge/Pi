@@ -6,7 +6,7 @@ void loadImage(char image[], char *pName)
 {
   char pFileName[256];
   sprintf(pFileName, "./graphics/SoulTrain/image%s.o", pName);
-  memset(&image, 0, 1440000);
+  memset(image, 0, 1440000);
   FILE *pOutputBinFile = fopen(pFileName, "rb");
   for (int i = 0; i < 160; i++)
   {

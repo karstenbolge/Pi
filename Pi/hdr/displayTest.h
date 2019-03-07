@@ -3,6 +3,7 @@
 
 void displayTestOpen();
 void displayTestExit();
+void displayTestEnter();
 void displayTestTick(uint8_t tick);
 
 #endif

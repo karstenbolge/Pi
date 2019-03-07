@@ -221,4 +221,3 @@ void loadAllImages()
   loadImage(&image00163[0], "00163");
   loadImage(&image00116[0], "00116");
 }
-

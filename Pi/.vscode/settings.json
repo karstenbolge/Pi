@@ -6,6 +6,7 @@
     "00150-v4.h": "c",
     "image.h": "c",
     "display.h": "c",
-    "platform.h": "c"
+    "platform.h": "c",
+    "displaytest.h": "c"
   },
 }

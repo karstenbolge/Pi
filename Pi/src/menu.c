@@ -243,7 +243,7 @@ void initMenu()
   menu->next->child->next->next->next->next->next->next->next->next->next->event->open = &displayTestOpen;
   menu->next->child->next->next->next->next->next->next->next->next->next->event->up = NULL;
   menu->next->child->next->next->next->next->next->next->next->next->next->event->down = NULL;
-  menu->next->child->next->next->next->next->next->next->next->next->next->event->enter = NULL;
+  menu->next->child->next->next->next->next->next->next->next->next->next->event->enter = &displayTestEnter;
   menu->next->child->next->next->next->next->next->next->next->next->next->event->exit = &displayTestExit;
   menu->next->child->next->next->next->next->next->next->next->next->next->previous = menu->next->child->next->next->next->next->next->next->next->next;
   menu->next->child->next->next->next->next->next->next->next->next->next->next = malloc(sizeof(menuItem_t));

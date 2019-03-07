@@ -1,16 +1,19 @@
-Make one source code for reading image files, and one header for all image buffers
+Make loading progress bar.
 
-Make Raspberry fullscreen
-
-Make more test menu of video.
-
-Use ubuntu output matrix 8 * 48.
+Make Raspberry fullscreen.
 
 Add cables to control and make start and extra ball button.
 
 Make volumn up down work on pi.
 
 // Make better physical boards, matrix 16 x 16 input, 16 X 24
+
+Make big font.
+
+Make new game(s).
+
+Adjust number of balls.
+Adjust allow restart game.
 
 
 print book

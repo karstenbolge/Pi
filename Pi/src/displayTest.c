@@ -6,17 +6,38 @@
 #include "../hdr/video.h"
 
 #define MODE_OFF 0
-#define MODE_SHOW 1
+#define MODE_WHEEL_VIDEO 1
+#define MODE_SIDE_TRAIN_VIDEO 2
+#define MODE_SOUL_TRAIN_VIDEO 3
 
 uint8_t inDisplayTestMode = MODE_OFF;
+
+void startNextVideo()
+{
+  inDisplayTestMode++;
+  if (inDisplayTestMode > MODE_SOUL_TRAIN_VIDEO)
+  {
+    inDisplayTestMode = MODE_WHEEL_VIDEO;
+  }
+
+  switch (inDisplayTestMode)
+  {
+  case MODE_WHEEL_VIDEO:
+    return startWheelVideo();
+  case MODE_SIDE_TRAIN_VIDEO:
+    return startTrainSideVideo();
+  case MODE_SOUL_TRAIN_VIDEO:
+    return startSoulTrainVideo();
+  }
+}
 
 void displayTestOpen()
 {
   clearDmd();
   refreshDmd();
 
-  startSoulTrainVideo();
-  inDisplayTestMode = MODE_SHOW;
+  inDisplayTestMode = MODE_OFF;
+  startNextVideo();
 }
 
 void displayTestExit()
@@ -24,14 +45,32 @@ void displayTestExit()
   inDisplayTestMode = MODE_OFF;
 }
 
+char *getNextImage()
+{
+  switch (inDisplayTestMode)
+  {
+  case MODE_WHEEL_VIDEO:
+    return getNextWheelFrame();
+  case MODE_SIDE_TRAIN_VIDEO:
+    return getNextTrainSide();
+  case MODE_SOUL_TRAIN_VIDEO:
+    return getNextSoulTrain();
+  }
+}
+
 void displayTestTick(uint8_t tick)
 {
-  if (inDisplayTestMode == MODE_SHOW)
+  if (inDisplayTestMode != MODE_OFF)
   {
     if (tick % 2 == 0)
     {
-      showImage(getNextSoulTrain());
+      showImage(getNextImage());
     }
     return;
   }
+}
+
+void displayTestEnter()
+{
+  startNextVideo();
 }
