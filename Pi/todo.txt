@@ -10,6 +10,8 @@ Make volumn up down work on pi.
 
 Make big font.
 
+Optimize font by optional paramter back color, if NULL then no color.
+
 Make new game(s).
 
 Adjust number of balls.
