@@ -108,6 +108,8 @@ int main(void)
   u_int8_t pos = 0;
   pos = printLarge0At(dmd, pos, 48, color, bgColor);
   pos = printLarge1At(dmd, pos, 48, color, bgColor);
+  pos = printLarge2At(dmd, pos, 48, color, bgColor);
+  pos = printLarge3At(dmd, pos, 48, color, bgColor);
   refreshDmd();
 
   //loadImage();
