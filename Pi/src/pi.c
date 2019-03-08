@@ -97,13 +97,18 @@ int main(void)
 
   printAtLine("¤€£0123456789", 0, color, bgColor);
   printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, color, bgColor);
-  printAtLine("abcdefghijklmnopqrstuvwxyz", 2, color, bgColor);
-  printAtLine("!\"#¤%&/()=?", 3, color, bgColor);
+  //printAtLine("abcdefghijklmnopqrstuvwxyz", 2, color, bgColor);
+  //printAtLine("!\"#¤%&/()=?", 3, color, bgColor);
   //printAtLine("@€£${[]}|~\\", 4, color, bgColor);
   //printAtLine("A.,-+±*'^", 5, color, bgColor);
   //printAtLine("0123456789", 6, color, bgColor);
   //printAtLine("0123456789", 7, color, bgColor);
   //printAtLine("!\"", 8, color, bgColor);
+
+  printAtLine("Loading : ", 2, color, bgColor);
+  drawProgress(4, 2, DMD_WIDTH - 35 - 1, color);
+  printAtLine("Testing : ", 3, color, bgColor);
+  drawProgress(0, 3, DMD_WIDTH - 35 - 1, color);
 
   u_int8_t pos = 0;
   pos += printLarge0At(dmd, pos, 48, color, bgColor);

@@ -1,4 +1,6 @@
 Make loading progress bar.
+https://www.shutterstock.com/video/clip-9553529-8-bit-retro-style-loading-text-progress-bar
+
 
 Make Raspberry fullscreen.
 

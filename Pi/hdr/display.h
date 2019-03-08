@@ -18,6 +18,9 @@ void clearScreen();
 void printAtLine(char *str, uint8_t line, rgb_t color, rgb_t bgColor);
 uint16_t printAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t color, rgb_t bgColor);
 
+void drawProgress(uint8_t progress, uint8_t line, uint16_t xPosition, rgb_t color);
+void drawProgressBlock(uint8_t progress, uint8_t line, uint16_t xPosition, rgb_t color);
+
 void frameLine(uint8_t line, uint16_t length, rgb_t bgColor);
 
 void fillLineWithColor(uint8_t line, rgb_t bgColor);
