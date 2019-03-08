@@ -1,6 +1,8 @@
 #ifndef _IMAGE_H_
 #define _IMAGE_H_
 
+int getNumberOfImages();
+
 void loadAllImages();
 void loadImage(char image[], char *pName);
 

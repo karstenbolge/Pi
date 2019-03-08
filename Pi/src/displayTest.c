@@ -9,6 +9,10 @@
 #define MODE_WHEEL_VIDEO 1
 #define MODE_SIDE_TRAIN_VIDEO 2
 #define MODE_SOUL_TRAIN_VIDEO 3
+#define MODE_SOUL_TRAIN_1_VIDEO 4
+#define MODE_PLANET_VIDEO 5
+#define MODE_PLANET_TRAIN_VIDEO 6
+#define MODE_PLANET_TRAIN_2_VIDEO 7
 
 uint8_t inDisplayTestMode = MODE_OFF;
 
@@ -27,7 +31,15 @@ void startNextVideo()
   case MODE_SIDE_TRAIN_VIDEO:
     return startTrainSideVideo();
   case MODE_SOUL_TRAIN_VIDEO:
-    return startSoulTrainVideo();
+    return startSideSoulTrain1Video();
+  case MODE_SOUL_TRAIN_1_VIDEO:
+    return startSideSoulTrain1Video();
+  case MODE_PLANET_VIDEO:
+    return startPlanetVideo();
+  case MODE_PLANET_TRAIN_VIDEO:
+    return startPlanetTrainVideo();
+  case MODE_PLANET_TRAIN_2_VIDEO:
+    return startPlanetTrain2Video();
   }
 }
 
@@ -52,9 +64,17 @@ char *getNextImage()
   case MODE_WHEEL_VIDEO:
     return getNextWheelFrame();
   case MODE_SIDE_TRAIN_VIDEO:
-    return getNextTrainSide();
+    return getNextTrainSideFrame();
   case MODE_SOUL_TRAIN_VIDEO:
-    return getNextSoulTrain();
+    return getNextSoulTrainFrame();
+  case MODE_SOUL_TRAIN_1_VIDEO:
+    return getNextSideSoulTrain1Frame();
+  case MODE_PLANET_VIDEO:
+    return getNextPlanetFrame();
+  case MODE_PLANET_TRAIN_VIDEO:
+    return getNextPlanetTrainFrame();
+  case MODE_PLANET_TRAIN_2_VIDEO:
+    return getNextPlanetTrain2Frame();
   }
 }
 

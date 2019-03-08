@@ -325,12 +325,17 @@ int main(int argc, char **argv)
 
   fprintf(pHeaderFile, "#ifndef _IMAGE_H_\n");
   fprintf(pHeaderFile, "#define _IMAGE_H_\n\n");
+  fprintf(pHeaderFile, "int getNumberOfImages();\n\n");
   fprintf(pHeaderFile, "void loadAllImages();\n");
   fprintf(pHeaderFile, "void loadImage(char image[], char *pName);\n\n");
 
-  fprintf(pSourceFile, "#include \"../hdr/image.h\"\n\n");
+  fprintf(pSourceFile, "#include \"../hdr/image.h\"\n");
+  fprintf(pSourceFile, "#include \"../hdr/display.h\"\n\n");
   fprintf(pSourceFile, "void loadAllImages()\n");
   fprintf(pSourceFile, "{\n");
+  fprintf(pSourceFile, "  int numberLoaded = 1;\n");
+  fprintf(pSourceFile, "  rgb_t color, bgColor;\n");
+  fprintf(pSourceFile, "  setColorType(&color, COLOR_RED);\n");
 
   DIR *directory;
   struct dirent *directoryFile;
@@ -349,6 +354,7 @@ int main(int argc, char **argv)
         //fprintf(pHeaderFile, "char *getImage%s();\n", pName);
         fprintf(pHeaderFile, "unsigned char image%s[800 * 450 * 4 + 1];\n", pName);
         fprintf(pSourceFile, "  loadImage(&image%s[0], \"%s\");\n", pName, pName);
+        fprintf(pSourceFile, "  drawProgress(10 * numberLoaded++ / getNumberOfImages(), 2, DMD_WIDTH - 35 - 1, color);\n");
 
         processFile(directoryFile->d_name, pName);
         fileNumber++;
@@ -361,5 +367,9 @@ int main(int argc, char **argv)
   fclose(pHeaderFile);
 
   fprintf(pSourceFile, "}\n\n");
+  fprintf(pSourceFile, "int getNumberOfImages()\n");
+  fprintf(pSourceFile, "{\n");
+  fprintf(pSourceFile, "  return %d;\n", fileNumber);
+  fprintf(pSourceFile, "}\n");
   fclose(pSourceFile);
 }

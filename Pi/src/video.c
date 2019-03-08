@@ -3,12 +3,11 @@
 
 uint8_t wheelFrame;
 uint8_t sideTrainFrame;
-uint8_t sideSoulTrain;
-
-//00002 - 00014
-//00017 - 00033
-//00033 - 00048
-//00049 - 00120
+uint8_t sideSoulTrainFrame;
+uint8_t sideSoulTrain1Frame;
+uint8_t planetFrame;
+uint8_t planetTrainFrame;
+uint8_t planetTrain2Frame;
 
 //01430 - 01529
 //01530 - 01611
@@ -50,7 +49,7 @@ void startTrainSideVideo()
   sideTrainFrame = 9;
 }
 
-char *getNextTrainSide()
+char *getNextTrainSideFrame()
 {
   sideTrainFrame++;
   if (sideTrainFrame > 9)
@@ -85,18 +84,18 @@ char *getNextTrainSide()
 
 void startSoulTrainVideo()
 {
-  sideSoulTrain = 87;
+  sideSoulTrainFrame = 87;
 }
 
-char *getNextSoulTrain()
+char *getNextSoulTrainFrame()
 {
-  sideSoulTrain++;
-  if (sideSoulTrain > 87)
+  sideSoulTrainFrame++;
+  if (sideSoulTrainFrame > 87)
   {
-    sideSoulTrain = 0;
+    sideSoulTrainFrame = 0;
   }
 
-  switch (sideSoulTrain)
+  switch (sideSoulTrainFrame)
   {
   case 0:
     return image00587;
@@ -274,5 +273,307 @@ char *getNextSoulTrain()
     return image00673;
   case 87:
     return image00674;
+  }
+}
+
+void startSideSoulTrain1Video()
+{
+  sideSoulTrain1Frame = 13;
+}
+
+char *getNextSideSoulTrain1Frame()
+{
+  sideSoulTrain1Frame++;
+  if (sideSoulTrain1Frame > 12)
+  {
+    sideSoulTrain1Frame = 0;
+  }
+
+  switch (sideSoulTrain1Frame)
+  {
+  case 0:
+    return image00002;
+  case 1:
+    return image00003;
+  case 2:
+    return image00004;
+  case 3:
+    return image00005;
+  case 4:
+    return image00006;
+  case 5:
+    return image00007;
+  case 6:
+    return image00008;
+  case 7:
+    return image00009;
+  case 8:
+    return image00010;
+  case 9:
+    return image00011;
+  case 10:
+    return image00012;
+  case 11:
+    return image00013;
+  case 12:
+    return image00014;
+  }
+}
+
+void startPlanetVideo()
+{
+  planetFrame = 17;
+}
+
+char *getNextPlanetFrame()
+{
+  planetFrame++;
+  if (planetFrame > 17)
+  {
+    planetFrame = 0;
+  }
+
+  switch (planetFrame)
+  {
+  case 0:
+    return image00017;
+  case 1:
+    return image00018;
+  case 2:
+    return image00019;
+  case 3:
+    return image00020;
+  case 4:
+    return image00021;
+  case 5:
+    return image00022;
+  case 6:
+    return image00023;
+  case 7:
+    return image00024;
+  case 8:
+    return image00025;
+  case 9:
+    return image00026;
+  case 10:
+    return image00027;
+  case 11:
+    return image00028;
+  case 12:
+    return image00029;
+  case 13:
+    return image00030;
+  case 14:
+    return image00031;
+  case 15:
+    return image00032;
+  case 16:
+    return image00033;
+  }
+}
+
+void startPlanetTrainVideo()
+{
+  planetTrainFrame = 12;
+}
+
+char *getNextPlanetTrainFrame()
+{
+  planetTrainFrame++;
+  if (planetTrainFrame > 12)
+  {
+    planetTrainFrame = 0;
+  }
+
+  switch (planetTrainFrame)
+  {
+  case 0:
+    return image00033;
+  case 1:
+    return image00034;
+  case 2:
+    return image00035;
+  case 3:
+    return image00036;
+  case 4:
+    return image00037;
+  case 5:
+    return image00038;
+  case 6:
+    return image00040;
+  case 7:
+    return image00041;
+  case 8:
+    return image00042;
+  case 9:
+    return image00044;
+  case 10:
+    return image00046;
+  case 11:
+    return image00047;
+  case 12:
+    return image00048;
+  }
+}
+
+void startPlanetTrain2Video()
+{
+  planetTrain2Frame = 71;
+}
+
+char *getNextPlanetTrain2Frame()
+{
+  planetTrain2Frame++;
+  if (planetTrain2Frame > 71)
+  {
+    planetTrain2Frame = 0;
+  }
+
+  switch (planetTrain2Frame)
+  {
+  case 0:
+    return image00049;
+  case 1:
+    return image00050;
+  case 2:
+    return image00051;
+  case 3:
+    return image00052;
+  case 4:
+    return image00053;
+  case 5:
+    return image00054;
+  case 6:
+    return image00055;
+  case 7:
+    return image00056;
+  case 8:
+    return image00057;
+  case 9:
+    return image00058;
+  case 10:
+    return image00059;
+  case 11:
+    return image00060;
+  case 12:
+    return image00061;
+  case 13:
+    return image00062;
+  case 14:
+    return image00063;
+  case 15:
+    return image00064;
+  case 16:
+    return image00065;
+  case 17:
+    return image00066;
+  case 18:
+    return image00067;
+  case 19:
+    return image00068;
+  case 20:
+    return image00069;
+  case 21:
+    return image00070;
+  case 22:
+    return image00071;
+  case 23:
+    return image00072;
+  case 24:
+    return image00073;
+  case 25:
+    return image00074;
+  case 26:
+    return image00075;
+  case 27:
+    return image00076;
+  case 28:
+    return image00077;
+  case 29:
+    return image00078;
+  case 30:
+    return image00079;
+  case 31:
+    return image00080;
+  case 32:
+    return image00081;
+  case 33:
+    return image00082;
+  case 34:
+    return image00083;
+  case 35:
+    return image00084;
+  case 36:
+    return image00085;
+  case 37:
+    return image00086;
+  case 38:
+    return image00087;
+  case 39:
+    return image00088;
+  case 40:
+    return image00089;
+  case 41:
+    return image00090;
+  case 42:
+    return image00091;
+  case 43:
+    return image00092;
+  case 44:
+    return image00093;
+  case 45:
+    return image00094;
+  case 46:
+    return image00095;
+  case 47:
+    return image00096;
+  case 48:
+    return image00097;
+  case 49:
+    return image00098;
+  case 50:
+    return image00099;
+  case 51:
+    return image00100;
+  case 52:
+    return image00101;
+  case 53:
+    return image00102;
+  case 54:
+    return image00103;
+  case 55:
+    return image00104;
+  case 56:
+    return image00105;
+  case 57:
+    return image00106;
+  case 58:
+    return image00107;
+  case 59:
+    return image00108;
+  case 60:
+    return image00109;
+  case 61:
+    return image00110;
+  case 62:
+    return image00111;
+  case 63:
+    return image00112;
+  case 64:
+    return image00113;
+  case 65:
+    return image00114;
+  case 66:
+    return image00115;
+  case 67:
+    return image00116;
+  case 68:
+    return image00117;
+  case 69:
+    return image00118;
+  case 70:
+    return image00119;
+  case 71:
+    return image00120;
   }
 }

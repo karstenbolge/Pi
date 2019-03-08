@@ -7,9 +7,21 @@ void startWheelVideo();
 char *getNextWheelFrame();
 
 void startTrainSideVideo();
-char *getNextTrainSide();
+char *getNextTrainSideFrame();
 
 void startSoulTrainVideo();
-char *getNextSoulTrain();
+char *getNextSoulTrainFrame();
+
+void startSideSoulTrain1Video();
+char *getNextSideSoulTrain1Frame();
+
+void startPlanetVideo();
+char *getNextPlanetFrame();
+
+void startPlanetTrainVideo();
+char *getNextPlanetTrainFrame();
+
+void startPlanetTrain2Video();
+char *getNextPlanetTrain2Frame();
 
 #endif
