@@ -39,9 +39,6 @@ void init()
   createWindow();
   readConfig();
 
-  initSounds();
-  loadAllImages();
-
   leds = 1;
   column = 0;
   upDownHeld = UP_DOWN_HELD_OFF;
@@ -95,8 +92,8 @@ int main(void)
   setColor(&bgColor, 0, 255, 255);
   setColorType(&bgColor, COLOR_BLACK);
 
-  printAtLine("¤€£0123456789", 0, color, bgColor);
-  printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, color, bgColor);
+  printAtLine("FunkenStein", 1, color, bgColor);
+  //printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, color, bgColor);
   //printAtLine("abcdefghijklmnopqrstuvwxyz", 2, color, bgColor);
   //printAtLine("!\"#¤%&/()=?", 3, color, bgColor);
   //printAtLine("@€£${[]}|~\\", 4, color, bgColor);
@@ -105,12 +102,16 @@ int main(void)
   //printAtLine("0123456789", 7, color, bgColor);
   //printAtLine("!\"", 8, color, bgColor);
 
-  printAtLine("Loading : ", 2, color, bgColor);
-  drawProgress(4, 2, DMD_WIDTH - 35 - 1, color);
-  printAtLine("Testing : ", 3, color, bgColor);
-  drawProgress(0, 3, DMD_WIDTH - 35 - 1, color);
+  printAtLineAndPosition("Loading", 3, 20, color, bgColor);
 
-  u_int8_t pos = 0;
+  printAtLineAndPosition("Videos", 4, 20, color, bgColor);
+  drawProgress(0, 4, DMD_WIDTH - 83 - 1, color);
+  printAtLineAndPosition("Sounds", 5, 20, color, bgColor);
+  drawProgress(0, 5, DMD_WIDTH - 83 - 1, color);
+  printAtLineAndPosition("Testing", 6, 20, color, bgColor);
+  drawProgress(0, 6, DMD_WIDTH - 83 - 1, color);
+
+  /*u_int8_t pos = 0;
   pos += printLarge0At(dmd, pos, 48, color, bgColor);
   pos += printLarge1At(dmd, pos, 48, color, bgColor);
   pos += printLarge2At(dmd, pos, 48, color, bgColor);
@@ -120,10 +121,22 @@ int main(void)
   pos += printLarge6At(dmd, pos, 48, color, bgColor);
   pos += printLarge7At(dmd, pos, 48, color, bgColor);
   pos += printLarge8At(dmd, pos, 48, color, bgColor);
-  pos += printLarge9At(dmd, pos, 48, color, bgColor);
+  pos += printLarge9At(dmd, pos, 48, color, bgColor);*/
   refreshDmd();
+  loadAllImages();
 
-  //loadImage();
+  initSounds();
+  drawProgress(20, 5, DMD_WIDTH - 83 - 1, color);
+
+  for (uint8_t i = 1; i < 21; i++)
+  {
+    drawProgress(i, 6, DMD_WIDTH - 83 - 1, color);
+    refreshDmd();
+    for (int j = 0; j < 10000; j++)
+    {
+      piSleep();
+    }
+  }
 
   struct timespec lastTime;
   struct timespec currentTime;

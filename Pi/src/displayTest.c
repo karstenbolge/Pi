@@ -19,7 +19,7 @@ uint8_t inDisplayTestMode = MODE_OFF;
 void startNextVideo()
 {
   inDisplayTestMode++;
-  if (inDisplayTestMode > MODE_SOUL_TRAIN_VIDEO)
+  if (inDisplayTestMode > MODE_PLANET_TRAIN_2_VIDEO)
   {
     inDisplayTestMode = MODE_WHEEL_VIDEO;
   }

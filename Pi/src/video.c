@@ -322,13 +322,13 @@ char *getNextSideSoulTrain1Frame()
 
 void startPlanetVideo()
 {
-  planetFrame = 17;
+  planetFrame = 14;
 }
 
 char *getNextPlanetFrame()
 {
   planetFrame++;
-  if (planetFrame > 17)
+  if (planetFrame > 14)
   {
     planetFrame = 0;
   }
@@ -365,22 +365,18 @@ char *getNextPlanetFrame()
     return image00030;
   case 14:
     return image00031;
-  case 15:
-    return image00032;
-  case 16:
-    return image00033;
   }
 }
 
 void startPlanetTrainVideo()
 {
-  planetTrainFrame = 12;
+  planetTrainFrame = 13;
 }
 
 char *getNextPlanetTrainFrame()
 {
   planetTrainFrame++;
-  if (planetTrainFrame > 12)
+  if (planetTrainFrame > 13)
   {
     planetTrainFrame = 0;
   }
@@ -388,30 +384,32 @@ char *getNextPlanetTrainFrame()
   switch (planetTrainFrame)
   {
   case 0:
-    return image00033;
+    return image00032;
   case 1:
-    return image00034;
+    return image00033;
   case 2:
-    return image00035;
+    return image00034;
   case 3:
-    return image00036;
+    return image00035;
   case 4:
-    return image00037;
+    return image00036;
   case 5:
-    return image00038;
+    return image00037;
   case 6:
-    return image00040;
+    return image00038;
   case 7:
-    return image00041;
+    return image00040;
   case 8:
-    return image00042;
+    return image00041;
   case 9:
-    return image00044;
+    return image00042;
   case 10:
-    return image00046;
+    return image00044;
   case 11:
-    return image00047;
+    return image00046;
   case 12:
+    return image00047;
+  case 13:
     return image00048;
   }
 }

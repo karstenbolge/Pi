@@ -330,6 +330,7 @@ int main(int argc, char **argv)
   fprintf(pHeaderFile, "void loadImage(char image[], char *pName);\n\n");
 
   fprintf(pSourceFile, "#include \"../hdr/image.h\"\n");
+  fprintf(pSourceFile, "#include \"../hdr/window.h\"\n");
   fprintf(pSourceFile, "#include \"../hdr/display.h\"\n\n");
   fprintf(pSourceFile, "void loadAllImages()\n");
   fprintf(pSourceFile, "{\n");
@@ -354,7 +355,8 @@ int main(int argc, char **argv)
         //fprintf(pHeaderFile, "char *getImage%s();\n", pName);
         fprintf(pHeaderFile, "unsigned char image%s[800 * 450 * 4 + 1];\n", pName);
         fprintf(pSourceFile, "  loadImage(&image%s[0], \"%s\");\n", pName, pName);
-        fprintf(pSourceFile, "  drawProgress(10 * numberLoaded++ / getNumberOfImages(), 2, DMD_WIDTH - 35 - 1, color);\n");
+        fprintf(pSourceFile, "  drawProgress(20 * ++numberLoaded / getNumberOfImages(), 4, DMD_WIDTH - 83 - 1, color);\n");
+        fprintf(pSourceFile, "  refreshDmd();\n");
 
         processFile(directoryFile->d_name, pName);
         fileNumber++;

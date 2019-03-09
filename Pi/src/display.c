@@ -350,13 +350,13 @@ uint16_t printAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb
 
 void drawProgress(uint8_t progress, uint8_t line, uint16_t xPosition, rgb_t color)
 {
-  if (xPosition + 35 >= DMD_WIDTH)
+  if (xPosition + 63 >= DMD_WIDTH)
   {
     return;
   }
 
   // horizotal
-  for (int i = xPosition; i < xPosition + 35; i++)
+  for (int i = xPosition; i < xPosition + 63; i++)
   {
     dmd[i][line * 12] = color;
     //dmd[i][line * 12 + 1] = color;
@@ -365,16 +365,16 @@ void drawProgress(uint8_t progress, uint8_t line, uint16_t xPosition, rgb_t colo
   }
 
   // vertical
-  for (int i = line * 12 + 2; i < line * 12 + 8; i++)
+  for (int i = line * 12 + 1; i < line * 12 + 9; i++)
   {
     dmd[xPosition][i] = color;
     //dmd[xPosition + 1][i] = color;
     //dmd[xPosition + 33][i] = color;
-    dmd[xPosition + 34][i] = color;
+    dmd[xPosition + 62][i] = color;
   }
 
   // bars
-  for (int i = 0; i < progress && i < 10; i++)
+  for (int i = 0; i < progress && i < 20; i++)
   {
     drawProgressBlock(i, line, xPosition, color);
   }
@@ -382,19 +382,19 @@ void drawProgress(uint8_t progress, uint8_t line, uint16_t xPosition, rgb_t colo
 
 void drawProgressBlock(uint8_t progress, uint8_t line, uint16_t xPosition, rgb_t color)
 {
+  dmd[xPosition + 2 + 3 * progress][line * 12 + 3] = color;
+  dmd[xPosition + 2 + 3 * progress][line * 12 + 4] = color;
+  dmd[xPosition + 2 + 3 * progress][line * 12 + 5] = color;
+  dmd[xPosition + 2 + 3 * progress][line * 12 + 6] = color;
   dmd[xPosition + 3 + 3 * progress][line * 12 + 3] = color;
   dmd[xPosition + 3 + 3 * progress][line * 12 + 4] = color;
   dmd[xPosition + 3 + 3 * progress][line * 12 + 5] = color;
   dmd[xPosition + 3 + 3 * progress][line * 12 + 6] = color;
-  dmd[xPosition + 4 + 3 * progress][line * 12 + 3] = color;
-  dmd[xPosition + 4 + 3 * progress][line * 12 + 4] = color;
-  dmd[xPosition + 4 + 3 * progress][line * 12 + 5] = color;
-  dmd[xPosition + 4 + 3 * progress][line * 12 + 6] = color;
 
+  dmd[xPosition + 2 + 3 * progress][line * 12 + 2] = color;
+  dmd[xPosition + 2 + 3 * progress][line * 12 + 7] = color;
   dmd[xPosition + 3 + 3 * progress][line * 12 + 2] = color;
   dmd[xPosition + 3 + 3 * progress][line * 12 + 7] = color;
-  dmd[xPosition + 4 + 3 * progress][line * 12 + 2] = color;
-  dmd[xPosition + 4 + 3 * progress][line * 12 + 7] = color;
 }
 
 void frameLine(uint8_t line, uint16_t length, rgb_t bgColor)

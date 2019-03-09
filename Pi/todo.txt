@@ -1,8 +1,11 @@
 Make loading progress bar.
 https://www.shutterstock.com/video/clip-9553529-8-bit-retro-style-loading-text-progress-bar
 
+Make refreshDmd, to create an image and load that image to avoid flickering.
 
 Make Raspberry fullscreen.
+
+Add : to font.
 
 Add cables to control and make start and extra ball button.
 
