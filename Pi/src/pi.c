@@ -85,12 +85,12 @@ int main(void)
   setup();
 
   platform();
-  playSoundBack();
 
-  rgb_t color, bgColor;
+  rgb_t color, bgColor, greenColor;
   setColorType(&color, COLOR_RED);
   setColor(&bgColor, 0, 255, 255);
   setColorType(&bgColor, COLOR_BLACK);
+  setColorType(&greenColor, COLOR_GREEN);
 
   printAtLine("FunkenStein", 1, color, bgColor);
   //printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, color, bgColor);
@@ -102,7 +102,8 @@ int main(void)
   //printAtLine("0123456789", 7, color, bgColor);
   //printAtLine("!\"", 8, color, bgColor);
 
-  printAtLineAndPosition("Loading", 3, 20, color, bgColor);
+  printAtLineAndPosition("Version", 3, 20, color, bgColor);
+  printAtLineAndPosition("1.0.2", 3, DMD_WIDTH - 83 - 1, color, bgColor);
 
   printAtLineAndPosition("Videos", 4, 20, color, bgColor);
   drawProgress(0, 4, DMD_WIDTH - 83 - 1, color);
@@ -124,19 +125,16 @@ int main(void)
   pos += printLarge9At(dmd, pos, 48, color, bgColor);*/
   refreshDmd();
   loadAllImages();
+  drawProgress(20, 4, DMD_WIDTH - 83 - 1, greenColor);
 
   initSounds();
-  drawProgress(20, 5, DMD_WIDTH - 83 - 1, color);
+  drawProgress(20, 5, DMD_WIDTH - 83 - 1, greenColor);
+  refreshDmd();
 
-  for (uint8_t i = 1; i < 21; i++)
-  {
-    drawProgress(i, 6, DMD_WIDTH - 83 - 1, color);
-    refreshDmd();
-    for (int j = 0; j < 10000; j++)
-    {
-      piSleep();
-    }
-  }
+  drawProgress(20, 6, DMD_WIDTH - 83 - 1, greenColor);
+  refreshDmd();
+
+  playSoundOk();
 
   struct timespec lastTime;
   struct timespec currentTime;

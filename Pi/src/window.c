@@ -138,6 +138,37 @@ void clearDmd()
 
 void refreshDmd()
 {
+  memset(dmdImage, 0, 1536000);
+  for (int i = 0; i < DMD_WIDTH; i++)
+  {
+    for (int j = 0; j < DMD_HEIGHT; j++)
+    {
+      for (int k = 0; k < 4; k++)
+      {
+        for (int l = 0; l < 4; l++)
+        {
+          // round corners
+          if ((k == 0 || k == 3) && (l == 0 || l == 3))
+            ;
+          else
+          {
+            dmdImage[((j * 5 + l) * 800 + (i * 5 + k)) * 4] = dmd[i][j].blue;
+            dmdImage[((j * 5 + l) * 800 + (i * 5 + k)) * 4 + 1] = dmd[i][j].green;
+            dmdImage[((j * 5 + l) * 800 + (i * 5 + k)) * 4 + 2] = dmd[i][j].red;
+          }
+        }
+      }
+    }
+  }
+
+  int screen_num = DefaultScreen(display);
+  Visual *visual = DefaultVisual(display, screen_num);
+  XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, dmdImage, 800, 480, 32, 0);
+  XPutImage(display, win, gc, ximage, 0, 0, 0, 0, 800, 480);
+}
+
+void makeDmd()
+{
   XSetForeground(display, gc, colorBlack.pixel);
   XFillRectangle(display, win, gc, 0, 0, 799, 479);
 

@@ -32,9 +32,11 @@ char *getSwitchName()
     case 7:
     case 8:
     case 9:
-    case 10:
-    case 11:
       return "Not used";
+    case 10:
+      return "Start";
+    case 11:
+      return "Extra ball";
     case 12:
       return "Up";
     case 13:
@@ -75,9 +77,10 @@ void drawDmdFrame(rgb_t *pColor)
   }
 }
 
-void drawDotIn(int j, int i, rgb_t *pColor)
+void drawDotIn(int i, int j, rgb_t *pColor)
 {
-  printf("Dot in %d %d\n", i, j);
+  j++;
+  i++;
   dmd[i * 9 + 4][j * 9 + 2] = *pColor;
   dmd[i * 9 + 5][j * 9 + 2] = *pColor;
 
@@ -140,44 +143,37 @@ void showMatrix(uint16_t oldInputRegister[8])
     // draw frame in loop draw actual
     drawDmdFrame(&color);
 
-    printf("  0 1 2 3 4 5 6 7 8 9 a b c d e f\n");
-    for (int i = 0; i < 8; i++)
+    for (int j = 0; j < 8; j++)
     {
-      printf("%d ", i);
-      for (int j = 0; j < 16; j++)
+      for (int i = 0; i < 16; i++)
       {
-        if (oldInputRegister[i] & 1 << j)
+        if (oldInputRegister[j] & 1 << i)
         {
-          if (inSwitchEdgeTestMode == MODE_SHOW_SINGLE && showColumn == i && showRow == j)
+          if (inSwitchEdgeTestMode == MODE_SHOW_SINGLE && showColumn == j && showRow == i)
           {
             drawDotIn(i, j, &colorYellow);
-            printf("X ");
           }
           else
           {
             drawDotIn(i, j, &color);
-            printf("x ");
           }
         }
         else
         {
-          if (inSwitchEdgeTestMode == MODE_SHOW_SINGLE && showColumn == i && showRow == j)
+          if (inSwitchEdgeTestMode == MODE_SHOW_SINGLE && showColumn == j && showRow == i)
           {
-            drawHithlightIn(i, j, &colorYellow);
-            printf("- ");
+            drawHithlightIn(j, i, &colorYellow);
           }
           else
           {
-            printf(". ");
           }
         }
       }
-      printf("\n");
     }
     if (inSwitchEdgeTestMode == MODE_SHOW_SINGLE)
     {
       printf("%s\n", getSwitchName());
-      printAtLineAndPosition(getSwitchName(), 7, 10, colorYellow, bgColor);
+      printAtLineAndPosition(getSwitchName(), 7, 10, color, bgColor);
     }
     refreshDmd();
   }

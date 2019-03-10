@@ -16,6 +16,11 @@ const int button3y = 485;
 const int button4x = 160;
 const int button4y = 485;
 
+const int buttonStartX = 700;
+const int buttonStartY = 485;
+const int buttonExtraX = 750;
+const int buttonExtraY = 485;
+
 const int buttonBeatX = 250;
 const int buttonBeatY = 485;
 
@@ -36,25 +41,35 @@ void setupWiring()
   XSetForeground(display, gc, colorRed.pixel);
   XFillRectangle(display, win, gc, 0, 480, 799, 529);
 
-  XSetForeground(display, gc, colorRed.pixel);
+  XSetForeground(display, gc, colorGreen.pixel);
   XFillRectangle(display, win, gc, button1x, button1y, buttonWidth, buttonHeight);
   XSetForeground(display, gc, colorBlack.pixel);
   XFillRectangle(display, win, gc, button1x + 2, button1y + 2, buttonWidth - 4, buttonHeight - 4);
 
-  XSetForeground(display, gc, colorRed.pixel);
+  XSetForeground(display, gc, colorGreen.pixel);
   XFillRectangle(display, win, gc, button2x, button2y, buttonWidth, buttonHeight);
   XSetForeground(display, gc, colorGreen.pixel);
   XFillRectangle(display, win, gc, button2x + 2, button2y + 2, buttonWidth - 4, buttonHeight - 4);
 
-  XSetForeground(display, gc, colorRed.pixel);
+  XSetForeground(display, gc, colorGreen.pixel);
   XFillRectangle(display, win, gc, button3x, button3y, buttonWidth, buttonHeight);
   XSetForeground(display, gc, colorWhite.pixel);
   XFillRectangle(display, win, gc, button3x + 2, button3y + 2, buttonWidth - 4, buttonHeight - 4);
 
-  XSetForeground(display, gc, colorRed.pixel);
+  XSetForeground(display, gc, colorGreen.pixel);
   XFillRectangle(display, win, gc, button4x, button4y, buttonWidth, buttonHeight);
   XSetForeground(display, gc, colorBlue.pixel);
   XFillRectangle(display, win, gc, button4x + 2, button4y + 2, buttonWidth - 4, buttonHeight - 4);
+
+  XSetForeground(display, gc, colorGreen.pixel);
+  XFillRectangle(display, win, gc, buttonStartX, buttonStartY, buttonWidth, buttonHeight);
+  XSetForeground(display, gc, colorBlue.pixel);
+  XFillRectangle(display, win, gc, buttonStartX + 2, buttonStartY + 2, buttonWidth - 4, buttonHeight - 4);
+
+  XSetForeground(display, gc, colorGreen.pixel);
+  XFillRectangle(display, win, gc, buttonExtraX, buttonExtraY, buttonWidth, buttonHeight);
+  XSetForeground(display, gc, colorBlack.pixel);
+  XFillRectangle(display, win, gc, buttonExtraX + 2, buttonExtraY + 2, buttonWidth - 4, buttonHeight - 4);
 
   XSetForeground(display, gc, colorBlack.pixel);
   // horizontal
@@ -119,6 +134,16 @@ void updateShiftIn()
     {
       onButton = 4;
     }
+    else if (cursorX >= x + buttonStartX && cursorX <= x + buttonStartX + buttonWidth &&
+             cursorY >= y + buttonStartY && cursorY <= y + buttonStartY + buttonHeight)
+    {
+      onButton = 5;
+    }
+    else if (cursorX >= x + buttonExtraX && cursorX <= x + buttonExtraX + buttonWidth &&
+             cursorY >= y + buttonExtraY && cursorY <= y + buttonExtraY + buttonHeight)
+    {
+      onButton = 6;
+    }
     else
     {
       onButton = 0;
@@ -145,6 +170,14 @@ void updateShiftIn()
   case 4:
     // set enter pressed
     newInputRegister = 1 << 3;
+    break;
+  case 5:
+    // set start pressed
+    newInputRegister = 1 << 10;
+    break;
+  case 6:
+    // set extraball pressed
+    newInputRegister = 1 << 11;
     break;
   default:
     newInputRegister = 0;

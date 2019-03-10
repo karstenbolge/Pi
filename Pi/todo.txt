@@ -1,8 +1,3 @@
-Make loading progress bar.
-https://www.shutterstock.com/video/clip-9553529-8-bit-retro-style-loading-text-progress-bar
-
-Make refreshDmd, to create an image and load that image to avoid flickering.
-
 Make Raspberry fullscreen.
 
 Add : to font.
@@ -18,6 +13,8 @@ Make big font.
 Optimize font by optional paramter back color, if NULL then no color.
 
 Make new game(s).
+
+Make attract mode.
 
 Adjust number of balls.
 Adjust allow restart game.

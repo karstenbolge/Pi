@@ -16,6 +16,8 @@ int screen;
 Window win;
 GC gc;
 
+unsigned char dmdImage[800 * 480 * 4 + 1];
+
 XColor colorRed, colorWhite, colorBlue, colorGreen, colorBlack, colorYellow;
 Colormap screenColorMap;
 
@@ -26,7 +28,7 @@ void redrawWindow();
 void showImage(char *image);
 
 void refreshDmd();
-
+void makeDmd();
 void clearDmd();
 
 void windowTestDraw();
