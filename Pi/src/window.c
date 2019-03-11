@@ -259,8 +259,8 @@ void showImage(char *image)
 {
   int screen_num = DefaultScreen(display);
   Visual *visual = DefaultVisual(display, screen_num);
-  XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, image, 800, 450, 32, 0);
-  XPutImage(display, win, gc, ximage, 0, 0, 0, 15, 800, 450);
+  XImage *ximage = XCreateImage(display, visual, DefaultDepth(display, screen_num), ZPixmap, 0, image, 800, 480, 32, 0);
+  XPutImage(display, win, gc, ximage, 0, 0, 0, 0, 800, 480);
 }
 
 void refreshDmd2()

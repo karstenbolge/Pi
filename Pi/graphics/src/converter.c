@@ -158,6 +158,19 @@ void processFile(char *pFileName, char *pImageName)
   sprintf(inputFilePath, "./SoulTrain/image%s.o", pImageName);
   FILE *pOutputBinFile = fopen(inputFilePath, "w");
 
+  // three blank lines
+  unsigned char blankChar = 0;
+  for (int i = 0; i < 160; i++)
+  {
+    for (int j = 0; j < 3; j++)
+    {
+
+      fwrite(&blankChar, 1, 1, pOutputBinFile);
+      fwrite(&blankChar, 1, 1, pOutputBinFile);
+      fwrite(&blankChar, 1, 1, pOutputBinFile);
+    }
+  }
+
   for (int i = 0; i < 160; i++)
   {
     for (int j = 0; j < 90; j++)
@@ -209,6 +222,18 @@ void processFile(char *pFileName, char *pImageName)
     {
       printf(".");
       fflush(stdout);
+    }
+  }
+
+  // three blank lines
+  for (int i = 0; i < 160; i++)
+  {
+    for (int j = 0; j < 3; j++)
+    {
+
+      fwrite(&blankChar, 1, 1, pOutputBinFile);
+      fwrite(&blankChar, 1, 1, pOutputBinFile);
+      fwrite(&blankChar, 1, 1, pOutputBinFile);
     }
   }
 
@@ -353,7 +378,7 @@ int main(int argc, char **argv)
 
         pName[pLastDot - pLastDash - 1] = 0;
         //fprintf(pHeaderFile, "char *getImage%s();\n", pName);
-        fprintf(pHeaderFile, "unsigned char image%s[800 * 450 * 4 + 1];\n", pName);
+        fprintf(pHeaderFile, "unsigned char image%s[800 * 480 * 4 + 1];\n", pName);
         fprintf(pSourceFile, "  loadImage(&image%s[0], \"%s\");\n", pName, pName);
         fprintf(pSourceFile, "  drawProgress(20 * ++numberLoaded / getNumberOfImages(), 4, DMD_WIDTH - 83 - 1, color);\n");
         fprintf(pSourceFile, "  refreshDmd();\n");
