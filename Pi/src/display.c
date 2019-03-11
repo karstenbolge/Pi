@@ -215,8 +215,14 @@ uint8_t printCharAt(unsigned char chr, uint16_t position, uint8_t line, rgb_t co
     return printPointAt(dmd, position, line, color, bgColor);
   case ',':
     return printCommaAt(dmd, position, line, color, bgColor);
+  case ':':
+    return printColonAt(dmd, position, line, color, bgColor);
+  case ';':
+    return printSemiColonAt(dmd, position, line, color, bgColor);
   case '-':
     return printMinusAt(dmd, position, line, color, bgColor);
+  case '_':
+    return printUnderScoreAt(dmd, position, line, color, bgColor);
   case '+':
     return printPlusAt(dmd, position, line, color, bgColor);
   case 256 - 79: //±

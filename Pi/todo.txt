@@ -1,7 +1,5 @@
 Make Raspberry fullscreen.
 
-Add : to font.
-
 Add cables to control and make start and extra ball button.
 
 Make volumn up down work on pi.

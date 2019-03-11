@@ -8500,6 +8500,136 @@ uint8_t printCommaAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb
   return width;
 }
 
+uint8_t printColonAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t color, rgb_t bgColor)
+{
+  uint8_t width = 3;
+  if (x + width > DMD_WIDTH || y + 10 > DMD_HEIGHT)
+  {
+    return 0;
+  }
+
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+
+  y++; //1
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+
+  y++; //2
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = color;
+  dmd[x + 2][y] = color;
+
+  y++; //3
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = color;
+  dmd[x + 2][y] = color;
+
+  y++; //4
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+
+  y++; //5
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+
+  y++; //6
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = color;
+  dmd[x + 2][y] = color;
+
+  y++; //7
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = color;
+  dmd[x + 2][y] = color;
+
+  y++; //8
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+
+  y++; //9
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+
+  y++; //10
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+
+  return width;
+}
+
+uint8_t printSemiColonAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t color, rgb_t bgColor)
+{
+  uint8_t width = 3;
+  if (x + width > DMD_WIDTH || y + 10 > DMD_HEIGHT)
+  {
+    return 0;
+  }
+
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+
+  y++; //1
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+
+  y++; //2
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = color;
+  dmd[x + 2][y] = color;
+
+  y++; //3
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = color;
+  dmd[x + 2][y] = color;
+
+  y++; //4
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+
+  y++; //5
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+
+  y++; //6
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = color;
+  dmd[x + 2][y] = color;
+
+  y++; //7
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = color;
+  dmd[x + 2][y] = color;
+
+  y++; //8
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = color;
+
+  y++; //9
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+
+  y++; //10
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+
+  return width;
+}
+
 uint8_t printMinusAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t color, rgb_t bgColor)
 {
   uint8_t width = 5;
@@ -8562,6 +8692,93 @@ uint8_t printMinusAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb
   dmd[x + 2][y] = bgColor;
   dmd[x + 3][y] = bgColor;
   dmd[x + 4][y] = bgColor;
+
+  y++; //8
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+  dmd[x + 3][y] = bgColor;
+  dmd[x + 4][y] = bgColor;
+
+  y++; //9
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+  dmd[x + 3][y] = bgColor;
+  dmd[x + 4][y] = bgColor;
+
+  y++; //10
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+  dmd[x + 3][y] = bgColor;
+  dmd[x + 4][y] = bgColor;
+
+  return width;
+}
+
+uint8_t printUnderScoreAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t color, rgb_t bgColor)
+{
+  uint8_t width = 5;
+  if (x + width > DMD_WIDTH || y + 10 > DMD_HEIGHT)
+  {
+    return 0;
+  }
+
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+  dmd[x + 3][y] = bgColor;
+  dmd[x + 4][y] = bgColor;
+
+  y++; //1
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+  dmd[x + 3][y] = bgColor;
+  dmd[x + 4][y] = bgColor;
+
+  y++; //2
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+  dmd[x + 3][y] = bgColor;
+  dmd[x + 4][y] = bgColor;
+
+  y++; //3
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+  dmd[x + 3][y] = bgColor;
+  dmd[x + 4][y] = bgColor;
+
+  y++; //4
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+  dmd[x + 3][y] = bgColor;
+  dmd[x + 4][y] = bgColor;
+
+  y++; //5
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+  dmd[x + 3][y] = bgColor;
+  dmd[x + 4][y] = bgColor;
+
+  y++; //6
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = bgColor;
+  dmd[x + 2][y] = bgColor;
+  dmd[x + 3][y] = bgColor;
+  dmd[x + 4][y] = bgColor;
+
+  y++; //7
+  dmd[x + 0][y] = bgColor;
+  dmd[x + 1][y] = color;
+  dmd[x + 2][y] = color;
+  dmd[x + 3][y] = color;
+  dmd[x + 4][y] = color;
 
   y++; //8
   dmd[x + 0][y] = bgColor;

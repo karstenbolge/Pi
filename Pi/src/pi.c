@@ -10,6 +10,7 @@
 #include "../hdr/window.h"
 #include "../hdr/image.h"
 #include "../hdr/data70.h"
+#include "../hdr/attrackMode.h"
 
 #define UP_DOWN_HELD_OFF 0
 #define UP_DOWN_HELD_UP 1
@@ -105,11 +106,11 @@ int main(void)
   printAtLineAndPosition("Version", 3, 20, color, bgColor);
   printAtLineAndPosition("1.0.2", 3, DMD_WIDTH - 83 - 1, color, bgColor);
 
-  printAtLineAndPosition("Videos", 4, 20, color, bgColor);
+  printAtLineAndPosition("Videos:", 4, 20, color, bgColor);
   drawProgress(0, 4, DMD_WIDTH - 83 - 1, color);
-  printAtLineAndPosition("Sounds", 5, 20, color, bgColor);
+  printAtLineAndPosition("Sounds;", 5, 20, color, bgColor);
   drawProgress(0, 5, DMD_WIDTH - 83 - 1, color);
-  printAtLineAndPosition("Testing", 6, 20, color, bgColor);
+  printAtLineAndPosition("Testing_", 6, 20, color, bgColor);
   drawProgress(0, 6, DMD_WIDTH - 83 - 1, color);
 
   /*u_int8_t pos = 0;
@@ -141,6 +142,8 @@ int main(void)
   uint32_t lastLoopsPrSecond = 0;
   uint32_t currentLoopsPrSecond = 0;
   uint16_t beat = 0;
+
+  //attrackModeOpen();
 
   while (1)
   {
@@ -236,6 +239,7 @@ int main(void)
       }
       onBeat(beat / 5);
       displayTestTick(beat % 2);
+      attrackModeTick(beat % 2);
       lastTime = currentTime;
     }
 

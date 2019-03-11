@@ -31,7 +31,7 @@ void startNextVideo()
   case MODE_SIDE_TRAIN_VIDEO:
     return startTrainSideVideo();
   case MODE_SOUL_TRAIN_VIDEO:
-    return startSideSoulTrain1Video();
+    return startSoulTrainVideo();
   case MODE_SOUL_TRAIN_1_VIDEO:
     return startSideSoulTrain1Video();
   case MODE_PLANET_VIDEO:
@@ -86,7 +86,6 @@ void displayTestTick(uint8_t tick)
     {
       showImage(getNextImage());
     }
-    return;
   }
 }
 

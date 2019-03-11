@@ -29,6 +29,7 @@ void initConfig()
   strcpy(config.highScore[4].initial.name, "DDD");
 
   config.volumn = 8;
+  config.numberOfBalls = 3;
 }
 
 FILE *pConfig;
@@ -51,6 +52,7 @@ int stringStart(char *str, char *in)
 #define THRID "  thrid:"
 #define FOURTH "  forth:"
 #define VOLUMN "volumn:"
+#define NUMBER_OF_BALLS "numberOfBalls:"
 
 void readConfig()
 {
@@ -73,6 +75,8 @@ void readConfig()
         config.version = atoi(value);
       if (stringStart(readBuffer, VOLUMN))
         config.volumn = atoi(value);
+      if (stringStart(readBuffer, NUMBER_OF_BALLS))
+        config.numberOfBalls = atoi(value);
       if (stringStart(readBuffer, HIGHSCORE))
         inGroup = IN_HIGH_SCORE;
       if (inGroup == IN_HIGH_SCORE)
@@ -165,6 +169,7 @@ void saveConfig()
   fprintf(pConfig, "%s %d\n", SCORE, config.highScore[4].initial.score);
   fprintf(pConfig, "%s %s\n", NAME, config.highScore[4].initial.name);
   fprintf(pConfig, "%s %d\n", VOLUMN, config.volumn);
+  fprintf(pConfig, "%s %d\n", NUMBER_OF_BALLS, config.numberOfBalls);
 
   fclose(pConfig);
 }
