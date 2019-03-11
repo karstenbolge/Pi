@@ -16,10 +16,13 @@ const int button3y = 485;
 const int button4x = 160;
 const int button4y = 485;
 
-const int buttonStartX = 700;
+const int buttonStartX = 600;
 const int buttonStartY = 485;
-const int buttonExtraX = 750;
+const int buttonExtraX = 650;
 const int buttonExtraY = 485;
+
+const int buttonCancelX = 700;
+const int buttonCancelY = 485;
 
 const int buttonBeatX = 250;
 const int buttonBeatY = 485;
@@ -70,6 +73,12 @@ void setupWiring()
   XFillRectangle(display, win, gc, buttonExtraX, buttonExtraY, buttonWidth, buttonHeight);
   XSetForeground(display, gc, colorBlack.pixel);
   XFillRectangle(display, win, gc, buttonExtraX + 2, buttonExtraY + 2, buttonWidth - 4, buttonHeight - 4);
+
+  XSetForeground(display, gc, colorGreen.pixel);
+  XFillRectangle(display, win, gc, buttonCancelX, buttonCancelY, buttonWidth, buttonHeight);
+  XSetForeground(display, gc, colorBlue.pixel);
+  XFillRectangle(display, win, gc, buttonCancelX + 2, buttonCancelY + 2, buttonWidth / 2 - 3, buttonHeight - 4);
+  XFillRectangle(display, win, gc, buttonCancelX + 1 + buttonWidth / 2, buttonCancelY + 2, buttonWidth / 2 - 3, buttonHeight - 4);
 
   XSetForeground(display, gc, colorBlack.pixel);
   // horizontal
@@ -144,6 +153,11 @@ void updateShiftIn()
     {
       onButton = 6;
     }
+    else if (cursorX >= x + buttonCancelX && cursorX <= x + buttonCancelX + buttonWidth &&
+             cursorY >= y + buttonCancelY && cursorY <= y + buttonCancelY + buttonHeight)
+    {
+      onButton = 7;
+    }
     else
     {
       onButton = 0;
@@ -178,6 +192,11 @@ void updateShiftIn()
   case 6:
     // set extraball pressed
     newInputRegister = 1 << 11;
+    break;
+  case 7:
+    // set left, rigth flipper pressed
+    newInputRegister = 1 << 5;
+    newInputRegister = 1 << 6;
     break;
   default:
     newInputRegister = 0;

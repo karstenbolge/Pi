@@ -27,8 +27,11 @@ char *getSwitchName()
     case 3:
       return "Enter";
     case 4:
+      return "Not used";
     case 5:
+      return "Left flipper";
     case 6:
+      return "Right flipper";
     case 7:
     case 8:
     case 9:
