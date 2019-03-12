@@ -1,0 +1,9 @@
+Add images, 
+place crop_image in ~bin filder and allow execution
+crop by 
+<script> <image> <crop_left> <crop_right> <crop_top> <crop_bottom>
+crop_image /path/to/image.jpg 20 30 40 50
+
+resize image by
+convert -resize 1024X768  source.png dest.jpg
+
