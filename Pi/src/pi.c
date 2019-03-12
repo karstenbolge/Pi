@@ -164,6 +164,7 @@ int main(void)
           else
           {
             menuExit();
+            attrackModeOpen();
           }
         }
         if ((oldInputRegister[column] & 1 << 3) != (newInputRegister & 1 << 3))
@@ -172,6 +173,7 @@ int main(void)
             ;
           else
           {
+            attrackModeExit();
             menuEnter();
           }
         }
@@ -200,6 +202,15 @@ int main(void)
             upDownHeld = UP_DOWN_HELD_OFF;
             upDownLoops = 0;
             upDownHasTicked = 0;
+          }
+        }
+        if ((oldInputRegister[column] & 1 << 14) != (newInputRegister & 1 << 14))
+        {
+          if (newInputRegister & 1 << 14)
+            ;
+          else
+          {
+            ballEnded();
           }
         }
         if ((oldInputRegister[column] & 1 << 15) != (newInputRegister & 1 << 15))

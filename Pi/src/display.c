@@ -35,7 +35,6 @@ void setScreenBufferColor(char *p, rgb_t color)
 
 uint8_t printLargeCharAt(unsigned char chr, uint16_t position, uint8_t line, rgb_t color, rgb_t bgColor)
 {
-  line = 24 * line + 1;
   switch (chr)
   {
   case '0':
@@ -60,6 +59,8 @@ uint8_t printLargeCharAt(unsigned char chr, uint16_t position, uint8_t line, rgb
     return printLarge9At(dmd, position, line, color, bgColor);
   case '.':
     return printLargePointAt(dmd, position, line, color, bgColor);
+  case ',':
+    return printLargeCommaAt(dmd, position, line, color, bgColor);
   default:
     printf("Never here!! %c %d\n", chr, chr);
     return 7;
@@ -401,6 +402,18 @@ uint16_t printLargeAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition
   return position;
 }
 
+uint16_t printLargeAtYAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t color, rgb_t bgColor)
+{
+  uint16_t position = xPosition;
+  while (*str != 0)
+  {
+    position += printLargeCharAt(*str, position, line, color, bgColor);
+    str++;
+  }
+
+  return position;
+}
+
 int makeScoreString(uint32_t score, char *pScore)
 {
   int millions = score / 1000000;
@@ -436,7 +449,7 @@ void printScore(uint32_t score, uint8_t line, uint8_t size)
 
   if (size == 2)
   {
-    printLargeAtLineAndPosition(pScore, line, DMD_WIDTH - width - 2, color, bgColor);
+    printLargeAtLineAndPosition(pScore, 5 + line * 24, DMD_WIDTH - width - 2, color, bgColor);
     return;
   }
 

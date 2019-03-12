@@ -41,6 +41,10 @@ void bonusBeat(gameItem_t *pItem, uint8_t tick, uint8_t cancel, void (*onNextBal
   onNextBall();
 }
 
+void ballEnded()
+{
+}
+
 void startButton()
 {
   printf("her %d\n", inGame);
@@ -62,6 +66,7 @@ void startButton()
 
   if (games[shooter].ballNumber < 2)
   {
+    shooter++;
     numberOfPlayers++;
     newGame(&games[numberOfPlayers - 1]);
     showScore();
@@ -92,14 +97,14 @@ void showScore()
   for (int i = 0; i < numberOfPlayers; i++)
   {
     int pos = 0;
-    for (int i = games[i].ballNumber; i <= config.numberOfBalls; i++)
+    for (int j = games[i].ballNumber; j < config.numberOfBalls; j++)
     {
-      pos += printBallAt(dmd, pos, 14 + 24 * i, color, bgColor);
+      pos += printBallAt(dmd, pos, 13 + 24 * i, color, bgColor);
     }
     pos = 0;
-    for (int i = 1; i <= games[i].extraBalls; i++)
+    for (int j = 1; j < 2 || games[i].extraBalls; j++)
     {
-      pos += printBallAt(dmd, pos, 2 + 24 * i, colorBlue, bgColor);
+      pos += printBallAt(dmd, pos, 4 + 24 * i, colorBlue, bgColor);
     }
     if (i == shooter)
     {

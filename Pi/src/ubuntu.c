@@ -24,6 +24,9 @@ const int buttonExtraY = 485;
 const int buttonCancelX = 700;
 const int buttonCancelY = 485;
 
+const int buttonBallEndedX = 750;
+const int buttonBallEndedY = 485;
+
 const int buttonBeatX = 250;
 const int buttonBeatY = 485;
 
@@ -79,6 +82,11 @@ void setupWiring()
   XSetForeground(display, gc, colorBlue.pixel);
   XFillRectangle(display, win, gc, buttonCancelX + 2, buttonCancelY + 2, buttonWidth / 2 - 3, buttonHeight - 4);
   XFillRectangle(display, win, gc, buttonCancelX + 1 + buttonWidth / 2, buttonCancelY + 2, buttonWidth / 2 - 3, buttonHeight - 4);
+
+  XSetForeground(display, gc, colorGreen.pixel);
+  XFillRectangle(display, win, gc, buttonBallEndedX, buttonBallEndedY, buttonWidth, buttonHeight);
+  XSetForeground(display, gc, colorBlack.pixel);
+  XFillRectangle(display, win, gc, buttonBallEndedX + 2, buttonBallEndedY + 2, buttonWidth - 4, buttonHeight - 4);
 
   XSetForeground(display, gc, colorBlack.pixel);
   // horizontal
@@ -158,6 +166,11 @@ void updateShiftIn()
     {
       onButton = 7;
     }
+    else if (cursorX >= x + buttonBallEndedX && cursorX <= x + buttonBallEndedX + buttonWidth &&
+             cursorY >= y + buttonBallEndedY && cursorY <= y + buttonBallEndedY + buttonHeight)
+    {
+      onButton = 8;
+    }
     else
     {
       onButton = 0;
@@ -197,6 +210,10 @@ void updateShiftIn()
     // set left, rigth flipper pressed
     newInputRegister = 1 << 5;
     newInputRegister = 1 << 6;
+    break;
+  case 8:
+    // set ball ended
+    newInputRegister = 1 << 14;
     break;
   default:
     newInputRegister = 0;

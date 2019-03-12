@@ -22,6 +22,7 @@ typedef struct gameItem
 #define RUNNING_GAME 2
 #define IN_BONUS 3
 #define IN_BUY_IN 4
+#define GAME_ENDED 5
 
 gameItem_t games[4];
 uint8_t numberOfPlayers;
@@ -35,5 +36,6 @@ void bonusBeat(gameItem_t *pItem, uint8_t tick, uint8_t cancel, void (*onNextBal
 void startButton();
 void showScore();
 void loadBall();
+void ballEnded();
 
 #endif

@@ -12,9 +12,9 @@ Optimize font by optional paramter back color, if NULL then no color.
 
 Make new game(s).
 
-Make attract mode.
-
 Generic yes no menu.
+
+Add ball ended functionality.
 
 Adjust number of balls.
 Adjust allow restart game.
