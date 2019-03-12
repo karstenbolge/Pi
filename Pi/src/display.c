@@ -433,7 +433,7 @@ int makeScoreString(uint32_t score, char *pScore)
   }
 
   sprintf(pScore, "%d", ones);
-  return 1;
+  return 0;
 }
 
 void printScore(uint32_t score, uint8_t line, uint8_t size)

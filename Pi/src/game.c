@@ -9,7 +9,7 @@ void newGame(gameItem_t *pItem)
 {
   pItem->ballNumber = 0;
   pItem->extraBalls = 0;
-  pItem->score = 3023087;
+  pItem->score = 0;
   pItem->instumentsCollected = 0;
   pItem->totalInstumentsCollected = 0;
 
@@ -37,12 +37,25 @@ void bonusBeat(gameItem_t *pItem, uint8_t tick, uint8_t cancel, void (*onNextBal
   pItem->bonuesBeat += pItem->bonusSpeed;
 
   pItem->totalInstumentsCollected += pItem->instumentsCollected;
-
-  onNextBall();
 }
 
 void ballEnded()
 {
+  printf("ballEnded\n");
+  if (shooter < numberOfPlayers)
+  {
+    shooter++;
+  }
+  else
+  {
+    shooter = 0;
+  }
+
+  if (games[shooter].ballNumber < config.numberOfBalls)
+  {
+    games[shooter].ballNumber++;
+    loadBall();
+  }
 }
 
 void startButton()
@@ -66,7 +79,6 @@ void startButton()
 
   if (games[shooter].ballNumber < 2)
   {
-    shooter++;
     numberOfPlayers++;
     newGame(&games[numberOfPlayers - 1]);
     showScore();
@@ -102,7 +114,7 @@ void showScore()
       pos += printBallAt(dmd, pos, 13 + 24 * i, color, bgColor);
     }
     pos = 0;
-    for (int j = 1; j < 2 || games[i].extraBalls; j++)
+    for (int j = 1; j < games[i].extraBalls; j++)
     {
       pos += printBallAt(dmd, pos, 4 + 24 * i, colorBlue, bgColor);
     }
