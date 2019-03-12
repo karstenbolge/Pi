@@ -1,6 +1,7 @@
 #include "../hdr/game.h"
 #include "../hdr/window.h"
 #include "../hdr/color.h"
+#include "../hdr/config.h"
 #include "../hdr/display.h"
 #include "../hdr/data70.h"
 
@@ -75,12 +76,23 @@ void loadBall()
 void showScore()
 {
   clearDmd();
-  rgb_t color, bgColor;
+  rgb_t color, bgColor, colorBlue;
   setColorType(&color, COLOR_RED);
   setColorType(&bgColor, COLOR_BLACK);
+  setColorType(&colorBlue, COLOR_BLUE);
 
   for (int i = 0; i < numberOfPlayers; i++)
   {
+    int pos = 0;
+    for (int i = games[i].ballNumber; i <= config.numberOfBalls; i++)
+    {
+      pos += printBallAt(dmd, pos, 14 + 24 * i, color, bgColor);
+    }
+    pos = 0;
+    for (int i = 1; i <= games[i].extraBalls; i++)
+    {
+      pos += printBallAt(dmd, pos, 2 + 24 * i, colorBlue, bgColor);
+    }
     if (i == shooter)
     {
       printScore(games[i].score, i, 2);
