@@ -8,6 +8,7 @@
     "display.h": "c",
     "platform.h": "c",
     "displaytest.h": "c",
-    "video.h": "c"
+    "video.h": "c",
+    "config.h": "c"
   },
 }

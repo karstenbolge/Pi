@@ -114,5 +114,6 @@ uint8_t printLarge6At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rg
 uint8_t printLarge7At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t color, rgb_t bgColor);
 uint8_t printLarge8At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t color, rgb_t bgColor);
 uint8_t printLarge9At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t color, rgb_t bgColor);
+uint8_t printLargePointAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t color, rgb_t bgColor);
 
 #endif

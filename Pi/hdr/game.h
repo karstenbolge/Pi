@@ -17,8 +17,20 @@ typedef struct gameItem
   uint32_t bonuesBeat;
 } gameItem_t;
 
+#define NO_GAME 0
+#define IN_GAME 1
+
+gameItem_t games[4];
+uint8_t numberOfPlayers;
+uint8_t shooter;
+uint8_t inGame;
+
 void newGame(gameItem_t *pItem);
 void newBall(gameItem_t *pItem);
 void bonusBeat(gameItem_t *pItem, uint8_t tick, uint8_t cancel, void (*onNextBall)(void));
+
+void startButton();
+void showScore();
+void loadBall();
 
 #endif

@@ -6,6 +6,7 @@
 #include <sys/mman.h>
 #include <sys/ioctl.h>
 #include <stdint.h>
+#include <string.h>
 #include "../hdr/display.h"
 #include "../hdr/data70.h"
 #include "../hdr/color.h"
@@ -29,6 +30,39 @@ void setScreenBufferColor(char *p, rgb_t color)
   *(p + 1) = color.green;
   *(p + 2) = color.red;
   *(p + 3) = 0;
+}
+
+uint8_t printLargeCharAt(unsigned char chr, uint16_t position, uint8_t line, rgb_t color, rgb_t bgColor)
+{
+  line = 24 * line + 1;
+  switch (chr)
+  {
+  case '0':
+    return printLarge0At(dmd, position, line, color, bgColor);
+  case '1':
+    return printLarge1At(dmd, position, line, color, bgColor);
+  case '2':
+    return printLarge2At(dmd, position, line, color, bgColor);
+  case '3':
+    return printLarge3At(dmd, position, line, color, bgColor);
+  case '4':
+    return printLarge4At(dmd, position, line, color, bgColor);
+  case '5':
+    return printLarge5At(dmd, position, line, color, bgColor);
+  case '6':
+    return printLarge6At(dmd, position, line, color, bgColor);
+  case '7':
+    return printLarge7At(dmd, position, line, color, bgColor);
+  case '8':
+    return printLarge8At(dmd, position, line, color, bgColor);
+  case '9':
+    return printLarge9At(dmd, position, line, color, bgColor);
+  case '.':
+    return printLargePointAt(dmd, position, line, color, bgColor);
+  default:
+    printf("Never here!! %c %d\n", chr, chr);
+    return 7;
+  }
 }
 
 uint8_t printCharAt(unsigned char chr, uint16_t position, uint8_t line, rgb_t color, rgb_t bgColor)
@@ -352,6 +386,60 @@ uint16_t printAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb
   }
 
   return position;
+}
+
+uint16_t printLargeAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t color, rgb_t bgColor)
+{
+  uint16_t position = xPosition;
+  while (*str != 0)
+  {
+    position += printLargeCharAt(*str, position, line, color, bgColor);
+    str++;
+  }
+
+  return position;
+}
+
+int makeScoreString(uint32_t score, char *pScore)
+{
+  int millions = score / 1000000;
+  int thousands = (score - 1000000 * millions) / 1000;
+  int ones = score - 1000000 * millions - 1000 * thousands;
+
+  if (millions > 0)
+  {
+    sprintf(pScore, "%d.%03d.%03d", millions, thousands, ones);
+    return 2;
+  }
+
+  if (thousands > 0)
+  {
+    sprintf(pScore, "%d.%03d", thousands, ones);
+    return 1;
+  }
+
+  sprintf(pScore, "%d", ones);
+  return 1;
+}
+
+void printScore(uint32_t score, uint8_t line, uint8_t size)
+{
+  rgb_t color, bgColor;
+  setColorType(&color, COLOR_RED);
+  setColorType(&bgColor, COLOR_BLACK);
+
+  char pScore[12];
+  int seperatos = makeScoreString(score, pScore);
+
+  int width = seperatos * 3 * size + (strlen(pScore) - seperatos) * 7 * size;
+
+  if (size == 2)
+  {
+    printLargeAtLineAndPosition(pScore, line, DMD_WIDTH - width - 2, color, bgColor);
+    return;
+  }
+
+  printAtLineAndPosition(pScore, line * 2 + (2 - size), DMD_WIDTH - width - 2, color, bgColor);
 }
 
 void drawProgress(uint8_t progress, uint8_t line, uint16_t xPosition, rgb_t color)

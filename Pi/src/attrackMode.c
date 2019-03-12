@@ -11,7 +11,7 @@ uint8_t inAtrackMmodeMode = MODE_OFF;
 void attrackModeOpen()
 {
   inAtrackMmodeMode = MODE_ON;
-  startSoulTrainVideo();
+  startSideSoulTrain1Video();
 }
 
 void attrackModeExit()
@@ -25,7 +25,7 @@ void attrackModeTick(uint8_t tick)
   {
     if (tick % 2 == 0)
     {
-      showImage(getNextSoulTrainFrame());
+      showImage(getNextSideSoulTrain1Frame());
     }
   }
 }

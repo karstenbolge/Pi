@@ -164,10 +164,9 @@ void processFile(char *pFileName, char *pImageName)
   {
     for (int j = 0; j < 3; j++)
     {
-
-      fwrite(&blankChar, 1, 1, pOutputBinFile);
-      fwrite(&blankChar, 1, 1, pOutputBinFile);
-      fwrite(&blankChar, 1, 1, pOutputBinFile);
+      //fwrite(&blankChar, 1, 1, pOutputBinFile);
+      //fwrite(&blankChar, 1, 1, pOutputBinFile);
+      //fwrite(&blankChar, 1, 1, pOutputBinFile);
     }
   }
 
@@ -230,10 +229,9 @@ void processFile(char *pFileName, char *pImageName)
   {
     for (int j = 0; j < 3; j++)
     {
-
-      fwrite(&blankChar, 1, 1, pOutputBinFile);
-      fwrite(&blankChar, 1, 1, pOutputBinFile);
-      fwrite(&blankChar, 1, 1, pOutputBinFile);
+      //fwrite(&blankChar, 1, 1, pOutputBinFile);
+      //fwrite(&blankChar, 1, 1, pOutputBinFile);
+      //fwrite(&blankChar, 1, 1, pOutputBinFile);
     }
   }
 
