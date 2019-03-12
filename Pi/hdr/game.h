@@ -18,7 +18,10 @@ typedef struct gameItem
 } gameItem_t;
 
 #define NO_GAME 0
-#define IN_GAME 1
+#define BEFORE_LAUNCH 1
+#define RUNNING_GAME 2
+#define IN_BONUS 3
+#define IN_BUY_IN 4
 
 gameItem_t games[4];
 uint8_t numberOfPlayers;

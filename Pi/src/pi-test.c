@@ -110,8 +110,6 @@ int main(void)
     wifiList = wifiList->next;
   }
 
-  //printf("System %d\n", getSystem());
-
   rgb_t color, bgColor;
   setColorType(&color, COLOR_RED);
   setColor(&bgColor, 0, 255, 255);

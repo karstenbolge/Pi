@@ -6,10 +6,6 @@
 
 #define CONFIG_BUFFER_SIZE 120
 
-#define SYSTEM_NOT_DETECTED 0
-#define SYSTEM_UBUNTU 1
-#define SYSTEM_RASPBERRY 2
-
 typedef struct scoreItem
 {
   char name[4];
@@ -28,6 +24,9 @@ typedef struct config
   highScoreItem_t highScore[5];
   uint8_t volumn;
   uint8_t numberOfBalls;
+  char decimalSeperator;
+  uint8_t buyInExtraBall;
+  uint8_t allowRestart;
 } config_t;
 
 config_t config;
@@ -35,8 +34,5 @@ config_t config;
 void readConfig();
 void saveConfig();
 void resetHighScore();
-
-uint8_t thisSystem;
-uint8_t getSystem();
 
 #endif

@@ -11,6 +11,7 @@
 #include "../hdr/data70.h"
 #include "../hdr/color.h"
 #include "../hdr/platform.h"
+#include "../hdr/config.h"
 
 void clearScreen()
 {
@@ -408,13 +409,13 @@ int makeScoreString(uint32_t score, char *pScore)
 
   if (millions > 0)
   {
-    sprintf(pScore, "%d.%03d.%03d", millions, thousands, ones);
+    sprintf(pScore, "%d%c%03d%c%03d", millions, config.decimalSeperator, thousands, config.decimalSeperator, ones);
     return 2;
   }
 
   if (thousands > 0)
   {
-    sprintf(pScore, "%d.%03d", thousands, ones);
+    sprintf(pScore, "%d%c%03d", thousands, config.decimalSeperator, ones);
     return 1;
   }
 

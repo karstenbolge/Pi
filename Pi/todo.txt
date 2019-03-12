@@ -14,6 +14,8 @@ Make new game(s).
 
 Make attract mode.
 
+Generic yes no menu.
+
 Adjust number of balls.
 Adjust allow restart game.
 

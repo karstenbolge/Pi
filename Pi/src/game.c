@@ -46,7 +46,7 @@ void startButton()
   printf("her %d\n", inGame);
   if (inGame == NO_GAME)
   {
-    inGame = IN_GAME;
+    inGame = BEFORE_LAUNCH;
     numberOfPlayers = 1;
     shooter = 0;
     newGame(&games[0]);
@@ -65,6 +65,14 @@ void startButton()
     numberOfPlayers++;
     newGame(&games[numberOfPlayers - 1]);
     showScore();
+    return;
+  }
+
+  // Allow restart game
+  if (config.allowRestart)
+  {
+    inGame = NO_GAME;
+    startButton();
   }
 }
 

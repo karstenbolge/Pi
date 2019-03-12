@@ -4,8 +4,6 @@
 
 void initConfig()
 {
-  thisSystem = SYSTEM_NOT_DETECTED;
-
   config.version = 1;
   config.highScore[0].current.score = 50000;
   strcpy(config.highScore[0].current.name, "KUB");
@@ -30,6 +28,9 @@ void initConfig()
 
   config.volumn = 8;
   config.numberOfBalls = 3;
+  config.decimalSeperator = '.';
+  config.buyInExtraBall = 0;
+  config.allowRestart = 0;
 }
 
 FILE *pConfig;
@@ -53,6 +54,9 @@ int stringStart(char *str, char *in)
 #define FOURTH "  forth:"
 #define VOLUMN "volumn:"
 #define NUMBER_OF_BALLS "numberOfBalls:"
+#define DECIMAL_SEPERATOR "decimalSeperator:"
+#define BUY_IN_EXTRA_BALL "buyInExtraBall:"
+#define ALLOW_RESTART "allowRestart:"
 
 void readConfig()
 {
@@ -77,6 +81,12 @@ void readConfig()
         config.volumn = atoi(value);
       if (stringStart(readBuffer, NUMBER_OF_BALLS))
         config.numberOfBalls = atoi(value);
+      if (stringStart(readBuffer, DECIMAL_SEPERATOR))
+        config.decimalSeperator = value[0];
+      if (stringStart(readBuffer, BUY_IN_EXTRA_BALL))
+        config.buyInExtraBall = atoi(value);
+      if (stringStart(readBuffer, ALLOW_RESTART))
+        config.allowRestart = atoi(value);
       if (stringStart(readBuffer, HIGHSCORE))
         inGroup = IN_HIGH_SCORE;
       if (inGroup == IN_HIGH_SCORE)
@@ -170,46 +180,9 @@ void saveConfig()
   fprintf(pConfig, "%s %s\n", NAME, config.highScore[4].initial.name);
   fprintf(pConfig, "%s %d\n", VOLUMN, config.volumn);
   fprintf(pConfig, "%s %d\n", NUMBER_OF_BALLS, config.numberOfBalls);
+  fprintf(pConfig, "%s %c\n", DECIMAL_SEPERATOR, config.decimalSeperator);
+  fprintf(pConfig, "%s %d\n", BUY_IN_EXTRA_BALL, config.buyInExtraBall);
+  fprintf(pConfig, "%s %d\n", ALLOW_RESTART, config.allowRestart);
 
   fclose(pConfig);
-}
-
-uint8_t getSystem()
-{
-  if (thisSystem == SYSTEM_NOT_DETECTED)
-  {
-    FILE *fp;
-    char path[1035];
-
-    /* Open the command for reading. */
-    fp = popen("lsb_release -a | grep Distributor", "r");
-    if (fp == NULL)
-    {
-      writeLogString("Failed to run command, lsb_release -a\n");
-      return SYSTEM_NOT_DETECTED;
-    }
-
-    while (fgets(path, sizeof(path) - 1, fp) != NULL)
-    {
-      char *name = strstr(path, "Distributor ID:");
-      if (name)
-      {
-        // move past key:
-        name += 16;
-        if (strlen(name) > 6 && memcmp(name, "Ubuntu", 6) == 0)
-        {
-          thisSystem = SYSTEM_UBUNTU;
-        }
-        if (strcmp(name, "Raspbian") != 0)
-        {
-          thisSystem = SYSTEM_RASPBERRY;
-        }
-      }
-    }
-
-    /* close */
-    pclose(fp);
-  }
-
-  return thisSystem;
 }
