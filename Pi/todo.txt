@@ -11,10 +11,11 @@ Make big font.
 Optimize font by optional paramter back color, if NULL then no color.
 
 Make new game(s).
+Add buy in extra ball.
+
+Add random player test logic.
 
 Generic yes no menu.
-
-Add ball ended functionality.
 
 Adjust number of balls.
 Adjust allow restart game.

@@ -208,8 +208,7 @@ void updateShiftIn()
     break;
   case 7:
     // set left, rigth flipper pressed
-    newInputRegister = 1 << 5;
-    newInputRegister = 1 << 6;
+    newInputRegister = (1 << 5) + (1 << 6);
     break;
   case 8:
     // set ball ended

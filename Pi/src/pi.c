@@ -177,6 +177,12 @@ int main(void)
             menuEnter();
           }
         }
+
+        // both flippers down
+        if ((newInputRegister & 1 << 5) && (newInputRegister & 1 << 6))
+        {
+          fastBonus();
+        }
         if ((oldInputRegister[column] & 1 << 10) != (newInputRegister & 1 << 10))
         {
           if (newInputRegister & 1 << 10)
@@ -263,6 +269,7 @@ int main(void)
       onBeat(beat / 5);
       displayTestTick(beat % 2);
       attrackModeTick(beat % 2);
+      gameBeat(beat % 2);
       lastTime = currentTime;
     }
 
