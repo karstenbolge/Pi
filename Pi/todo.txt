@@ -11,7 +11,7 @@ Make big font.
 Optimize font by optional paramter back color, if NULL then no color.
 
 Make new game(s).
-Add buy in extra ball.
+Add buy in extra ball. Full screen you may buy one extra ball press extra ball.
 
 Add random player test logic.
 
@@ -19,6 +19,11 @@ Generic yes no menu.
 
 Adjust number of balls.
 Adjust allow restart game.
+
+Make central text.
+
+Before launch score blinking,
+When playing score is rolling.
 
 
 print book
