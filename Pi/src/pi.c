@@ -87,6 +87,8 @@ int main(void)
   init();
   setup();
 
+  srand(time(NULL));
+
   platform();
 
   rgb_t color, bgColor, greenColor;
@@ -193,6 +195,15 @@ int main(void)
             startButton();
           }
         }
+        if ((oldInputRegister[column] & 1 << 11) != (newInputRegister & 1 << 11))
+        {
+          if (newInputRegister & 1 << 11)
+            ;
+          else
+          {
+            buyExtraBall();
+          }
+        }
         if ((oldInputRegister[column] & 1 << 12) != (newInputRegister & 1 << 12))
         {
           if (newInputRegister & 1 << 12)
@@ -219,6 +230,15 @@ int main(void)
             ballEnded();
           }
         }
+        if ((oldInputRegister[column] & 1 << 13) != (newInputRegister & 1 << 13))
+        {
+          if (newInputRegister & 1 << 13)
+            ;
+          else
+          {
+            ballLaunched();
+          }
+        }
         if ((oldInputRegister[column] & 1 << 15) != (newInputRegister & 1 << 15))
         {
           if (newInputRegister & 1 << 15)
@@ -240,6 +260,16 @@ int main(void)
       }
       oldInputRegister[column] = newInputRegister;
       showMatrix(oldInputRegister);
+    }
+
+    // test code to have action on score screen
+    if (inGame == RUNNING_GAME)
+    {
+      int r = rand() % 600000;
+      if (r == 2)
+      {
+        onBumberA();
+      }
     }
 
     currentLoopsPrSecond++;
@@ -269,7 +299,7 @@ int main(void)
       onBeat(beat / 5);
       displayTestTick(beat % 2);
       attrackModeTick(beat % 2);
-      gameBeat(beat % 2);
+      gameBeat(beat);
       lastTime = currentTime;
     }
 

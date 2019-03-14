@@ -7,20 +7,22 @@ Make volumn up down work on pi.
 // Make better physical boards, matrix 16 x 16 input, 16 X 24
 
 Make big font.
+Adjust number of balls.
+Adjust allow restart game.
 
+Make central text.
 Optimize font by optional paramter back color, if NULL then no color.
+
+Generic yes no menu?
+
+make total bonus a little longer.
 
 Make new game(s).
 Add buy in extra ball. Full screen you may buy one extra ball press extra ball.
 
 Add random player test logic.
 
-Generic yes no menu.
 
-Adjust number of balls.
-Adjust allow restart game.
-
-Make central text.
 
 Before launch score blinking,
 When playing score is rolling.

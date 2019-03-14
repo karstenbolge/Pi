@@ -16,6 +16,9 @@ const int button3y = 485;
 const int button4x = 160;
 const int button4y = 485;
 
+const int plungerX = 570;
+const int plungerY = 485;
+
 const int buttonStartX = 600;
 const int buttonStartY = 485;
 const int buttonExtraX = 650;
@@ -66,6 +69,11 @@ void setupWiring()
   XFillRectangle(display, win, gc, button4x, button4y, buttonWidth, buttonHeight);
   XSetForeground(display, gc, colorBlue.pixel);
   XFillRectangle(display, win, gc, button4x + 2, button4y + 2, buttonWidth - 4, buttonHeight - 4);
+
+  XSetForeground(display, gc, colorGreen.pixel);
+  XFillRectangle(display, win, gc, plungerX, plungerY, buttonWidth / 2, buttonHeight);
+  XSetForeground(display, gc, colorBlack.pixel);
+  XFillRectangle(display, win, gc, plungerX + 2, plungerY + 2, buttonWidth / 2 - 4, buttonHeight - 4);
 
   XSetForeground(display, gc, colorGreen.pixel);
   XFillRectangle(display, win, gc, buttonStartX, buttonStartY, buttonWidth, buttonHeight);
@@ -171,6 +179,11 @@ void updateShiftIn()
     {
       onButton = 8;
     }
+    else if (cursorX >= x + plungerX && cursorX <= x + plungerX + buttonWidth &&
+             cursorY >= y + plungerY && cursorY <= y + plungerY + buttonHeight)
+    {
+      onButton = 9;
+    }
     else
     {
       onButton = 0;
@@ -213,6 +226,10 @@ void updateShiftIn()
   case 8:
     // set ball ended
     newInputRegister = 1 << 14;
+    break;
+  case 9:
+    // set plunger
+    newInputRegister = 1 << 13;
     break;
   default:
     newInputRegister = 0;

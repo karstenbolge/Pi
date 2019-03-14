@@ -41,25 +41,25 @@ void bonusBeat(gameItem_t *pItem, uint8_t tick, uint8_t cancel, void (*onNextBal
 
 void ballEnded()
 {
-  printf("ballEnded\n");
+  if (inGame == BEFORE_LAUNCH)
+  {
+    printf("Cannot end ball before launch\n");
+    return;
+  }
 
   bonusSpeed = 1;
-  addEvent(181, EVENT_SHOW_BONUS, 0);
+  addEvent(231, EVENT_SHOW_BONUS, 0);
 }
 
 void startButton()
 {
-  printf("her %d\n", inGame);
   if (inGame == NO_GAME)
   {
-    inGame = BEFORE_LAUNCH;
     numberOfPlayers = 1;
     shooter = 0;
     newGame(&games[0]);
     loadBall();
-    showScore();
-    // TODO remove test stat
-    inGame = RUNNING_GAME;
+    showScore(0);
     return;
   }
 
@@ -72,7 +72,7 @@ void startButton()
   {
     numberOfPlayers++;
     newGame(&games[numberOfPlayers - 1]);
-    addEvent(1, EVENT_SHOW_SCORE, 0);
+    //addEvent(1, EVENT_SHOW_SCORE, 0);
     return;
   }
 
@@ -84,12 +84,20 @@ void startButton()
   }
 }
 
+void onBumberA()
+{
+  launchBlink = 0;
+  games[shooter].score += 1;
+}
+
 void loadBall()
 {
+  inGame = BEFORE_LAUNCH;
+  launchBlink = 0;
   games[shooter].ballNumber++;
 }
 
-void showScore()
+void showScore(uint8_t type)
 {
   clearDmd();
   rgb_t color, bgColor, colorBlue;
@@ -111,7 +119,24 @@ void showScore()
     }
     if (i == shooter)
     {
-      printScore(games[i].score, i, 2);
+      // make score blinking before launch
+      if (type == 1 && launchBlink >= 5)
+        ;
+      else
+      {
+        if (type == 0 && launchBlink >= 48)
+        {
+          printf("Roling score %d\n", launchBlink);
+          if (launchBlink >= 64)
+          {
+            launchBlink = 47;
+          }
+        }
+        else
+        {
+          printScore(games[i].score, i, 2);
+        }
+      }
     }
     else
     {
@@ -192,7 +217,36 @@ void showGameEnded(int event)
 
 void fastBonus()
 {
+  if (inGame != IN_BONUS && inGame != IN_BUY_IN)
+  {
+    return;
+  }
+  printf("Fast bonus set\n");
   bonusSpeed = 5;
+}
+
+void ballLaunched()
+{
+  if (inGame != BEFORE_LAUNCH)
+  {
+    printf("Cannot launch ball now\n");
+  }
+
+  printf("ballLaunched\n");
+  inGame = RUNNING_GAME;
+  launchBlink = 0;
+  showScore(0);
+}
+
+void buyExtraBall()
+{
+  if (inGame != IN_BUY_IN)
+  {
+    return;
+  }
+
+  // remove bonus event
+  // add buy in event, in buy in show ball ready, and load ball for player
 }
 
 void showBonus(int event)
@@ -208,21 +262,21 @@ void showBonus(int event)
   char str[32];
   char str2[32];
 
-  if (events[event].beats == 180 || events[event].beats == 165 || events[event].beats == 150)
+  if (events[event].beats == 230 || events[event].beats == 215 || events[event].beats == 200)
   {
     if (games[shooter].totalInstumentsCollected > 0)
     {
       clearDmd();
       sprintf(str, "Instuments collected %d", games[shooter].totalInstumentsCollected);
       printAtLine(str, 1, color, bgColor);
-      if (events[event].beats == 165 || events[event].beats == 150)
+      if (events[event].beats == 215 || events[event].beats == 200)
       {
         sprintf(str, "Multiplier %d", games[shooter].multiplier);
         printAtLine(str, 2, color, bgColor);
         sprintf(str, "500 * %d * %d", games[shooter].totalInstumentsCollected, games[shooter].multiplier);
         printAtLine(str, 3, color, bgColor);
       }
-      if (events[event].beats == 150)
+      if (events[event].beats == 200)
       {
         printAtLine("Total", 5, color, bgColor);
         makeScoreString(500 * games[shooter].totalInstumentsCollected * games[shooter].multiplier, str);
@@ -231,24 +285,24 @@ void showBonus(int event)
       refreshDmd();
       return;
     }
-    events[event].beats == 145;
+    events[event].beats == 185;
   }
 
-  if (events[event].beats == 145 || events[event].beats == 130 || events[event].beats == 115)
+  if (events[event].beats == 185 || events[event].beats == 170 || events[event].beats == 155)
   {
     if (games[shooter].totalMovesCollected > 0)
     {
       clearDmd();
       sprintf(str, "Moves collected %d", games[shooter].totalMovesCollected);
       printAtLine(str, 1, color, bgColor);
-      if (events[event].beats == 130 || events[event].beats == 115)
+      if (events[event].beats == 170 || events[event].beats == 155)
       {
         sprintf(str, "Multiplier %d", games[shooter].multiplier);
         printAtLine(str, 2, color, bgColor);
         sprintf(str, "250 * %d * %d", games[shooter].totalMovesCollected, games[shooter].multiplier);
         printAtLine(str, 3, color, bgColor);
       }
-      if (events[event].beats == 115)
+      if (events[event].beats == 155)
       {
         printAtLine("Total", 5, color, bgColor);
         makeScoreString(250 * games[shooter].totalMovesCollected * games[shooter].multiplier, str);
@@ -257,10 +311,10 @@ void showBonus(int event)
       refreshDmd();
       return;
     }
-    events[event].beats == 100;
+    events[event].beats == 140;
   }
 
-  if (events[event].beats == 100 || events[event].beats == 75)
+  if (events[event].beats == 140 || events[event].beats == 125)
   {
     if (games[shooter].totalInstumentsCollected > 0 || games[shooter].totalMovesCollected > 0)
     {
@@ -271,7 +325,7 @@ void showBonus(int event)
       makeScoreString(250 * games[shooter].totalMovesCollected * games[shooter].multiplier, str);
       sprintf(str2, "Moves %s", str);
       printAtLine(str2, 2, color, bgColor);
-      if (events[event].beats == 75)
+      if (events[event].beats == 125)
       {
         printAtLine("Total", 4, color, bgColor);
         makeScoreString(500 * games[shooter].totalInstumentsCollected * games[shooter].multiplier +
@@ -282,8 +336,53 @@ void showBonus(int event)
       refreshDmd();
       return;
     }
-    events[event].beats == 0;
+    events[event].beats == 90;
   }
+
+  // cancel fast speed from bonus, when going to buy in extra
+  if (events[event].beats == 90)
+  {
+    bonusSpeed = 1;
+  }
+
+  if (games[shooter].ballNumber == config.numberOfBalls && config.buyInExtraBall == 1)
+  {
+    if (events[event].beats == 90 ||
+        events[event].beats == 80 ||
+        events[event].beats == 70 ||
+        events[event].beats == 60 ||
+        events[event].beats == 50 ||
+        events[event].beats == 40 ||
+        events[event].beats == 30 ||
+        events[event].beats == 20 ||
+        events[event].beats == 10)
+    {
+      if (bonusSpeed == 5)
+      {
+        clearDmd();
+        printAtLine("Buy in cancelled", 1, color, bgColor);
+        refreshDmd();
+        return;
+      }
+
+      inGame = IN_BUY_IN;
+      clearDmd();
+      printAtLine("May buy an extra ball", 1, color, bgColor);
+      sprintf(str, "%d", events[event].beats / 10);
+      printAtLine(str, 3, color, bgColor);
+      refreshDmd();
+      return;
+    }
+  }
+  else
+  {
+    if (events[event].beats == 90)
+    {
+      // skip buy in beats
+      events[event].beats = 0;
+    }
+  }
+  inGame = IN_BONUS;
 
   if (events[event].beats != 0)
   {
@@ -292,16 +391,6 @@ void showBonus(int event)
 
   games[shooter].score += 500 * games[shooter].totalInstumentsCollected * games[shooter].multiplier;
   games[shooter].score += 250 * games[shooter].totalMovesCollected * games[shooter].multiplier;
-
-  // check if buy in
-  /*if (games[shooter].ballNumber == config.numberOfBalls)
-  {
-    if (config.buyInExtraBall == 1)
-    {
-      addEvent(451, EVENT_BUY_IN_EXTRA, 0);
-      return;
-    }
-  }*/
 
   if (shooter < numberOfPlayers - 1)
   {
@@ -316,20 +405,20 @@ void showBonus(int event)
   if (games[shooter].ballNumber < config.numberOfBalls)
   {
     loadBall();
-    showScore();
+    //showScore(0);
   }
   else
   {
     // when no shooter, no score highlighted
     shooter = -1;
-    showScore();
+    showScore(0);
     addEvent(50, EVENT_GAME_ENDED, 0);
   }
 }
 
 void gameBeat(uint8_t tick)
 {
-  if (tick % 2 != 0)
+  if (tick % 2 != 0 || inGame == NO_GAME)
   {
     return;
   }
@@ -343,12 +432,6 @@ void gameBeat(uint8_t tick)
     {
     case EVENT_SHOW_BONUS:
       showBonus(i);
-      break;
-    case EVENT_SHOW_SCORE:
-      showScore();
-      break;
-    case EVENT_LOAD_BALL:
-      loadBall();
       break;
     case EVENT_GAME_ENDED:
       showGameEnded(i);
@@ -369,4 +452,36 @@ void gameBeat(uint8_t tick)
       i++;
     }
   }
+
+  // if there is any screen event, then dont show scores
+  if (i > 0)
+  {
+    return;
+  }
+
+  if (inGame == GAME_ENDED)
+  {
+    return;
+  }
+
+  launchBlink++;
+  if (inGame == BEFORE_LAUNCH)
+  {
+    if (launchBlink < 5)
+    {
+      showScore(0);
+    }
+    else
+    {
+      showScore(1);
+    }
+
+    if (launchBlink > 10)
+    {
+      launchBlink = 0;
+    }
+    return;
+  }
+
+  showScore(0);
 }

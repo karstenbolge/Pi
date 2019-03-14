@@ -39,7 +39,7 @@ void attrackModeTick(uint8_t tick)
 
       if (tickNumber > 50 && inGame == EVENT_GAME_ENDED)
       {
-        showScore();
+        showScore(0);
         return;
       }
       clearDmd();
@@ -47,7 +47,7 @@ void attrackModeTick(uint8_t tick)
       setColorType(&color, COLOR_RED);
       setColorType(&bgColor, COLOR_BLACK);
 
-      printAtLine("A", 1, color, bgColor);
+      printAtLine("Attrack mode", 1, color, bgColor);
       //showImage(getNextSideSoulTrain1Frame());
 
       refreshDmd();

@@ -32,9 +32,7 @@ typedef struct eventItem
 
 #define MAX_EVENTS 50
 #define EVENT_SHOW_SCORE 1
-#define EVENT_LOAD_BALL 2
 #define EVENT_SHOW_BONUS 3
-#define EVENT_BUY_IN_EXTRA 4
 #define EVENT_GAME_ENDED 5
 eventItem_t events[MAX_EVENTS];
 
@@ -42,6 +40,7 @@ gameItem_t games[4];
 uint8_t numberOfPlayers;
 uint8_t shooter;
 uint8_t inGame;
+uint8_t launchBlink;
 
 uint8_t bonusSpeed;
 
@@ -49,16 +48,19 @@ void newGame(gameItem_t *pItem);
 void newBall(gameItem_t *pItem);
 void bonusBeat(gameItem_t *pItem, uint8_t tick, uint8_t cancel, void (*onNextBall)(void));
 
+void onBumberA();
 void fastBonus();
 void startButton();
-void showScore();
+void showScore(uint8_t type);
 void showBonus();
 void showGameEnded();
 void loadBall();
 void ballEnded();
+void ballLaunched();
 void clearEvents();
 void removeEvent(int number);
 void addEvent(uint16_t beats, uint8_t type, uint32_t arg);
 void gameBeat(uint8_t tick);
+void buyExtraBall();
 
 #endif
