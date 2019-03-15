@@ -12,7 +12,7 @@
 #include "../hdr/display.h"
 #include "../hdr/window.h"
 #include "../hdr/displayTest.h"
-#include "../hdr/awarageBallTime.h"
+#include "../hdr/avarageBallTime.h"
 
 typedef struct itemFunctions
 {
@@ -61,16 +61,16 @@ void initMenu()
   menu->child->next = malloc(sizeof(menuItem_t));
   // 2
   memset(menu->child->child, 0, sizeof(menuItem_t));
-  strcpy(menu->child->child->name, "Awarage ball time");
+  strcpy(menu->child->child->name, "Avarage ball time");
   menu->child->child->id = MENU_AWAREGE_BALL_TIME;
   menu->child->child->parrent = menu->child;
   menu->child->child->child = NULL;
   menu->child->child->event = malloc(sizeof(itemFunctions_t));
-  menu->child->child->event->open = &awarageBallTimeOpen;
+  menu->child->child->event->open = &avarageBallTimeOpen;
   menu->child->child->event->up = NULL;
   menu->child->child->event->down = NULL;
   menu->child->child->event->enter = NULL;
-  menu->child->child->event->exit = &awarageBallTimeExit;
+  menu->child->child->event->exit = &avarageBallTimeExit;
   menu->child->child->previous = NULL;
   menu->child->child->next = malloc(sizeof(menuItem_t));
 
@@ -375,7 +375,7 @@ void initMenu()
 }
 /*Bookkeepings
 		Main audits
-			Awarage ball time
+			Avarage ball time
 			Total plays
 			Replay awards
 			Extra balls
@@ -470,13 +470,13 @@ void showMenu()
       printf("->");
       // printAtLineAndPosition("x ", currentItemNumber, 0, color, bgColor);
       // test inverted
-      uint16_t length = printAtLineAndPosition(item->name, currentItemNumber, 0, bgColor, color);
-      frameLine(currentItemNumber, length, color);
+      uint16_t length = printAtLineAndPosition(item->name, currentItemNumber, 0, &bgColor, &color);
+      frameLine(currentItemNumber, length, &color);
     }
     else
     {
       printf("  ");
-      printAtLineAndPosition(item->name, currentItemNumber, 0, color, bgColor);
+      printAtLineAndPosition(item->name, currentItemNumber, 0, &color, &bgColor);
     }
     printf("%s\n", item->name);
 

@@ -47,7 +47,7 @@ void attrackModeTick(uint8_t tick)
       setColorType(&color, COLOR_RED);
       setColorType(&bgColor, COLOR_BLACK);
 
-      printAtLine("Attrack mode", 1, color, bgColor);
+      printAtLine("attrack mode", 1, &color, &bgColor);
       //showImage(getNextSideSoulTrain1Frame());
 
       refreshDmd();

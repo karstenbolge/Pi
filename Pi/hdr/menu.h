@@ -47,7 +47,7 @@ void menuEnter();
 
 /*Bookkeepings
 		Main audits
-			Awarage ball time
+			Avarage ball time
 			Total plays
 			Replay awards
 			Extra balls

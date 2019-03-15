@@ -15,20 +15,20 @@ rgb_t dmd[DMD_WIDTH][DMD_HEIGHT];
 
 void clearScreen();
 
-void printAtLine(char *str, uint8_t line, rgb_t color, rgb_t bgColor);
-uint16_t printAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t color, rgb_t bgColor);
-uint16_t printLargeAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t color, rgb_t bgColor);
-uint16_t printLargeAtYAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t color, rgb_t bgColor);
+void printAtLine(char *str, uint8_t line, rgb_t *pColor, rgb_t *pBgColor);
+uint16_t printAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t *pColor, rgb_t *pBgColor);
+uint16_t printLargeAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t *pColor, rgb_t *pBgColor);
+uint16_t printLargeAtYAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t *pColor, rgb_t *pBgColor);
 
 int makeScoreString(uint32_t score, char *pScore);
 void printScore(uint32_t score, uint8_t line, uint8_t size);
 
-void drawProgress(uint8_t progress, uint8_t line, uint16_t xPosition, rgb_t color);
-void drawProgressBlock(uint8_t progress, uint8_t line, uint16_t xPosition, rgb_t color);
+void drawProgress(uint8_t progress, uint8_t line, uint16_t xPosition, rgb_t *pColor);
+void drawProgressBlock(uint8_t progress, uint8_t line, uint16_t xPosition, rgb_t *pColor);
 
-void frameLine(uint8_t line, uint16_t length, rgb_t bgColor);
+void frameLine(uint8_t line, uint16_t length, rgb_t *pBgColor);
 
-void fillLineWithColor(uint8_t line, rgb_t bgColor);
+void fillLineWithColor(uint8_t line, rgb_t *pBgColor);
 
 void initDmd();
 

@@ -2,35 +2,35 @@
 #include "../hdr/color.h"
 #include "../hdr/display.h"
 #include "../hdr/window.h"
-#include "../hdr/awarageBallTime.h"
+#include "../hdr/avarageBallTime.h"
 
 #define MODE_OFF 0
 #define MODE_SHOW 1
 
-uint8_t inAwarageBallTimeMode = MODE_OFF;
+uint8_t inAvarageBallTimeMode = MODE_OFF;
 
 rgb_t color, bgColor;
 
-void awarageBallTimeOpen()
+void avarageBallTimeOpen()
 {
-  inAwarageBallTimeMode = MODE_SHOW;
+  inAvarageBallTimeMode = MODE_SHOW;
   setColorType(&color, COLOR_RED);
   setColorType(&bgColor, COLOR_BLACK);
 }
 
-void awarageBallTimeExit()
+void avarageBallTimeExit()
 {
-  inAwarageBallTimeMode = MODE_OFF;
+  inAvarageBallTimeMode = MODE_OFF;
 }
 
-void awarageBallTimeCount(uint32_t count)
+void avarageBallTimeCount(uint32_t count)
 {
-  if (inAwarageBallTimeMode == MODE_SHOW)
+  if (inAvarageBallTimeMode == MODE_SHOW)
   {
     clearDmd();
     char str[32];
     sprintf(str, "Loops per second %d", count);
-    printAtLineAndPosition(str, 0, 0, color, bgColor);
+    printAtLineAndPosition(str, 0, 0, &color, &bgColor);
     refreshDmd();
   }
 }

@@ -4,7 +4,7 @@
 #include "../hdr/switchEdgeTest.h"
 #include "../hdr/displayTest.h"
 #include "../hdr/display.h"
-#include "../hdr/awarageBallTime.h"
+#include "../hdr/avarageBallTime.h"
 #include "../hdr/sound.h"
 #include "../hdr/platform.h"
 #include "../hdr/window.h"
@@ -97,7 +97,7 @@ int main(void)
   setColorType(&bgColor, COLOR_BLACK);
   setColorType(&greenColor, COLOR_GREEN);
 
-  printAtLine("FunkenStein", 1, color, bgColor);
+  printAtLine("FunkenStein", 1, &color, &bgColor);
   //printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, color, bgColor);
   //printAtLine("abcdefghijklmnopqrstuvwxyz", 2, color, bgColor);
   //printAtLine("!\"#¤%&/()=?", 3, color, bgColor);
@@ -107,15 +107,15 @@ int main(void)
   //printAtLine("0123456789", 7, color, bgColor);
   //printAtLine("!\"", 8, color, bgColor);
 
-  printAtLineAndPosition("Version", 3, 20, color, bgColor);
-  printAtLineAndPosition("1.0.2", 3, DMD_WIDTH - 83 - 1, color, bgColor);
+  printAtLineAndPosition("Version", 3, 20, &color, &bgColor);
+  printAtLineAndPosition("1.0.2", 3, DMD_WIDTH - 83 - 1, &color, &bgColor);
 
-  printAtLineAndPosition("Videos", 4, 20, color, bgColor);
-  drawProgress(0, 4, DMD_WIDTH - 83 - 1, color);
-  printAtLineAndPosition("Sounds", 5, 20, color, bgColor);
-  drawProgress(0, 5, DMD_WIDTH - 83 - 1, color);
-  printAtLineAndPosition("Testing", 6, 20, color, bgColor);
-  drawProgress(0, 6, DMD_WIDTH - 83 - 1, color);
+  printAtLineAndPosition("Videos", 4, 20, &color, &bgColor);
+  drawProgress(0, 4, DMD_WIDTH - 83 - 1, &color);
+  printAtLineAndPosition("Sounds", 5, 20, &color, &bgColor);
+  drawProgress(0, 5, DMD_WIDTH - 83 - 1, &color);
+  printAtLineAndPosition("Testing", 6, 20, &color, &bgColor);
+  drawProgress(0, 6, DMD_WIDTH - 83 - 1, &color);
 
   /*u_int8_t pos = 0;
   pos += printLarge0At(dmd, pos, 48, color, bgColor);
@@ -130,13 +130,13 @@ int main(void)
   pos += printLarge9At(dmd, pos, 48, color, bgColor);*/
   refreshDmd();
   loadAllImages();
-  drawProgress(20, 4, DMD_WIDTH - 83 - 1, greenColor);
+  drawProgress(20, 4, DMD_WIDTH - 83 - 1, &greenColor);
 
   initSounds();
-  drawProgress(20, 5, DMD_WIDTH - 83 - 1, greenColor);
+  drawProgress(20, 5, DMD_WIDTH - 83 - 1, &greenColor);
   refreshDmd();
 
-  drawProgress(20, 6, DMD_WIDTH - 83 - 1, greenColor);
+  drawProgress(20, 6, DMD_WIDTH - 83 - 1, &greenColor);
   refreshDmd();
 
   playSoundOk();
@@ -278,7 +278,7 @@ int main(void)
     {
       lastLoopsPrSecond = currentLoopsPrSecond;
       currentLoopsPrSecond = 0;
-      awarageBallTimeCount(lastLoopsPrSecond);
+      avarageBallTimeCount(lastLoopsPrSecond);
     }
 
     // new frame every 1/15 of a second, equal 10 frame per beat as 90 beat per minute

@@ -110,12 +110,12 @@ void showScore(uint8_t type)
     int pos = 0;
     for (int j = games[i].ballNumber; j < config.numberOfBalls; j++)
     {
-      pos += printBallAt(dmd, pos, 13 + 24 * i, color, bgColor);
+      pos += printBallAt(dmd, pos, 13 + 24 * i, &color, &bgColor);
     }
     pos = 0;
     for (int j = 1; j < games[i].extraBalls; j++)
     {
-      pos += printBallAt(dmd, pos, 4 + 24 * i, colorBlue, bgColor);
+      pos += printBallAt(dmd, pos, 4 + 24 * i, &colorBlue, &bgColor);
     }
     if (i == shooter)
     {
@@ -268,19 +268,19 @@ void showBonus(int event)
     {
       clearDmd();
       sprintf(str, "Instuments collected %d", games[shooter].totalInstumentsCollected);
-      printAtLine(str, 1, color, bgColor);
+      printAtLine(str, 1, &color, &bgColor);
       if (events[event].beats == 215 || events[event].beats == 200)
       {
         sprintf(str, "Multiplier %d", games[shooter].multiplier);
-        printAtLine(str, 2, color, bgColor);
+        printAtLine(str, 2, &color, &bgColor);
         sprintf(str, "500 * %d * %d", games[shooter].totalInstumentsCollected, games[shooter].multiplier);
-        printAtLine(str, 3, color, bgColor);
+        printAtLine(str, 3, &color, &bgColor);
       }
       if (events[event].beats == 200)
       {
-        printAtLine("Total", 5, color, bgColor);
+        printAtLine("Total", 5, &color, &bgColor);
         makeScoreString(500 * games[shooter].totalInstumentsCollected * games[shooter].multiplier, str);
-        printAtLine(str, 6, color, bgColor);
+        printAtLine(str, 6, &color, &bgColor);
       }
       refreshDmd();
       return;
@@ -294,19 +294,19 @@ void showBonus(int event)
     {
       clearDmd();
       sprintf(str, "Moves collected %d", games[shooter].totalMovesCollected);
-      printAtLine(str, 1, color, bgColor);
+      printAtLine(str, 1, &color, &bgColor);
       if (events[event].beats == 170 || events[event].beats == 155)
       {
         sprintf(str, "Multiplier %d", games[shooter].multiplier);
-        printAtLine(str, 2, color, bgColor);
+        printAtLine(str, 2, &color, &bgColor);
         sprintf(str, "250 * %d * %d", games[shooter].totalMovesCollected, games[shooter].multiplier);
-        printAtLine(str, 3, color, bgColor);
+        printAtLine(str, 3, &color, &bgColor);
       }
       if (events[event].beats == 155)
       {
-        printAtLine("Total", 5, color, bgColor);
+        printAtLine("Total", 5, &color, &bgColor);
         makeScoreString(250 * games[shooter].totalMovesCollected * games[shooter].multiplier, str);
-        printAtLine(str, 6, color, bgColor);
+        printAtLine(str, 6, &color, &bgColor);
       }
       refreshDmd();
       return;
@@ -321,17 +321,17 @@ void showBonus(int event)
       clearDmd();
       makeScoreString(500 * games[shooter].totalInstumentsCollected * games[shooter].multiplier, str);
       sprintf(str2, "Instruments %s", str);
-      printAtLine(str2, 1, color, bgColor);
+      printAtLine(str2, 1, &color, &bgColor);
       makeScoreString(250 * games[shooter].totalMovesCollected * games[shooter].multiplier, str);
       sprintf(str2, "Moves %s", str);
-      printAtLine(str2, 2, color, bgColor);
+      printAtLine(str2, 2, &color, &bgColor);
       if (events[event].beats == 125)
       {
-        printAtLine("Total", 4, color, bgColor);
+        printAtLine("Total", 4, &color, &bgColor);
         makeScoreString(500 * games[shooter].totalInstumentsCollected * games[shooter].multiplier +
                             250 * games[shooter].totalMovesCollected * games[shooter].multiplier,
                         str);
-        printAtLine(str, 5, color, bgColor);
+        printAtLine(str, 5, &color, &bgColor);
       }
       refreshDmd();
       return;
@@ -360,16 +360,16 @@ void showBonus(int event)
       if (bonusSpeed == 5)
       {
         clearDmd();
-        printAtLine("Buy in cancelled", 1, color, bgColor);
+        printAtLine("Buy in cancelled", 1, &color, &bgColor);
         refreshDmd();
         return;
       }
 
       inGame = IN_BUY_IN;
       clearDmd();
-      printAtLine("May buy an extra ball", 1, color, bgColor);
+      printAtLine("May buy an extra ball", 1, &color, &bgColor);
       sprintf(str, "%d", events[event].beats / 10);
-      printAtLine(str, 3, color, bgColor);
+      printAtLine(str, 3, &color, &bgColor);
       refreshDmd();
       return;
     }

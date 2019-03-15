@@ -176,7 +176,7 @@ void showMatrix(uint16_t oldInputRegister[8])
     if (inSwitchEdgeTestMode == MODE_SHOW_SINGLE)
     {
       printf("%s\n", getSwitchName());
-      printAtLineAndPosition(getSwitchName(), 7, 10, color, bgColor);
+      printAtLineAndPosition(getSwitchName(), 7, 10, &color, &bgColor);
     }
     refreshDmd();
   }

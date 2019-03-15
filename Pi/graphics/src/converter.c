@@ -378,7 +378,7 @@ int main(int argc, char **argv)
         //fprintf(pHeaderFile, "char *getImage%s();\n", pName);
         fprintf(pHeaderFile, "unsigned char image%s[800 * 480 * 4 + 1];\n", pName);
         fprintf(pSourceFile, "  loadImage(&image%s[0], \"%s\");\n", pName, pName);
-        fprintf(pSourceFile, "  drawProgress(20 * ++numberLoaded / getNumberOfImages(), 4, DMD_WIDTH - 83 - 1, color);\n");
+        fprintf(pSourceFile, "  drawProgress(20 * ++numberLoaded / getNumberOfImages(), 4, DMD_WIDTH - 83 - 1, &color);\n");
         fprintf(pSourceFile, "  refreshDmd();\n");
 
         processFile(directoryFile->d_name, pName);

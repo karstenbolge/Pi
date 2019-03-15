@@ -25,389 +25,389 @@ struct fb_var_screeninfo vinfo;
 struct fb_fix_screeninfo finfo;
 long int screensize = 0;
 
-void setScreenBufferColor(char *p, rgb_t color)
+void setScreenBufferColor(char *p, rgb_t *pColor)
 {
-  *p = color.blue;
-  *(p + 1) = color.green;
-  *(p + 2) = color.red;
+  *p = pColor->blue;
+  *(p + 1) = pColor->green;
+  *(p + 2) = pColor->red;
   *(p + 3) = 0;
 }
 
-uint8_t printLargeCharAt(unsigned char chr, uint16_t position, uint8_t line, rgb_t color, rgb_t bgColor)
+uint8_t printLargeCharAt(unsigned char chr, uint16_t position, uint8_t line, rgb_t *pColor, rgb_t *pBgColor)
 {
   switch (chr)
   {
   case '0':
-    return printLarge0At(dmd, position, line, color, bgColor);
+    return printLarge0At(dmd, position, line, pColor, pBgColor);
   case '1':
-    return printLarge1At(dmd, position, line, color, bgColor);
+    return printLarge1At(dmd, position, line, pColor, pBgColor);
   case '2':
-    return printLarge2At(dmd, position, line, color, bgColor);
+    return printLarge2At(dmd, position, line, pColor, pBgColor);
   case '3':
-    return printLarge3At(dmd, position, line, color, bgColor);
+    return printLarge3At(dmd, position, line, pColor, pBgColor);
   case '4':
-    return printLarge4At(dmd, position, line, color, bgColor);
+    return printLarge4At(dmd, position, line, pColor, pBgColor);
   case '5':
-    return printLarge5At(dmd, position, line, color, bgColor);
+    return printLarge5At(dmd, position, line, pColor, pBgColor);
   case '6':
-    return printLarge6At(dmd, position, line, color, bgColor);
+    return printLarge6At(dmd, position, line, pColor, pBgColor);
   case '7':
-    return printLarge7At(dmd, position, line, color, bgColor);
+    return printLarge7At(dmd, position, line, pColor, pBgColor);
   case '8':
-    return printLarge8At(dmd, position, line, color, bgColor);
+    return printLarge8At(dmd, position, line, pColor, pBgColor);
   case '9':
-    return printLarge9At(dmd, position, line, color, bgColor);
+    return printLarge9At(dmd, position, line, pColor, pBgColor);
   case '.':
-    return printLargePointAt(dmd, position, line, color, bgColor);
+    return printLargePointAt(dmd, position, line, pColor, pBgColor);
   case ',':
-    return printLargeCommaAt(dmd, position, line, color, bgColor);
+    return printLargeCommaAt(dmd, position, line, pColor, pBgColor);
   default:
     printf("Never here!! %c %d\n", chr, chr);
     return 7;
   }
 }
 
-uint8_t printCharAt(unsigned char chr, uint16_t position, uint8_t line, rgb_t color, rgb_t bgColor)
+uint8_t printCharAt(unsigned char chr, uint16_t position, uint8_t line, rgb_t *pColor, rgb_t *pBgColor)
 {
   line = 12 * line + 1;
   switch (chr)
   {
   case '0':
-    return print0At(dmd, position, line, color, bgColor);
+    return print0At(dmd, position, line, pColor, pBgColor);
   case '1':
-    return print1At(dmd, position, line, color, bgColor);
+    return print1At(dmd, position, line, pColor, pBgColor);
   case '2':
-    return print2At(dmd, position, line, color, bgColor);
+    return print2At(dmd, position, line, pColor, pBgColor);
   case '3':
-    return print3At(dmd, position, line, color, bgColor);
+    return print3At(dmd, position, line, pColor, pBgColor);
   case '4':
-    return print4At(dmd, position, line, color, bgColor);
+    return print4At(dmd, position, line, pColor, pBgColor);
   case '5':
-    return print5At(dmd, position, line, color, bgColor);
+    return print5At(dmd, position, line, pColor, pBgColor);
   case '6':
-    return print6At(dmd, position, line, color, bgColor);
+    return print6At(dmd, position, line, pColor, pBgColor);
   case '7':
-    return print7At(dmd, position, line, color, bgColor);
+    return print7At(dmd, position, line, pColor, pBgColor);
   case '8':
-    return print8At(dmd, position, line, color, bgColor);
+    return print8At(dmd, position, line, pColor, pBgColor);
   case '9':
-    return print9At(dmd, position, line, color, bgColor);
+    return print9At(dmd, position, line, pColor, pBgColor);
   case 'A':
-    return printAAt(dmd, position, line, color, bgColor);
+    return printAAt(dmd, position, line, pColor, pBgColor);
   case 'B':
-    return printBAt(dmd, position, line, color, bgColor);
+    return printBAt(dmd, position, line, pColor, pBgColor);
   case 'C':
-    return printCAt(dmd, position, line, color, bgColor);
+    return printCAt(dmd, position, line, pColor, pBgColor);
   case 'D':
-    return printDAt(dmd, position, line, color, bgColor);
+    return printDAt(dmd, position, line, pColor, pBgColor);
   case 'E':
-    return printEAt(dmd, position, line, color, bgColor);
+    return printEAt(dmd, position, line, pColor, pBgColor);
   case 'F':
-    return printFAt(dmd, position, line, color, bgColor);
+    return printFAt(dmd, position, line, pColor, pBgColor);
   case 'G':
-    return printGAt(dmd, position, line, color, bgColor);
+    return printGAt(dmd, position, line, pColor, pBgColor);
   case 'H':
-    return printHAt(dmd, position, line, color, bgColor);
+    return printHAt(dmd, position, line, pColor, pBgColor);
   case 'I':
-    return printIAt(dmd, position, line, color, bgColor);
+    return printIAt(dmd, position, line, pColor, pBgColor);
   case 'J':
-    return printJAt(dmd, position, line, color, bgColor);
+    return printJAt(dmd, position, line, pColor, pBgColor);
   case 'K':
-    return printKAt(dmd, position, line, color, bgColor);
+    return printKAt(dmd, position, line, pColor, pBgColor);
   case 'L':
-    return printLAt(dmd, position, line, color, bgColor);
+    return printLAt(dmd, position, line, pColor, pBgColor);
   case 'M':
-    return printMAt(dmd, position, line, color, bgColor);
+    return printMAt(dmd, position, line, pColor, pBgColor);
   case 'N':
-    return printNAt(dmd, position, line, color, bgColor);
+    return printNAt(dmd, position, line, pColor, pBgColor);
   case 'O':
-    return printOAt(dmd, position, line, color, bgColor);
+    return printOAt(dmd, position, line, pColor, pBgColor);
   case 'P':
-    return printPAt(dmd, position, line, color, bgColor);
+    return printPAt(dmd, position, line, pColor, pBgColor);
   case 'Q':
-    return printQAt(dmd, position, line, color, bgColor);
+    return printQAt(dmd, position, line, pColor, pBgColor);
   case 'R':
-    return printRAt(dmd, position, line, color, bgColor);
+    return printRAt(dmd, position, line, pColor, pBgColor);
   case 'S':
-    return printSAt(dmd, position, line, color, bgColor);
+    return printSAt(dmd, position, line, pColor, pBgColor);
   case 'T':
-    return printTAt(dmd, position, line, color, bgColor);
+    return printTAt(dmd, position, line, pColor, pBgColor);
   case 'U':
-    return printUAt(dmd, position, line, color, bgColor);
+    return printUAt(dmd, position, line, pColor, pBgColor);
   case 'V':
-    return printVAt(dmd, position, line, color, bgColor);
+    return printVAt(dmd, position, line, pColor, pBgColor);
   case 'W':
-    return printWAt(dmd, position, line, color, bgColor);
+    return printWAt(dmd, position, line, pColor, pBgColor);
   case 'X':
-    return printXAt(dmd, position, line, color, bgColor);
+    return printXAt(dmd, position, line, pColor, pBgColor);
   case 'Y':
-    return printYAt(dmd, position, line, color, bgColor);
+    return printYAt(dmd, position, line, pColor, pBgColor);
   case 'Z':
-    return printZAt(dmd, position, line, color, bgColor);
+    return printZAt(dmd, position, line, pColor, pBgColor);
 
   case 'a':
-    return printaAt(dmd, position, line, color, bgColor);
+    return printaAt(dmd, position, line, pColor, pBgColor);
   case 'b':
-    return printbAt(dmd, position, line, color, bgColor);
+    return printbAt(dmd, position, line, pColor, pBgColor);
   case 'c':
-    return printcAt(dmd, position, line, color, bgColor);
+    return printcAt(dmd, position, line, pColor, pBgColor);
   case 'd':
-    return printdAt(dmd, position, line, color, bgColor);
+    return printdAt(dmd, position, line, pColor, pBgColor);
   case 'e':
-    return printeAt(dmd, position, line, color, bgColor);
+    return printeAt(dmd, position, line, pColor, pBgColor);
   case 'f':
-    return printfAt(dmd, position, line, color, bgColor);
+    return printfAt(dmd, position, line, pColor, pBgColor);
   case 'g':
-    return printgAt(dmd, position, line, color, bgColor);
+    return printgAt(dmd, position, line, pColor, pBgColor);
   case 'h':
-    return printhAt(dmd, position, line, color, bgColor);
+    return printhAt(dmd, position, line, pColor, pBgColor);
   case 'i':
-    return printiAt(dmd, position, line, color, bgColor);
+    return printiAt(dmd, position, line, pColor, pBgColor);
   case 'j':
-    return printjAt(dmd, position, line, color, bgColor);
+    return printjAt(dmd, position, line, pColor, pBgColor);
   case 'k':
-    return printkAt(dmd, position, line, color, bgColor);
+    return printkAt(dmd, position, line, pColor, pBgColor);
   case 'l':
-    return printlAt(dmd, position, line, color, bgColor);
+    return printlAt(dmd, position, line, pColor, pBgColor);
   case 'm':
-    return printmAt(dmd, position, line, color, bgColor);
+    return printmAt(dmd, position, line, pColor, pBgColor);
   case 'n':
-    return printnAt(dmd, position, line, color, bgColor);
+    return printnAt(dmd, position, line, pColor, pBgColor);
   case 'o':
-    return printoAt(dmd, position, line, color, bgColor);
+    return printoAt(dmd, position, line, pColor, pBgColor);
   case 'p':
-    return printpAt(dmd, position, line, color, bgColor);
+    return printpAt(dmd, position, line, pColor, pBgColor);
   case 'q':
-    return printqAt(dmd, position, line, color, bgColor);
+    return printqAt(dmd, position, line, pColor, pBgColor);
   case 'r':
-    return printrAt(dmd, position, line, color, bgColor);
+    return printrAt(dmd, position, line, pColor, pBgColor);
   case 's':
-    return printsAt(dmd, position, line, color, bgColor);
+    return printsAt(dmd, position, line, pColor, pBgColor);
   case 't':
-    return printtAt(dmd, position, line, color, bgColor);
+    return printtAt(dmd, position, line, pColor, pBgColor);
   case 'u':
-    return printuAt(dmd, position, line, color, bgColor);
+    return printuAt(dmd, position, line, pColor, pBgColor);
   case 'v':
-    return printvAt(dmd, position, line, color, bgColor);
+    return printvAt(dmd, position, line, pColor, pBgColor);
   case 'w':
-    return printwAt(dmd, position, line, color, bgColor);
+    return printwAt(dmd, position, line, pColor, pBgColor);
   case 'x':
-    return printxAt(dmd, position, line, color, bgColor);
+    return printxAt(dmd, position, line, pColor, pBgColor);
   case 'y':
-    return printyAt(dmd, position, line, color, bgColor);
+    return printyAt(dmd, position, line, pColor, pBgColor);
   case 'z':
-    return printzAt(dmd, position, line, color, bgColor);
+    return printzAt(dmd, position, line, pColor, pBgColor);
   case '!':
-    return printEsclamationAt(dmd, position, line, color, bgColor);
+    return printEsclamationAt(dmd, position, line, pColor, pBgColor);
   case '"':
-    return printGooseEyesAt(dmd, position, line, color, bgColor);
+    return printGooseEyesAt(dmd, position, line, pColor, pBgColor);
   case '#':
-    return printHashAt(dmd, position, line, color, bgColor);
+    return printHashAt(dmd, position, line, pColor, pBgColor);
   case '%':
-    return printPercentAt(dmd, position, line, color, bgColor);
+    return printPercentAt(dmd, position, line, pColor, pBgColor);
   case '&':
-    return printAndAt(dmd, position, line, color, bgColor);
+    return printAndAt(dmd, position, line, pColor, pBgColor);
   case '/':
-    return printSlashAt(dmd, position, line, color, bgColor);
+    return printSlashAt(dmd, position, line, pColor, pBgColor);
   case '(':
-    return printForwardParatheseAt(dmd, position, line, color, bgColor);
+    return printForwardParatheseAt(dmd, position, line, pColor, pBgColor);
   case ')':
-    return printBackwardParatheseAt(dmd, position, line, color, bgColor);
+    return printBackwardParatheseAt(dmd, position, line, pColor, pBgColor);
   case '=':
-    return printEqualAt(dmd, position, line, color, bgColor);
+    return printEqualAt(dmd, position, line, pColor, pBgColor);
   case '?':
-    return printQuestionAt(dmd, position, line, color, bgColor);
+    return printQuestionAt(dmd, position, line, pColor, pBgColor);
   case '@':
-    return printAtAt(dmd, position, line, color, bgColor);
+    return printAtAt(dmd, position, line, pColor, pBgColor);
   case 256 - 62: //£, ¤
     return 0;
   case 256 - 93: //£
-    return printPoundAt(dmd, position, line, color, bgColor);
+    return printPoundAt(dmd, position, line, pColor, pBgColor);
   case 256 - 92: //¤
-    return printTurtleAt(dmd, position, line, color, bgColor);
+    return printTurtleAt(dmd, position, line, pColor, pBgColor);
   case '$':
-    return printDollarAt(dmd, position, line, color, bgColor);
+    return printDollarAt(dmd, position, line, pColor, pBgColor);
   case 256 - 30: //€
     return 0;
   case 256 - 126: //€
     return 0;
   case 256 - 84: //€
-    return printEuroAt(dmd, position, line, color, bgColor);
+    return printEuroAt(dmd, position, line, pColor, pBgColor);
   case '{':
-    return printForwardBraceAt(dmd, position, line, color, bgColor);
+    return printForwardBraceAt(dmd, position, line, pColor, pBgColor);
   case '[':
-    return printForwardSquareAt(dmd, position, line, color, bgColor);
+    return printForwardSquareAt(dmd, position, line, pColor, pBgColor);
   case ']':
-    return printBackwardSquareAt(dmd, position, line, color, bgColor);
+    return printBackwardSquareAt(dmd, position, line, pColor, pBgColor);
   case '}':
-    return printBackwardBraceAt(dmd, position, line, color, bgColor);
+    return printBackwardBraceAt(dmd, position, line, pColor, pBgColor);
   case '|':
-    return printPipeAt(dmd, position, line, color, bgColor);
+    return printPipeAt(dmd, position, line, pColor, pBgColor);
   case '~':
-    return printTilteAt(dmd, position, line, color, bgColor);
+    return printTilteAt(dmd, position, line, pColor, pBgColor);
   case '\\':
-    return printBackSlashAt(dmd, position, line, color, bgColor);
+    return printBackSlashAt(dmd, position, line, pColor, pBgColor);
   case '.':
-    return printPointAt(dmd, position, line, color, bgColor);
+    return printPointAt(dmd, position, line, pColor, pBgColor);
   case ',':
-    return printCommaAt(dmd, position, line, color, bgColor);
+    return printCommaAt(dmd, position, line, pColor, pBgColor);
   case ':':
-    return printColonAt(dmd, position, line, color, bgColor);
+    return printColonAt(dmd, position, line, pColor, pBgColor);
   case ';':
-    return printSemiColonAt(dmd, position, line, color, bgColor);
+    return printSemiColonAt(dmd, position, line, pColor, pBgColor);
   case '-':
-    return printMinusAt(dmd, position, line, color, bgColor);
+    return printMinusAt(dmd, position, line, pColor, pBgColor);
   case '_':
-    return printUnderScoreAt(dmd, position, line, color, bgColor);
+    return printUnderScoreAt(dmd, position, line, pColor, pBgColor);
   case '+':
-    return printPlusAt(dmd, position, line, color, bgColor);
+    return printPlusAt(dmd, position, line, pColor, pBgColor);
   case 256 - 79: //±
-    return printPlusMinusAt(dmd, position, line, color, bgColor);
+    return printPlusMinusAt(dmd, position, line, pColor, pBgColor);
   case '*':
-    return printAsterixAt(dmd, position, line, color, bgColor);
+    return printAsterixAt(dmd, position, line, pColor, pBgColor);
   case '\'':
-    return printFnutAt(dmd, position, line, color, bgColor);
+    return printFnutAt(dmd, position, line, pColor, pBgColor);
   case '^':
-    return printHatAt(dmd, position, line, color, bgColor);
+    return printHatAt(dmd, position, line, pColor, pBgColor);
   case ' ':
-    return printEmptyAt(dmd, position, line, color, bgColor);
+    return printEmptyAt(dmd, position, line, pColor, pBgColor);
   default:
     printf("Never here!! %c %d\n", chr, chr);
     return 7;
-    dmd[position + 0][10 * line + 0] = bgColor;
-    dmd[position + 1][10 * line + 0] = bgColor;
-    dmd[position + 2][10 * line + 0] = bgColor;
-    dmd[position + 3][10 * line + 0] = bgColor;
-    dmd[position + 4][10 * line + 0] = bgColor;
-    dmd[position + 5][10 * line + 0] = bgColor;
-    dmd[position + 6][10 * line + 0] = bgColor;
-    dmd[position + 7][10 * line + 0] = bgColor;
+    dmd[position + 0][10 * line + 0] = *pBgColor;
+    dmd[position + 1][10 * line + 0] = *pBgColor;
+    dmd[position + 2][10 * line + 0] = *pBgColor;
+    dmd[position + 3][10 * line + 0] = *pBgColor;
+    dmd[position + 4][10 * line + 0] = *pBgColor;
+    dmd[position + 5][10 * line + 0] = *pBgColor;
+    dmd[position + 6][10 * line + 0] = *pBgColor;
+    dmd[position + 7][10 * line + 0] = *pBgColor;
 
-    dmd[position + 0][10 * line + 1] = bgColor;
-    dmd[position + 1][10 * line + 1] = bgColor;
-    dmd[position + 2][10 * line + 1] = bgColor;
-    dmd[position + 3][10 * line + 1] = bgColor;
-    dmd[position + 4][10 * line + 1] = bgColor;
-    dmd[position + 5][10 * line + 1] = bgColor;
-    dmd[position + 6][10 * line + 1] = bgColor;
-    dmd[position + 7][10 * line + 1] = bgColor;
+    dmd[position + 0][10 * line + 1] = *pBgColor;
+    dmd[position + 1][10 * line + 1] = *pBgColor;
+    dmd[position + 2][10 * line + 1] = *pBgColor;
+    dmd[position + 3][10 * line + 1] = *pBgColor;
+    dmd[position + 4][10 * line + 1] = *pBgColor;
+    dmd[position + 5][10 * line + 1] = *pBgColor;
+    dmd[position + 6][10 * line + 1] = *pBgColor;
+    dmd[position + 7][10 * line + 1] = *pBgColor;
 
-    dmd[position + 0][10 * line + 2] = bgColor;
-    dmd[position + 1][10 * line + 2] = bgColor;
-    dmd[position + 2][10 * line + 2] = bgColor;
-    dmd[position + 3][10 * line + 2] = bgColor;
-    dmd[position + 4][10 * line + 2] = bgColor;
-    dmd[position + 5][10 * line + 2] = bgColor;
-    dmd[position + 6][10 * line + 2] = bgColor;
-    dmd[position + 7][10 * line + 2] = bgColor;
+    dmd[position + 0][10 * line + 2] = *pBgColor;
+    dmd[position + 1][10 * line + 2] = *pBgColor;
+    dmd[position + 2][10 * line + 2] = *pBgColor;
+    dmd[position + 3][10 * line + 2] = *pBgColor;
+    dmd[position + 4][10 * line + 2] = *pBgColor;
+    dmd[position + 5][10 * line + 2] = *pBgColor;
+    dmd[position + 6][10 * line + 2] = *pBgColor;
+    dmd[position + 7][10 * line + 2] = *pBgColor;
 
-    dmd[position + 0][10 * line + 3] = bgColor;
-    dmd[position + 1][10 * line + 3] = bgColor;
-    dmd[position + 2][10 * line + 3] = bgColor;
-    dmd[position + 3][10 * line + 3] = bgColor;
-    dmd[position + 4][10 * line + 3] = bgColor;
-    dmd[position + 5][10 * line + 3] = bgColor;
-    dmd[position + 6][10 * line + 3] = bgColor;
-    dmd[position + 7][10 * line + 3] = bgColor;
+    dmd[position + 0][10 * line + 3] = *pBgColor;
+    dmd[position + 1][10 * line + 3] = *pBgColor;
+    dmd[position + 2][10 * line + 3] = *pBgColor;
+    dmd[position + 3][10 * line + 3] = *pBgColor;
+    dmd[position + 4][10 * line + 3] = *pBgColor;
+    dmd[position + 5][10 * line + 3] = *pBgColor;
+    dmd[position + 6][10 * line + 3] = *pBgColor;
+    dmd[position + 7][10 * line + 3] = *pBgColor;
 
-    dmd[position + 0][10 * line + 4] = bgColor;
-    dmd[position + 1][10 * line + 4] = bgColor;
-    dmd[position + 2][10 * line + 4] = bgColor;
-    dmd[position + 3][10 * line + 4] = bgColor;
-    dmd[position + 4][10 * line + 4] = bgColor;
-    dmd[position + 5][10 * line + 4] = bgColor;
-    dmd[position + 6][10 * line + 4] = bgColor;
-    dmd[position + 7][10 * line + 4] = bgColor;
+    dmd[position + 0][10 * line + 4] = *pBgColor;
+    dmd[position + 1][10 * line + 4] = *pBgColor;
+    dmd[position + 2][10 * line + 4] = *pBgColor;
+    dmd[position + 3][10 * line + 4] = *pBgColor;
+    dmd[position + 4][10 * line + 4] = *pBgColor;
+    dmd[position + 5][10 * line + 4] = *pBgColor;
+    dmd[position + 6][10 * line + 4] = *pBgColor;
+    dmd[position + 7][10 * line + 4] = *pBgColor;
 
-    dmd[position + 0][10 * line + 5] = bgColor;
-    dmd[position + 1][10 * line + 5] = bgColor;
-    dmd[position + 2][10 * line + 5] = bgColor;
-    dmd[position + 3][10 * line + 5] = bgColor;
-    dmd[position + 4][10 * line + 5] = bgColor;
-    dmd[position + 5][10 * line + 5] = bgColor;
-    dmd[position + 6][10 * line + 5] = bgColor;
-    dmd[position + 7][10 * line + 5] = bgColor;
+    dmd[position + 0][10 * line + 5] = *pBgColor;
+    dmd[position + 1][10 * line + 5] = *pBgColor;
+    dmd[position + 2][10 * line + 5] = *pBgColor;
+    dmd[position + 3][10 * line + 5] = *pBgColor;
+    dmd[position + 4][10 * line + 5] = *pBgColor;
+    dmd[position + 5][10 * line + 5] = *pBgColor;
+    dmd[position + 6][10 * line + 5] = *pBgColor;
+    dmd[position + 7][10 * line + 5] = *pBgColor;
 
-    dmd[position + 0][10 * line + 6] = bgColor;
-    dmd[position + 1][10 * line + 6] = bgColor;
-    dmd[position + 2][10 * line + 6] = bgColor;
-    dmd[position + 3][10 * line + 6] = bgColor;
-    dmd[position + 4][10 * line + 6] = bgColor;
-    dmd[position + 5][10 * line + 6] = bgColor;
-    dmd[position + 6][10 * line + 6] = bgColor;
-    dmd[position + 7][10 * line + 6] = bgColor;
+    dmd[position + 0][10 * line + 6] = *pBgColor;
+    dmd[position + 1][10 * line + 6] = *pBgColor;
+    dmd[position + 2][10 * line + 6] = *pBgColor;
+    dmd[position + 3][10 * line + 6] = *pBgColor;
+    dmd[position + 4][10 * line + 6] = *pBgColor;
+    dmd[position + 5][10 * line + 6] = *pBgColor;
+    dmd[position + 6][10 * line + 6] = *pBgColor;
+    dmd[position + 7][10 * line + 6] = *pBgColor;
 
-    dmd[position + 0][10 * line + 7] = bgColor;
-    dmd[position + 1][10 * line + 7] = bgColor;
-    dmd[position + 2][10 * line + 7] = bgColor;
-    dmd[position + 3][10 * line + 7] = bgColor;
-    dmd[position + 4][10 * line + 7] = bgColor;
-    dmd[position + 5][10 * line + 7] = bgColor;
-    dmd[position + 6][10 * line + 7] = bgColor;
-    dmd[position + 7][10 * line + 7] = bgColor;
+    dmd[position + 0][10 * line + 7] = *pBgColor;
+    dmd[position + 1][10 * line + 7] = *pBgColor;
+    dmd[position + 2][10 * line + 7] = *pBgColor;
+    dmd[position + 3][10 * line + 7] = *pBgColor;
+    dmd[position + 4][10 * line + 7] = *pBgColor;
+    dmd[position + 5][10 * line + 7] = *pBgColor;
+    dmd[position + 6][10 * line + 7] = *pBgColor;
+    dmd[position + 7][10 * line + 7] = *pBgColor;
 
-    dmd[position + 0][10 * line + 8] = bgColor;
-    dmd[position + 1][10 * line + 8] = bgColor;
-    dmd[position + 2][10 * line + 8] = bgColor;
-    dmd[position + 3][10 * line + 8] = bgColor;
-    dmd[position + 4][10 * line + 8] = bgColor;
-    dmd[position + 5][10 * line + 8] = bgColor;
-    dmd[position + 6][10 * line + 8] = bgColor;
-    dmd[position + 7][10 * line + 8] = bgColor;
+    dmd[position + 0][10 * line + 8] = *pBgColor;
+    dmd[position + 1][10 * line + 8] = *pBgColor;
+    dmd[position + 2][10 * line + 8] = *pBgColor;
+    dmd[position + 3][10 * line + 8] = *pBgColor;
+    dmd[position + 4][10 * line + 8] = *pBgColor;
+    dmd[position + 5][10 * line + 8] = *pBgColor;
+    dmd[position + 6][10 * line + 8] = *pBgColor;
+    dmd[position + 7][10 * line + 8] = *pBgColor;
 
-    dmd[position + 0][10 * line + 9] = bgColor;
-    dmd[position + 1][10 * line + 9] = bgColor;
-    dmd[position + 2][10 * line + 9] = bgColor;
-    dmd[position + 3][10 * line + 9] = bgColor;
-    dmd[position + 4][10 * line + 9] = bgColor;
-    dmd[position + 5][10 * line + 9] = bgColor;
-    dmd[position + 6][10 * line + 9] = bgColor;
-    dmd[position + 7][10 * line + 9] = bgColor;
+    dmd[position + 0][10 * line + 9] = *pBgColor;
+    dmd[position + 1][10 * line + 9] = *pBgColor;
+    dmd[position + 2][10 * line + 9] = *pBgColor;
+    dmd[position + 3][10 * line + 9] = *pBgColor;
+    dmd[position + 4][10 * line + 9] = *pBgColor;
+    dmd[position + 5][10 * line + 9] = *pBgColor;
+    dmd[position + 6][10 * line + 9] = *pBgColor;
+    dmd[position + 7][10 * line + 9] = *pBgColor;
 
     return 8;
   }
 }
 
-void printAtLine(char *str, uint8_t line, rgb_t color, rgb_t bgColor)
+void printAtLine(char *str, uint8_t line, rgb_t *pColor, rgb_t *pBgColor)
 {
   uint16_t position = 0;
   while (*str != 0)
   {
-    position += printCharAt(*str, position, line, color, bgColor);
+    position += printCharAt(*str, position, line, pColor, pBgColor);
     str++;
   }
 }
 
-uint16_t printAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t color, rgb_t bgColor)
+uint16_t printAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t *pColor, rgb_t *pBgColor)
 {
   uint16_t position = xPosition;
   while (*str != 0)
   {
-    position += printCharAt(*str, position, line, color, bgColor);
-    str++;
-  }
-
-  return position;
-}
-
-uint16_t printLargeAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t color, rgb_t bgColor)
-{
-  uint16_t position = xPosition;
-  while (*str != 0)
-  {
-    position += printLargeCharAt(*str, position, line, color, bgColor);
+    position += printCharAt(*str, position, line, pColor, pBgColor);
     str++;
   }
 
   return position;
 }
 
-uint16_t printLargeAtYAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t color, rgb_t bgColor)
+uint16_t printLargeAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t *pColor, rgb_t *bgColor)
 {
   uint16_t position = xPosition;
   while (*str != 0)
   {
-    position += printLargeCharAt(*str, position, line, color, bgColor);
+    position += printLargeCharAt(*str, position, line, pColor, bgColor);
+    str++;
+  }
+
+  return position;
+}
+
+uint16_t printLargeAtYAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t *pColor, rgb_t *bgColor)
+{
+  uint16_t position = xPosition;
+  while (*str != 0)
+  {
+    position += printLargeCharAt(*str, position, line, pColor, bgColor);
     str++;
   }
 
@@ -449,14 +449,14 @@ void printScore(uint32_t score, uint8_t line, uint8_t size)
 
   if (size == 2)
   {
-    printLargeAtLineAndPosition(pScore, 5 + line * 24, DMD_WIDTH - width - 2, color, bgColor);
+    printLargeAtLineAndPosition(pScore, 5 + line * 24, DMD_WIDTH - width - 2, &color, &bgColor);
     return;
   }
 
-  printAtLineAndPosition(pScore, line * 2 + (2 - size), DMD_WIDTH - width - 2, color, bgColor);
+  printAtLineAndPosition(pScore, line * 2 + (2 - size), DMD_WIDTH - width - 2, &color, &bgColor);
 }
 
-void drawProgress(uint8_t progress, uint8_t line, uint16_t xPosition, rgb_t color)
+void drawProgress(uint8_t progress, uint8_t line, uint16_t xPosition, rgb_t *pColor)
 {
   if (xPosition + 63 >= DMD_WIDTH)
   {
@@ -466,68 +466,68 @@ void drawProgress(uint8_t progress, uint8_t line, uint16_t xPosition, rgb_t colo
   // horizotal
   for (int i = xPosition; i < xPosition + 63; i++)
   {
-    dmd[i][line * 12] = color;
+    dmd[i][line * 12] = *pColor;
     //dmd[i][line * 12 + 1] = color;
     //dmd[i][line * 12 + 8] = color;
-    dmd[i][line * 12 + 9] = color;
+    dmd[i][line * 12 + 9] = *pColor;
   }
 
   // vertical
   for (int i = line * 12 + 1; i < line * 12 + 9; i++)
   {
-    dmd[xPosition][i] = color;
+    dmd[xPosition][i] = *pColor;
     //dmd[xPosition + 1][i] = color;
     //dmd[xPosition + 33][i] = color;
-    dmd[xPosition + 62][i] = color;
+    dmd[xPosition + 62][i] = *pColor;
   }
 
   // bars
   for (int i = 0; i < progress && i < 20; i++)
   {
-    drawProgressBlock(i, line, xPosition, color);
+    drawProgressBlock(i, line, xPosition, pColor);
   }
 }
 
-void drawProgressBlock(uint8_t progress, uint8_t line, uint16_t xPosition, rgb_t color)
+void drawProgressBlock(uint8_t progress, uint8_t line, uint16_t xPosition, rgb_t *pColor)
 {
-  dmd[xPosition + 2 + 3 * progress][line * 12 + 3] = color;
-  dmd[xPosition + 2 + 3 * progress][line * 12 + 4] = color;
-  dmd[xPosition + 2 + 3 * progress][line * 12 + 5] = color;
-  dmd[xPosition + 2 + 3 * progress][line * 12 + 6] = color;
-  dmd[xPosition + 3 + 3 * progress][line * 12 + 3] = color;
-  dmd[xPosition + 3 + 3 * progress][line * 12 + 4] = color;
-  dmd[xPosition + 3 + 3 * progress][line * 12 + 5] = color;
-  dmd[xPosition + 3 + 3 * progress][line * 12 + 6] = color;
+  dmd[xPosition + 2 + 3 * progress][line * 12 + 3] = *pColor;
+  dmd[xPosition + 2 + 3 * progress][line * 12 + 4] = *pColor;
+  dmd[xPosition + 2 + 3 * progress][line * 12 + 5] = *pColor;
+  dmd[xPosition + 2 + 3 * progress][line * 12 + 6] = *pColor;
+  dmd[xPosition + 3 + 3 * progress][line * 12 + 3] = *pColor;
+  dmd[xPosition + 3 + 3 * progress][line * 12 + 4] = *pColor;
+  dmd[xPosition + 3 + 3 * progress][line * 12 + 5] = *pColor;
+  dmd[xPosition + 3 + 3 * progress][line * 12 + 6] = *pColor;
 
-  dmd[xPosition + 2 + 3 * progress][line * 12 + 2] = color;
-  dmd[xPosition + 2 + 3 * progress][line * 12 + 7] = color;
-  dmd[xPosition + 3 + 3 * progress][line * 12 + 2] = color;
-  dmd[xPosition + 3 + 3 * progress][line * 12 + 7] = color;
+  dmd[xPosition + 2 + 3 * progress][line * 12 + 2] = *pColor;
+  dmd[xPosition + 2 + 3 * progress][line * 12 + 7] = *pColor;
+  dmd[xPosition + 3 + 3 * progress][line * 12 + 2] = *pColor;
+  dmd[xPosition + 3 + 3 * progress][line * 12 + 7] = *pColor;
 }
 
-void frameLine(uint8_t line, uint16_t length, rgb_t bgColor)
+void frameLine(uint8_t line, uint16_t length, rgb_t *pBgColor)
 {
   line *= 12;
   for (uint16_t i = 0; i < DMD_WIDTH && i < length; i++)
   {
-    dmd[i][line] = bgColor;
+    dmd[i][line] = *pBgColor;
   }
   if (length < DMD_WIDTH)
   {
     for (uint8_t i = line; i < DMD_HEIGHT && i < line + 12; i++)
     {
-      dmd[length][i] = bgColor;
+      dmd[length][i] = *pBgColor;
     }
   }
 }
 
-void fillLineWithColor(uint8_t line, rgb_t bgColor)
+void fillLineWithColor(uint8_t line, rgb_t *pBgColor)
 {
   for (uint8_t j = line * 12; j < (line + 1) * 12; j++)
   {
     for (uint16_t i = 0; i < DMD_WIDTH; i++)
     {
-      dmd[i][j] = bgColor;
+      dmd[i][j] = *pBgColor;
     }
   }
 }

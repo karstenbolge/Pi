@@ -62,21 +62,21 @@ void initSounds()
   rgb_t color;
   setColorType(&color, COLOR_RED);
 
-  drawProgress(5, 5, DMD_WIDTH - 83 - 1, color);
+  drawProgress(5, 5, DMD_WIDTH - 83 - 1, &color);
   refreshDmd();
   sounds[WRONG_SOUND].data = loadWavFile("./sounds/Yamaha-V50-Woosh.wav", &sounds[WRONG_SOUND].length);
   sounds[OK_SOUND].data = loadWavFile("./sounds/Finger-Snaps.wav", &sounds[OK_SOUND].length);
   sounds[ENTER_SOUND].data = loadWavFile("./sounds/Electro-Chord.wav", &sounds[ENTER_SOUND].length);
   sounds[BACK_SOUND].data = loadWavFile("./sounds/Roland-JD-990-Windchimes.wav", &sounds[BACK_SOUND].length);
 
-  drawProgress(10, 5, DMD_WIDTH - 83 - 1, color);
+  drawProgress(10, 5, DMD_WIDTH - 83 - 1, &color);
   refreshDmd();
   sounds[MUSIC_BASS_DRUM].data = loadWavFile("./sounds/music/Bass-Drum-1.wav", &sounds[MUSIC_BASS_DRUM].length);
   sounds[MUSIC_SNARE].data = loadWavFile("./sounds/music/Ensoniq-ESQ-1-Snare-2.wav", &sounds[MUSIC_SNARE].length);
   sounds[MUSIC_HI_HAT].data = loadWavFile("./sounds/music/Open-Hi-Hat-1.wav", &sounds[MUSIC_HI_HAT].length);
   sounds[MUSIC_HI_HAT_CLOSED].data = loadWavFile("./sounds/music/Closed-Hi-Hat-1.wav", &sounds[MUSIC_HI_HAT_CLOSED].length);
 
-  drawProgress(15, 5, DMD_WIDTH - 83 - 1, color);
+  drawProgress(15, 5, DMD_WIDTH - 83 - 1, &color);
   refreshDmd();
 }
 
