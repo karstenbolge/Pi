@@ -7,6 +7,7 @@ crop_image /path/to/image.jpg 20 30 40 50
 resize image by
 convert -resize 1024X768  source.png dest.jpg
 
+orig 1280 x 720, need 400 x 240
 
 40 - 440, 35 - 275
 

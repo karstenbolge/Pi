@@ -805,12 +805,12 @@ uint8_t print7At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y  ] = *pColor;
-    dmd[x + 2][y  ] = *pColor;
-    dmd[x + 3][y  ] = *pColor;
-    dmd[x + 4][y  ] = *pColor;
-    dmd[x + 5][y  ] = *pColor;
-    dmd[x + 6][y  ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 2][y] = *pColor;
+    dmd[x + 3][y] = *pColor;
+    dmd[x + 4][y] = *pColor;
+    dmd[x + 5][y] = *pColor;
+    dmd[x + 6][y] = *pColor;
 
     dmd[x + 6][y + 1] = *pColor;
 
@@ -834,33 +834,33 @@ uint8_t print7At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
 
-    dmd[x + 0][y +1 ] = *pBgColor;
-    dmd[x + 1][y +1 ] = *pBgColor;
-    dmd[x + 2][y +1 ] = *pBgColor;
-    dmd[x + 3][y +1 ] = *pBgColor;
-    dmd[x + 4][y +1 ] = *pBgColor;
-    dmd[x + 5][y +1 ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 1][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 5][y + 1] = *pBgColor;
 
-    dmd[x + 0][y +2 ] = *pBgColor;
-    dmd[x + 1][y +2 ] = *pBgColor;
-    dmd[x + 2][y +2 ] = *pBgColor;
-    dmd[x + 3][y +2 ] = *pBgColor;
-    dmd[x + 4][y +2 ] = *pBgColor;
-    dmd[x + 5][y +2 ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 1][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 5][y + 2] = *pBgColor;
 
-    dmd[x + 0][y +3 ] = *pBgColor;
-    dmd[x + 1][y +3 ] = *pBgColor;
-    dmd[x + 2][y +3 ] = *pBgColor;
-    dmd[x + 3][y +3 ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
+    dmd[x + 1][y + 3] = *pBgColor;
+    dmd[x + 2][y + 3] = *pBgColor;
+    dmd[x + 3][y + 3] = *pBgColor;
     dmd[x + 4][y + 3] = *pBgColor;
 
-    dmd[x + 0][y +4 ] = *pBgColor;
-    dmd[x + 1][y +4 ] = *pBgColor;
-    dmd[x + 2][y +4 ] = *pBgColor;
-    dmd[x + 3][y +4 ] = *pBgColor;
-    dmd[x + 4][y +4 ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 1][y + 4] = *pBgColor;
+    dmd[x + 2][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
 
     dmd[x + 0][y + 5] = *pBgColor;
     dmd[x + 1][y + 5] = *pBgColor;
@@ -918,23 +918,23 @@ uint8_t print8At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 2][y  ] = *pColor;
-    dmd[x + 3][y  ] = *pColor;
-    dmd[x + 4][y  ] = *pColor;
-    dmd[x + 5][y  ] = *pColor;
+    dmd[x + 2][y] = *pColor;
+    dmd[x + 3][y] = *pColor;
+    dmd[x + 4][y] = *pColor;
+    dmd[x + 5][y] = *pColor;
 
-    dmd[x + 2][y +1 ] = *pColor;
+    dmd[x + 2][y + 1] = *pColor;
     dmd[x + 5][y + 1] = *pColor;
 
     dmd[x + 2][y + 2] = *pColor;
     dmd[x + 5][y + 2] = *pColor;
 
-    dmd[x + 1][y +3 ] = *pColor;
-    dmd[x + 2][y +3 ] = *pColor;
-    dmd[x + 3][y +3 ] = *pColor;
-    dmd[x + 4][y +3 ] = *pColor;
-    dmd[x + 5][y +3 ] = *pColor;
-    dmd[x + 6][y +3 ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
+    dmd[x + 3][y + 3] = *pColor;
+    dmd[x + 4][y + 3] = *pColor;
+    dmd[x + 5][y + 3] = *pColor;
+    dmd[x + 6][y + 3] = *pColor;
 
     dmd[x + 1][y + 4] = *pColor;
     dmd[x + 5][y + 4] = *pColor;
@@ -958,15 +958,15 @@ uint8_t print8At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y  ] = *pBgColor;
-    dmd[x + 1][y  ] = *pBgColor;
-    dmd[x + 6][y  ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
+    dmd[x + 1][y] = *pBgColor;
+    dmd[x + 6][y] = *pBgColor;
 
-    dmd[x + 0][y +1 ] = *pBgColor;
-    dmd[x + 1][y +1 ] = *pBgColor;
-    dmd[x + 3][y +1 ] = *pBgColor;
-    dmd[x + 4][y +1 ] = *pBgColor;
-    dmd[x + 6][y +1 ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 1][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 6][y + 1] = *pBgColor;
 
     dmd[x + 0][y + 2] = *pBgColor;
     dmd[x + 1][y + 2] = *pBgColor;
@@ -981,10 +981,10 @@ uint8_t print8At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
     dmd[x + 3][y + 4] = *pBgColor;
     dmd[x + 4][y + 4] = *pBgColor;
 
-    dmd[x + 0][y +5 ] = *pBgColor;
-    dmd[x + 2][y +5 ] = *pBgColor;
-    dmd[x + 3][y +5 ] = *pBgColor;
-    dmd[x + 4][y +5 ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 2][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
 
     dmd[x + 0][y + 6] = *pBgColor;
     dmd[x + 2][y + 6] = *pBgColor;
@@ -1031,12 +1031,12 @@ uint8_t print9At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y  ] = *pColor;
-    dmd[x + 2][y  ] = *pColor;
-    dmd[x + 3][y  ] = *pColor;
-    dmd[x + 4][y  ] = *pColor;
-    dmd[x + 5][y  ] = *pColor;
-    dmd[x + 6][y  ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 2][y] = *pColor;
+    dmd[x + 3][y] = *pColor;
+    dmd[x + 4][y] = *pColor;
+    dmd[x + 5][y] = *pColor;
+    dmd[x + 6][y] = *pColor;
 
     dmd[x + 1][y + 1] = *pColor;
     dmd[x + 6][y + 1] = *pColor;
@@ -1047,11 +1047,11 @@ uint8_t print9At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
     dmd[x + 1][y + 3] = *pColor;
     dmd[x + 6][y + 3] = *pColor;
 
-    dmd[x + 1][y +4 ] = *pColor;
-    dmd[x + 2][y +4 ] = *pColor;
-    dmd[x + 3][y +4 ] = *pColor;
-    dmd[x + 4][y +4 ] = *pColor;
-    dmd[x + 5][y +4 ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 2][y + 4] = *pColor;
+    dmd[x + 3][y + 4] = *pColor;
+    dmd[x + 4][y + 4] = *pColor;
+    dmd[x + 5][y + 4] = *pColor;
     dmd[x + 6][y + 4] = *pColor;
 
     dmd[x + 5][y + 5] = *pColor;
@@ -1066,7 +1066,7 @@ uint8_t print9At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y  ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
 
     dmd[x + 0][y + 1] = *pBgColor;
     dmd[x + 2][y + 1] = *pBgColor;
@@ -1100,11 +1100,11 @@ uint8_t print9At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
     dmd[x + 3][y + 6] = *pBgColor;
     dmd[x + 4][y + 6] = *pBgColor;
 
-    dmd[x + 0][y +7 ] = *pBgColor;
-    dmd[x + 1][y +7 ] = *pBgColor;
-    dmd[x + 2][y +7 ] = *pBgColor;
-    dmd[x + 3][y +7 ] = *pBgColor;
-    dmd[x + 4][y +7 ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
+    dmd[x + 1][y + 7] = *pBgColor;
+    dmd[x + 2][y + 7] = *pBgColor;
+    dmd[x + 3][y + 7] = *pBgColor;
+    dmd[x + 4][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -1133,7 +1133,6 @@ uint8_t print9At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   return width;
 }
-//herfra
 uint8_t printAAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *pColor, rgb_t *pBgColor)
 {
   uint8_t width = 7;
@@ -1144,94 +1143,80 @@ uint8_t printAAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
+    dmd[x + 2][y] = *pColor;
+    dmd[x + 3][y] = *pColor;
+    dmd[x + 4][y] = *pColor;
+    dmd[x + 5][y] = *pColor;
 
-    y++; //1
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
+    dmd[x + 2][y + 1] = *pColor;
+    dmd[x + 5][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
+    dmd[x + 2][y + 2] = *pColor;
+    dmd[x + 5][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
+    dmd[x + 3][y + 3] = *pColor;
+    dmd[x + 4][y + 3] = *pColor;
+    dmd[x + 5][y + 3] = *pColor;
+    dmd[x + 6][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 2][y + 4] = *pColor;
+    dmd[x + 6][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 2][y + 5] = *pColor;
+    dmd[x + 6][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 2][y + 6] = *pColor;
+    dmd[x + 6][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
+    dmd[x + 6][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
+    dmd[x + 1][y] = *pBgColor;
+    dmd[x + 6][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 1][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 6][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 1][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 6][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
+    dmd[x + 5][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
+    dmd[x + 5][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
+    dmd[x + 5][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
+    dmd[x + 3][y + 7] = *pBgColor;
+    dmd[x + 4][y + 7] = *pBgColor;
+    dmd[x + 5][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -1271,94 +1256,80 @@ uint8_t printBAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 2][y] = *pColor;
+    dmd[x + 3][y] = *pColor;
+    dmd[x + 4][y] = *pColor;
+    dmd[x + 5][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
+    dmd[x + 5][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
+    dmd[x + 5][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
+    dmd[x + 3][y + 3] = *pColor;
+    dmd[x + 4][y + 3] = *pColor;
+    dmd[x + 5][y + 3] = *pColor;
+    dmd[x + 6][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 2][y + 4] = *pColor;
+    dmd[x + 6][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 2][y + 5] = *pColor;
+    dmd[x + 6][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 2][y + 6] = *pColor;
+    dmd[x + 6][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
+    dmd[x + 3][y + 7] = *pColor;
+    dmd[x + 4][y + 7] = *pColor;
+    dmd[x + 5][y + 7] = *pColor;
+    dmd[x + 6][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
+    dmd[x + 6][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 6][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 6][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
+    dmd[x + 5][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
+    dmd[x + 5][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
+    dmd[x + 5][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -1397,94 +1368,80 @@ uint8_t printCAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 2][y] = *pColor;
+    dmd[x + 3][y] = *pColor;
+    dmd[x + 4][y] = *pColor;
+    dmd[x + 5][y] = *pColor;
+    dmd[x + 6][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
+    dmd[x + 6][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 2][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 2][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 2][y + 6] = *pColor;
+    dmd[x + 6][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
+    dmd[x + 3][y + 7] = *pColor;
+    dmd[x + 4][y + 7] = *pColor;
+    dmd[x + 5][y + 7] = *pColor;
+    dmd[x + 6][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 5][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 5][y + 2] = *pBgColor;
+    dmd[x + 6][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
+    dmd[x + 3][y + 3] = *pBgColor;
+    dmd[x + 4][y + 3] = *pBgColor;
+    dmd[x + 5][y + 3] = *pBgColor;
+    dmd[x + 6][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
+    dmd[x + 5][y + 4] = *pBgColor;
+    dmd[x + 6][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
+    dmd[x + 5][y + 5] = *pBgColor;
+    dmd[x + 6][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
+    dmd[x + 5][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -1524,94 +1481,80 @@ uint8_t printDAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 2][y] = *pColor;
+    dmd[x + 3][y] = *pColor;
+    dmd[x + 4][y] = *pColor;
+    dmd[x + 5][y] = *pColor;
+    dmd[x + 6][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
+    dmd[x + 6][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
+    dmd[x + 6][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
+    dmd[x + 6][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 2][y + 4] = *pColor;
+    dmd[x + 6][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 2][y + 5] = *pColor;
+    dmd[x + 6][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 2][y + 6] = *pColor;
+    dmd[x + 6][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
+    dmd[x + 3][y + 7] = *pColor;
+    dmd[x + 4][y + 7] = *pColor;
+    dmd[x + 5][y + 7] = *pColor;
+    dmd[x + 6][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 5][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 5][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
+    dmd[x + 3][y + 3] = *pBgColor;
+    dmd[x + 4][y + 3] = *pBgColor;
+    dmd[x + 5][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
+    dmd[x + 5][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
+    dmd[x + 5][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
+    dmd[x + 5][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -1651,94 +1594,80 @@ uint8_t printEAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 2][y] = *pColor;
+    dmd[x + 3][y] = *pColor;
+    dmd[x + 4][y] = *pColor;
+    dmd[x + 5][y] = *pColor;
+    dmd[x + 6][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
+    dmd[x + 3][y + 3] = *pColor;
+    dmd[x + 4][y + 3] = *pColor;
+    dmd[x + 5][y + 3] = *pColor;
+    dmd[x + 6][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 2][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 2][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 2][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
+    dmd[x + 3][y + 7] = *pColor;
+    dmd[x + 4][y + 7] = *pColor;
+    dmd[x + 5][y + 7] = *pColor;
+    dmd[x + 6][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 5][y + 1] = *pBgColor;
+    dmd[x + 6][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 5][y + 2] = *pBgColor;
+    dmd[x + 6][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
+    dmd[x + 5][y + 4] = *pBgColor;
+    dmd[x + 6][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
+    dmd[x + 5][y + 5] = *pBgColor;
+    dmd[x + 6][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
+    dmd[x + 5][y + 6] = *pBgColor;
+    dmd[x + 6][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -1778,94 +1707,80 @@ uint8_t printFAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 2][y] = *pColor;
+    dmd[x + 3][y] = *pColor;
+    dmd[x + 4][y] = *pColor;
+    dmd[x + 5][y] = *pColor;
+    dmd[x + 6][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
+    dmd[x + 3][y + 3] = *pColor;
+    dmd[x + 4][y + 3] = *pColor;
+    dmd[x + 5][y + 3] = *pColor;
+    dmd[x + 6][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 2][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 2][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 2][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 5][y + 1] = *pBgColor;
+    dmd[x + 6][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 5][y + 2] = *pBgColor;
+    dmd[x + 6][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
+    dmd[x + 5][y + 4] = *pBgColor;
+    dmd[x + 6][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
+    dmd[x + 5][y + 5] = *pBgColor;
+    dmd[x + 6][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
+    dmd[x + 5][y + 6] = *pBgColor;
+    dmd[x + 6][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
+    dmd[x + 3][y + 7] = *pBgColor;
+    dmd[x + 4][y + 7] = *pBgColor;
+    dmd[x + 5][y + 7] = *pBgColor;
+    dmd[x + 6][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -1905,94 +1820,80 @@ uint8_t printGAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 2][y] = *pColor;
+    dmd[x + 3][y] = *pColor;
+    dmd[x + 4][y] = *pColor;
+    dmd[x + 5][y] = *pColor;
+    dmd[x + 6][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
+    dmd[x + 6][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
+    dmd[x + 5][y + 3] = *pColor;
+    dmd[x + 6][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 2][y + 4] = *pColor;
+    dmd[x + 6][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 2][y + 5] = *pColor;
+    dmd[x + 6][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 2][y + 6] = *pColor;
+    dmd[x + 6][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
+    dmd[x + 3][y + 7] = *pColor;
+    dmd[x + 4][y + 7] = *pColor;
+    dmd[x + 5][y + 7] = *pColor;
+    dmd[x + 6][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 5][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 5][y + 2] = *pBgColor;
+    dmd[x + 6][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
+    dmd[x + 3][y + 3] = *pBgColor;
+    dmd[x + 4][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
+    dmd[x + 5][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
+    dmd[x + 5][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
+    dmd[x + 5][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -2032,95 +1933,81 @@ uint8_t printHAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 6][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
+    dmd[x + 6][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
+    dmd[x + 6][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
+    dmd[x + 3][y + 3] = *pColor;
+    dmd[x + 4][y + 3] = *pColor;
+    dmd[x + 5][y + 3] = *pColor;
+    dmd[x + 6][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 2][y + 4] = *pColor;
+    dmd[x + 6][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 2][y + 5] = *pColor;
+    dmd[x + 6][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 2][y + 6] = *pColor;
+    dmd[x + 6][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
+    dmd[x + 6][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
+    dmd[x + 2][y] = *pBgColor;
+    dmd[x + 3][y] = *pBgColor;
+    dmd[x + 4][y] = *pBgColor;
+    dmd[x + 5][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 5][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 5][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
+    dmd[x + 5][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
+    dmd[x + 5][y + 5] = *pBgColor;
+    dmd[x + 6][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
+    dmd[x + 5][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
+    dmd[x + 3][y + 7] = *pBgColor;
+    dmd[x + 4][y + 7] = *pBgColor;
+    dmd[x + 5][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -2160,77 +2047,60 @@ uint8_t printIAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 2][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 2][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 2][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
+    dmd[x + 2][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
 
-    y++; //8
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
+    dmd[x + 0][y + 8] = *pBgColor;
+    dmd[x + 1][y + 8] = *pBgColor;
+    dmd[x + 2][y + 8] = *pBgColor;
 
-    y++; //9
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
+    dmd[x + 0][y + 9] = *pBgColor;
+    dmd[x + 1][y + 9] = *pBgColor;
+    dmd[x + 2][y + 9] = *pBgColor;
 
-    y++; //10
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
+    dmd[x + 0][y + 10] = *pBgColor;
+    dmd[x + 1][y + 10] = *pBgColor;
+    dmd[x + 2][y + 10] = *pBgColor;
   }
 
   return width;
@@ -2246,94 +2116,80 @@ uint8_t printJAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 5][y + ] = *pColor;
+    dmd[x + 5][y] = *pColor;
 
-    y++; //1
-    dmd[x + 5][y + ] = *pColor;
+    dmd[x + 5][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 5][y + ] = *pColor;
+    dmd[x + 5][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 5][y + 3] = *pColor;
+    dmd[x + 6][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 5][y + 4] = *pColor;
+    dmd[x + 6][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 5][y + 5] = *pColor;
+    dmd[x + 6][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 5][y + 6] = *pColor;
+    dmd[x + 6][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
+    dmd[x + 3][y + 7] = *pColor;
+    dmd[x + 4][y + 7] = *pColor;
+    dmd[x + 5][y + 7] = *pColor;
+    dmd[x + 6][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
+    dmd[x + 1][y] = *pBgColor;
+    dmd[x + 2][y] = *pBgColor;
+    dmd[x + 3][y] = *pBgColor;
+    dmd[x + 4][y] = *pBgColor;
+    dmd[x + 6][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 1][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 6][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 1][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 6][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
+    dmd[x + 1][y + 3] = *pBgColor;
+    dmd[x + 2][y + 3] = *pBgColor;
+    dmd[x + 3][y + 3] = *pBgColor;
+    dmd[x + 4][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 1][y + 4] = *pBgColor;
+    dmd[x + 2][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 2][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 2][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -2373,94 +2229,80 @@ uint8_t printKAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 5][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
+    dmd[x + 5][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
+    dmd[x + 5][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
+    dmd[x + 3][y + 3] = *pColor;
+    dmd[x + 4][y + 3] = *pColor;
+    dmd[x + 5][y + 3] = *pColor;
+    dmd[x + 6][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 2][y + 4] = *pColor;
+    dmd[x + 6][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 2][y + 5] = *pColor;
+    dmd[x + 6][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 2][y + 6] = *pColor;
+    dmd[x + 6][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
+    dmd[x + 6][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
+    dmd[x + 2][y] = *pBgColor;
+    dmd[x + 3][y] = *pBgColor;
+    dmd[x + 4][y] = *pBgColor;
+    dmd[x + 6][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 6][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 6][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
+    dmd[x + 5][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
+    dmd[x + 5][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
+    dmd[x + 5][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
+    dmd[x + 3][y + 7] = *pBgColor;
+    dmd[x + 4][y + 7] = *pBgColor;
+    dmd[x + 5][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -2500,94 +2342,80 @@ uint8_t printLAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 2][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 2][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 2][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
+    dmd[x + 3][y + 7] = *pColor;
+    dmd[x + 4][y + 7] = *pColor;
+    dmd[x + 5][y + 7] = *pColor;
+    dmd[x + 6][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
+    dmd[x + 2][y] = *pBgColor;
+    dmd[x + 3][y] = *pBgColor;
+    dmd[x + 4][y] = *pBgColor;
+    dmd[x + 5][y] = *pBgColor;
+    dmd[x + 6][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 5][y + 1] = *pBgColor;
+    dmd[x + 6][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 5][y + 2] = *pBgColor;
+    dmd[x + 6][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
+    dmd[x + 3][y + 3] = *pBgColor;
+    dmd[x + 4][y + 3] = *pBgColor;
+    dmd[x + 5][y + 3] = *pBgColor;
+    dmd[x + 6][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
+    dmd[x + 5][y + 4] = *pBgColor;
+    dmd[x + 6][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
+    dmd[x + 5][y + 5] = *pBgColor;
+    dmd[x + 6][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
+    dmd[x + 5][y + 6] = *pBgColor;
+    dmd[x + 6][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -2627,143 +2455,126 @@ uint8_t printMAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
-    dmd[x + 7][y + ] = *pColor;
-    dmd[x + 8][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 2][y] = *pColor;
+    dmd[x + 3][y] = *pColor;
+    dmd[x + 4][y] = *pColor;
+    dmd[x + 5][y] = *pColor;
+    dmd[x + 6][y] = *pColor;
+    dmd[x + 7][y] = *pColor;
+    dmd[x + 8][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 8][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
+    dmd[x + 5][y + 1] = *pColor;
+    dmd[x + 8][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 8][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
+    dmd[x + 5][y + 2] = *pColor;
+    dmd[x + 8][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 8][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
+    dmd[x + 5][y + 3] = *pColor;
+    dmd[x + 8][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 8][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 2][y + 4] = *pColor;
+    dmd[x + 5][y + 4] = *pColor;
+    dmd[x + 8][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 8][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 2][y + 5] = *pColor;
+    dmd[x + 5][y + 5] = *pColor;
+    dmd[x + 8][y + ] 5 = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 8][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 2][y + 6] = *pColor;
+    dmd[x + 5][y + 6] = *pColor;
+    dmd[x + 8][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 8][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
+    dmd[x + 5][y + 7] = *pColor;
+    dmd[x + 8][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
-    dmd[x + 7][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 6][y + 1] = *pBgColor;
+    dmd[x + 7][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
-    dmd[x + 7][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 6][y + 2] = *pBgColor;
+    dmd[x + 7][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
-    dmd[x + 7][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
+    dmd[x + 3][y + 3] = *pBgColor;
+    dmd[x + 4][y + 3] = *pBgColor;
+    dmd[x + 6][y + 3] = *pBgColor;
+    dmd[x + 7][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
-    dmd[x + 7][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
+    dmd[x + 6][y + 4] = *pBgColor;
+    dmd[x + 7][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
-    dmd[x + 7][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
+    dmd[x + 6][y + 5] = *pBgColor;
+    dmd[x + 7][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
-    dmd[x + 7][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
+    dmd[x + 6][y + 6] = *pBgColor;
+    dmd[x + 7][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
-    dmd[x + 7][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
+    dmd[x + 3][y + 7] = *pBgColor;
+    dmd[x + 4][y + 7] = *pBgColor;
+    dmd[x + 6][y + 7] = *pBgColor;
+    dmd[x + 7][y + 7] = *pBgColor;
 
-    y++; //8
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
-    dmd[x + 7][y + ] = *pBgColor;
-    dmd[x + 8][y + ] = *pBgColor;
+    dmd[x + 0][y + 8] = *pBgColor;
+    dmd[x + 1][y + 8] = *pBgColor;
+    dmd[x + 2][y + 8] = *pBgColor;
+    dmd[x + 3][y + 8] = *pBgColor;
+    dmd[x + 4][y + 8] = *pBgColor;
+    dmd[x + 5][y + 8] = *pBgColor;
+    dmd[x + 6][y + 8] = *pBgColor;
+    dmd[x + 7][y + 8] = *pBgColor;
+    dmd[x + 8][y + 8] = *pBgColor;
 
-    y++; //9
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
-    dmd[x + 7][y + ] = *pBgColor;
-    dmd[x + 8][y + ] = *pBgColor;
+    dmd[x + 0][y + 9] = *pBgColor;
+    dmd[x + 1][y + 9] = *pBgColor;
+    dmd[x + 2][y + 9] = *pBgColor;
+    dmd[x + 3][y + 9] = *pBgColor;
+    dmd[x + 4][y + 9] = *pBgColor;
+    dmd[x + 5][y + 9] = *pBgColor;
+    dmd[x + 6][y + 9] = *pBgColor;
+    dmd[x + 7][y + 9] = *pBgColor;
+    dmd[x + 8][y + 9] = *pBgColor;
 
-    y++; //10
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
-    dmd[x + 7][y + ] = *pBgColor;
-    dmd[x + 8][y + ] = *pBgColor;
+    dmd[x + 0][y + 10] = *pBgColor;
+    dmd[x + 1][y + 10] = *pBgColor;
+    dmd[x + 2][y + 10] = *pBgColor;
+    dmd[x + 3][y + 10] = *pBgColor;
+    dmd[x + 4][y + 10] = *pBgColor;
+    dmd[x + 5][y + 10] = *pBgColor;
+    dmd[x + 6][y + 10] = *pBgColor;
+    dmd[x + 7][y + 10] = *pBgColor;
+    dmd[x + 8][y + 10] = *pBgColor;
   }
 
   return width;
@@ -2779,94 +2590,80 @@ uint8_t printNAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 2][y] = *pColor;
+    dmd[x + 3][y] = *pColor;
+    dmd[x + 4][y] = *pColor;
+    dmd[x + 5][y] = *pColor;
+    dmd[x + 6][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
+    dmd[x + 6][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
+    dmd[x + 6][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
+    dmd[x + 6][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 2][y + 4] = *pColor;
+    dmd[x + 6][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 2][y + 5] = *pColor;
+    dmd[x + 6][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 2][y + 6] = *pColor;
+    dmd[x + 6][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
+    dmd[x + 6][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 5][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 5][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
+    dmd[x + 3][y + 3] = *pBgColor;
+    dmd[x + 4][y + 3] = *pBgColor;
+    dmd[x + 5][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
+    dmd[x + 5][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
+    dmd[x + 5][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
+    dmd[x + 5][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
+    dmd[x + 3][y + 7] = *pBgColor;
+    dmd[x + 4][y + 7] = *pBgColor;
+    dmd[x + 5][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -2906,95 +2703,81 @@ uint8_t printOAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 2][y] = *pColor;
+    dmd[x + 3][y] = *pColor;
+    dmd[x + 4][y] = *pColor;
+    dmd[x + 5][y] = *pColor;
+    dmd[x + 6][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
+    dmd[x + 5][y + 1] = *pColor;
+    dmd[x + 6][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
+    dmd[x + 6][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 6][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 6][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 6][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 6][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
+    dmd[x + 3][y + 7] = *pColor;
+    dmd[x + 4][y + 7] = *pColor;
+    dmd[x + 5][y + 7] = *pColor;
+    dmd[x + 6][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 5][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
+    dmd[x + 2][y + 3] = *pBgColor;
+    dmd[x + 3][y + 3] = *pBgColor;
+    dmd[x + 4][y + 3] = *pBgColor;
+    dmd[x + 5][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 2][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
+    dmd[x + 5][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 2][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
+    dmd[x + 5][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 2][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
+    dmd[x + 5][y + 6] = *pBgColor;
+    dmd[x + 6][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -3034,94 +2817,80 @@ uint8_t printPAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 2][y] = *pColor;
+    dmd[x + 3][y] = *pColor;
+    dmd[x + 4][y] = *pColor;
+    dmd[x + 5][y] = *pColor;
+    dmd[x + 6][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
+    dmd[x + 6][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
+    dmd[x + 6][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
+    dmd[x + 3][y + 3] = *pColor;
+    dmd[x + 4][y + 3] = *pColor;
+    dmd[x + 5][y + 3] = *pColor;
+    dmd[x + 6][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 2][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 2][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 2][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 5][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 5][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
+    dmd[x + 5][y + 4] = *pBgColor;
+    dmd[x + 6][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
+    dmd[x + 5][y + 5] = *pBgColor;
+    dmd[x + 6][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
+    dmd[x + 5][y + 6] = *pBgColor;
+    dmd[x + 6][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
+    dmd[x + 3][y + 7] = *pBgColor;
+    dmd[x + 4][y + 7] = *pBgColor;
+    dmd[x + 5][y + 7] = *pBgColor;
+    dmd[x + 6][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -3161,94 +2930,80 @@ uint8_t printQAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 2][y] = *pColor;
+    dmd[x + 3][y] = *pColor;
+    dmd[x + 4][y] = *pColor;
+    dmd[x + 5][y] = *pColor;
+    dmd[x + 6][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
+    dmd[x + 6][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
+    dmd[x + 6][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 6][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 6][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 6][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 3][y + 6] = *pColor;
+    dmd[x + 4][y + 6] = *pColor;
+    dmd[x + 5][y + 6] = *pColor;
+    dmd[x + 6][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
+    dmd[x + 3][y + 7] = *pColor;
+    dmd[x + 4][y + 7] = *pColor;
+    dmd[x + 5][y + 7] = *pColor;
+    dmd[x + 6][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 5][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 5][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
+    dmd[x + 2][y + 3] = *pBgColor;
+    dmd[x + 3][y + 3] = *pBgColor;
+    dmd[x + 4][y + 3] = *pBgColor;
+    dmd[x + 5][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 2][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
+    dmd[x + 5][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 2][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
+    dmd[x + 5][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 2][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -3288,94 +3043,80 @@ uint8_t printRAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 2][y] = *pColor;
+    dmd[x + 3][y] = *pColor;
+    dmd[x + 4][y] = *pColor;
+    dmd[x + 5][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
+    dmd[x + 5][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
+    dmd[x + 5][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
+    dmd[x + 3][y + 3] = *pColor;
+    dmd[x + 4][y + 3] = *pColor;
+    dmd[x + 5][y + 3] = *pColor;
+    dmd[x + 6][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 2][y + 4] = *pColor;
+    dmd[x + 6][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 2][y + 5] = *pColor;
+    dmd[x + 6][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 2][y + 6] = *pColor;
+    dmd[x + 6][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
+    dmd[x + 6][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
+    dmd[x + 6][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 6][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 6][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
+    dmd[x + 5][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
+    dmd[x + 5][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
+    dmd[x + 5][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
+    dmd[x + 3][y + 7] = *pBgColor;
+    dmd[x + 4][y + 7] = *pBgColor;
+    dmd[x + 5][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -3415,94 +3156,80 @@ uint8_t printSAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 2][y] = *pColor;
+    dmd[x + 3][y] = *pColor;
+    dmd[x + 4][y] = *pColor;
+    dmd[x + 5][y] = *pColor;
+    dmd[x + 6][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
+    dmd[x + 6][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
+    dmd[x + 3][y + 3] = *pColor;
+    dmd[x + 4][y + 3] = *pColor;
+    dmd[x + 5][y + 3] = *pColor;
+    dmd[x + 6][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 5][y + 4] = *pColor;
+    dmd[x + 6][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 5][y + 5] = *pColor;
+    dmd[x + 6][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 5][y + 6] = *pColor;
+    dmd[x + 6][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
+    dmd[x + 3][y + 7] = *pColor;
+    dmd[x + 4][y + 7] = *pColor;
+    dmd[x + 5][y + 7] = *pColor;
+    dmd[x + 6][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 5][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 5][y + 2] = *pBgColor;
+    dmd[x + 6][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 1][y + 4] = *pBgColor;
+    dmd[x + 2][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 1][y + 5] = *pBgColor;
+    dmd[x + 2][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 2][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -3542,94 +3269,80 @@ uint8_t printTAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 2][y] = *pColor;
+    dmd[x + 3][y] = *pColor;
+    dmd[x + 4][y] = *pColor;
+    dmd[x + 5][y] = *pColor;
+    dmd[x + 6][y] = *pColor;
 
-    y++; //1
-    dmd[x + 3][y + ] = *pColor;
+    dmd[x + 3][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 3][y + ] = *pColor;
+    dmd[x + 3][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
+    dmd[x + 3][y + 3] = *pColor;
+    dmd[x + 4][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
+    dmd[x + 3][y + 4] = *pColor;
+    dmd[x + 4][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
+    dmd[x + 3][y + 5] = *pColor;
+    dmd[x + 4][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
+    dmd[x + 3][y + 6] = *pColor;
+    dmd[x + 4][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
+    dmd[x + 3][y + 7] = *pColor;
+    dmd[x + 4][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 1][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 5][y + 1] = *pBgColor;
+    dmd[x + 6][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 1][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 5][y + 2] = *pBgColor;
+    dmd[x + 6][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
+    dmd[x + 1][y + 3] = *pBgColor;
+    dmd[x + 2][y + 3] = *pBgColor;
+    dmd[x + 5][y + 3] = *pBgColor;
+    dmd[x + 6][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 1][y + 4] = *pBgColor;
+    dmd[x + 2][y + 4] = *pBgColor;
+    dmd[x + 5][y + 4] = *pBgColor;
+    dmd[x + 6][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 1][y + 5] = *pBgColor;
+    dmd[x + 2][y + 5] = *pBgColor;
+    dmd[x + 5][y + 5] = *pBgColor;
+    dmd[x + 6][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 1][y + 6] = *pBgColor;
+    dmd[x + 2][y + 6] = *pBgColor;
+    dmd[x + 5][y + 6] = *pBgColor;
+    dmd[x + 6][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
+    dmd[x + 1][y + 7] = *pBgColor;
+    dmd[x + 2][y + 7] = *pBgColor;
+    dmd[x + 5][y + 7] = *pBgColor;
+    dmd[x + 6][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -3669,94 +3382,80 @@ uint8_t printUAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 6][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
+    dmd[x + 6][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
+    dmd[x + 6][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
+    dmd[x + 6][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 2][y + 4] = *pColor;
+    dmd[x + 6][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 2][y + 5] = *pColor;
+    dmd[x + 6][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 2][y + 6] = *pColor;
+    dmd[x + 6][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
+    dmd[x + 3][y + 7] = *pColor;
+    dmd[x + 4][y + 7] = *pColor;
+    dmd[x + 5][y + 7] = *pColor;
+    dmd[x + 6][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
+    dmd[x + 2][y] = *pBgColor;
+    dmd[x + 3][y] = *pBgColor;
+    dmd[x + 4][y] = *pBgColor;
+    dmd[x + 5][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 5][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 5][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
+    dmd[x + 3][y + 3] = *pBgColor;
+    dmd[x + 4][y + 3] = *pBgColor;
+    dmd[x + 5][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
+    dmd[x + 5][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
+    dmd[x + 5][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
+    dmd[x + 5][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -3796,94 +3495,80 @@ uint8_t printVAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 2][y] = *pColor;
+    dmd[x + 6][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
+    dmd[x + 2][y + 1] = *pColor;
+    dmd[x + 6][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
+    dmd[x + 2][y + 2] = *pColor;
+    dmd[x + 6][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
+    dmd[x + 6][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 2][y + 4] = *pColor;
+    dmd[x + 5][y + 4] = *pColor;
+    dmd[x + 6][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
+    dmd[x + 2][y + 5] = *pColor;
+    dmd[x + 5][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
+    dmd[x + 2][y + 6] = *pColor;
+    dmd[x + 5][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
+    dmd[x + 3][y + 7] = *pColor;
+    dmd[x + 4][y + 7] = *pColor;
+    dmd[x + 5][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
+    dmd[x + 3][y] = *pBgColor;
+    dmd[x + 4][y] = *pBgColor;
+    dmd[x + 5][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 5][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 5][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
+    dmd[x + 3][y + 3] = *pBgColor;
+    dmd[x + 4][y + 3] = *pBgColor;
+    dmd[x + 5][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 1][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
+    dmd[x + 6][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 1][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
+    dmd[x + 6][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
+    dmd[x + 1][y + 7] = *pBgColor;
+    dmd[x + 6][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -3923,143 +3608,126 @@ uint8_t printWAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 8][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 5][y] = *pColor;
+    dmd[x + 8][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 8][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
+    dmd[x + 5][y + 1] = *pColor;
+    dmd[x + 8][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 8][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
+    dmd[x + 5][y + 2] = *pColor;
+    dmd[x + 8][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 8][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
+    dmd[x + 5][y + 3] = *pColor;
+    dmd[x + 8][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 8][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 2][y + 4] = *pColor;
+    dmd[x + 5][y + 4] = *pColor;
+    dmd[x + 8][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 8][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 2][y + 5] = *pColor;
+    dmd[x + 5][y + 5] = *pColor;
+    dmd[x + 8][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 8][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 2][y + 6] = *pColor;
+    dmd[x + 5][y + 6] = *pColor;
+    dmd[x + 8][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
-    dmd[x + 7][y + ] = *pColor;
-    dmd[x + 8][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
+    dmd[x + 3][y + 7] = *pColor;
+    dmd[x + 4][y + 7] = *pColor;
+    dmd[x + 5][y + 7] = *pColor;
+    dmd[x + 6][y + 7] = *pColor;
+    dmd[x + 7][y + 7] = *pColor;
+    dmd[x + 8][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
-    dmd[x + 7][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
+    dmd[x + 2][y] = *pBgColor;
+    dmd[x + 3][y] = *pBgColor;
+    dmd[x + 4][y] = *pBgColor;
+    dmd[x + 6][y] = *pBgColor;
+    dmd[x + 7][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
-    dmd[x + 7][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 6][y + 1] = *pBgColor;
+    dmd[x + 7][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
-    dmd[x + 7][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 6][y + 2] = *pBgColor;
+    dmd[x + 7][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
-    dmd[x + 7][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
+    dmd[x + 3][y + 3] = *pBgColor;
+    dmd[x + 4][y + 3] = *pBgColor;
+    dmd[x + 6][y + 3] = *pBgColor;
+    dmd[x + 7][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
-    dmd[x + 7][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
+    dmd[x + 6][y + 4] = *pBgColor;
+    dmd[x + 7][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
-    dmd[x + 7][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
+    dmd[x + 6][y + 5] = *pBgColor;
+    dmd[x + 7][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
-    dmd[x + 7][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
+    dmd[x + 6][y + 6] = *pBgColor;
+    dmd[x + 7][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
 
-    y++; //8
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
-    dmd[x + 7][y + ] = *pBgColor;
-    dmd[x + 8][y + ] = *pBgColor;
+    dmd[x + 0][y + 8] = *pBgColor;
+    dmd[x + 1][y + 8] = *pBgColor;
+    dmd[x + 2][y + 8] = *pBgColor;
+    dmd[x + 3][y + 8] = *pBgColor;
+    dmd[x + 4][y + 8] = *pBgColor;
+    dmd[x + 5][y + 8] = *pBgColor;
+    dmd[x + 6][y + 8] = *pBgColor;
+    dmd[x + 7][y + 8] = *pBgColor;
+    dmd[x + 8][y + 8] = *pBgColor;
 
-    y++; //9
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
-    dmd[x + 7][y + ] = *pBgColor;
-    dmd[x + 8][y + ] = *pBgColor;
+    dmd[x + 0][y + 9] = *pBgColor;
+    dmd[x + 1][y + 9] = *pBgColor;
+    dmd[x + 2][y + 9] = *pBgColor;
+    dmd[x + 3][y + 9] = *pBgColor;
+    dmd[x + 4][y + 9] = *pBgColor;
+    dmd[x + 5][y + 9] = *pBgColor;
+    dmd[x + 6][y + 9] = *pBgColor;
+    dmd[x + 7][y + 9] = *pBgColor;
+    dmd[x + 8][y + 9] = *pBgColor;
 
-    y++; //10
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
-    dmd[x + 7][y + ] = *pBgColor;
-    dmd[x + 8][y + ] = *pBgColor;
+    dmd[x + 0][y + 10] = *pBgColor;
+    dmd[x + 1][y + 10] = *pBgColor;
+    dmd[x + 2][y + 10] = *pBgColor;
+    dmd[x + 3][y + 10] = *pBgColor;
+    dmd[x + 4][y + 10] = *pBgColor;
+    dmd[x + 5][y + 10] = *pBgColor;
+    dmd[x + 6][y + 10] = *pBgColor;
+    dmd[x + 7][y + 10] = *pBgColor;
+    dmd[x + 8][y + 10] = *pBgColor;
   }
 
   return width;
@@ -4075,95 +3743,81 @@ uint8_t printXAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 6][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
+    dmd[x + 6][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
+    dmd[x + 6][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
+    dmd[x + 3][y + 3] = *pColor;
+    dmd[x + 4][y + 3] = *pColor;
+    dmd[x + 5][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 2][y + 4] = *pColor;
+    dmd[x + 6][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 2][y + 5] = *pColor;
+    dmd[x + 6][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 2][y + 6] = *pColor;
+    dmd[x + 6][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
+    dmd[x + 6][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
+    dmd[x + 2][y] = *pBgColor;
+    dmd[x + 3][y] = *pBgColor;
+    dmd[x + 4][y] = *pBgColor;
+    dmd[x + 5][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 5][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 5][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
+    dmd[x + 1][y + 3] = *pBgColor;
+    dmd[x + 6][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
+    dmd[x + 5][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
+    dmd[x + 5][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
+    dmd[x + 5][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 0][y + 7] = *pBgColor;
+    dmd[x + 3][y + 7] = *pBgColor;
+    dmd[x + 4][y + 7] = *pBgColor;
+    dmd[x + 5][y + 7] = *pBgColor;
+    dmd[x + 6][y + 7] = *pColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -4203,94 +3857,80 @@ uint8_t printYAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 6][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
+    dmd[x + 6][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 2] = *pColor;
+    dmd[x + 6][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
+    dmd[x + 3][y + 3] = *pColor;
+    dmd[x + 4][y + 3] = *pColor;
+    dmd[x + 5][y + 3] = *pColor;
+    dmd[x + 6][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
+    dmd[x + 3][y + 4] = *pColor;
+    dmd[x + 4][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
+    dmd[x + 3][y + 5] = *pColor;
+    dmd[x + 4][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
+    dmd[x + 3][y + 6] = *pColor;
+    dmd[x + 4][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
+    dmd[x + 3][y + 7] = *pColor;
+    dmd[x + 4][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
+    dmd[x + 2][y] = *pBgColor;
+    dmd[x + 3][y] = *pBgColor;
+    dmd[x + 4][y] = *pBgColor;
+    dmd[x + 5][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 5][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 5][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 1][y + 4] = *pBgColor;
+    dmd[x + 2][y + 4] = *pBgColor;
+    dmd[x + 5][y + 4] = *pBgColor;
+    dmd[x + 6][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 1][y + 5] = *pBgColor;
+    dmd[x + 2][y + 5] = *pBgColor;
+    dmd[x + 5][y + 5] = *pBgColor;
+    dmd[x + 6][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 1][y + 6] = *pBgColor;
+    dmd[x + 2][y + 6] = *pBgColor;
+    dmd[x + 5][y + 6] = *pBgColor;
+    dmd[x + 6][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
+    dmd[x + 1][y + 7] = *pBgColor;
+    dmd[x + 2][y + 7] = *pBgColor;
+    dmd[x + 5][y + 7] = *pBgColor;
+    dmd[x + 6][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
@@ -4330,94 +3970,80 @@ uint8_t printZAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
   if (pColor != NULL)
   {
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y] = *pColor;
+    dmd[x + 2][y] = *pColor;
+    dmd[x + 3][y] = *pColor;
+    dmd[x + 4][y] = *pColor;
+    dmd[x + 5][y] = *pColor;
+    dmd[x + 6][y] = *pColor;
 
-    y++; //1
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 1] = *pColor;
+    dmd[x + 6][y + 1] = *pColor;
 
-    y++; //2
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 6][y + 2] = *pColor;
 
-    y++; //3
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 3] = *pColor;
+    dmd[x + 2][y + 3] = *pColor;
+    dmd[x + 3][y + 3] = *pColor;
+    dmd[x + 4][y + 3] = *pColor;
+    dmd[x + 5][y + 3] = *pColor;
+    dmd[x + 6][y + 3] = *pColor;
 
-    y++; //4
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 4] = *pColor;
+    dmd[x + 2][y + 4] = *pColor;
 
-    y++; //5
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 2][y + 5] = *pColor;
 
-    y++; //6
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 6] = *pColor;
+    dmd[x + 2][y + 6] = *pColor;
+    dmd[x + 6][y + 6] = *pColor;
 
-    y++; //7
-    dmd[x + 1][y + ] = *pColor;
-    dmd[x + 2][y + ] = *pColor;
-    dmd[x + 3][y + ] = *pColor;
-    dmd[x + 4][y + ] = *pColor;
-    dmd[x + 5][y + ] = *pColor;
-    dmd[x + 6][y + ] = *pColor;
+    dmd[x + 1][y + 7] = *pColor;
+    dmd[x + 2][y + 7] = *pColor;
+    dmd[x + 3][y + 7] = *pColor;
+    dmd[x + 4][y + 7] = *pColor;
+    dmd[x + 5][y + 7] = *pColor;
+    dmd[x + 6][y + 7] = *pColor;
   }
 
   if (pBgColor != NULL)
   {
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y] = *pBgColor;
 
-    y++; //1
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+    dmd[x + 4][y + 1] = *pBgColor;
+    dmd[x + 5][y + 1] = *pBgColor;
 
-    y++; //2
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 1][y + ] = *pBgColor;
-    dmd[x + 2][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 1][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+    dmd[x + 4][y + 2] = *pBgColor;
+    dmd[x + 5][y + 2] = *pBgColor;
 
-    y++; //3
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 3] = *pBgColor;
 
-    y++; //4
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+    dmd[x + 4][y + 4] = *pBgColor;
+    dmd[x + 5][y + 4] = *pBgColor;
+    dmd[x + 6][y + 4] = *pBgColor;
 
-    y++; //5
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
-    dmd[x + 6][y + ] = *pBgColor;
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+    dmd[x + 4][y + 5] = *pBgColor;
+    dmd[x + 5][y + 5] = *pBgColor;
+    dmd[x + 6][y + 5] = *pBgColor;
 
-    y++; //6
-    dmd[x + 0][y + ] = *pBgColor;
-    dmd[x + 3][y + ] = *pBgColor;
-    dmd[x + 4][y + ] = *pBgColor;
-    dmd[x + 5][y + ] = *pBgColor;
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+    dmd[x + 4][y + 6] = *pBgColor;
+    dmd[x + 5][y + 6] = *pBgColor;
 
-    y++; //7
-    dmd[x + 0][y + ] = *pBgColor;
+    dmd[x + 0][y + 7] = *pBgColor;
 
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
