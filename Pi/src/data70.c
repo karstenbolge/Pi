@@ -379,7 +379,7 @@ uint8_t print3At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
     dmd[x + 1][y + 6] = *pColor;
     dmd[x + 5][y + 6] = *pColor;
-    dmd[x + 6][y +  6] = *pColor;
+    dmd[x + 6][y + 6] = *pColor;
 
     dmd[x + 1][y + 7] = *pColor;
     dmd[x + 2][y + 7] = *pColor;
@@ -2485,7 +2485,7 @@ uint8_t printMAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
     dmd[x + 1][y + 5] = *pColor;
     dmd[x + 2][y + 5] = *pColor;
     dmd[x + 5][y + 5] = *pColor;
-    dmd[x + 8][y +  5] = *pColor;
+    dmd[x + 8][y + 5] = *pColor;
 
     dmd[x + 1][y + 6] = *pColor;
     dmd[x + 2][y + 6] = *pColor;
@@ -4668,7 +4668,7 @@ uint8_t printgAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
     dmd[x + 5][y + 3] = *pColor;
 
     dmd[x + 1][y + 4] = *pColor;
-    dmd[x + 5][y +  4] = *pColor;
+    dmd[x + 5][y + 4] = *pColor;
 
     dmd[x + 1][y + 5] = *pColor;
     dmd[x + 2][y + 5] = *pColor;
@@ -5678,7 +5678,7 @@ uint8_t printqAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
     dmd[x + 2][y + 10] = *pBgColor;
     dmd[x + 3][y + 10] = *pBgColor;
     dmd[x + 4][y + 10] = *pBgColor;
-    dmd[x + 5][y + 10] = *pColor;
+    dmd[x + 5][y + 10] = *pBgColor;
   }
 
   return width;
@@ -6239,7 +6239,6 @@ uint8_t printwAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
 
     dmd[x + 0][y + 7] = *pBgColor;
 
-    y++; //8
     dmd[x + 0][y + 8] = *pBgColor;
     dmd[x + 1][y + 8] = *pBgColor;
     dmd[x + 2][y + 8] = *pBgColor;
@@ -6408,12 +6407,6 @@ uint8_t printyAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
     dmd[x + 3][y + 9] = *pColor;
     dmd[x + 4][y + 9] = *pColor;
     dmd[x + 5][y + 9] = *pColor;
-
-    dmd[x + 1][y + 10] = *pColor;
-    dmd[x + 2][y + 10] = *pColor;
-    dmd[x + 3][y + 10] = *pColor;
-    dmd[x + 4][y + 10] = *pColor;
-    dmd[x + 5][y + 10] = *pColor;
   }
 
   if (pBgColor != NULL)
@@ -6467,6 +6460,11 @@ uint8_t printyAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *
     dmd[x + 0][y + 9] = *pBgColor;
 
     dmd[x + 0][y + 10] = *pBgColor;
+    dmd[x + 1][y + 10] = *pBgColor;
+    dmd[x + 2][y + 10] = *pBgColor;
+    dmd[x + 3][y + 10] = *pBgColor;
+    dmd[x + 4][y + 10] = *pBgColor;
+    dmd[x + 5][y + 10] = *pBgColor;
   }
 
   return width;
@@ -6765,11 +6763,11 @@ uint8_t printHashAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_
     dmd[x + 2][y + 4] = *pColor;
     dmd[x + 5][y + 4] = *pColor;
 
-    dmd[x + 1][y + 4] = *pColor;
-    dmd[x + 2][y + 4] = *pColor;
-    dmd[x + 3][y + 4] = *pColor;
-    dmd[x + 4][y + 4] = *pColor;
-    dmd[x + 5][y + 4] = *pColor;
+    dmd[x + 1][y + 5] = *pColor;
+    dmd[x + 2][y + 5] = *pColor;
+    dmd[x + 3][y + 5] = *pColor;
+    dmd[x + 4][y + 5] = *pColor;
+    dmd[x + 5][y + 5] = *pColor;
     dmd[x + 6][y + 5] = *pColor;
 
     dmd[x + 1][y + 6] = *pColor;
@@ -7279,7 +7277,7 @@ uint8_t printForwardParatheseAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uin
     dmd[x + 0][y + 1] = *pBgColor;
     dmd[x + 1][y + 1] = *pBgColor;
 
-    dmd[x + 0][y +  2] = *pBgColor;
+    dmd[x + 0][y + 2] = *pBgColor;
     dmd[x + 2][y + 2] = *pBgColor;
 
     dmd[x + 0][y + 3] = *pBgColor;
@@ -10792,7 +10790,6 @@ uint8_t printLarge4At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rg
     dmd[x + 3][y + 5] = *pColor;
     dmd[x + 10][y + 5] = *pColor;
     dmd[x + 11][y + 5] = *pColor;
-    dmd[x + 12][y + 5] = *pBgColor;
 
     dmd[x + 2][y + 6] = *pColor;
     dmd[x + 3][y + 6] = *pColor;
@@ -10840,7 +10837,6 @@ uint8_t printLarge4At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rg
     dmd[x + 12][y + 12] = *pColor;
     dmd[x + 13][y + 12] = *pColor;
 
-    dmd[x + 2][y + 13] = *pColor;
     dmd[x + 3][y + 13] = *pColor;
     dmd[x + 4][y + 13] = *pColor;
     dmd[x + 5][y + 13] = *pColor;
@@ -10986,6 +10982,7 @@ uint8_t printLarge4At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rg
 
     dmd[x + 0][y + 13] = *pBgColor;
     dmd[x + 1][y + 13] = *pBgColor;
+    dmd[x + 2][y + 13] = *pBgColor;
 
     dmd[x + 0][y + 14] = *pBgColor;
     dmd[x + 1][y + 14] = *pBgColor;
@@ -11939,7 +11936,7 @@ uint8_t printLarge8At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rg
     dmd[x + 13][y + 11] = *pColor;
 
     dmd[x + 2][y + 12] = *pColor;
-    dmd[x + 3][y + 112] = *pColor;
+    dmd[x + 3][y + 12] = *pColor;
     dmd[x + 10][y + 12] = *pColor;
     dmd[x + 11][y + 12] = *pColor;
     dmd[x + 12][y + 12] = *pColor;

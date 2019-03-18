@@ -10,6 +10,10 @@ Make big font.
 Adjust number of balls.
 Adjust allow restart game.
 
+Make maker to load char, save as char and ts.
+
+small font <>`
+
 Make central text.
 Optimize font by optional paramter back color, if NULL then no color.
 

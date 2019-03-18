@@ -44,11 +44,16 @@ void attrackModeTick(uint8_t tick)
       }
       clearDmd();
       rgb_t color, bgColor, greenColor;
-      setColorType(&color, COLOR_RED);
-      setColorType(&bgColor, COLOR_BLACK);
+      setColorType(&color, COLOR_GREEN);
+      setColorType(&bgColor, COLOR_RED);
 
-      printAtLine("attrack mode", 1, &color, &bgColor);
+      printAtLine("0123456789", 1, &color, &bgColor);
+      printAtLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 2, &color, NULL);
+      printAtLine("abcdefghijklmnopqrstuvwxyz", 3, NULL, &bgColor);
+      printAtLine("!\"#¤&/()=?£$€{[]}|*~^.,;:-_'%\\", 0, &color, &bgColor);
       //showImage(getNextSideSoulTrain1Frame());
+      printLargeAtLineAndPosition("456.789", 5 + 2 * 24, 0, &color, NULL);
+      printLargeAtLineAndPosition("0,123", 5 + 3 * 24, 0, &color, NULL);
 
       refreshDmd();
     }
