@@ -6,6 +6,7 @@ log.txt
 *.h.gch
 funk
 converter
+maker
 *.png
 *.jpg
 *.mp4
