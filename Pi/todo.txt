@@ -8,11 +8,9 @@ Make volumn up down work on pi.
 
 Make big font.
 Adjust number of balls.
-Adjust allow restart game.
+Choose decimal seperator
 
-Make maker to load char, save as char and ts.
-
-small font <>`
+small font <> test.
 
 Generic yes no menu?
 

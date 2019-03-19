@@ -80,7 +80,22 @@ Utilities
 		Factory reset
 Adjustments
 		Standard adjustements
+      Balls per game, def 3
+      Tilt warnings, def 3
+      Maximum extra balls, def 4
+      Maximum extra ball per ball in play (offered) def OFF
+      Custom message
+      Clock style
+      Date style
+      Show date time
+      Tournament
+      Decimal separator
+      Game restart NEVER, SLOW, INSTANT def SLOW
 		Feature adjustments
+      //Buy-In Extra Balls makes no sense when no coi-door
+      Ball saves
+      Ball save time
+      First hard lock ?
 		H.S.T.D. adjustments*/
 
 #endif
