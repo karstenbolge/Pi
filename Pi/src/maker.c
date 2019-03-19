@@ -18,9 +18,9 @@ void dmdToBoard()
   {
     for (int i = 0; i < 20; i++)
     {
-      if (dmd[j][i].red != 0)
+      if (dmd[i][j + 1].red != 0)
       {
-        board[j][i] = 1;
+        board[i][j] = 1;
       }
     }
   }
@@ -72,28 +72,40 @@ void saveFont()
 
   fprintf(pOutputFile, "  if (pColor != NULL)\n");
   fprintf(pOutputFile, "  {\n");
-  for (int j = 0; j < 22; j++)
+  for (int j = 0; j <= (size == 1 ? 10 : 22); j++)
   {
-    for (int i = 0; i < 20; i++)
+    int write = 0;
+    for (int i = 0; i < width; i++)
     {
       if (board[i][j] == 1)
       {
+        write = 1;
         fprintf(pOutputFile, "    dmd[x + %d][y + %d] = *pColor;\n", i, j);
       }
+    }
+    if (write == 1)
+    {
+      fprintf(pOutputFile, "\n");
     }
   }
   fprintf(pOutputFile, "  }\n\n");
 
   fprintf(pOutputFile, "  if (pBgColor != NULL)\n");
   fprintf(pOutputFile, "  {\n");
-  for (int j = 0; j < 22; j++)
+  for (int j = 0; j <= (size == 1 ? 10 : 22); j++)
   {
-    for (int i = 0; i < 20; i++)
+    int write = 0;
+    for (int i = 0; i < width; i++)
     {
       if (board[i][j] == 0)
       {
+        write = 1;
         fprintf(pOutputFile, "    dmd[x + %d][y + %d] = *pBgColor;\n", i, j);
       }
+    }
+    if (write == 1)
+    {
+      fprintf(pOutputFile, "\n");
     }
   }
   fprintf(pOutputFile, "  }\n\n");
@@ -185,7 +197,7 @@ int main(int argc, char **argv)
     }
     else
     {
-      printLargeAtLineAndPosition(argv[2], 0, 0, &color, NULL);
+      printLargeAtLineAndPosition(argv[2], 1, 0, &color, NULL);
     }
 
     dmdToBoard();

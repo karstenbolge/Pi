@@ -92,6 +92,8 @@ uint8_t printPipeAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_
 uint8_t printTilteAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *pColor, rgb_t *pBgColor);
 uint8_t printBackSlashAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *pColor, rgb_t *pBgColor);
 uint8_t printPointAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *pColor, rgb_t *pBgColor);
+uint8_t printLessthanAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *pColor, rgb_t *pBgColor);
+uint8_t printGreaterthanAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *pColor, rgb_t *pBgColor);
 uint8_t printCommaAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *pColor, rgb_t *pBgColor);
 uint8_t printColonAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *pColor, rgb_t *pBgColor);
 uint8_t printSemiColonAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *pColor, rgb_t *pBgColor);

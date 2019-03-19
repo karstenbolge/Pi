@@ -55,7 +55,7 @@ void attrackModeTick(uint8_t tick)
       //printLargeAtLineAndPosition("456.789", 5 + 2 * 24, 0, &color, NULL);
       //printLargeAtLineAndPosition("0,123", 5 + 3 * 24, 0, &color, NULL);
 
-      printCenterAtLine("Attrack mode", 1, &color, NULL);
+      printCenterAtLine("<Attrack mode>", 1, &color, NULL);
 
       refreshDmd();
     }

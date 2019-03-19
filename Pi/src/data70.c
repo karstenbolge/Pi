@@ -8587,6 +8587,160 @@ uint8_t printBackSlashAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y,
   return width;
 }
 
+uint8_t printLessthanAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *pColor, rgb_t *pBgColor)
+{
+  uint8_t width = 4;
+  if (x + width > DMD_WIDTH || y + 10 > DMD_HEIGHT)
+  {
+    return 0;
+  }
+
+  if (pColor != NULL)
+  {
+    dmd[x + 3][y + 3] = *pColor;
+
+    dmd[x + 2][y + 4] = *pColor;
+
+    dmd[x + 1][y + 5] = *pColor;
+
+    dmd[x + 2][y + 6] = *pColor;
+
+    dmd[x + 3][y + 7] = *pColor;
+  }
+
+  if (pBgColor != NULL)
+  {
+    dmd[x + 0][y + 0] = *pBgColor;
+    dmd[x + 1][y + 0] = *pBgColor;
+    dmd[x + 2][y + 0] = *pBgColor;
+    dmd[x + 3][y + 0] = *pBgColor;
+
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 1][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 1][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+
+    dmd[x + 0][y + 3] = *pBgColor;
+    dmd[x + 1][y + 3] = *pBgColor;
+    dmd[x + 2][y + 3] = *pBgColor;
+
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 1][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 2][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 1][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+
+    dmd[x + 0][y + 7] = *pBgColor;
+    dmd[x + 1][y + 7] = *pBgColor;
+    dmd[x + 2][y + 7] = *pBgColor;
+
+    dmd[x + 0][y + 8] = *pBgColor;
+    dmd[x + 1][y + 8] = *pBgColor;
+    dmd[x + 2][y + 8] = *pBgColor;
+    dmd[x + 3][y + 8] = *pBgColor;
+
+    dmd[x + 0][y + 9] = *pBgColor;
+    dmd[x + 1][y + 9] = *pBgColor;
+    dmd[x + 2][y + 9] = *pBgColor;
+    dmd[x + 3][y + 9] = *pBgColor;
+
+    dmd[x + 0][y + 10] = *pBgColor;
+    dmd[x + 1][y + 10] = *pBgColor;
+    dmd[x + 2][y + 10] = *pBgColor;
+    dmd[x + 3][y + 10] = *pBgColor;
+  }
+
+  return width;
+}
+
+uint8_t printGreaterthanAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *pColor, rgb_t *pBgColor)
+{
+  uint8_t width = 4;
+  if (x + width > DMD_WIDTH || y + 10 > DMD_HEIGHT)
+  {
+    return 0;
+  }
+
+  if (pColor != NULL)
+  {
+    dmd[x + 1][y + 3] = *pColor;
+
+    dmd[x + 2][y + 4] = *pColor;
+
+    dmd[x + 3][y + 5] = *pColor;
+
+    dmd[x + 2][y + 6] = *pColor;
+
+    dmd[x + 1][y + 7] = *pColor;
+  }
+
+  if (pBgColor != NULL)
+  {
+    dmd[x + 0][y + 0] = *pBgColor;
+    dmd[x + 1][y + 0] = *pBgColor;
+    dmd[x + 2][y + 0] = *pBgColor;
+    dmd[x + 3][y + 0] = *pBgColor;
+
+    dmd[x + 0][y + 1] = *pBgColor;
+    dmd[x + 1][y + 1] = *pBgColor;
+    dmd[x + 2][y + 1] = *pBgColor;
+    dmd[x + 3][y + 1] = *pBgColor;
+
+    dmd[x + 0][y + 2] = *pBgColor;
+    dmd[x + 1][y + 2] = *pBgColor;
+    dmd[x + 2][y + 2] = *pBgColor;
+    dmd[x + 3][y + 2] = *pBgColor;
+
+    dmd[x + 0][y + 3] = *pBgColor;
+    dmd[x + 1][y + 3] = *pBgColor;
+    dmd[x + 2][y + 3] = *pBgColor;
+
+    dmd[x + 0][y + 4] = *pBgColor;
+    dmd[x + 1][y + 4] = *pBgColor;
+    dmd[x + 3][y + 4] = *pBgColor;
+
+    dmd[x + 0][y + 5] = *pBgColor;
+    dmd[x + 2][y + 5] = *pBgColor;
+    dmd[x + 3][y + 5] = *pBgColor;
+
+    dmd[x + 0][y + 6] = *pBgColor;
+    dmd[x + 1][y + 6] = *pBgColor;
+    dmd[x + 3][y + 6] = *pBgColor;
+
+    dmd[x + 0][y + 7] = *pBgColor;
+    dmd[x + 1][y + 7] = *pBgColor;
+    dmd[x + 2][y + 7] = *pBgColor;
+
+    dmd[x + 0][y + 8] = *pBgColor;
+    dmd[x + 1][y + 8] = *pBgColor;
+    dmd[x + 2][y + 8] = *pBgColor;
+    dmd[x + 3][y + 8] = *pBgColor;
+
+    dmd[x + 0][y + 9] = *pBgColor;
+    dmd[x + 1][y + 9] = *pBgColor;
+    dmd[x + 2][y + 9] = *pBgColor;
+    dmd[x + 3][y + 9] = *pBgColor;
+
+    dmd[x + 0][y + 10] = *pBgColor;
+    dmd[x + 1][y + 10] = *pBgColor;
+    dmd[x + 2][y + 10] = *pBgColor;
+    dmd[x + 3][y + 10] = *pBgColor;
+  }
+
+  return width;
+}
+
 uint8_t printPointAt(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *pColor, rgb_t *pBgColor)
 {
   uint8_t width = 3;
