@@ -12,6 +12,7 @@
 #include "../hdr/color.h"
 #include "../hdr/platform.h"
 #include "../hdr/config.h"
+#include "../hdr/log.h"
 
 void clearScreen()
 {
@@ -366,6 +367,25 @@ uint8_t printCharAt(unsigned char chr, uint16_t position, uint8_t line, rgb_t *p
 
     return 8;
   }
+}
+
+void printCenterAtLine(char *str, uint8_t line, rgb_t *pColor, rgb_t *pBgColor)
+{
+  uint16_t length = 0;
+  char *pTemp = str;
+  while (*pTemp != 0)
+  {
+    length += printCharAt(*pTemp, length, line, NULL, NULL);
+    pTemp++;
+  }
+
+  if (length > DMD_WIDTH)
+  {
+    writeLogString("printCenterAtLine too wide");
+    return;
+  }
+
+  printAtLineAndPosition(str, line, (DMD_WIDTH - length) / 2, pColor, pBgColor);
 }
 
 void printAtLine(char *str, uint8_t line, rgb_t *pColor, rgb_t *pBgColor)

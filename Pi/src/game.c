@@ -268,19 +268,19 @@ void showBonus(int event)
     {
       clearDmd();
       sprintf(str, "Instuments collected %d", games[shooter].totalInstumentsCollected);
-      printAtLine(str, 1, &color, &bgColor);
+      printCenterAtLine(str, 1, &color, &bgColor);
       if (events[event].beats == 215 || events[event].beats == 200)
       {
         sprintf(str, "Multiplier %d", games[shooter].multiplier);
-        printAtLine(str, 2, &color, &bgColor);
+        printCenterAtLine(str, 2, &color, &bgColor);
         sprintf(str, "500 * %d * %d", games[shooter].totalInstumentsCollected, games[shooter].multiplier);
-        printAtLine(str, 3, &color, &bgColor);
+        printCenterAtLine(str, 3, &color, &bgColor);
       }
       if (events[event].beats == 200)
       {
-        printAtLine("Total", 5, &color, &bgColor);
+        printCenterAtLine("Total", 5, &color, &bgColor);
         makeScoreString(500 * games[shooter].totalInstumentsCollected * games[shooter].multiplier, str);
-        printAtLine(str, 6, &color, &bgColor);
+        printCenterAtLine(str, 6, &color, &bgColor);
       }
       refreshDmd();
       return;

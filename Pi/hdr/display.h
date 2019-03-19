@@ -15,6 +15,7 @@ rgb_t dmd[DMD_WIDTH][DMD_HEIGHT];
 
 void clearScreen();
 
+void printCenterAtLine(char *str, uint8_t line, rgb_t *pColor, rgb_t *pBgColor);
 void printAtLine(char *str, uint8_t line, rgb_t *pColor, rgb_t *pBgColor);
 uint16_t printAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t *pColor, rgb_t *pBgColor);
 uint16_t printLargeAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t *pColor, rgb_t *pBgColor);

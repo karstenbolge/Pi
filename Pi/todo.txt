@@ -14,17 +14,14 @@ Make maker to load char, save as char and ts.
 
 small font <>`
 
-Make central text.
-Optimize font by optional paramter back color, if NULL then no color.
-
 Generic yes no menu?
 
-make total bonus a little longer.
+Make total bonus a little longer.
 
 Make new game(s).
 Add buy in extra ball. Full screen you may buy one extra ball press extra ball.
 
-Add random player test logic.
+Add more random player test logic.
 
 
 

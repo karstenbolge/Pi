@@ -17,5 +17,8 @@ pi: raspberry.o
 test:
 	gcc -o test-x11 ./src/window.c ./src/hi-test.c -lX11
 
+fontmaker:
+	gcc -o maker ./src/maker.c ./src/data70.c ./src/display.c ./src/color.c ./src/log.c
+
 clean:
-	rm -f pi test imageConverter *.o
+	rm -f pi test maker imageConverter *.o
