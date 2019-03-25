@@ -12,7 +12,9 @@
 #include "../hdr/display.h"
 #include "../hdr/window.h"
 #include "../hdr/displayTest.h"
-#include "../hdr/avarageBallTime.h"
+#include "../hdr/averageBallTime.h"
+#include "../hdr/attrackMode.h"
+#include "../hdr/totalPlays.h"
 
 typedef struct itemFunctions
 {
@@ -61,16 +63,16 @@ void initMenu()
   menu->child->next = malloc(sizeof(menuItem_t));
   // 2
   memset(menu->child->child, 0, sizeof(menuItem_t));
-  strcpy(menu->child->child->name, "Avarage ball time");
-  menu->child->child->id = MENU_AWAREGE_BALL_TIME;
+  strcpy(menu->child->child->name, "Average ball time");
+  menu->child->child->id = MENU_AVERAGE_BALL_TIME;
   menu->child->child->parrent = menu->child;
   menu->child->child->child = NULL;
   menu->child->child->event = malloc(sizeof(itemFunctions_t));
-  menu->child->child->event->open = &avarageBallTimeOpen;
+  menu->child->child->event->open = &averageBallTimeOpen;
   menu->child->child->event->up = NULL;
   menu->child->child->event->down = NULL;
   menu->child->child->event->enter = NULL;
-  menu->child->child->event->exit = &avarageBallTimeExit;
+  menu->child->child->event->exit = NULL;
   menu->child->child->previous = NULL;
   menu->child->child->next = malloc(sizeof(menuItem_t));
 
@@ -79,6 +81,12 @@ void initMenu()
   menu->child->child->next->id = MENU_TOTAL_PLAYS;
   menu->child->child->next->parrent = menu->child;
   menu->child->child->next->child = NULL;
+  menu->child->child->event = malloc(sizeof(itemFunctions_t));
+  menu->child->child->event->open = &totalPlaysOpen;
+  menu->child->child->event->up = NULL;
+  menu->child->child->event->down = NULL;
+  menu->child->child->event->enter = NULL;
+  menu->child->child->event->exit = NULL;
   menu->child->child->next->previous = menu->child->child;
   menu->child->child->next->next = malloc(sizeof(menuItem_t));
 
@@ -353,6 +361,26 @@ void initMenu()
   menu->next->next->next->child->child = NULL;
   menu->next->next->next->child->previous = NULL;
   menu->next->next->next->child->next = malloc(sizeof(menuItem_t));
+  // 2
+
+  //karsten
+  /*
+  memset(menu->next->next->next->child->child, 0, sizeof(menuItem_t));
+  strcpy(menu->next->next->next->child->child->name, "Balls per game");
+  menu->next->next->next->child->child->id = MENU_BALLS_PER_GAME;
+  menu->next->next->next->child->child->parrent = menu->next->next->next->child;
+
+  menu->next->next->next->child->child->child = NULL;
+  menu->next->next->next->child->child->event = malloc(sizeof(itemFunctions_t));
+  menu->next->next->next->child->child->event->open = &switchEdgeTestOpenSingle;
+  menu->next->next->next->child->child->event->up = &switchEdgeTestUp;
+  menu->next->next->next->child->child->event->down = &switchEdgeTestDown;
+  menu->next->next->next->child->child->event->enter = &switchEdgeTestEnter;
+  menu->next->next->next->child->child->event->exit = &switchEdgeTestExit;
+  menu->next->next->next->child->child->previous = menu->next->child->next;
+  menu->next->next->next->child->child->next = malloc(sizeof(menuItem_t));
+*/
+  //
 
   memset(menu->next->next->next->child->next, 0, sizeof(menuItem_t));
   strcpy(menu->next->next->next->child->next->name, "Feature adjustments");
@@ -375,7 +403,7 @@ void initMenu()
 }
 /*Bookkeepings
 		Main audits
-			Avarage ball time
+			Average ball time
 			Total plays
 			Replay awards
 			Extra balls
@@ -485,6 +513,7 @@ void showMenu()
   } while ((item != firstItem || countItems > MENU_LINES_COUNT) && currentItemNumber < MENU_LINES_COUNT && currentItemNumber < countItems);
 
   refreshDmd();
+  printf("Karsten 1.0\n");
 }
 
 void menuUp()
@@ -568,6 +597,7 @@ void menuExit()
     saveConfig();
     playSoundBack();
     clearScreen();
+    attrackModeOpen();
   }
 }
 

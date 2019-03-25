@@ -4,7 +4,7 @@
 #include "../hdr/switchEdgeTest.h"
 #include "../hdr/displayTest.h"
 #include "../hdr/display.h"
-#include "../hdr/avarageBallTime.h"
+#include "../hdr/loopsPerSecond.h"
 #include "../hdr/sound.h"
 #include "../hdr/platform.h"
 #include "../hdr/window.h"
@@ -166,7 +166,7 @@ int main(void)
           else
           {
             menuExit();
-            attrackModeOpen();
+            //attrackModeOpen();
           }
         }
         if ((oldInputRegister[column] & 1 << 3) != (newInputRegister & 1 << 3))
@@ -278,7 +278,7 @@ int main(void)
     {
       lastLoopsPrSecond = currentLoopsPrSecond;
       currentLoopsPrSecond = 0;
-      avarageBallTimeCount(lastLoopsPrSecond);
+      loopsPerSecondCount(lastLoopsPrSecond);
     }
 
     // new frame every 1/15 of a second, equal 10 frame per beat as 90 beat per minute

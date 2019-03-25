@@ -15,6 +15,7 @@ uint8_t inAtrackMmodeMode = MODE_OFF;
 
 void attrackModeOpen()
 {
+  printf("Karsten attrackModeOpen\n");
   inAtrackMmodeMode = MODE_ON;
   tickNumber = 0;
   startSideSoulTrain1Video();
@@ -42,8 +43,8 @@ void attrackModeTick(uint8_t tick)
         showScore(0);
         return;
       };
-      showImage(getNextSideSoulTrain1Frame());
-      return;
+      //showImage(getNextSideSoulTrain1Frame());
+      //return;
 
       clearDmd();
       rgb_t color, bgColor, greenColor;
