@@ -78,6 +78,8 @@ void processFile(char *pFileName, char *pImageName)
   }
 
   int inLine = 0;
+  int height = 480;
+  int width = 800;
 
   while (fgets(readBuffer, CONFIG_BUFFER_SIZE, pInputFile) != NULL)
   {
@@ -90,6 +92,18 @@ void processFile(char *pFileName, char *pImageName)
     {
       char *startPos = strstr(readBuffer, "\"");
       processLine(startPos + 1);
+    }
+
+    if (memcmp(readBuffer, "static unsigned int height =", 28) == 0)
+    {
+      height = atoi(readBuffer + 29) / 4;
+      printf("heigth=%d, ", height);
+    }
+
+    if (memcmp(readBuffer, "static unsigned int width =", 27) == 0)
+    {
+      width = atoi(readBuffer + 28) / 4;
+      printf("width=%d, ", width);
     }
 
     if (memcmp(readBuffer, "static char *header_data =", 26) == 0)
@@ -158,20 +172,17 @@ void processFile(char *pFileName, char *pImageName)
   sprintf(inputFilePath, "./SoulTrain/image%s.o", pImageName);
   FILE *pOutputBinFile = fopen(inputFilePath, "w");
 
-  // three blank lines
   unsigned char blankChar = 0;
   for (int i = 0; i < 160; i++)
   {
-    for (int j = 0; j < 3; j++)
+    // center image
+    for (int j = 0; j < (96 - height) / 2; j++)
     {
-      //fwrite(&blankChar, 1, 1, pOutputBinFile);
-      //fwrite(&blankChar, 1, 1, pOutputBinFile);
-      //fwrite(&blankChar, 1, 1, pOutputBinFile);
+      fwrite(&blankChar, 1, 1, pOutputBinFile);
+      fwrite(&blankChar, 1, 1, pOutputBinFile);
+      fwrite(&blankChar, 1, 1, pOutputBinFile);
     }
-  }
 
-  for (int i = 0; i < 160; i++)
-  {
     for (int j = 0; j < 90; j++)
     {
       long redAverage = 0;
@@ -217,21 +228,18 @@ void processFile(char *pFileName, char *pImageName)
       fwrite(&blueChar, 1, 1, pOutputBinFile);
     }
 
+    // center image
+    for (int j = 0; j < (96 - height) / 2; j++)
+    {
+      fwrite(&blankChar, 1, 1, pOutputBinFile);
+      fwrite(&blankChar, 1, 1, pOutputBinFile);
+      fwrite(&blankChar, 1, 1, pOutputBinFile);
+    }
+
     if (i % 40 == 0)
     {
       printf(".");
       fflush(stdout);
-    }
-  }
-
-  // three blank lines
-  for (int i = 0; i < 160; i++)
-  {
-    for (int j = 0; j < 3; j++)
-    {
-      //fwrite(&blankChar, 1, 1, pOutputBinFile);
-      //fwrite(&blankChar, 1, 1, pOutputBinFile);
-      //fwrite(&blankChar, 1, 1, pOutputBinFile);
     }
   }
 

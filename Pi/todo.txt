@@ -10,8 +10,6 @@ Make big font.
 Adjust number of balls.
 Choose decimal seperator
 
-small font <> test.
-
 Generic yes no menu?
 
 Make total bonus a little longer.

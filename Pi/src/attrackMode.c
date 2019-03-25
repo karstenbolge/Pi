@@ -17,7 +17,7 @@ void attrackModeOpen()
 {
   inAtrackMmodeMode = MODE_ON;
   tickNumber = 0;
-  //startSideSoulTrain1Video();
+  startSideSoulTrain1Video();
 }
 
 void attrackModeExit()
@@ -41,7 +41,10 @@ void attrackModeTick(uint8_t tick)
       {
         showScore(0);
         return;
-      }
+      };
+      showImage(getNextSideSoulTrain1Frame());
+      return;
+
       clearDmd();
       rgb_t color, bgColor, greenColor;
       setColorType(&color, COLOR_GREEN);
