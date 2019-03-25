@@ -6,5 +6,6 @@
 void totalPlaysOpen();
 void extraBallsOpen();
 void percentExtraBalsOpen();
+void leftDrainsOpen();
 
 #endif

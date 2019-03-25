@@ -42,3 +42,15 @@ void percentExtraBalsOpen()
 
   refreshDmd();
 }
+
+void leftDrainsOpen()
+{
+  rgb_t color;
+  setColorType(&color, COLOR_RED);
+
+  clearDmd();
+  printCenterAtLine("Left drains", 1, &color, NULL);
+  printCenterAtLine("TODO", 3, &color, NULL);
+
+  refreshDmd();
+}

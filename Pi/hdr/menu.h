@@ -15,6 +15,8 @@ void menuEnter();
 #define MENU_EXTRA_BALLS 6
 #define MENU_PERCENT_EXTRA_BALLS 7
 
+#define MENU_LEFT_DRAINS 37
+
 #define MENU_STANDARD_AUDITS 8
 #define MENU_FEATURE_AUDITS 9
 #define MENU_HISTOGRAMS 10
@@ -52,11 +54,18 @@ void menuEnter();
 		Main audits
 			Avarage ball time
 			Total plays
-			Replay awards
+			//Replay awards
 			Extra balls
 			Percent extra balls
 		Standard audits
-			
+			Left Drains
+      Right Drains
+      Time Per Game
+      PlayTime
+      Balls Played
+      Tilts
+      Left Flipper
+      Right Flipper
 		Feature audits
 		Histograms
 		Time-stampt

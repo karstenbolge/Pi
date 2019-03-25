@@ -42,6 +42,16 @@ menuItem_t *currentItem = NULL;
 uint8_t inItem;
 uint8_t menuOpen;
 
+void makeEvent(itemFunctions_t *event, void (*open)(void), void (*up)(void), void (*down)(void), void (*enter)(void), void (*exitFunc)(void))
+{
+  event = malloc(sizeof(itemFunctions_t));
+  event->open = open;
+  event->up = up;
+  event->down = down;
+  event->enter = enter;
+  event->exit = exitFunc;
+}
+
 void initMenu()
 {
   // 0
@@ -128,7 +138,23 @@ void initMenu()
   menu->child->next->child = NULL;
   menu->child->next->previous = menu->child;
   menu->child->next->next = malloc(sizeof(menuItem_t));
+  // 2
+  memset(menu->child->next->child, 0, sizeof(menuItem_t));
+  strcpy(menu->child->next->child->name, "Left Drains");
+  menu->child->next->child->id = MENU_LEFT_DRAINS;
+  menu->child->next->child->parrent = menu->child;
+  menu->child->next->child->child = NULL;
+  makeEvent(menu->child->next->child->event, &leftDrainsOpen, NULL, NULL, NULL, NULL);
+  /*menu->child->next->child->event = malloc(sizeof(itemFunctions_t));
+  menu->child->next->child->event->open = &leftDrainsOpen;
+  menu->child->next->child->event->up = NULL;
+  menu->child->next->child->event->down = NULL;
+  menu->child->next->child->event->enter = NULL;
+  menu->child->next->child->event->exit = NULL;*/
+  menu->child->next->child->previous = NULL;
+  menu->child->next->child->next = malloc(sizeof(menuItem_t));
 
+  //1
   memset(menu->child->next->next, 0, sizeof(menuItem_t));
   strcpy(menu->child->next->next->name, "Feature audits");
   menu->child->next->next->id = MENU_FEATURE_AUDITS;
