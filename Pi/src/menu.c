@@ -81,40 +81,45 @@ void initMenu()
   menu->child->child->next->id = MENU_TOTAL_PLAYS;
   menu->child->child->next->parrent = menu->child;
   menu->child->child->next->child = NULL;
-  menu->child->child->event = malloc(sizeof(itemFunctions_t));
-  menu->child->child->event->open = &totalPlaysOpen;
-  menu->child->child->event->up = NULL;
-  menu->child->child->event->down = NULL;
-  menu->child->child->event->enter = NULL;
-  menu->child->child->event->exit = NULL;
+  menu->child->child->next->event = malloc(sizeof(itemFunctions_t));
+  menu->child->child->next->event->open = &totalPlaysOpen;
+  menu->child->child->next->event->up = NULL;
+  menu->child->child->next->event->down = NULL;
+  menu->child->child->next->event->enter = NULL;
+  menu->child->child->next->event->exit = NULL;
   menu->child->child->next->previous = menu->child->child;
   menu->child->child->next->next = malloc(sizeof(menuItem_t));
 
   memset(menu->child->child->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->child->child->next->next->name, "Replay awards");
-  menu->child->child->next->next->id = MENU_REPLAY_AWARDS;
+  strcpy(menu->child->child->next->next->name, "Extra balls");
+  menu->child->child->next->next->id = MENU_EXTRA_BALLS;
   menu->child->child->next->next->parrent = menu->child;
   menu->child->child->next->next->child = NULL;
+  menu->child->child->next->next->event = malloc(sizeof(itemFunctions_t));
+  menu->child->child->next->next->event->open = &extraBallsOpen;
+  menu->child->child->next->next->event->up = NULL;
+  menu->child->child->next->next->event->down = NULL;
+  menu->child->child->next->next->event->enter = NULL;
+  menu->child->child->next->next->event->exit = NULL;
   menu->child->child->next->next->previous = menu->child->child->next;
   menu->child->child->next->next->next = malloc(sizeof(menuItem_t));
 
   memset(menu->child->child->next->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->child->child->next->next->next->name, "Extra balls");
-  menu->child->child->next->next->next->id = MENU_EXTRA_BALLS;
+  strcpy(menu->child->child->next->next->next->name, "Percent extra balls");
+  menu->child->child->next->next->next->id = MENU_PERCENT_EXTRA_BALLS;
   menu->child->child->next->next->next->parrent = menu->child;
   menu->child->child->next->next->next->child = NULL;
+  menu->child->child->next->next->next->event = malloc(sizeof(itemFunctions_t));
+  menu->child->child->next->next->next->event->open = &percentExtraBalsOpen;
+  menu->child->child->next->next->next->event->up = NULL;
+  menu->child->child->next->next->next->event->down = NULL;
+  menu->child->child->next->next->next->event->enter = NULL;
+  menu->child->child->next->next->next->event->exit = NULL;
   menu->child->child->next->next->next->previous = menu->child->child->next->next;
-  menu->child->child->next->next->next->next = malloc(sizeof(menuItem_t));
+  menu->child->child->next->next->next->next = menu->child->child;
 
-  memset(menu->child->child->next->next->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->child->child->next->next->next->next->name, "Precent extra balls");
-  menu->child->child->next->next->next->next->id = MENU_PRECENT_EXTRA_BALLS;
-  menu->child->child->next->next->next->next->parrent = menu->child;
-  menu->child->child->next->next->next->next->child = NULL;
-  menu->child->child->next->next->next->next->previous = menu->child->child->next->next->next;
-  menu->child->child->next->next->next->next->next = menu->child->child;
   // loop
-  menu->child->child->previous = menu->child->child->next->next->next->next;
+  menu->child->child->previous = menu->child->child->next->next->next;
   // 1
   memset(menu->child->next, 0, sizeof(menuItem_t));
   strcpy(menu->child->next->name, "Standard audits");
@@ -407,7 +412,7 @@ void initMenu()
 			Total plays
 			Replay awards
 			Extra balls
-			Precent extra balls
+			Percent extra balls
 		Standard audits
 		Feature audits
 		Histograms

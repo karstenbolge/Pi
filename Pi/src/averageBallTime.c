@@ -10,6 +10,7 @@ void averageBallTimeOpen()
   setColorType(&color, COLOR_RED);
 
   clearDmd();
-  printAtLineAndPosition("Average ball time 3:23", 0, 0, &color, NULL);
+  printCenterAtLine("Average ball time", 1, &color, NULL);
+  printCenterAtLine("3:23", 3, &color, NULL);
   refreshDmd();
 }

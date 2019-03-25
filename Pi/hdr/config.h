@@ -27,6 +27,9 @@ typedef struct config
   char decimalSeperator;
   uint8_t buyInExtraBall;
   uint8_t allowRestart;
+  uint64_t totalGames;
+  uint64_t totalBalls;
+  uint64_t totalBallSeconds;
 } config_t;
 
 config_t config;

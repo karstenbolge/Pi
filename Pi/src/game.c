@@ -15,6 +15,8 @@ void newGame(gameItem_t *pItem)
   pItem->totalInstumentsCollected = 3;
   pItem->movesCollected = 6;
   pItem->totalMovesCollected = 6;
+  config.totalGames++;
+  saveConfig();
 
   newBall(pItem);
 }
@@ -23,6 +25,9 @@ void newBall(gameItem_t *pItem)
 {
   pItem->multiplier = 2;
   pItem->bonuesBeat = 0;
+
+  config.totalBalls++;
+  saveConfig();
 }
 
 void bonusBeat(gameItem_t *pItem, uint8_t tick, uint8_t cancel, void (*onNextBall)(void))
@@ -48,6 +53,10 @@ void ballEnded()
   }
 
   bonusSpeed = 1;
+  printf("Lasted %ld %ld %ld \n", launchSecond, time(NULL), time(NULL) - launchSecond);
+  config.totalBallSeconds += time(NULL) - launchSecond;
+  saveConfig();
+
   addEvent(231, EVENT_SHOW_BONUS, 0);
 }
 
@@ -232,9 +241,10 @@ void ballLaunched()
     printf("Cannot launch ball now\n");
   }
 
-  printf("ballLaunched\n");
   inGame = RUNNING_GAME;
   launchBlink = 0;
+  launchSecond = time(NULL);
+  printf("ballLaunched %ld\n", launchSecond);
   showScore(0);
 }
 

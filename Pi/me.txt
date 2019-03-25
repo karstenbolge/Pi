@@ -168,9 +168,9 @@ Bookkeepings
 		Main audits
 			Awarage ball time
 			total plays
-			replay awards
+//			replay awards
 			extra balls
-			precent extra balls
+			percent extra balls
 		Standard audits
 			
 		Feature audits

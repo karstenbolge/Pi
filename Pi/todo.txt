@@ -19,7 +19,9 @@ Add buy in extra ball. Full screen you may buy one extra ball press extra ball.
 
 Add more random player test logic.
 
+remove buy extra ball, but use it as extra ball earned, for test.
 
+re-write menu.c
 
 Before launch score blinking,
 When playing score is rolling.

@@ -41,6 +41,7 @@ uint8_t numberOfPlayers;
 uint8_t shooter;
 uint8_t inGame;
 uint8_t launchBlink;
+uint64_t launchSecond;
 
 uint8_t bonusSpeed;
 

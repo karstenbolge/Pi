@@ -11,9 +11,10 @@ void menuEnter();
 #define MENU_MAIN_AUDITS 2
 #define MENU_AVERAGE_BALL_TIME 3
 #define MENU_TOTAL_PLAYS 4
-#define MENU_REPLAY_AWARDS 5
+#define MENU_REPLAY_AWARDS 5 // NOT_USED
 #define MENU_EXTRA_BALLS 6
-#define MENU_PRECENT_EXTRA_BALLS 7
+#define MENU_PERCENT_EXTRA_BALLS 7
+
 #define MENU_STANDARD_AUDITS 8
 #define MENU_FEATURE_AUDITS 9
 #define MENU_HISTOGRAMS 10
@@ -53,7 +54,7 @@ void menuEnter();
 			Total plays
 			Replay awards
 			Extra balls
-			Precent extra balls
+			Percent extra balls
 		Standard audits
 			
 		Feature audits

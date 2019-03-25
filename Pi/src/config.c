@@ -31,6 +31,9 @@ void initConfig()
   config.decimalSeperator = '.';
   config.buyInExtraBall = 0;
   config.allowRestart = 0;
+  config.totalGames = 0;
+  config.totalBalls = 0;
+  config.totalBallSeconds = 0;
 }
 
 FILE *pConfig;
@@ -57,6 +60,9 @@ int stringStart(char *str, char *in)
 #define DECIMAL_SEPERATOR "decimalSeperator:"
 #define BUY_IN_EXTRA_BALL "buyInExtraBall:"
 #define ALLOW_RESTART "allowRestart:"
+#define TOTAL_GAMES "totalGames:"
+#define TOTAL_BALLS "totalBalls:"
+#define TOTAL_BALL_SECONDS "totalBallSeconds:"
 
 void readConfig()
 {
@@ -87,6 +93,12 @@ void readConfig()
         config.buyInExtraBall = atoi(value);
       if (stringStart(readBuffer, ALLOW_RESTART))
         config.allowRestart = atoi(value);
+      if (stringStart(readBuffer, TOTAL_GAMES))
+        config.totalGames = atol(value);
+      if (stringStart(readBuffer, TOTAL_BALLS))
+        config.totalBalls = atol(value);
+      if (stringStart(readBuffer, TOTAL_BALL_SECONDS))
+        config.totalBallSeconds = atol(value);
       if (stringStart(readBuffer, HIGHSCORE))
         inGroup = IN_HIGH_SCORE;
       if (inGroup == IN_HIGH_SCORE)
@@ -183,6 +195,9 @@ void saveConfig()
   fprintf(pConfig, "%s %c\n", DECIMAL_SEPERATOR, config.decimalSeperator);
   fprintf(pConfig, "%s %d\n", BUY_IN_EXTRA_BALL, config.buyInExtraBall);
   fprintf(pConfig, "%s %d\n", ALLOW_RESTART, config.allowRestart);
+  fprintf(pConfig, "%s %ld\n", TOTAL_GAMES, config.totalGames);
+  fprintf(pConfig, "%s %ld\n", TOTAL_BALLS, config.totalBalls);
+  fprintf(pConfig, "%s %ld\n", TOTAL_BALL_SECONDS, config.totalBallSeconds);
 
   fclose(pConfig);
 }
