@@ -73,8 +73,12 @@ void timePerGameOpen()
   setColorType(&color, COLOR_RED);
 
   clearDmd();
-  printCenterAtLine("Time per Game", 1, &color, NULL);
-  printCenterAtLine("TODO", 3, &color, NULL);
+  printCenterAtLine("Average Time per Game", 1, &color, NULL);
+  char str[32];
+  uint64_t minutes = config.totalBallSeconds / config.totalGames / 60;
+  uint64_t seconds = (config.totalBallSeconds / config.totalGames) - minutes * 60;
+  sprintf(str, "%02ld:%02ld minutes", minutes, seconds);
+  printCenterAtLine(str, 3, &color, NULL);
 
   refreshDmd();
 }
@@ -86,7 +90,12 @@ void PlayTimeOpen()
 
   clearDmd();
   printCenterAtLine("Total Play Time", 1, &color, NULL);
-  printCenterAtLine("TODO", 3, &color, NULL);
+  char str[32];
+  uint64_t hours = config.totalBallSeconds / 3600;
+  uint64_t minutes = (config.totalBallSeconds - 3600 * hours) / 60;
+  uint64_t seconds = config.totalBallSeconds - 3600 * hours - 60 * minutes;
+  sprintf(str, "%ld:%02ld:%02ld hours", hours, minutes, seconds);
+  printCenterAtLine(str, 3, &color, NULL);
 
   refreshDmd();
 }
@@ -98,7 +107,9 @@ void BallsPlayedOpen()
 
   clearDmd();
   printCenterAtLine("Total Balls PLayed", 1, &color, NULL);
-  printCenterAtLine("TODO", 3, &color, NULL);
+  char str[32];
+  sprintf(str, "%ld", config.totalBalls);
+  printCenterAtLine(str, 3, &color, NULL);
 
   refreshDmd();
 }
