@@ -5,6 +5,7 @@
 #include "../hdr/display.h"
 #include "../hdr/menu.h"
 #include "../hdr/config.h"
+#include "../hdr/window.h"
 
 #define IN_MODE_YEAR 0
 #define IN_MODE_MONTH 1
@@ -132,7 +133,7 @@ void validateTime()
   }
 }
 
-void setTimeOpen()
+void makeTime()
 {
   time_t rawtime;
   struct tm *timeinfo;
@@ -146,6 +147,11 @@ void setTimeOpen()
   hour = timeinfo->tm_hour;
   minute = timeinfo->tm_min;
   inSetTimeMode = IN_MODE_YEAR;
+}
+
+void setTimeOpen()
+{
+  makeTime();
   showTime();
 }
 
@@ -305,4 +311,18 @@ void setTimeEnter()
   inSetTimeMode = IN_MODE_DONE;
 
   setTime();
+}
+
+void currentTimeOpen()
+{
+  rgb_t color;
+  setColorType(&color, COLOR_RED);
+
+  clearDmd();
+  printCenterAtLine("Current time is", 1, &color, NULL);
+  char str[32];
+  makeTime();
+  sprintf(str, "%04d-%02d-%02d %02d:%02d", year, month, date, hour, minute);
+  printCenterAtLine(str, 3, &color, NULL);
+  refreshDmd();
 }

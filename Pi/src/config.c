@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <time.h>
 #include "../hdr/log.h"
 #include "../hdr/config.h"
 
@@ -34,6 +35,14 @@ void initConfig()
   config.totalGames = 0;
   config.totalBalls = 0;
   config.totalBallSeconds = 0;
+  config.lastGameStart = 0;
+  config.lastFactoryReset = time(NULL);
+  config.lastHighscoreReset = 0;
+  config.totalLeftFlip = 0;
+  config.totalRightFlip = 0;
+  config.totalTilts = 0;
+  config.totalLeftDrains = 0;
+  config.totalRightDrains = 0;
 }
 
 FILE *pConfig;
@@ -63,6 +72,14 @@ int stringStart(char *str, char *in)
 #define TOTAL_GAMES "totalGames:"
 #define TOTAL_BALLS "totalBalls:"
 #define TOTAL_BALL_SECONDS "totalBallSeconds:"
+#define LAST_GAME_START "lastGameStart:"
+#define LAST_FACTORY_RESET "lastFactoryReset:"
+#define LAST_HIGHSCORE_RESET "lastHighscoreReset:"
+#define TOTAL_LEFT_FLIP "totalLeftFlip:"
+#define TOTAL_RIGHT_FLIP "totalRightFlip:"
+#define TOTAL_TILTS "totalTilts:"
+#define TOTAL_LEFT_DRAINS "totalLeftDrains:"
+#define TOTAL_RIGHT_DRAINS "totalRightDrains:"
 
 void readConfig()
 {
@@ -99,6 +116,22 @@ void readConfig()
         config.totalBalls = atol(value);
       if (stringStart(readBuffer, TOTAL_BALL_SECONDS))
         config.totalBallSeconds = atol(value);
+      if (stringStart(readBuffer, LAST_GAME_START))
+        config.lastGameStart = atol(value);
+      if (stringStart(readBuffer, LAST_FACTORY_RESET))
+        config.lastFactoryReset = atol(value);
+      if (stringStart(readBuffer, LAST_HIGHSCORE_RESET))
+        config.lastHighscoreReset = atol(value);
+      if (stringStart(readBuffer, TOTAL_LEFT_FLIP))
+        config.totalLeftFlip = atol(value);
+      if (stringStart(readBuffer, TOTAL_RIGHT_FLIP))
+        config.totalRightFlip = atol(value);
+      if (stringStart(readBuffer, TOTAL_TILTS))
+        config.totalTilts = atol(value);
+      if (stringStart(readBuffer, TOTAL_LEFT_DRAINS))
+        config.totalLeftDrains = atol(value);
+      if (stringStart(readBuffer, TOTAL_RIGHT_DRAINS))
+        config.totalRightDrains = atol(value);
       if (stringStart(readBuffer, HIGHSCORE))
         inGroup = IN_HIGH_SCORE;
       if (inGroup == IN_HIGH_SCORE)
@@ -198,6 +231,14 @@ void saveConfig()
   fprintf(pConfig, "%s %ld\n", TOTAL_GAMES, config.totalGames);
   fprintf(pConfig, "%s %ld\n", TOTAL_BALLS, config.totalBalls);
   fprintf(pConfig, "%s %ld\n", TOTAL_BALL_SECONDS, config.totalBallSeconds);
+  fprintf(pConfig, "%s %ld\n", LAST_GAME_START, config.lastGameStart);
+  fprintf(pConfig, "%s %ld\n", LAST_FACTORY_RESET, config.lastFactoryReset);
+  fprintf(pConfig, "%s %ld\n", LAST_HIGHSCORE_RESET, config.lastHighscoreReset);
+  fprintf(pConfig, "%s %ld\n", TOTAL_LEFT_FLIP, config.totalLeftFlip);
+  fprintf(pConfig, "%s %ld\n", TOTAL_RIGHT_FLIP, config.totalRightFlip);
+  fprintf(pConfig, "%s %ld\n", TOTAL_TILTS, config.totalTilts);
+  fprintf(pConfig, "%s %ld\n", TOTAL_LEFT_DRAINS, config.totalLeftDrains);
+  fprintf(pConfig, "%s %ld\n", TOTAL_RIGHT_DRAINS, config.totalRightDrains);
 
   fclose(pConfig);
 }

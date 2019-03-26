@@ -30,6 +30,14 @@ typedef struct config
   uint64_t totalGames;
   uint64_t totalBalls;
   uint64_t totalBallSeconds;
+  uint64_t lastGameStart;
+  uint64_t lastFactoryReset;
+  uint64_t lastHighscoreReset;
+  uint64_t totalLeftFlip;
+  uint64_t totalRightFlip;
+  uint64_t totalTilts;
+  uint64_t totalLeftDrains;
+  uint64_t totalRightDrains;
 } config_t;
 
 config_t config;

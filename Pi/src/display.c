@@ -7,6 +7,7 @@
 #include <sys/ioctl.h>
 #include <stdint.h>
 #include <string.h>
+#include <time.h>
 #include "../hdr/display.h"
 #include "../hdr/data70.h"
 #include "../hdr/color.h"
@@ -458,6 +459,20 @@ int makeScoreString(uint32_t score, char *pScore)
 
   sprintf(pScore, "%d", ones);
   return 0;
+}
+
+void makeTimeString(uint64_t epoch, char *pScore)
+{
+  struct tm *timeinfo;
+  timeinfo = localtime(&epoch);
+
+  uint16_t year = timeinfo->tm_year + 1900;
+  uint8_t month = timeinfo->tm_mon + 1;
+  uint8_t date = timeinfo->tm_mday;
+  uint8_t hour = timeinfo->tm_hour;
+  uint8_t minute = timeinfo->tm_min;
+
+  sprintf(pScore, "%04d-%02d-%02d %02d:%02d", year, month, date, hour, minute);
 }
 
 void printScore(uint32_t score, uint8_t line, uint8_t size)

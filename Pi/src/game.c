@@ -16,6 +16,7 @@ void newGame(gameItem_t *pItem)
   pItem->movesCollected = 6;
   pItem->totalMovesCollected = 6;
   config.totalGames++;
+  config.lastGameStart = time(NULL);
   saveConfig();
 
   newBall(pItem);

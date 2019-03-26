@@ -50,7 +50,9 @@ void leftDrainsOpen()
 
   clearDmd();
   printCenterAtLine("Left drains", 1, &color, NULL);
-  printCenterAtLine("TODO", 3, &color, NULL);
+  char str[32];
+  sprintf(str, "%ld", config.totalLeftDrains);
+  printCenterAtLine(str, 3, &color, NULL);
 
   refreshDmd();
 }
@@ -62,7 +64,9 @@ void rightDrainsOpen()
 
   clearDmd();
   printCenterAtLine("Right drains", 1, &color, NULL);
-  printCenterAtLine("TODO", 3, &color, NULL);
+  char str[32];
+  sprintf(str, "%ld", config.totalRightDrains);
+  printCenterAtLine(str, 3, &color, NULL);
 
   refreshDmd();
 }
@@ -121,7 +125,9 @@ void TiltsOpen()
 
   clearDmd();
   printCenterAtLine("Total Amount of Tilts", 1, &color, NULL);
-  printCenterAtLine("TODO", 3, &color, NULL);
+  char str[32];
+  sprintf(str, "%ld", config.totalTilts);
+  printCenterAtLine(str, 3, &color, NULL);
 
   refreshDmd();
 }
@@ -133,7 +139,9 @@ void leftFlippersOpen()
 
   clearDmd();
   printCenterAtLine("Total Left Flips", 1, &color, NULL);
-  printCenterAtLine("TODO", 3, &color, NULL);
+  char str[32];
+  sprintf(str, "%ld", config.totalLeftFlip);
+  printCenterAtLine(str, 3, &color, NULL);
 
   refreshDmd();
 }
@@ -145,7 +153,51 @@ void rigthFlippersOpen()
 
   clearDmd();
   printCenterAtLine("Total Right Flips", 1, &color, NULL);
-  printCenterAtLine("TODO", 3, &color, NULL);
+  char str[32];
+  sprintf(str, "%ld", config.totalRightFlip);
+  printCenterAtLine(str, 3, &color, NULL);
+
+  refreshDmd();
+}
+
+void lastGameStartOpen()
+{
+  rgb_t color;
+  setColorType(&color, COLOR_RED);
+
+  clearDmd();
+  printCenterAtLine("Last game started", 1, &color, NULL);
+  char str[32];
+  makeTimeString(config.lastGameStart, str);
+  printCenterAtLine(str, 3, &color, NULL);
+
+  refreshDmd();
+}
+
+void lastFactoryResetOpen()
+{
+  rgb_t color;
+  setColorType(&color, COLOR_RED);
+
+  clearDmd();
+  printCenterAtLine("Last factory reset", 1, &color, NULL);
+  char str[32];
+  makeTimeString(config.lastFactoryReset, str);
+  printCenterAtLine(str, 3, &color, NULL);
+
+  refreshDmd();
+}
+
+void lastHighscorerResetOpen()
+{
+  rgb_t color;
+  setColorType(&color, COLOR_RED);
+
+  clearDmd();
+  printCenterAtLine("Last highscore reset", 1, &color, NULL);
+  char str[32];
+  makeTimeString(config.lastHighscoreReset, str);
+  printCenterAtLine(str, 3, &color, NULL);
 
   refreshDmd();
 }

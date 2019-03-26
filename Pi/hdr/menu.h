@@ -27,7 +27,13 @@ void menuEnter();
 #define MENU_STANDARD_AUDITS 8
 #define MENU_FEATURE_AUDITS 9
 #define MENU_HISTOGRAMS 10
+#define MENU_HISTOGRAM_SCORES 45
+#define MENU_HISTOGRAM_GAME_TIME 46
 #define MENU_TIME_STAMP 11
+#define MENU_CURRENT_TIME 47
+#define MENU_LAST_GAME_START 48
+#define MENU_LAST_FACTORE_RESET 49
+#define MENU_LAST_HIGHSCORE_RESET 50
 #define MENU_TEST_MENU 12
 #define MENU_SWITCH_EDGE 13
 #define MENU_SWITCH_LEVELS 14
@@ -75,7 +81,13 @@ void menuEnter();
       Right Flipper
 		Feature audits
 		Histograms
-		Time-stampt
+      Score
+      Game time
+		Time-stamps
+      Current time
+      Last game start
+      Last factory reset
+      Last highscore reset
 Test menu
 		Switch edge
 		Switch levels

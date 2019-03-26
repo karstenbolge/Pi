@@ -14,5 +14,8 @@ void BallsPlayedOpen();
 void TiltsOpen();
 void leftFlippersOpen();
 void rigthFlippersOpen();
+void lastGameStartOpen();
+void lastFactoryResetOpen();
+void lastHighscorerResetOpen();
 
 #endif

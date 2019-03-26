@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdint.h>
+#include <time.h>
 #include "../hdr/highScore.h"
 #include "../hdr/display.h"
 #include "../hdr/menu.h"
@@ -13,7 +14,7 @@ uint8_t inHighScoreMode;
 void show()
 {
   clearScreen();
-  printf("Clear H.S.T.D\n");
+  printf("Clear highscores?\n");
   if (inHighScoreMode == IN_MODE_YES)
   {
     printf("->Yes\n");
@@ -68,6 +69,9 @@ void resetHighScoreEnter()
     config.highScore[0].current.score = config.highScore[0].initial.score;
     strcpy(config.highScore[0].current.name, config.highScore[0].initial.name);
   }
+
+  config.lastHighscoreReset = time(NULL);
+  saveConfig();
 
   clearScreen();
   printf("H.S.T.D cleared.\n");

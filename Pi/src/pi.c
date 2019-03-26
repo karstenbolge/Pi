@@ -180,6 +180,24 @@ int main(void)
           }
         }
 
+        // left flipper
+        if ((oldInputRegister[column] & 1 << 5) != (newInputRegister & 1 << 5))
+        {
+          if (newInputRegister & 1 << 5)
+          {
+            config.totalLeftFlip++;
+          }
+        }
+
+        // right flipper
+        if ((oldInputRegister[column] & 1 << 6) != (newInputRegister & 1 << 6))
+        {
+          if (newInputRegister & 1 << 6)
+          {
+            config.totalRightFlip++;
+          }
+        }
+
         // both flippers down
         if ((newInputRegister & 1 << 5) && (newInputRegister & 1 << 6))
         {
