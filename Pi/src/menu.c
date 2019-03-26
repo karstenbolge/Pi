@@ -70,7 +70,7 @@ menuItem_t *makeMenuItem(char *pName, uint8_t id, menuItem_t *parrent)
 void initMenu()
 {
   // 1-level
-  menuItem_t *bookKeepings = makeMenuItem("Bookkeepings", MENU_BOOKKEEPINGS, NULL);
+  menuItem_t *bookKeepings = menu = makeMenuItem("Bookkeepings", MENU_BOOKKEEPINGS, NULL);
 
   // 2-level
   menuItem_t *mainAudits = bookKeepings->child = makeMenuItem("Main audits", MENU_MAIN_AUDITS, bookKeepings);
@@ -92,7 +92,7 @@ void initMenu()
   percentExtraBalls->previous = extraBalls;
   // loop
   percentExtraBalls->next = averageBallTime;
-  averageBallTime->parrent = percentExtraBalls;
+  averageBallTime->previous = percentExtraBalls;
 
   // 2-level
   menuItem_t *standardAudits = mainAudits->next = makeMenuItem("Standard audits", MENU_STANDARD_AUDITS, bookKeepings);
@@ -166,10 +166,11 @@ void initMenu()
 
   menuItem_t *lastHighscorerReset = lastFactoryReset->next = makeMenuItem("Last highscore reset", MENU_LAST_HIGHSCORE_RESET, timestamp);
   lastHighscorerReset->event = makeEvent(&lastHighscorerResetOpen, NULL, NULL, NULL, NULL);
-  lastHighscorerReset->previous = lastGameStart;
+  lastHighscorerReset->previous = lastFactoryReset;
 
   // loop
-  currentItem->previous = lastHighscorerReset;
+  currentTime->previous = lastHighscorerReset;
+  lastHighscorerReset->next = currentTime;
   timestamp->next = mainAudits;
   mainAudits->previous = timestamp;
 
@@ -179,7 +180,7 @@ void initMenu()
 
   // 2-level
   menuItem_t *switchEdge = testMenu->child = makeMenuItem("Switch edge", MENU_SWITCH_EDGE, testMenu);
-  rightDrains->event = makeEvent(&switchEdgeTestOpen, &switchEdgeTestUp, &switchEdgeTestDown, &switchEdgeTestEnter, &switchEdgeTestExit);
+  switchEdge->event = makeEvent(&switchEdgeTestOpen, &switchEdgeTestUp, &switchEdgeTestDown, &switchEdgeTestEnter, &switchEdgeTestExit);
 
   menuItem_t *switchLevels = switchEdge->next = makeMenuItem("Switch levels", MENU_SWITCH_LEVELS, testMenu);
   switchLevels->previous = switchEdge;
@@ -732,7 +733,9 @@ void showMenu()
   setColorType(&color, COLOR_RED);
   setColor(&bgColor, 0, 255, 255);
   setColorType(&bgColor, COLOR_BLACK);
-
+  printf("Karsten 1 %s\n", currentItem->name);
+  printf("Karsten 2 %s\n", currentItem->parrent ? currentItem->parrent->name : "N/A");
+  printf("Karsten 3 %s\n", currentItem->parrent ? currentItem->parrent->child->name : "N/A");
   menuItem_t *firstItem;
   if (currentItem->parrent)
   {
@@ -743,11 +746,11 @@ void showMenu()
     firstItem = menu;
   }
   menuItem_t *item = firstItem;
-
   uint8_t countItems = 0;
   uint8_t selectedItem = 0;
   do
   {
+    printf("Karsten %s\n", item->name);
     if (item == currentItem)
     {
       selectedItem = countItems;
@@ -755,6 +758,7 @@ void showMenu()
     countItems++;
     item = item->next;
   } while (item != firstItem);
+  printf("Karsten 3\n");
 
   uint8_t currentItemNumber = 0;
   item = firstItem;
@@ -763,6 +767,7 @@ void showMenu()
   {
     item = moveToItem(firstItem, selectedItem + 1 - MENU_LINES_COUNT);
   }
+  printf("Karsten 4\n");
 
   do
   {
@@ -884,6 +889,8 @@ void menuEnter()
     }
     currentItem = menu;
     inItem = 0;
+    printf("Karsten 0\n");
+
     playSoundEnter();
     showMenu();
     return;
@@ -893,6 +900,7 @@ void menuEnter()
   {
     if (currentItem->child)
     {
+      printf("Current item %s child %s\n", currentItem->name, currentItem->child->name);
       currentItem = currentItem->child;
       playSoundOk();
       showMenu();
