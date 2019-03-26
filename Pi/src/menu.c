@@ -42,14 +42,29 @@ menuItem_t *currentItem = NULL;
 uint8_t inItem;
 uint8_t menuOpen;
 
-void makeEvent(itemFunctions_t *event, void (*open)(void), void (*up)(void), void (*down)(void), void (*enter)(void), void (*exitFunc)(void))
+itemFunctions_t *makeEvent(void (*open)(void), void (*up)(void), void (*down)(void), void (*enter)(void), void (*exitFunc)(void))
 {
-  event = malloc(sizeof(itemFunctions_t));
+  itemFunctions_t *event = malloc(sizeof(itemFunctions_t));
   event->open = open;
   event->up = up;
   event->down = down;
   event->enter = enter;
   event->exit = exitFunc;
+
+  return event;
+}
+
+menuItem_t *makeMenuItem(char *pName, uint8_t id, menuItem_t *parrent)
+{
+  menuItem_t *item = malloc(sizeof(menuItem_t));
+
+  memset(item, 0, sizeof(menuItem_t));
+  strcpy(item->name, pName);
+  item->id = id;
+  item->parrent = parrent;
+  item->child = NULL;
+
+  return item;
 }
 
 void initMenu()
@@ -135,24 +150,43 @@ void initMenu()
   strcpy(menu->child->next->name, "Standard audits");
   menu->child->next->id = MENU_STANDARD_AUDITS;
   menu->child->next->parrent = menu;
-  menu->child->next->child = NULL;
+
   menu->child->next->previous = menu->child;
   menu->child->next->next = malloc(sizeof(menuItem_t));
+
   // 2
-  memset(menu->child->next->child, 0, sizeof(menuItem_t));
-  strcpy(menu->child->next->child->name, "Left Drains");
-  menu->child->next->child->id = MENU_LEFT_DRAINS;
-  menu->child->next->child->parrent = menu->child;
-  menu->child->next->child->child = NULL;
-  makeEvent(menu->child->next->child->event, &leftDrainsOpen, NULL, NULL, NULL, NULL);
-  /*menu->child->next->child->event = malloc(sizeof(itemFunctions_t));
-  menu->child->next->child->event->open = &leftDrainsOpen;
-  menu->child->next->child->event->up = NULL;
-  menu->child->next->child->event->down = NULL;
-  menu->child->next->child->event->enter = NULL;
-  menu->child->next->child->event->exit = NULL;*/
-  menu->child->next->child->previous = NULL;
-  menu->child->next->child->next = malloc(sizeof(menuItem_t));
+  menuItem_t *leftDrains = menu->child->next->child = makeMenuItem("Left Drains", MENU_LEFT_DRAINS, menu->child->next);
+  leftDrains->event = makeEvent(&leftDrainsOpen, NULL, NULL, NULL, NULL);
+
+  menuItem_t *rightDrains = leftDrains->next = makeMenuItem("Right Drains", MENU_RIGHT_DRAINS, menu->child->next);
+  rightDrains->event = makeEvent(&rightDrainsOpen, NULL, NULL, NULL, NULL);
+  rightDrains->previous = leftDrains;
+
+  menuItem_t *timePerGame = rightDrains->next = makeMenuItem("Time per Game", MENU_TIME_PER_GAME, menu->child->next);
+  timePerGame->event = makeEvent(&timePerGameOpen, NULL, NULL, NULL, NULL);
+  timePerGame->previous = rightDrains;
+
+  menuItem_t *playTime = timePerGame->next = makeMenuItem("Total play time", MENU_PLAY_TIME, menu->child->next);
+  playTime->event = makeEvent(&PlayTimeOpen, NULL, NULL, NULL, NULL);
+  playTime->previous = timePerGame;
+
+  menuItem_t *ballsPlayed = playTime->next = makeMenuItem("Total balls played", MENU_BALLS_PLAYED, menu->child->next);
+  ballsPlayed->event = makeEvent(&BallsPlayedOpen, NULL, NULL, NULL, NULL);
+  ballsPlayed->previous = playTime;
+
+  menuItem_t *tilts = ballsPlayed->next = makeMenuItem("Total tilts", MENU_TILTS, menu->child->next);
+  tilts->event = makeEvent(&TiltsOpen, NULL, NULL, NULL, NULL);
+  tilts->previous = ballsPlayed;
+
+  menuItem_t *leftFlipper = tilts->next = makeMenuItem("Total left flipper", MENU_LEFT_FLIPPER, menu->child->next);
+  leftFlipper->event = makeEvent(&leftFlippersOpen, NULL, NULL, NULL, NULL);
+  leftFlipper->previous = tilts;
+
+  menuItem_t *rightFlipper = leftFlipper->next = makeMenuItem("Total right flipper", MENU_RIGHT_FLIPPER, menu->child->next);
+  rightFlipper->event = makeEvent(&rigthFlippersOpen, NULL, NULL, NULL, NULL);
+  rightFlipper->previous = leftFlipper;
+  rightFlipper->next = leftDrains;
+  leftDrains->previous = rightFlipper;
 
   //1
   memset(menu->child->next->next, 0, sizeof(menuItem_t));
@@ -544,7 +578,6 @@ void showMenu()
   } while ((item != firstItem || countItems > MENU_LINES_COUNT) && currentItemNumber < MENU_LINES_COUNT && currentItemNumber < countItems);
 
   refreshDmd();
-  printf("Karsten 1.0\n");
 }
 
 void menuUp()

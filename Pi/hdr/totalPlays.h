@@ -7,5 +7,12 @@ void totalPlaysOpen();
 void extraBallsOpen();
 void percentExtraBalsOpen();
 void leftDrainsOpen();
+void rightDrainsOpen();
+void timePerGameOpen();
+void PlayTimeOpen();
+void BallsPlayedOpen();
+void TiltsOpen();
+void leftFlippersOpen();
+void rigthFlippersOpen();
 
 #endif
