@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <time.h>
-#include "../hdr/highScore.h"
 #include "../hdr/display.h"
 #include "../hdr/menu.h"
 #include "../hdr/config.h"

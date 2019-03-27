@@ -78,6 +78,12 @@ void clearAuditsEnter()
   config.totalRightFlip = 0;
   config.totalTilts = 0;
 
+  for (int i = 0; i < 13; i++)
+  {
+    config.histogramScores[i] = 0;
+    config.histogramGameTimes[i] = 0;
+  }
+
   rgb_t color;
   setColorType(&color, COLOR_RED);
 

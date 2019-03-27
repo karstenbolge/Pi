@@ -10,7 +10,7 @@ Make big font.
 Adjust number of balls.
 Choose decimal seperator
 
-todo menu from clear audit, reset highscores
+todo menu customMessage, 
 
 Generic yes no menu?
 

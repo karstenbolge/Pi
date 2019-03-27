@@ -15,7 +15,6 @@ typedef struct scoreItem
 typedef struct highScoreItem
 {
   scoreItem_t current;
-  scoreItem_t initial;
 } highScoreItem_t;
 
 typedef struct config
@@ -39,12 +38,17 @@ typedef struct config
   uint64_t totalLeftDrains;
   uint64_t totalRightDrains;
   char gameId[32];
+  uint64_t histogramScores[13];
+  uint64_t histogramGameTimes[13];
 } config_t;
 
 config_t config;
 
 void readConfig();
 void saveConfig();
-void resetHighScore();
+void initHighScores();
+
+void addGameScore(uint64_t score);
+void addGameGameTime(uint64_t gameSeconds);
 
 #endif

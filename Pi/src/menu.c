@@ -16,6 +16,8 @@
 #include "../hdr/averageBallTime.h"
 #include "../hdr/attrackMode.h"
 #include "../hdr/totalPlays.h"
+#include "../hdr/histogramScores.h"
+#include "../hdr/histogramGameTimes.h"
 
 typedef struct itemFunctions
 {
@@ -142,12 +144,12 @@ void initMenu()
 
   // 3-level
   menuItem_t *histogramScore = histograms->child = makeMenuItem("Scores", MENU_HISTOGRAM_SCORES, histograms);
-  //histogramScore->event = makeEvent(&leftDrainsOpen, NULL, NULL, NULL, NULL);
+  histogramScore->event = makeEvent(&histogramScoreOpen, &histogramScoreUp, &histogramScoreDown, NULL, NULL);
 
   menuItem_t *histogramGameTime = histogramScore->next = makeMenuItem("game time", MENU_HISTOGRAM_GAME_TIME, histograms);
-  //histogramGameTime->event = makeEvent(&rightDrainsOpen, NULL, NULL, NULL, NULL);
-  histogramGameTime->previous = histogramScore;
-  histogramScore->next = histogramGameTime;
+  histogramGameTime->event = makeEvent(&histogramGameTimeOpen, &histogramGameTimeUp, &histogramGameTimeDown, NULL, NULL);
+  histogramScore->previous = histogramGameTime;
+  histogramGameTime->next = histogramScore;
 
   // 2-level
   menuItem_t *timestamp = histograms->next = makeMenuItem("Time-stamp", MENU_TIME_STAMP, bookKeepings);

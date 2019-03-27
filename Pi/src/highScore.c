@@ -68,11 +68,7 @@ void resetHighScoreEnter()
   }
 
   inHighScoreMode = IN_MODE_DONE;
-  for (int i = 0; i < 5; i++)
-  {
-    config.highScore[0].current.score = config.highScore[0].initial.score;
-    strcpy(config.highScore[0].current.name, config.highScore[0].initial.name);
-  }
+  initHighScores();
 
   rgb_t color;
   setColorType(&color, COLOR_RED);
