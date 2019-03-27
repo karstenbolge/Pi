@@ -18,6 +18,8 @@
 #include "../hdr/totalPlays.h"
 #include "../hdr/histogramScores.h"
 #include "../hdr/histogramGameTimes.h"
+#include "../hdr/numberOfBalls.h"
+#include "../hdr/tiltWarnings.h"
 
 typedef struct itemFunctions
 {
@@ -263,10 +265,10 @@ void initMenu()
 
   // 3-level
   menuItem_t *ballsPerGame = standardAdjustments->child = makeMenuItem("Balls per game", standardAdjustments);
-  //ballsPerGame->event = makeEvent(&currentTimeOpen, NULL, NULL, NULL, NULL);
+  ballsPerGame->event = makeEvent(&numberOfBallsOpen, &numberOfBallsUp, &numberOfBallsDown, &numberOfBallsEnter, NULL);
 
   menuItem_t *tiltWarnings = ballsPerGame->next = makeMenuItem("Tilt warnings", standardAudits);
-  //tiltWarnings->event = makeEvent(&rightDrainsOpen, NULL, NULL, NULL, NULL);
+  tiltWarnings->event = makeEvent(&tiltWarningsOpen, &tiltWarningsUp, &tiltWarningsDown, &tiltWarningsEnter, NULL);
   tiltWarnings->previous = ballsPerGame;
 
   menuItem_t *maximumExtraBalls = tiltWarnings->next = makeMenuItem("Maximum extra balls", standardAudits);

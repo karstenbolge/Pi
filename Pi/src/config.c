@@ -56,6 +56,7 @@ void initConfig()
   initHighScores();
   config.volumn = 8;
   config.numberOfBalls = 3;
+  config.tiltWarnings = 3;
   config.decimalSeperator = '.';
   config.buyInExtraBall = 0;
   config.allowRestart = 0;
@@ -99,6 +100,7 @@ int stringStart(char *str, char *in)
 #define FOURTH "  forth:"
 #define VOLUMN "volumn:"
 #define NUMBER_OF_BALLS "numberOfBalls:"
+#define TILT_WARNINGS "tiltWarnings:"
 #define DECIMAL_SEPERATOR "decimalSeperator:"
 #define BUY_IN_EXTRA_BALL "buyInExtraBall:"
 #define ALLOW_RESTART "allowRestart:"
@@ -139,6 +141,8 @@ void readConfig()
         config.volumn = atoi(value);
       if (stringStart(readBuffer, NUMBER_OF_BALLS))
         config.numberOfBalls = atoi(value);
+      if (stringStart(readBuffer, TILT_WARNINGS))
+        config.tiltWarnings = atoi(value);
       if (stringStart(readBuffer, DECIMAL_SEPERATOR))
         config.decimalSeperator = value[0];
       if (stringStart(readBuffer, BUY_IN_EXTRA_BALL))
@@ -255,6 +259,7 @@ void saveConfig()
   fprintf(pConfig, "%s %s\n", NAME, config.highScore[4].current.name);
   fprintf(pConfig, "%s %d\n", VOLUMN, config.volumn);
   fprintf(pConfig, "%s %d\n", NUMBER_OF_BALLS, config.numberOfBalls);
+  fprintf(pConfig, "%s %d\n", TILT_WARNINGS, config.tiltWarnings);
   fprintf(pConfig, "%s %c\n", DECIMAL_SEPERATOR, config.decimalSeperator);
   fprintf(pConfig, "%s %d\n", BUY_IN_EXTRA_BALL, config.buyInExtraBall);
   fprintf(pConfig, "%s %d\n", ALLOW_RESTART, config.allowRestart);

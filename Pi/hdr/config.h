@@ -23,6 +23,7 @@ typedef struct config
   highScoreItem_t highScore[5];
   uint8_t volumn;
   uint8_t numberOfBalls;
+  uint8_t tiltWarnings;
   char decimalSeperator;
   uint8_t buyInExtraBall;
   uint8_t allowRestart;
