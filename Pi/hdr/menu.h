@@ -115,10 +115,6 @@ Adjustments
       Tilt warnings, def 3
       Maximum extra balls, def 4
       Maximum extra ball per ball in play (offered) def OFF
-      Custom message
-      Clock style
-      Date style
-      Show date time
       Tournament
       Decimal separator
       Game restart NEVER, SLOW, INSTANT def SLOW

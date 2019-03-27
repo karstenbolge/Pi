@@ -31,7 +31,6 @@ typedef struct itemFunctions
 typedef struct menuItem
 {
   char name[32];
-  uint8_t id;
   struct menuItem *parrent;
   struct menuItem *child;
   struct itemFunctions *event;
@@ -57,13 +56,12 @@ itemFunctions_t *makeEvent(void (*open)(void), void (*up)(void), void (*down)(vo
   return event;
 }
 
-menuItem_t *makeMenuItem(char *pName, uint8_t id, menuItem_t *parrent)
+menuItem_t *makeMenuItem(char *pName, menuItem_t *parrent)
 {
   menuItem_t *item = malloc(sizeof(menuItem_t));
 
   memset(item, 0, sizeof(menuItem_t));
   strcpy(item->name, pName);
-  item->id = id;
   item->parrent = parrent;
   item->child = NULL;
 
@@ -73,24 +71,24 @@ menuItem_t *makeMenuItem(char *pName, uint8_t id, menuItem_t *parrent)
 void initMenu()
 {
   // 1-level
-  menuItem_t *bookKeepings = menu = makeMenuItem("Bookkeepings", MENU_BOOKKEEPINGS, NULL);
+  menuItem_t *bookKeepings = menu = makeMenuItem("Bookkeepings", NULL);
 
   // 2-level
-  menuItem_t *mainAudits = bookKeepings->child = makeMenuItem("Main audits", MENU_MAIN_AUDITS, bookKeepings);
+  menuItem_t *mainAudits = bookKeepings->child = makeMenuItem("Main audits", bookKeepings);
 
   // 3-level
-  menuItem_t *averageBallTime = mainAudits->child = makeMenuItem("Average ball time", MENU_AVERAGE_BALL_TIME, mainAudits);
+  menuItem_t *averageBallTime = mainAudits->child = makeMenuItem("Average ball time", mainAudits);
   averageBallTime->event = makeEvent(&averageBallTimeOpen, NULL, NULL, NULL, NULL);
 
-  menuItem_t *totalPlays = averageBallTime->next = makeMenuItem("Total games", MENU_TOTAL_PLAYS, mainAudits);
+  menuItem_t *totalPlays = averageBallTime->next = makeMenuItem("Total games", mainAudits);
   totalPlays->event = makeEvent(&totalPlaysOpen, NULL, NULL, NULL, NULL);
   totalPlays->previous = averageBallTime;
 
-  menuItem_t *extraBalls = totalPlays->next = makeMenuItem("Extra balls", MENU_EXTRA_BALLS, mainAudits);
+  menuItem_t *extraBalls = totalPlays->next = makeMenuItem("Extra balls", mainAudits);
   extraBalls->event = makeEvent(&extraBallsOpen, NULL, NULL, NULL, NULL);
   extraBalls->previous = totalPlays;
 
-  menuItem_t *percentExtraBalls = extraBalls->next = makeMenuItem("Percent extra balls", MENU_PERCENT_EXTRA_BALLS, mainAudits);
+  menuItem_t *percentExtraBalls = extraBalls->next = makeMenuItem("Percent extra balls", mainAudits);
   percentExtraBalls->event = makeEvent(&percentExtraBalsOpen, NULL, NULL, NULL, NULL);
   percentExtraBalls->previous = extraBalls;
   // loop
@@ -98,76 +96,76 @@ void initMenu()
   averageBallTime->previous = percentExtraBalls;
 
   // 2-level
-  menuItem_t *standardAudits = mainAudits->next = makeMenuItem("Standard audits", MENU_STANDARD_AUDITS, bookKeepings);
+  menuItem_t *standardAudits = mainAudits->next = makeMenuItem("Standard audits", bookKeepings);
   standardAudits->previous = mainAudits;
 
   // 3-level
-  menuItem_t *leftDrains = standardAudits->child = makeMenuItem("Left drains", MENU_LEFT_DRAINS, standardAudits);
+  menuItem_t *leftDrains = standardAudits->child = makeMenuItem("Left drains", standardAudits);
   leftDrains->event = makeEvent(&leftDrainsOpen, NULL, NULL, NULL, NULL);
 
-  menuItem_t *rightDrains = leftDrains->next = makeMenuItem("Right drains", MENU_RIGHT_DRAINS, standardAudits);
+  menuItem_t *rightDrains = leftDrains->next = makeMenuItem("Right drains", standardAudits);
   rightDrains->event = makeEvent(&rightDrainsOpen, NULL, NULL, NULL, NULL);
   rightDrains->previous = leftDrains;
 
-  menuItem_t *timePerGame = rightDrains->next = makeMenuItem("Time per game", MENU_TIME_PER_GAME, standardAudits);
+  menuItem_t *timePerGame = rightDrains->next = makeMenuItem("Time per game", standardAudits);
   timePerGame->event = makeEvent(&timePerGameOpen, NULL, NULL, NULL, NULL);
   timePerGame->previous = rightDrains;
 
-  menuItem_t *playTime = timePerGame->next = makeMenuItem("Total play time", MENU_PLAY_TIME, standardAudits);
+  menuItem_t *playTime = timePerGame->next = makeMenuItem("Total play time", standardAudits);
   playTime->event = makeEvent(&PlayTimeOpen, NULL, NULL, NULL, NULL);
   playTime->previous = timePerGame;
 
-  menuItem_t *ballsPlayed = playTime->next = makeMenuItem("Total balls played", MENU_BALLS_PLAYED, standardAudits);
+  menuItem_t *ballsPlayed = playTime->next = makeMenuItem("Total balls played", standardAudits);
   ballsPlayed->event = makeEvent(&BallsPlayedOpen, NULL, NULL, NULL, NULL);
   ballsPlayed->previous = playTime;
 
-  menuItem_t *tilts = ballsPlayed->next = makeMenuItem("Total tilts", MENU_TILTS, standardAudits);
+  menuItem_t *tilts = ballsPlayed->next = makeMenuItem("Total tilts", standardAudits);
   tilts->event = makeEvent(&TiltsOpen, NULL, NULL, NULL, NULL);
   tilts->previous = ballsPlayed;
 
-  menuItem_t *leftFlipper = tilts->next = makeMenuItem("Total left flipper", MENU_LEFT_FLIPPER, standardAudits);
+  menuItem_t *leftFlipper = tilts->next = makeMenuItem("Total left flipper", standardAudits);
   leftFlipper->event = makeEvent(&leftFlippersOpen, NULL, NULL, NULL, NULL);
   leftFlipper->previous = tilts;
 
-  menuItem_t *rightFlipper = leftFlipper->next = makeMenuItem("Total right flipper", MENU_RIGHT_FLIPPER, standardAudits);
+  menuItem_t *rightFlipper = leftFlipper->next = makeMenuItem("Total right flipper", standardAudits);
   rightFlipper->event = makeEvent(&rigthFlippersOpen, NULL, NULL, NULL, NULL);
   rightFlipper->previous = leftFlipper;
   rightFlipper->next = leftDrains;
   leftDrains->previous = rightFlipper;
 
   // 2-level
-  menuItem_t *featureAudits = standardAudits->next = makeMenuItem("Feature audits", MENU_FEATURE_AUDITS, bookKeepings);
+  menuItem_t *featureAudits = standardAudits->next = makeMenuItem("Feature audits", bookKeepings);
   featureAudits->previous = standardAudits;
 
-  menuItem_t *histograms = featureAudits->next = makeMenuItem("Histograms", MENU_HISTOGRAMS, bookKeepings);
+  menuItem_t *histograms = featureAudits->next = makeMenuItem("Histograms", bookKeepings);
   histograms->previous = featureAudits;
 
   // 3-level
-  menuItem_t *histogramScore = histograms->child = makeMenuItem("Scores", MENU_HISTOGRAM_SCORES, histograms);
+  menuItem_t *histogramScore = histograms->child = makeMenuItem("Scores", histograms);
   histogramScore->event = makeEvent(&histogramScoreOpen, &histogramScoreUp, &histogramScoreDown, NULL, NULL);
 
-  menuItem_t *histogramGameTime = histogramScore->next = makeMenuItem("game time", MENU_HISTOGRAM_GAME_TIME, histograms);
+  menuItem_t *histogramGameTime = histogramScore->next = makeMenuItem("game time", histograms);
   histogramGameTime->event = makeEvent(&histogramGameTimeOpen, &histogramGameTimeUp, &histogramGameTimeDown, NULL, NULL);
   histogramScore->previous = histogramGameTime;
   histogramGameTime->next = histogramScore;
 
   // 2-level
-  menuItem_t *timestamp = histograms->next = makeMenuItem("Time-stamp", MENU_TIME_STAMP, bookKeepings);
+  menuItem_t *timestamp = histograms->next = makeMenuItem("Time-stamp", bookKeepings);
   timestamp->previous = histograms;
 
   // 3-level
-  menuItem_t *currentTime = timestamp->child = makeMenuItem("Current time", MENU_CURRENT_TIME, timestamp);
+  menuItem_t *currentTime = timestamp->child = makeMenuItem("Current time", timestamp);
   currentTime->event = makeEvent(&currentTimeOpen, NULL, NULL, NULL, NULL);
 
-  menuItem_t *lastGameStart = currentTime->next = makeMenuItem("Last game start", MENU_LAST_GAME_START, timestamp);
+  menuItem_t *lastGameStart = currentTime->next = makeMenuItem("Last game start", timestamp);
   lastGameStart->event = makeEvent(&lastGameStartOpen, NULL, NULL, NULL, NULL);
   lastGameStart->previous = currentTime;
 
-  menuItem_t *lastFactoryReset = lastGameStart->next = makeMenuItem("Last factory reset", MENU_LAST_FACTORE_RESET, timestamp);
+  menuItem_t *lastFactoryReset = lastGameStart->next = makeMenuItem("Last factory reset", timestamp);
   lastFactoryReset->event = makeEvent(&lastFactoryResetOpen, NULL, NULL, NULL, NULL);
   lastFactoryReset->previous = lastGameStart;
 
-  menuItem_t *lastHighscorerReset = lastFactoryReset->next = makeMenuItem("Last highscore reset", MENU_LAST_HIGHSCORE_RESET, timestamp);
+  menuItem_t *lastHighscorerReset = lastFactoryReset->next = makeMenuItem("Last highscore reset", timestamp);
   lastHighscorerReset->event = makeEvent(&lastHighscorerResetOpen, NULL, NULL, NULL, NULL);
   lastHighscorerReset->previous = lastFactoryReset;
 
@@ -178,74 +176,74 @@ void initMenu()
   mainAudits->previous = timestamp;
 
   // 1-level
-  menuItem_t *testMenu = bookKeepings->next = makeMenuItem("Test menu", MENU_TEST_MENU, NULL);
+  menuItem_t *testMenu = bookKeepings->next = makeMenuItem("Test menu", NULL);
   testMenu->previous = bookKeepings;
 
   // 2-level
-  menuItem_t *switchEdge = testMenu->child = makeMenuItem("Switch edge", MENU_SWITCH_EDGE, testMenu);
+  menuItem_t *switchEdge = testMenu->child = makeMenuItem("Switch edge", testMenu);
   switchEdge->event = makeEvent(&switchEdgeTestOpen, &switchEdgeTestUp, &switchEdgeTestDown, &switchEdgeTestEnter, &switchEdgeTestExit);
 
-  menuItem_t *switchLevels = switchEdge->next = makeMenuItem("Switch levels", MENU_SWITCH_LEVELS, testMenu);
+  menuItem_t *switchLevels = switchEdge->next = makeMenuItem("Switch levels", testMenu);
   switchLevels->previous = switchEdge;
 
-  menuItem_t *singleSwitchTest = switchLevels->next = makeMenuItem("Single switch edge", MENU_SINGLE_SWITCH_TEST, testMenu);
+  menuItem_t *singleSwitchTest = switchLevels->next = makeMenuItem("Single switch edge", testMenu);
   singleSwitchTest->event = makeEvent(&switchEdgeTestOpenSingle, &switchEdgeTestUp, &switchEdgeTestDown, &switchEdgeTestEnter, &switchEdgeTestExit);
   singleSwitchTest->previous = switchLevels;
 
-  menuItem_t *solenoid = singleSwitchTest->next = makeMenuItem("Solenoid test", MENU_SOLENOID_TEST, testMenu);
+  menuItem_t *solenoid = singleSwitchTest->next = makeMenuItem("Solenoid test", testMenu);
   solenoid->previous = singleSwitchTest;
 
-  menuItem_t *flasherTest = solenoid->next = makeMenuItem("Flasher test", MENU_FLASHER_TEST, testMenu);
+  menuItem_t *flasherTest = solenoid->next = makeMenuItem("Flasher test", testMenu);
   flasherTest->previous = solenoid;
 
-  menuItem_t *giTest = flasherTest->next = makeMenuItem("General illumination test", MENU_G_I_TEST, testMenu);
+  menuItem_t *giTest = flasherTest->next = makeMenuItem("General illumination test", testMenu);
   giTest->previous = flasherTest;
 
-  menuItem_t *soundAndMusic = giTest->next = makeMenuItem("Sound and music test", MENU_SOUND_AND_MUSIC_TEST, testMenu);
+  menuItem_t *soundAndMusic = giTest->next = makeMenuItem("Sound and music test", testMenu);
   soundAndMusic->previous = giTest;
 
-  menuItem_t *singleLamp = soundAndMusic->next = makeMenuItem("Single lamp test", MENU_SINGLE_LAMP_TEST, testMenu);
+  menuItem_t *singleLamp = soundAndMusic->next = makeMenuItem("Single lamp test", testMenu);
   singleLamp->previous = soundAndMusic;
 
-  menuItem_t *allLamps = singleLamp->next = makeMenuItem("All lamps test", MENU_ALL_LAMPS_TEST, testMenu);
+  menuItem_t *allLamps = singleLamp->next = makeMenuItem("All lamps test", testMenu);
   allLamps->previous = singleLamp;
 
-  menuItem_t *displayTest = allLamps->next = makeMenuItem("Display test", MENU_DISPLAY_TEST, testMenu);
+  menuItem_t *displayTest = allLamps->next = makeMenuItem("Display test", testMenu);
   displayTest->event = makeEvent(&displayTestOpen, NULL, NULL, &displayTestEnter, &displayTestExit);
   displayTest->previous = allLamps;
 
-  menuItem_t *flipperCoilTest = displayTest->next = makeMenuItem("Flipper coil test", MENU_FLIPPER_COIL_TEST, testMenu);
+  menuItem_t *flipperCoilTest = displayTest->next = makeMenuItem("Flipper coil test", testMenu);
   flipperCoilTest->previous = allLamps;
   // loop
   flipperCoilTest->next = switchEdge;
   switchEdge->previous = flipperCoilTest;
 
   // 1-level
-  menuItem_t *utilities = testMenu->next = makeMenuItem("Utilities", MENU_UTILITIES, NULL);
+  menuItem_t *utilities = testMenu->next = makeMenuItem("Utilities", NULL);
   utilities->previous = testMenu;
 
   // 2-level
-  menuItem_t *clearAudits = utilities->child = makeMenuItem("Clear audits", MENU_CLEAR_AUTIDS, utilities);
+  menuItem_t *clearAudits = utilities->child = makeMenuItem("Clear audits", utilities);
   clearAudits->event = makeEvent(&clearAuditsOpen, &clearAuditsUp, &clearAuditsDown, &clearAuditsEnter, NULL);
 
-  menuItem_t *resetHSTD = clearAudits->next = makeMenuItem("Reset highscores", MENU_RESET_H_S_T_D, utilities);
+  menuItem_t *resetHSTD = clearAudits->next = makeMenuItem("Reset highscores", utilities);
   resetHSTD->event = makeEvent(&resetHighScoreOpen, &resetHighScoreUp, &resetHighScoreDown, &resetHighScoreEnter, NULL);
   resetHSTD->previous = clearAudits;
 
-  menuItem_t *setTimeAndDate = resetHSTD->next = makeMenuItem("Set time and date", MENU_SET_TIME_AND_DATE, utilities);
+  menuItem_t *setTimeAndDate = resetHSTD->next = makeMenuItem("Set time and date", utilities);
   setTimeAndDate->event = makeEvent(&setTimeOpen, &setTimeUp, &setTimeDown, &setTimeEnter, NULL);
   setTimeAndDate->previous = resetHSTD;
 
-  menuItem_t *customMessage = setTimeAndDate->next = makeMenuItem("Set custom message", MENU_SET_CUSTOM_MESSAGE, utilities);
+  menuItem_t *customMessage = setTimeAndDate->next = makeMenuItem("Set custom message", utilities);
   customMessage->previous = setTimeAndDate;
 
-  menuItem_t *setGameId = customMessage->next = makeMenuItem("Set game id", MENU_SET_GAME_ID, utilities);
+  menuItem_t *setGameId = customMessage->next = makeMenuItem("Set game id", utilities);
   setGameId->previous = customMessage;
 
-  menuItem_t *factoryAdjustment = setGameId->next = makeMenuItem("Factory adjustments", MENU_FACTORY_ADJUSTMENTS, utilities);
+  menuItem_t *factoryAdjustment = setGameId->next = makeMenuItem("Factory adjustments", utilities);
   factoryAdjustment->previous = setGameId;
 
-  menuItem_t *factoryReset = factoryAdjustment->next = makeMenuItem("Factory reset", MENU_FACTORY_RESET, utilities);
+  menuItem_t *factoryReset = factoryAdjustment->next = makeMenuItem("Factory reset", utilities);
   factoryReset->previous = factoryAdjustment;
 
   // loop
@@ -253,7 +251,7 @@ void initMenu()
   clearAudits->previous = factoryReset;
 
   // 1-level
-  menuItem_t *adjustments = utilities->next = makeMenuItem("Adjustments", MENU_UTILITIES, NULL);
+  menuItem_t *adjustments = utilities->next = makeMenuItem("Adjustments", NULL);
   adjustments->previous = utilities;
 
   // loop
@@ -261,423 +259,49 @@ void initMenu()
   bookKeepings->previous = adjustments;
 
   // 2-level
-  menuItem_t *standardAdjustments = adjustments->child = makeMenuItem("Standard adjustements", MENU_STANDARD_ADJUSTMENTS, adjustments);
+  menuItem_t *standardAdjustments = adjustments->child = makeMenuItem("Standard adjustements", adjustments);
+
+  // 3-level
+  menuItem_t *ballsPerGame = standardAdjustments->child = makeMenuItem("Balls per game", standardAdjustments);
+  //ballsPerGame->event = makeEvent(&currentTimeOpen, NULL, NULL, NULL, NULL);
+
+  menuItem_t *tiltWarnings = ballsPerGame->next = makeMenuItem("Tilt warnings", standardAudits);
+  //tiltWarnings->event = makeEvent(&rightDrainsOpen, NULL, NULL, NULL, NULL);
+  tiltWarnings->previous = ballsPerGame;
+
+  menuItem_t *maximumExtraBalls = tiltWarnings->next = makeMenuItem("Maximum extra balls", standardAudits);
+  //maximumExtraBalls->event = makeEvent(&rightDrainsOpen, NULL, NULL, NULL, NULL);
+  maximumExtraBalls->previous = tiltWarnings;
+
+  menuItem_t *maximumExtraBallsOffered = maximumExtraBalls->next = makeMenuItem("Maximum extra ball per ball in play", standardAudits);
+  //maximumExtraBallsOffered->event = makeEvent(&rightDrainsOpen, NULL, NULL, NULL, NULL);
+  maximumExtraBallsOffered->previous = maximumExtraBalls;
+
+  menuItem_t *tournamentMode = maximumExtraBallsOffered->next = makeMenuItem("Tournament mode", standardAudits);
+  //tournamentMode->event = makeEvent(&rightDrainsOpen, NULL, NULL, NULL, NULL);
+  tournamentMode->previous = maximumExtraBallsOffered;
+
+  menuItem_t *decimalSeperator = tournamentMode->next = makeMenuItem("Decimal separator", standardAudits);
+  //decimalSeperator->event = makeEvent(&rightDrainsOpen, NULL, NULL, NULL, NULL);
+  decimalSeperator->previous = tournamentMode;
+
+  menuItem_t *gameRestart = tournamentMode->next = makeMenuItem("Game restart", standardAudits);
+  //gameRestart->event = makeEvent(&rightDrainsOpen, NULL, NULL, NULL, NULL);
+  gameRestart->previous = decimalSeperator;
+  gameRestart->next = ballsPerGame;
+  ballsPerGame->previous = gameRestart;
 
   // 2-level
-  menuItem_t *featureAdjustments = standardAdjustments->next = makeMenuItem("Feature adjustments", MENU_FEATURE_ADJUSTMENTS, adjustments);
+  menuItem_t *featureAdjustments = standardAdjustments->next = makeMenuItem("Feature adjustments", adjustments);
   featureAdjustments->previous = standardAdjustments;
 
   // 2-level
-  menuItem_t *highscoreAdjustments = featureAdjustments->next = makeMenuItem("Highscore adjustments", MENU_H_S_T_D_ADJUSTMENTS, adjustments);
+  menuItem_t *highscoreAdjustments = featureAdjustments->next = makeMenuItem("Highscore adjustments", adjustments);
   highscoreAdjustments->previous = featureAdjustments;
 
   // loop
   highscoreAdjustments->next = standardAdjustments;
   standardAdjustments->previous = highscoreAdjustments;
-
-  /*  menu = malloc(sizeof(menuItem_t));
-  memset(menu, 0, sizeof(menuItem_t));
-  strcpy(menu->name, "Bookkeepings");
-  menu->id = MENU_BOOKKEEPINGS;
-  menu->parrent = NULL;
-  menu->child = malloc(sizeof(menuItem_t));
-  menu->previous = NULL;
-  menu->next = malloc(sizeof(menuItem_t));
-  // 1
-  memset(menu->child, 0, sizeof(menuItem_t));
-  strcpy(menu->child->name, "Main audits");
-  menu->child->id = MENU_MAIN_AUDITS;
-  menu->child->parrent = menu;
-  menu->child->child = malloc(sizeof(menuItem_t));
-  menu->child->previous = NULL;
-  menu->child->next = malloc(sizeof(menuItem_t));
-  // 2
-  memset(menu->child->child, 0, sizeof(menuItem_t));
-  strcpy(menu->child->child->name, "Average ball time");
-  menu->child->child->id = MENU_AVERAGE_BALL_TIME;
-  menu->child->child->parrent = menu->child;
-  menu->child->child->child = NULL;
-  menu->child->child->event = malloc(sizeof(itemFunctions_t));
-  menu->child->child->event->open = &averageBallTimeOpen;
-  menu->child->child->event->up = NULL;
-  menu->child->child->event->down = NULL;
-  menu->child->child->event->enter = NULL;
-  menu->child->child->event->exit = NULL;
-  menu->child->child->previous = NULL;
-  menu->child->child->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->child->child->next, 0, sizeof(menuItem_t));
-  strcpy(menu->child->child->next->name, "Total plays");
-  menu->child->child->next->id = MENU_TOTAL_PLAYS;
-  menu->child->child->next->parrent = menu->child;
-  menu->child->child->next->child = NULL;
-  menu->child->child->next->event = malloc(sizeof(itemFunctions_t));
-  menu->child->child->next->event->open = &totalPlaysOpen;
-  menu->child->child->next->event->up = NULL;
-  menu->child->child->next->event->down = NULL;
-  menu->child->child->next->event->enter = NULL;
-  menu->child->child->next->event->exit = NULL;
-  menu->child->child->next->previous = menu->child->child;
-  menu->child->child->next->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->child->child->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->child->child->next->next->name, "Extra balls");
-  menu->child->child->next->next->id = MENU_EXTRA_BALLS;
-  menu->child->child->next->next->parrent = menu->child;
-  menu->child->child->next->next->child = NULL;
-  menu->child->child->next->next->event = malloc(sizeof(itemFunctions_t));
-  menu->child->child->next->next->event->open = &extraBallsOpen;
-  menu->child->child->next->next->event->up = NULL;
-  menu->child->child->next->next->event->down = NULL;
-  menu->child->child->next->next->event->enter = NULL;
-  menu->child->child->next->next->event->exit = NULL;
-  menu->child->child->next->next->previous = menu->child->child->next;
-  menu->child->child->next->next->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->child->child->next->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->child->child->next->next->next->name, "Percent extra balls");
-  menu->child->child->next->next->next->id = MENU_PERCENT_EXTRA_BALLS;
-  menu->child->child->next->next->next->parrent = menu->child;
-  menu->child->child->next->next->next->child = NULL;
-  menu->child->child->next->next->next->event = malloc(sizeof(itemFunctions_t));
-  menu->child->child->next->next->next->event->open = &percentExtraBalsOpen;
-  menu->child->child->next->next->next->event->up = NULL;
-  menu->child->child->next->next->next->event->down = NULL;
-  menu->child->child->next->next->next->event->enter = NULL;
-  menu->child->child->next->next->next->event->exit = NULL;
-  menu->child->child->next->next->next->previous = menu->child->child->next->next;
-  menu->child->child->next->next->next->next = menu->child->child;
-
-  // loop
-  menu->child->child->previous = menu->child->child->next->next->next;
-  */
-  /*
-  // 1
-  memset(menu->child->next, 0, sizeof(menuItem_t));
-  strcpy(menu->child->next->name, "Standard audits");
-  menu->child->next->id = MENU_STANDARD_AUDITS;
-  menu->child->next->parrent = menu;
-
-  menu->child->next->previous = menu->child;
-  menu->child->next->next = malloc(sizeof(menuItem_t));
-
-  // 2
-  menuItem_t *leftDrains = menu->child->next->child = makeMenuItem("Left Drains", MENU_LEFT_DRAINS, menu->child->next);
-  leftDrains->event = makeEvent(&leftDrainsOpen, NULL, NULL, NULL, NULL);
-
-  menuItem_t *rightDrains = leftDrains->next = makeMenuItem("Right Drains", MENU_RIGHT_DRAINS, menu->child->next);
-  rightDrains->event = makeEvent(&rightDrainsOpen, NULL, NULL, NULL, NULL);
-  rightDrains->previous = leftDrains;
-
-  menuItem_t *timePerGame = rightDrains->next = makeMenuItem("Time per Game", MENU_TIME_PER_GAME, menu->child->next);
-  timePerGame->event = makeEvent(&timePerGameOpen, NULL, NULL, NULL, NULL);
-  timePerGame->previous = rightDrains;
-
-  menuItem_t *playTime = timePerGame->next = makeMenuItem("Total play time", MENU_PLAY_TIME, menu->child->next);
-  playTime->event = makeEvent(&PlayTimeOpen, NULL, NULL, NULL, NULL);
-  playTime->previous = timePerGame;
-
-  menuItem_t *ballsPlayed = playTime->next = makeMenuItem("Total balls played", MENU_BALLS_PLAYED, menu->child->next);
-  ballsPlayed->event = makeEvent(&BallsPlayedOpen, NULL, NULL, NULL, NULL);
-  ballsPlayed->previous = playTime;
-
-  menuItem_t *tilts = ballsPlayed->next = makeMenuItem("Total tilts", MENU_TILTS, menu->child->next);
-  tilts->event = makeEvent(&TiltsOpen, NULL, NULL, NULL, NULL);
-  tilts->previous = ballsPlayed;
-
-  menuItem_t *leftFlipper = tilts->next = makeMenuItem("Total left flipper", MENU_LEFT_FLIPPER, menu->child->next);
-  leftFlipper->event = makeEvent(&leftFlippersOpen, NULL, NULL, NULL, NULL);
-  leftFlipper->previous = tilts;
-
-  menuItem_t *rightFlipper = leftFlipper->next = makeMenuItem("Total right flipper", MENU_RIGHT_FLIPPER, menu->child->next);
-  rightFlipper->event = makeEvent(&rigthFlippersOpen, NULL, NULL, NULL, NULL);
-  rightFlipper->previous = leftFlipper;
-  rightFlipper->next = leftDrains;
-  leftDrains->previous = rightFlipper;
-*/
-  /*
-  //1
-  memset(menu->child->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->child->next->next->name, "Feature audits");
-  menu->child->next->next->id = MENU_FEATURE_AUDITS;
-  menu->child->next->next->parrent = menu;
-  menu->child->next->next->child = NULL;
-  menu->child->next->next->previous = menu->child->next;
-  menu->child->next->next->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->child->next->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->child->next->next->next->name, "Histograms");
-  menu->child->next->next->next->id = MENU_HISTOGRAMS;
-  menu->child->next->next->next->parrent = menu;
-  menu->child->next->next->next->child = NULL;
-  menu->child->next->next->next->previous = menu->child->next->next;
-  menu->child->next->next->next->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->child->next->next->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->child->next->next->next->next->name, "Time-stampt");
-  menu->child->next->next->next->next->id = MENU_TIME_STAMP;
-  menu->child->next->next->next->next->parrent = menu;
-  menu->child->next->next->next->next->child = NULL;
-  menu->child->next->next->next->next->previous = menu->child->next->next->next;
-  menu->child->next->next->next->next->next = menu->child;
-  // loop
-  menu->child->previous = menu->child->next->next->next->next;
-*/
-
-  /*
-  // 0
-  memset(menu->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->name, "Test menu");
-  menu->next->id = MENU_TEST_MENU;
-  menu->next->parrent = NULL;
-  menu->next->child = malloc(sizeof(menuItem_t));
-  menu->next->previous = menu;
-  menu->next->next = malloc(sizeof(menuItem_t));
-  // 1
-  memset(menu->next->child, 0, sizeof(menuItem_t));
-  strcpy(menu->next->child->name, "Switch edge");
-  menu->next->child->id = MENU_SWITCH_EDGE;
-  menu->next->child->parrent = menu->next;
-  menu->next->child->child = NULL;
-  menu->next->child->event = malloc(sizeof(itemFunctions_t));
-  menu->next->child->event->open = &switchEdgeTestOpen;
-  menu->next->child->event->up = &switchEdgeTestUp;
-  menu->next->child->event->down = &switchEdgeTestDown;
-  menu->next->child->event->enter = &switchEdgeTestEnter;
-  menu->next->child->event->exit = &switchEdgeTestExit;
-  menu->next->child->previous = NULL;
-  menu->next->child->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->next->child->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->child->next->name, "Switch levels");
-  menu->next->child->next->id = MENU_SWITCH_LEVELS;
-  menu->next->child->next->parrent = menu->next;
-  menu->next->child->next->child = NULL;
-  menu->next->child->next->previous = menu->next->child;
-  menu->next->child->next->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->next->child->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->child->next->next->name, "Singles switch test");
-  menu->next->child->next->next->id = MENU_SINGLE_SWITCH_TEST;
-  menu->next->child->next->next->parrent = menu->next;
-  menu->next->child->next->next->child = NULL;
-  menu->next->child->next->next->event = malloc(sizeof(itemFunctions_t));
-  menu->next->child->next->next->event->open = &switchEdgeTestOpenSingle;
-  menu->next->child->next->next->event->up = &switchEdgeTestUp;
-  menu->next->child->next->next->event->down = &switchEdgeTestDown;
-  menu->next->child->next->next->event->enter = &switchEdgeTestEnter;
-  menu->next->child->next->next->event->exit = &switchEdgeTestExit;
-  menu->next->child->next->next->previous = menu->next->child->next;
-  menu->next->child->next->next->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->next->child->next->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->child->next->next->next->name, "Solenoid test");
-  menu->next->child->next->next->next->id = MENU_SOLENOID_TEST;
-  menu->next->child->next->next->next->parrent = menu->next;
-  menu->next->child->next->next->next->child = NULL;
-  menu->next->child->next->next->next->previous = menu->next->child->next->next;
-  menu->next->child->next->next->next->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->next->child->next->next->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->child->next->next->next->next->name, "Flasher test");
-  menu->next->child->next->next->next->next->id = MENU_FLASHER_TEST;
-  menu->next->child->next->next->next->next->parrent = menu->next;
-  menu->next->child->next->next->next->next->child = NULL;
-  menu->next->child->next->next->next->next->previous = menu->next->child->next->next->next;
-  menu->next->child->next->next->next->next->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->next->child->next->next->next->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->child->next->next->next->next->next->name, "G.I. Test");
-  menu->next->child->next->next->next->next->next->id = MENU_G_I_TEST;
-  menu->next->child->next->next->next->next->next->parrent = menu->next;
-  menu->next->child->next->next->next->next->next->child = NULL;
-  menu->next->child->next->next->next->next->next->previous = menu->next->child->next->next->next->next;
-  menu->next->child->next->next->next->next->next->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->next->child->next->next->next->next->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->child->next->next->next->next->next->next->name, "Sound and music test");
-  menu->next->child->next->next->next->next->next->next->id = MENU_SOUND_AND_MUSIC_TEST;
-  menu->next->child->next->next->next->next->next->next->parrent = menu->next;
-  menu->next->child->next->next->next->next->next->next->child = NULL;
-  menu->next->child->next->next->next->next->next->next->previous = menu->next->child->next->next->next->next->next;
-  menu->next->child->next->next->next->next->next->next->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->next->child->next->next->next->next->next->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->child->next->next->next->next->next->next->next->name, "Single lamp test");
-  menu->next->child->next->next->next->next->next->next->next->id = MENU_SINGLE_LAMP_TEST;
-  menu->next->child->next->next->next->next->next->next->next->parrent = menu->next;
-  menu->next->child->next->next->next->next->next->next->next->child = NULL;
-  menu->next->child->next->next->next->next->next->next->next->previous = menu->next->child->next->next->next->next->next->next;
-  menu->next->child->next->next->next->next->next->next->next->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->next->child->next->next->next->next->next->next->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->child->next->next->next->next->next->next->next->next->name, "All lamps test");
-  menu->next->child->next->next->next->next->next->next->next->next->id = MENU_ALL_LAMPS_TEST;
-  menu->next->child->next->next->next->next->next->next->next->next->parrent = menu->next;
-  menu->next->child->next->next->next->next->next->next->next->next->child = NULL;
-  menu->next->child->next->next->next->next->next->next->next->next->previous = menu->next->child->next->next->next->next->next->next->next;
-  menu->next->child->next->next->next->next->next->next->next->next->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->next->child->next->next->next->next->next->next->next->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->child->next->next->next->next->next->next->next->next->next->name, "Display test");
-  menu->next->child->next->next->next->next->next->next->next->next->next->id = MENU_DISPLAY_TEST;
-  menu->next->child->next->next->next->next->next->next->next->next->next->parrent = menu->next;
-  menu->next->child->next->next->next->next->next->next->next->next->next->child = NULL;
-  menu->next->child->next->next->next->next->next->next->next->next->next->event = malloc(sizeof(itemFunctions_t));
-  menu->next->child->next->next->next->next->next->next->next->next->next->event->open = &displayTestOpen;
-  menu->next->child->next->next->next->next->next->next->next->next->next->event->up = NULL;
-  menu->next->child->next->next->next->next->next->next->next->next->next->event->down = NULL;
-  menu->next->child->next->next->next->next->next->next->next->next->next->event->enter = &displayTestEnter;
-  menu->next->child->next->next->next->next->next->next->next->next->next->event->exit = &displayTestExit;
-  menu->next->child->next->next->next->next->next->next->next->next->next->previous = menu->next->child->next->next->next->next->next->next->next->next;
-  menu->next->child->next->next->next->next->next->next->next->next->next->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->next->child->next->next->next->next->next->next->next->next->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->child->next->next->next->next->next->next->next->next->next->next->name, "Flipper coil test");
-  menu->next->child->next->next->next->next->next->next->next->next->next->next->id = MENU_FLIPPER_COIL_TEST;
-  menu->next->child->next->next->next->next->next->next->next->next->next->next->parrent = menu->next;
-  menu->next->child->next->next->next->next->next->next->next->next->next->next->child = NULL;
-  menu->next->child->next->next->next->next->next->next->next->next->next->next->previous = menu->next->child->next->next->next->next->next->next->next->next->next;
-  menu->next->child->next->next->next->next->next->next->next->next->next->next->next = menu->next->child;
-  // loop
-  menu->next->child->previous = menu->next->child->next->next->next->next->next->next->next->next->next->next;*/
-  /*
-  // 0
-  memset(menu->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->next->name, "Utilities");
-  menu->next->next->id = MENU_UTILITIES;
-  menu->next->next->parrent = NULL;
-  menu->next->next->child = malloc(sizeof(menuItem_t));
-  menu->next->next->previous = menu->next;
-  menu->next->next->next = malloc(sizeof(menuItem_t));
-  // 1
-  memset(menu->next->next->child, 0, sizeof(menuItem_t));
-  strcpy(menu->next->next->child->name, "Clear audits");
-  menu->next->next->child->id = MENU_CLEAR_AUTIDS;
-  menu->next->next->child->parrent = menu->next->next;
-  menu->next->next->child->child = NULL;
-  menu->next->next->child->previous = NULL;
-  menu->next->next->child->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->next->next->child->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->next->child->next->name, "Reset H.S.T.D.");
-  menu->next->next->child->next->id = MENU_RESET_H_S_T_D;
-  menu->next->next->child->next->parrent = menu->next->next;
-  menu->next->next->child->next->child = NULL;
-  menu->next->next->child->next->event = malloc(sizeof(itemFunctions_t));
-  menu->next->next->child->next->event->open = &resetHighScoreOpen;
-  menu->next->next->child->next->event->up = &resetHighScoreUp;
-  menu->next->next->child->next->event->down = &resetHighScoreDown;
-  menu->next->next->child->next->event->enter = &resetHighScoreEnter;
-  menu->next->next->child->next->event->exit = NULL;
-  menu->next->next->child->next->previous = menu->next->next->child;
-  menu->next->next->child->next->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->next->next->child->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->next->child->next->next->name, "Set time and date");
-  menu->next->next->child->next->next->id = MENU_SET_TIME_AND_DATE;
-  menu->next->next->child->next->next->parrent = menu->next->next;
-  menu->next->next->child->next->next->child = NULL;
-  menu->next->next->child->next->next->event = malloc(sizeof(itemFunctions_t));
-  menu->next->next->child->next->next->event->open = &setTimeOpen;
-  menu->next->next->child->next->next->event->up = &setTimeUp;
-  menu->next->next->child->next->next->event->down = &setTimeDown;
-  menu->next->next->child->next->next->event->enter = &setTimeEnter;
-  menu->next->next->child->next->next->event->exit = NULL;
-  menu->next->next->child->next->next->previous = menu->next->next->child->next;
-  menu->next->next->child->next->next->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->next->next->child->next->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->next->child->next->next->next->name, "Set Custom message");
-  menu->next->next->child->next->next->next->id = MENU_SET_CUSTOM_MESSAGE;
-  menu->next->next->child->next->next->next->parrent = menu->next->next;
-  menu->next->next->child->next->next->next->child = NULL;
-  menu->next->next->child->next->next->next->previous = menu->next->next->child->next->next;
-  menu->next->next->child->next->next->next->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->next->next->child->next->next->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->next->child->next->next->next->next->name, "Set game id");
-  menu->next->next->child->next->next->next->next->id = MENU_SET_GAME_ID;
-  menu->next->next->child->next->next->next->next->parrent = menu->next->next;
-  menu->next->next->child->next->next->next->next->child = NULL;
-  menu->next->next->child->next->next->next->next->previous = menu->next->next->child->next->next->next;
-  menu->next->next->child->next->next->next->next->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->next->next->child->next->next->next->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->next->child->next->next->next->next->next->name, "Factory adjustments");
-  menu->next->next->child->next->next->next->next->next->id = MENU_FACTORY_ADJUSTMENTS;
-  menu->next->next->child->next->next->next->next->next->parrent = menu->next->next;
-  menu->next->next->child->next->next->next->next->next->child = NULL;
-  menu->next->next->child->next->next->next->next->next->previous = menu->next->next->child->next->next->next->next;
-  menu->next->next->child->next->next->next->next->next->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->next->next->child->next->next->next->next->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->next->child->next->next->next->next->next->next->name, "Factory reset");
-  menu->next->next->child->next->next->next->next->next->next->id = MENU_FACTORY_RESET;
-  menu->next->next->child->next->next->next->next->next->next->parrent = menu->next->next;
-  menu->next->next->child->next->next->next->next->next->next->child = NULL;
-  menu->next->next->child->next->next->next->next->next->next->previous = menu->next->next->child->next->next->next->next->next;
-  menu->next->next->child->next->next->next->next->next->next->next = menu->next->next->child;
-  // loop
-  menu->next->next->child->previous = menu->next->next->child->next->next->next->next->next->next;
-  // 0
-  memset(menu->next->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->next->next->name, "Adjustments");
-  menu->next->next->next->id = MENU_ADJUSTMENTS;
-  menu->next->next->next->parrent = NULL;
-  menu->next->next->next->child = malloc(sizeof(menuItem_t));
-  menu->next->next->next->previous = menu->next->next;
-  menu->next->next->next->next = NULL;
-  // loop
-  menu->previous = menu->next->next->next;
-  // 1
-  memset(menu->next->next->next->child, 0, sizeof(menuItem_t));
-  strcpy(menu->next->next->next->child->name, "Standard adjustements");
-  menu->next->next->next->child->id = MENU_STANDARD_ADJUSTMENTS;
-  menu->next->next->next->child->parrent = menu->next->next->next;
-  menu->next->next->next->child->child = NULL;
-  menu->next->next->next->child->previous = NULL;
-  menu->next->next->next->child->next = malloc(sizeof(menuItem_t));
-*/
-  // 2
-
-  //karsten
-  /*
-  memset(menu->next->next->next->child->child, 0, sizeof(menuItem_t));
-  strcpy(menu->next->next->next->child->child->name, "Balls per game");
-  menu->next->next->next->child->child->id = MENU_BALLS_PER_GAME;
-  menu->next->next->next->child->child->parrent = menu->next->next->next->child;
-
-  menu->next->next->next->child->child->child = NULL;
-  menu->next->next->next->child->child->event = malloc(sizeof(itemFunctions_t));
-  menu->next->next->next->child->child->event->open = &switchEdgeTestOpenSingle;
-  menu->next->next->next->child->child->event->up = &switchEdgeTestUp;
-  menu->next->next->next->child->child->event->down = &switchEdgeTestDown;
-  menu->next->next->next->child->child->event->enter = &switchEdgeTestEnter;
-  menu->next->next->next->child->child->event->exit = &switchEdgeTestExit;
-  menu->next->next->next->child->child->previous = menu->next->child->next;
-  menu->next->next->next->child->child->next = malloc(sizeof(menuItem_t));
-*/
-  //
-  /*
-  memset(menu->next->next->next->child->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->next->next->child->next->name, "Feature adjustments");
-  menu->next->next->next->child->next->id = MENU_FEATURE_ADJUSTMENTS;
-  menu->next->next->next->child->next->parrent = menu->next->next->next;
-  menu->next->next->next->child->next->child = NULL;
-  menu->next->next->next->child->next->previous = menu->next->next->next->child;
-  menu->next->next->next->child->next->next = malloc(sizeof(menuItem_t));
-
-  memset(menu->next->next->next->child->next->next, 0, sizeof(menuItem_t));
-  strcpy(menu->next->next->next->child->next->next->name, "H.S.T.D. adjustments");
-  menu->next->next->next->child->next->next->id = MENU_H_S_T_D_ADJUSTMENTS;
-  menu->next->next->next->child->next->next->parrent = menu->next->next->next;
-  menu->next->next->next->child->next->next->child = NULL;
-  menu->next->next->next->child->next->next->previous = menu->next->next->next->child->next;
-  menu->next->next->next->child->next->next->next = menu->next->next->next->child;
-  // loop
-  menu->next->next->next->child->previous = menu->next->next->next->child->next->next;
-  menu->next->next->next->next = menu;*/
 }
 /*Bookkeepings
 		Main audits
