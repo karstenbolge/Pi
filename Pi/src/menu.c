@@ -268,27 +268,27 @@ void initMenu()
   menuItem_t *ballsPerGame = standardAdjustments->child = makeMenuItem("Balls per game", standardAdjustments);
   ballsPerGame->event = makeEvent(&numberOfBallsOpen, &numberOfBallsUp, &numberOfBallsDown, &numberOfBallsEnter, NULL);
 
-  menuItem_t *tiltWarnings = ballsPerGame->next = makeMenuItem("Tilt warnings", standardAudits);
+  menuItem_t *tiltWarnings = ballsPerGame->next = makeMenuItem("Tilt warnings", standardAdjustments);
   tiltWarnings->event = makeEvent(&tiltWarningsOpen, &tiltWarningsUp, &tiltWarningsDown, &tiltWarningsEnter, NULL);
   tiltWarnings->previous = ballsPerGame;
 
-  menuItem_t *maximumExtraBalls = tiltWarnings->next = makeMenuItem("Maximum extra balls", standardAudits);
+  menuItem_t *maximumExtraBalls = tiltWarnings->next = makeMenuItem("Maximum extra balls", standardAdjustments);
   maximumExtraBalls->event = makeEvent(&numberOfExtraBallsOpen, &numberOfExtraBallsUp, &numberOfExtraBallsDown, &numberOfExtraBallsEnter, NULL);
   maximumExtraBalls->previous = tiltWarnings;
 
-  menuItem_t *maximumExtraBallsOffered = maximumExtraBalls->next = makeMenuItem("Maximum extra ball per ball in play", standardAudits);
+  menuItem_t *maximumExtraBallsOffered = maximumExtraBalls->next = makeMenuItem("Maximum extra ball per ball", standardAdjustments);
   //maximumExtraBallsOffered->event = makeEvent(&rightDrainsOpen, NULL, NULL, NULL, NULL);
   maximumExtraBallsOffered->previous = maximumExtraBalls;
 
-  menuItem_t *tournamentMode = maximumExtraBallsOffered->next = makeMenuItem("Tournament mode", standardAudits);
+  menuItem_t *tournamentMode = maximumExtraBallsOffered->next = makeMenuItem("Tournament mode", standardAdjustments);
   //tournamentMode->event = makeEvent(&rightDrainsOpen, NULL, NULL, NULL, NULL);
   tournamentMode->previous = maximumExtraBallsOffered;
 
-  menuItem_t *decimalSeperator = tournamentMode->next = makeMenuItem("Decimal separator", standardAudits);
+  menuItem_t *decimalSeperator = tournamentMode->next = makeMenuItem("Decimal separator", standardAdjustments);
   //decimalSeperator->event = makeEvent(&rightDrainsOpen, NULL, NULL, NULL, NULL);
   decimalSeperator->previous = tournamentMode;
 
-  menuItem_t *gameRestart = tournamentMode->next = makeMenuItem("Game restart", standardAudits);
+  menuItem_t *gameRestart = tournamentMode->next = makeMenuItem("Game restart", standardAdjustments);
   //gameRestart->event = makeEvent(&rightDrainsOpen, NULL, NULL, NULL, NULL);
   gameRestart->previous = decimalSeperator;
   gameRestart->next = ballsPerGame;

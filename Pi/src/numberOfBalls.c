@@ -63,6 +63,7 @@ void numberOfBallsEnter()
   if (newNumberOfBalls == config.numberOfBalls)
   {
     menuExit();
+    return;
   }
 
   rgb_t color;

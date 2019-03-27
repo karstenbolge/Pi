@@ -17,13 +17,14 @@ void showNumberOfExtraBalls()
   setColorType(&bgColor, COLOR_BLACK);
 
   clearDmd();
-  printAtLineAndPosition("Number of extra balls per ball", 1, 0, &color, NULL);
+  printAtLineAndPosition("Number of extra balls", 1, 0, &color, NULL);
+  printAtLineAndPosition("per ball offered", 2, 0, &color, NULL);
 
   char str[32];
   sprintf(str, "%d", newNumberOfExtraBalls);
 
-  uint16_t length = printAtLineAndPosition(str, 3, 0, &bgColor, &color);
-  frameLine(3, length, &color);
+  uint16_t length = printAtLineAndPosition(str, 4, 0, &bgColor, &color);
+  frameLine(4, length, &color);
 
   refreshDmd();
 }
@@ -63,6 +64,7 @@ void numberOfExtraBallsEnter()
   if (newNumberOfExtraBalls == config.numberOfExtraBalls)
   {
     menuExit();
+    return;
   }
 
   rgb_t color;
@@ -70,8 +72,9 @@ void numberOfExtraBallsEnter()
 
   clearDmd();
   char str[32];
-  sprintf(str, "Number of extra balls set to %d", newNumberOfExtraBalls);
-  printCenterAtLine(str, 1, &color, NULL);
+  sprintf(str, "set to %d", newNumberOfExtraBalls);
+  printCenterAtLine("Number of extra balls", 1, &color, NULL);
+  printCenterAtLine(str, 2, &color, NULL);
   refreshDmd();
 
   config.numberOfExtraBalls = newNumberOfExtraBalls;

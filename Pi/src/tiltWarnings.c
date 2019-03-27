@@ -30,7 +30,7 @@ void showTiltWarnings()
 
 void tiltWarningsOpen()
 {
-  newTiltWarnings = config.numberOfBalls;
+  newTiltWarnings = config.tiltWarnings;
   showTiltWarnings();
 }
 
@@ -49,7 +49,6 @@ void tiltWarningsDown()
 {
   if (newTiltWarnings > 2)
   {
-
     newTiltWarnings--;
     showTiltWarnings();
     return;
@@ -62,6 +61,7 @@ void tiltWarningsEnter()
   if (newTiltWarnings == config.tiltWarnings)
   {
     menuExit();
+    return;
   }
 
   rgb_t color;
