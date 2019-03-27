@@ -544,10 +544,14 @@ void drawProgressBlock(uint8_t progress, uint8_t line, uint16_t xPosition, rgb_t
   dmd[xPosition + 3 + 3 * progress][line * 12 + 7] = *pColor;
 }
 
-void frameLine(uint8_t line, uint16_t length, rgb_t *pBgColor)
+void frameLineFrom(uint8_t line, uint16_t start, uint16_t length, rgb_t *pBgColor)
 {
+  if (start > DMD_WIDTH)
+  {
+    return;
+  }
   line *= 12;
-  for (uint16_t i = 0; i < DMD_WIDTH && i < length; i++)
+  for (uint16_t i = start; i < DMD_WIDTH && i < length; i++)
   {
     dmd[i][line] = *pBgColor;
   }
@@ -558,6 +562,11 @@ void frameLine(uint8_t line, uint16_t length, rgb_t *pBgColor)
       dmd[length][i] = *pBgColor;
     }
   }
+}
+
+void frameLine(uint8_t line, uint16_t length, rgb_t *pBgColor)
+{
+  frameLineFrom(line, 0, length, pBgColor);
 }
 
 void fillLineWithColor(uint8_t line, rgb_t *pBgColor)

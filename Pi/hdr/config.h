@@ -38,6 +38,7 @@ typedef struct config
   uint64_t totalTilts;
   uint64_t totalLeftDrains;
   uint64_t totalRightDrains;
+  char gameId[32];
 } config_t;
 
 config_t config;

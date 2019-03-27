@@ -28,6 +28,7 @@ void makeTimeString(uint64_t epoch, char *pScore);
 void drawProgress(uint8_t progress, uint8_t line, uint16_t xPosition, rgb_t *pColor);
 void drawProgressBlock(uint8_t progress, uint8_t line, uint16_t xPosition, rgb_t *pColor);
 
+void frameLineFrom(uint8_t line, uint16_t start, uint16_t length, rgb_t *pBgColor);
 void frameLine(uint8_t line, uint16_t length, rgb_t *pBgColor);
 
 void fillLineWithColor(uint8_t line, rgb_t *pBgColor);

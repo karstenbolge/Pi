@@ -10,6 +10,8 @@ Make big font.
 Adjust number of balls.
 Choose decimal seperator
 
+todo menu from clear audit, reset highscores
+
 Generic yes no menu?
 
 Make total bonus a little longer.

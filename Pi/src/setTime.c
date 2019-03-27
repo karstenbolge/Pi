@@ -48,6 +48,75 @@ void showTime()
   {
     printf("  %04d-%02d-%02d %02d>%02d\n", year, month, date, hour, minute);
   }
+
+  rgb_t color, bgColor;
+  setColorType(&color, COLOR_RED);
+  setColorType(&bgColor, COLOR_BLACK);
+  char str[32];
+
+  clearDmd();
+  printAtLineAndPosition("Set date and time:", 1, 0, &color, NULL);
+
+  sprintf(str, "%04d", year);
+  if (inSetTimeMode == IN_MODE_YEAR)
+  {
+    uint16_t length = printAtLineAndPosition(str, 3, 0, &bgColor, &color);
+    frameLine(3, length, &color);
+  }
+  else
+  {
+    printAtLineAndPosition(str, 3, 0, &color, NULL);
+  }
+
+  printAtLineAndPosition(".", 3, 29, &color, NULL);
+  sprintf(str, "%02d", month);
+  if (inSetTimeMode == IN_MODE_MONTH)
+  {
+    uint16_t length = printAtLineAndPosition(str, 3, 34, &bgColor, &color);
+    frameLineFrom(3, 34, length, &color);
+  }
+  else
+  {
+    printAtLineAndPosition(str, 3, 34, &color, NULL);
+  }
+
+  printAtLineAndPosition(".", 3, 49, &color, NULL);
+  sprintf(str, "%02d", date);
+  if (inSetTimeMode == IN_MODE_DATE)
+  {
+    uint16_t length = printAtLineAndPosition(str, 3, 49, &bgColor, &color);
+    frameLineFrom(3, 49, length, &color);
+  }
+  else
+  {
+    printAtLineAndPosition(str, 3, 54, &color, NULL);
+  }
+
+  sprintf(str, "%02d", hour);
+  if (inSetTimeMode == IN_MODE_HOUR)
+  {
+    uint16_t length = printAtLineAndPosition(str, 3, 73, &bgColor, &color);
+    frameLineFrom(3, 73, length, &color);
+  }
+  else
+  {
+    printAtLineAndPosition(str, 3, 73, &color, NULL);
+  }
+
+  sprintf(str, "%02d", minute);
+  printAtLineAndPosition(".", 3, 88, &color, NULL);
+  if (inSetTimeMode == IN_MODE_MINUTE)
+  {
+    uint16_t length = printAtLineAndPosition(str, 3, 93, &bgColor, &color);
+    frameLineFrom(3, 93, length, &color);
+  }
+  else
+  {
+    sprintf(str, "%02d", minute);
+    printAtLineAndPosition(str, 3, 93, &color, NULL);
+  }
+
+  refreshDmd();
 }
 
 void validateTime()
@@ -236,6 +305,18 @@ void setTime()
   clearScreen();
   printf("Time set to :\n");
   printf("  %04d-%02d-%02d %02d:%02d\n", year, month, date, hour, minute);
+
+  rgb_t color, bgColor;
+  setColorType(&color, COLOR_RED);
+  setColorType(&bgColor, COLOR_BLACK);
+  char str[32];
+
+  clearDmd();
+  printCenterAtLine("Time set to;", 1, &color, NULL);
+  sprintf(str, "%04d.%02d.%02d %02d:%02d\n", year, month, date, hour, minute);
+  printCenterAtLine(str, 3, &color, NULL);
+
+  refreshDmd();
 
   struct tm tmVar;
   time_t epochSec;

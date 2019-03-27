@@ -1,7 +1,40 @@
 #include <stdlib.h>
 #include <time.h>
+#include <stdio.h>
+#include <ifaddrs.h>
+#include <netpacket/packet.h>
 #include "../hdr/log.h"
 #include "../hdr/config.h"
+
+void getMacAddress()
+{
+  struct ifaddrs *ifaddr = NULL;
+  struct ifaddrs *ifa = NULL;
+  int i = 0;
+
+  if (getifaddrs(&ifaddr) == -1)
+  {
+    }
+  else
+  {
+    for (ifa = ifaddr; ifa != NULL; ifa = ifa->ifa_next)
+    {
+      if ((ifa->ifa_addr) && (ifa->ifa_addr->sa_family == AF_PACKET))
+      {
+        struct sockaddr_ll *s = (struct sockaddr_ll *)ifa->ifa_addr;
+        for (i = 0; i < s->sll_halen; i++)
+        {
+          sprintf(config.gameId + i * 3, "%02x", (s->sll_addr[i]));
+          if (i + 1 < s->sll_halen)
+          {
+            sprintf(config.gameId + i * 3 + 2, ":");
+          }
+        }
+      }
+    }
+    freeifaddrs(ifaddr);
+  }
+}
 
 void initConfig()
 {
@@ -43,6 +76,7 @@ void initConfig()
   config.totalTilts = 0;
   config.totalLeftDrains = 0;
   config.totalRightDrains = 0;
+  getMacAddress(); // which inits gameId
 }
 
 FILE *pConfig;
@@ -80,6 +114,7 @@ int stringStart(char *str, char *in)
 #define TOTAL_TILTS "totalTilts:"
 #define TOTAL_LEFT_DRAINS "totalLeftDrains:"
 #define TOTAL_RIGHT_DRAINS "totalRightDrains:"
+#define GAME_ID "gameId:"
 
 void readConfig()
 {
@@ -132,6 +167,8 @@ void readConfig()
         config.totalLeftDrains = atol(value);
       if (stringStart(readBuffer, TOTAL_RIGHT_DRAINS))
         config.totalRightDrains = atol(value);
+      if (stringStart(readBuffer, GAME_ID))
+        strcpy(config.gameId, value);
       if (stringStart(readBuffer, HIGHSCORE))
         inGroup = IN_HIGH_SCORE;
       if (inGroup == IN_HIGH_SCORE)

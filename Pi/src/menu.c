@@ -8,6 +8,7 @@
 #include "../hdr/sound.h"
 #include "../hdr/switchEdgeTest.h"
 #include "../hdr/highScore.h"
+#include "../hdr/clearAudit.h"
 #include "../hdr/setTime.h"
 #include "../hdr/display.h"
 #include "../hdr/window.h"
@@ -223,6 +224,7 @@ void initMenu()
 
   // 2-level
   menuItem_t *clearAudits = utilities->child = makeMenuItem("Clear audits", MENU_CLEAR_AUTIDS, utilities);
+  clearAudits->event = makeEvent(&clearAuditsOpen, &clearAuditsUp, &clearAuditsDown, &clearAuditsEnter, NULL);
 
   menuItem_t *resetHSTD = clearAudits->next = makeMenuItem("Reset highscores", MENU_RESET_H_S_T_D, utilities);
   resetHSTD->event = makeEvent(&resetHighScoreOpen, &resetHighScoreUp, &resetHighScoreDown, &resetHighScoreEnter, NULL);
