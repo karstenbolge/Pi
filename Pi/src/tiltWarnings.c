@@ -36,7 +36,7 @@ void tiltWarningsOpen()
 
 void tiltWarningsUp()
 {
-  if (newTiltWarnings < 9)
+  if (newTiltWarnings < 5)
   {
     newTiltWarnings++;
     showTiltWarnings();

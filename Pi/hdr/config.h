@@ -24,6 +24,7 @@ typedef struct config
   uint8_t volumn;
   uint8_t numberOfBalls;
   uint8_t tiltWarnings;
+  uint8_t numberOfExtraBalls;
   char decimalSeperator;
   uint8_t buyInExtraBall;
   uint8_t allowRestart;

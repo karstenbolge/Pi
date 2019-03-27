@@ -9,6 +9,7 @@
     "platform.h": "c",
     "displaytest.h": "c",
     "video.h": "c",
-    "config.h": "c"
+    "config.h": "c",
+    "tiltwarnings.h": "c"
   },
 }

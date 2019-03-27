@@ -36,7 +36,7 @@ void numberOfBallsOpen()
 
 void numberOfBallsUp()
 {
-  if (newNumberOfBalls < 9)
+  if (newNumberOfBalls < 5)
   {
     newNumberOfBalls++;
     showNumberOfBalls();

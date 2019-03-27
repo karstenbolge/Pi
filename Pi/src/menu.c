@@ -20,6 +20,7 @@
 #include "../hdr/histogramGameTimes.h"
 #include "../hdr/numberOfBalls.h"
 #include "../hdr/tiltWarnings.h"
+#include "../hdr/numberOfExtraBalls.h"
 
 typedef struct itemFunctions
 {
@@ -272,7 +273,7 @@ void initMenu()
   tiltWarnings->previous = ballsPerGame;
 
   menuItem_t *maximumExtraBalls = tiltWarnings->next = makeMenuItem("Maximum extra balls", standardAudits);
-  //maximumExtraBalls->event = makeEvent(&rightDrainsOpen, NULL, NULL, NULL, NULL);
+  maximumExtraBalls->event = makeEvent(&numberOfExtraBallsOpen, &numberOfExtraBallsUp, &numberOfExtraBallsDown, &numberOfExtraBallsEnter, NULL);
   maximumExtraBalls->previous = tiltWarnings;
 
   menuItem_t *maximumExtraBallsOffered = maximumExtraBalls->next = makeMenuItem("Maximum extra ball per ball in play", standardAudits);
