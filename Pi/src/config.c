@@ -58,9 +58,11 @@ void initConfig()
   config.numberOfBalls = 3;
   config.tiltWarnings = 3;
   config.numberOfExtraBalls = 4;
+  config.numberOfExtraBallsOffered = 4;
   config.decimalSeperator = '.';
+  config.tournamentMode = 0;
   config.buyInExtraBall = 0;
-  config.allowRestart = 0;
+  config.allowRestart = ALLOW_RESTART_NEVER;
   config.totalGames = 0;
   config.totalBalls = 0;
   config.totalBallSeconds = 0;
@@ -103,7 +105,9 @@ int stringStart(char *str, char *in)
 #define NUMBER_OF_BALLS "numberOfBalls:"
 #define TILT_WARNINGS "tiltWarnings:"
 #define NUMBER_OF_EXTRA_BALLS "numberOfExtraBalls:"
+#define NUMBER_OF_EXTRA_BALLS_OFFERED "numberOfExtraBallsOffered:"
 #define DECIMAL_SEPERATOR "decimalSeperator:"
+#define TOURNAMENT_MODE "tournamentMode:"
 #define BUY_IN_EXTRA_BALL "buyInExtraBall:"
 #define ALLOW_RESTART "allowRestart:"
 #define TOTAL_GAMES "totalGames:"
@@ -147,8 +151,12 @@ void readConfig()
         config.tiltWarnings = atoi(value);
       if (stringStart(readBuffer, NUMBER_OF_EXTRA_BALLS))
         config.numberOfExtraBalls = atoi(value);
+      if (stringStart(readBuffer, NUMBER_OF_EXTRA_BALLS_OFFERED))
+        config.numberOfExtraBallsOffered = atoi(value);
       if (stringStart(readBuffer, DECIMAL_SEPERATOR))
         config.decimalSeperator = value[0];
+      if (stringStart(readBuffer, TOURNAMENT_MODE))
+        config.tournamentMode = atoi(value);
       if (stringStart(readBuffer, BUY_IN_EXTRA_BALL))
         config.buyInExtraBall = atoi(value);
       if (stringStart(readBuffer, ALLOW_RESTART))
@@ -265,7 +273,9 @@ void saveConfig()
   fprintf(pConfig, "%s %d\n", NUMBER_OF_BALLS, config.numberOfBalls);
   fprintf(pConfig, "%s %d\n", TILT_WARNINGS, config.tiltWarnings);
   fprintf(pConfig, "%s %d\n", NUMBER_OF_EXTRA_BALLS, config.numberOfExtraBalls);
+  fprintf(pConfig, "%s %d\n", NUMBER_OF_EXTRA_BALLS_OFFERED, config.numberOfExtraBallsOffered);
   fprintf(pConfig, "%s %c\n", DECIMAL_SEPERATOR, config.decimalSeperator);
+  fprintf(pConfig, "%s %d\n", TOURNAMENT_MODE, config.tournamentMode);
   fprintf(pConfig, "%s %d\n", BUY_IN_EXTRA_BALL, config.buyInExtraBall);
   fprintf(pConfig, "%s %d\n", ALLOW_RESTART, config.allowRestart);
   fprintf(pConfig, "%s %ld\n", TOTAL_GAMES, config.totalGames);

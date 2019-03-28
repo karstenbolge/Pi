@@ -6,6 +6,10 @@
 
 #define CONFIG_BUFFER_SIZE 120
 
+#define ALLOW_RESTART_NEVER 0
+#define ALLOW_RESTART_SLOW 1
+#define ALLOW_RESTART_INSTANT 2
+
 typedef struct scoreItem
 {
   char name[4];
@@ -25,7 +29,9 @@ typedef struct config
   uint8_t numberOfBalls;
   uint8_t tiltWarnings;
   uint8_t numberOfExtraBalls;
+  uint8_t numberOfExtraBallsOffered;
   char decimalSeperator;
+  uint8_t tournamentMode;
   uint8_t buyInExtraBall;
   uint8_t allowRestart;
   uint64_t totalGames;

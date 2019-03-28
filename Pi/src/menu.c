@@ -21,6 +21,8 @@
 #include "../hdr/numberOfBalls.h"
 #include "../hdr/tiltWarnings.h"
 #include "../hdr/numberOfExtraBalls.h"
+#include "../hdr/numberOfExtraBallsOffered.h"
+#include "../hdr/tournamentMode.h"
 
 typedef struct itemFunctions
 {
@@ -277,19 +279,19 @@ void initMenu()
   maximumExtraBalls->previous = tiltWarnings;
 
   menuItem_t *maximumExtraBallsOffered = maximumExtraBalls->next = makeMenuItem("Maximum extra ball per ball", standardAdjustments);
-  //maximumExtraBallsOffered->event = makeEvent(&rightDrainsOpen, NULL, NULL, NULL, NULL);
+  maximumExtraBallsOffered->event = makeEvent(&numberOfExtraBallsOfferedOpen, &numberOfExtraBallsOfferedUp, &numberOfExtraBallsOfferedDown, &numberOfExtraBallsOfferedEnter, NULL);
   maximumExtraBallsOffered->previous = maximumExtraBalls;
 
   menuItem_t *tournamentMode = maximumExtraBallsOffered->next = makeMenuItem("Tournament mode", standardAdjustments);
-  //tournamentMode->event = makeEvent(&rightDrainsOpen, NULL, NULL, NULL, NULL);
+  tournamentMode->event = makeEvent(&tournamentModeOpen, &tournamentModeUp, &tournamentModeDown, &tournamentModeEnter, NULL);
   tournamentMode->previous = maximumExtraBallsOffered;
 
   menuItem_t *decimalSeperator = tournamentMode->next = makeMenuItem("Decimal separator", standardAdjustments);
-  //decimalSeperator->event = makeEvent(&rightDrainsOpen, NULL, NULL, NULL, NULL);
+  decimalSeperator->event = makeEvent(&decimalSeperatorOpen, &decimalSeperatorUp, &decimalSeperatorDown, &decimalSeperatorEnter, NULL);
   decimalSeperator->previous = tournamentMode;
 
   menuItem_t *gameRestart = tournamentMode->next = makeMenuItem("Game restart", standardAdjustments);
-  //gameRestart->event = makeEvent(&rightDrainsOpen, NULL, NULL, NULL, NULL);
+  gameRestart->event = makeEvent(&gameRestartOpen, &gameRestartUp, &gameRestartDown, &gameRestartEnter, NULL);
   gameRestart->previous = decimalSeperator;
   gameRestart->next = ballsPerGame;
   ballsPerGame->previous = gameRestart;

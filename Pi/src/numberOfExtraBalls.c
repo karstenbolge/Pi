@@ -18,13 +18,12 @@ void showNumberOfExtraBalls()
 
   clearDmd();
   printAtLineAndPosition("Number of extra balls", 1, 0, &color, NULL);
-  printAtLineAndPosition("per ball offered", 2, 0, &color, NULL);
 
   char str[32];
   sprintf(str, "%d", newNumberOfExtraBalls);
 
-  uint16_t length = printAtLineAndPosition(str, 4, 0, &bgColor, &color);
-  frameLine(4, length, &color);
+  uint16_t length = printAtLineAndPosition(str, 3, 0, &bgColor, &color);
+  frameLine(3, length, &color);
 
   refreshDmd();
 }
