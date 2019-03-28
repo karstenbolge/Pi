@@ -185,7 +185,15 @@ int main(void)
         {
           if (newInputRegister & 1 << 5)
           {
+            printf("Left flip\n");
             config.totalLeftFlip++;
+          }
+        }
+        else
+        {
+          if (newInputRegister & 1 << 5)
+          {
+            //left flipper help in
           }
         }
 
@@ -194,13 +202,22 @@ int main(void)
         {
           if (newInputRegister & 1 << 6)
           {
+            printf("Rigth flip\n");
             config.totalRightFlip++;
+          }
+        }
+        else
+        {
+          if (newInputRegister & 1 << 6)
+          {
+            //rigth flipper help in
           }
         }
 
         // both flippers down
         if ((newInputRegister & 1 << 5) && (newInputRegister & 1 << 6))
         {
+          printf("Both flip\n");
           fastBonus();
         }
         if ((oldInputRegister[column] & 1 << 10) != (newInputRegister & 1 << 10))

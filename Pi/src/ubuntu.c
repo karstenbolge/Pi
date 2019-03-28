@@ -88,8 +88,9 @@ void setupWiring()
   XSetForeground(display, gc, colorGreen.pixel);
   XFillRectangle(display, win, gc, buttonCancelX, buttonCancelY, buttonWidth, buttonHeight);
   XSetForeground(display, gc, colorBlue.pixel);
-  XFillRectangle(display, win, gc, buttonCancelX + 2, buttonCancelY + 2, buttonWidth / 2 - 3, buttonHeight - 4);
-  XFillRectangle(display, win, gc, buttonCancelX + 1 + buttonWidth / 2, buttonCancelY + 2, buttonWidth / 2 - 3, buttonHeight - 4);
+  XFillRectangle(display, win, gc, buttonCancelX + 2, buttonCancelY + 2, buttonWidth / 2 - 3, buttonHeight / 2 - 3);
+  XFillRectangle(display, win, gc, buttonCancelX + 1 + buttonWidth / 2, buttonCancelY + 2, buttonWidth / 2 - 3, buttonHeight / 2 - 3);
+  XFillRectangle(display, win, gc, buttonCancelX + 2, buttonCancelY + 2 + buttonHeight / 2, buttonWidth - 4, buttonHeight / 2 - 3);
 
   XSetForeground(display, gc, colorGreen.pixel);
   XFillRectangle(display, win, gc, buttonBallEndedX, buttonBallEndedY, buttonWidth, buttonHeight);
@@ -172,7 +173,14 @@ void updateShiftIn()
     else if (cursorX >= x + buttonCancelX && cursorX <= x + buttonCancelX + buttonWidth &&
              cursorY >= y + buttonCancelY && cursorY <= y + buttonCancelY + buttonHeight)
     {
-      onButton = 7;
+      if (cursorX >= x + buttonCancelX && cursorX <= x + buttonCancelX + buttonWidth / 2 &&
+          cursorY >= y + buttonCancelY && cursorY <= y + buttonCancelY + buttonHeight / 2)
+        onButton = 10;
+      else if (cursorX >= x + buttonCancelX + buttonWidth / 2 && cursorX <= x + buttonCancelX + buttonWidth &&
+               cursorY >= y + buttonCancelY && cursorY <= y + buttonCancelY + buttonHeight / 2)
+        onButton = 11;
+      else
+        onButton = 7;
     }
     else if (cursorX >= x + buttonBallEndedX && cursorX <= x + buttonBallEndedX + buttonWidth &&
              cursorY >= y + buttonBallEndedY && cursorY <= y + buttonBallEndedY + buttonHeight)
@@ -230,6 +238,14 @@ void updateShiftIn()
   case 9:
     // set plunger
     newInputRegister = 1 << 13;
+    break;
+  case 10:
+    // set left flipper pressed
+    newInputRegister = 1 << 5;
+    break;
+  case 11:
+    // set right flipper pressed
+    newInputRegister = 1 << 6;
     break;
   default:
     newInputRegister = 0;
