@@ -9,33 +9,23 @@
 #include "../hdr/sound.h"
 #include "../hdr/inputField.h"
 
-void showGameId()
-{
-  rgb_t color, bgColor;
-  setColorType(&color, COLOR_RED);
-  setColorType(&bgColor, COLOR_BLACK);
-
-  clearDmd();
-  printAtLineAndPosition("This game id", 1, 0, &color, NULL);
-
-  displayInputFieldAt(3);
-
-  refreshDmd();
-}
-
 void setGameIdOpen()
 {
-  openInputField(config.gameId, 31);
-  showGameId();
+  openInputField(config.gameId, 3, 31);
 }
 
 void setGameIdExit()
 {
-  closeInpuField();
+  closeInputField();
 }
 
 void setGameIdEnter()
 {
+  if (!inputFieldDone())
+  {
+    return;
+  }
+  closeInputField();
   if (strcmp(getInputFieldValue(), config.gameId) == 0)
   {
     menuExit();

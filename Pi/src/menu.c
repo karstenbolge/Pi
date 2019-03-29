@@ -23,6 +23,7 @@
 #include "../hdr/numberOfExtraBalls.h"
 #include "../hdr/numberOfExtraBallsOffered.h"
 #include "../hdr/tournamentMode.h"
+#include "../hdr/setGameId.h"
 
 typedef struct itemFunctions
 {
@@ -243,6 +244,7 @@ void initMenu()
   customMessage->previous = setTimeAndDate;
 
   menuItem_t *setGameId = customMessage->next = makeMenuItem("Set game id", utilities);
+  setGameId->event = makeEvent(&setGameIdOpen, NULL, NULL, &setGameIdEnter, &setGameIdExit);
   setGameId->previous = customMessage;
 
   menuItem_t *factoryAdjustment = setGameId->next = makeMenuItem("Factory adjustments", utilities);

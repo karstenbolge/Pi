@@ -12,12 +12,13 @@
 #include "../hdr/data70.h"
 #include "../hdr/attrackMode.h"
 #include "../hdr/game.h"
+#include "../hdr/inputField.h"
 
 #define UP_DOWN_HELD_OFF 0
 #define UP_DOWN_HELD_UP 1
 #define UP_DOWN_HELD_DOWN 2
 
-#define UP_DOWN_HELD_LOOPS 1000
+#define UP_DOWN_HELD_LOOPS 10000
 
 uint8_t upDownHeld;
 uint8_t upDownHasTicked;
@@ -73,10 +74,12 @@ void onUpDownHeld(uint8_t upDown)
       if (upDown == UP_DOWN_HELD_UP)
       {
         menuUp();
+        inputFieldUp();
       }
       else
       {
         menuDown();
+        inputFieldDown();
       }
     }
   }
@@ -154,145 +157,151 @@ int main(void)
     updateColumn(column);
 
     updateShiftIn();
+    switch (column)
+    {
+    case 2:
+      if ((oldInputRegister[column] & 1 << 2) != (newInputRegister & 1 << 2))
+      {
+        if (newInputRegister & 1 << 2)
+          ;
+        else
+        {
+          menuExit();
+          //attrackModeOpen();
+        }
+      }
+      if ((oldInputRegister[column] & 1 << 3) != (newInputRegister & 1 << 3))
+      {
+        if (newInputRegister & 1 << 3)
+          ;
+        else
+        {
+          attrackModeExit();
+          menuEnter();
+        }
+      }
+
+      // left flipper
+      if ((oldInputRegister[column] & 1 << 5) != (newInputRegister & 1 << 5))
+      {
+        if (newInputRegister & 1 << 5)
+        {
+          printf("Left flip\n");
+          config.totalLeftFlip++;
+        }
+      }
+      else
+      {
+        if (newInputRegister & 1 << 5)
+        {
+          //left flipper help in
+        }
+      }
+
+      // right flipper
+      if ((oldInputRegister[column] & 1 << 6) != (newInputRegister & 1 << 6))
+      {
+        if (newInputRegister & 1 << 6)
+        {
+          printf("Rigth flip\n");
+          config.totalRightFlip++;
+        }
+      }
+      else
+      {
+        if (newInputRegister & 1 << 6)
+        {
+          //rigth flipper help in
+        }
+      }
+
+      // both flippers down
+      if ((newInputRegister & 1 << 5) && (newInputRegister & 1 << 6))
+      {
+        printf("Both flip\n");
+        fastBonus();
+      }
+      if ((oldInputRegister[column] & 1 << 10) != (newInputRegister & 1 << 10))
+      {
+        if (newInputRegister & 1 << 10)
+          ;
+        else
+        {
+          attrackModeExit();
+          startButton();
+        }
+      }
+      if ((oldInputRegister[column] & 1 << 11) != (newInputRegister & 1 << 11))
+      {
+        if (newInputRegister & 1 << 11)
+          ;
+        else
+        {
+          buyExtraBall();
+        }
+      }
+      if ((oldInputRegister[column] & 1 << 12) != (newInputRegister & 1 << 12))
+      {
+        if (newInputRegister & 1 << 12)
+          ;
+        else
+        {
+          if (upDownHasTicked == 0)
+          {
+            menuUp();
+            inputFieldUp();
+          }
+          upDownHeld = UP_DOWN_HELD_OFF;
+          upDownLoops = 0;
+          upDownHasTicked = 0;
+        }
+      }
+      if (newInputRegister & 1 << 12)
+      {
+        onUpDownHeld(UP_DOWN_HELD_UP);
+      }
+      if ((oldInputRegister[column] & 1 << 14) != (newInputRegister & 1 << 14))
+      {
+        if (newInputRegister & 1 << 14)
+          ;
+        else
+        {
+          ballEnded();
+        }
+      }
+      if ((oldInputRegister[column] & 1 << 13) != (newInputRegister & 1 << 13))
+      {
+        if (newInputRegister & 1 << 13)
+          ;
+        else
+        {
+          ballLaunched();
+        }
+      }
+      if ((oldInputRegister[column] & 1 << 15) != (newInputRegister & 1 << 15))
+      {
+        if (newInputRegister & 1 << 15)
+          ;
+        else
+        {
+          if (upDownHasTicked == 0)
+          {
+            menuDown();
+            inputFieldDown();
+          }
+          upDownHeld = UP_DOWN_HELD_OFF;
+          upDownLoops = 0;
+          upDownHasTicked = 0;
+        }
+      }
+      if (newInputRegister & 1 << 15)
+      {
+        onUpDownHeld(UP_DOWN_HELD_DOWN);
+      }
+      break;
+    }
     if (oldInputRegister[column] != newInputRegister)
     {
-      switch (column)
-      {
-      case 2:
-        if ((oldInputRegister[column] & 1 << 2) != (newInputRegister & 1 << 2))
-        {
-          if (newInputRegister & 1 << 2)
-            ;
-          else
-          {
-            menuExit();
-            //attrackModeOpen();
-          }
-        }
-        if ((oldInputRegister[column] & 1 << 3) != (newInputRegister & 1 << 3))
-        {
-          if (newInputRegister & 1 << 3)
-            ;
-          else
-          {
-            attrackModeExit();
-            menuEnter();
-          }
-        }
-
-        // left flipper
-        if ((oldInputRegister[column] & 1 << 5) != (newInputRegister & 1 << 5))
-        {
-          if (newInputRegister & 1 << 5)
-          {
-            printf("Left flip\n");
-            config.totalLeftFlip++;
-          }
-        }
-        else
-        {
-          if (newInputRegister & 1 << 5)
-          {
-            //left flipper help in
-          }
-        }
-
-        // right flipper
-        if ((oldInputRegister[column] & 1 << 6) != (newInputRegister & 1 << 6))
-        {
-          if (newInputRegister & 1 << 6)
-          {
-            printf("Rigth flip\n");
-            config.totalRightFlip++;
-          }
-        }
-        else
-        {
-          if (newInputRegister & 1 << 6)
-          {
-            //rigth flipper help in
-          }
-        }
-
-        // both flippers down
-        if ((newInputRegister & 1 << 5) && (newInputRegister & 1 << 6))
-        {
-          printf("Both flip\n");
-          fastBonus();
-        }
-        if ((oldInputRegister[column] & 1 << 10) != (newInputRegister & 1 << 10))
-        {
-          if (newInputRegister & 1 << 10)
-            ;
-          else
-          {
-            attrackModeExit();
-            startButton();
-          }
-        }
-        if ((oldInputRegister[column] & 1 << 11) != (newInputRegister & 1 << 11))
-        {
-          if (newInputRegister & 1 << 11)
-            ;
-          else
-          {
-            buyExtraBall();
-          }
-        }
-        if ((oldInputRegister[column] & 1 << 12) != (newInputRegister & 1 << 12))
-        {
-          if (newInputRegister & 1 << 12)
-          {
-            onUpDownHeld(UP_DOWN_HELD_UP);
-          }
-          else
-          {
-            if (upDownHasTicked == 0)
-            {
-              menuUp();
-            }
-            upDownHeld = UP_DOWN_HELD_OFF;
-            upDownLoops = 0;
-            upDownHasTicked = 0;
-          }
-        }
-        if ((oldInputRegister[column] & 1 << 14) != (newInputRegister & 1 << 14))
-        {
-          if (newInputRegister & 1 << 14)
-            ;
-          else
-          {
-            ballEnded();
-          }
-        }
-        if ((oldInputRegister[column] & 1 << 13) != (newInputRegister & 1 << 13))
-        {
-          if (newInputRegister & 1 << 13)
-            ;
-          else
-          {
-            ballLaunched();
-          }
-        }
-        if ((oldInputRegister[column] & 1 << 15) != (newInputRegister & 1 << 15))
-        {
-          if (newInputRegister & 1 << 15)
-          {
-            onUpDownHeld(UP_DOWN_HELD_DOWN);
-          }
-          else
-          {
-            if (upDownHasTicked == 0)
-            {
-              menuDown();
-            }
-            upDownHeld = UP_DOWN_HELD_OFF;
-            upDownLoops = 0;
-            upDownHasTicked = 0;
-          }
-        }
-        break;
-      }
       oldInputRegister[column] = newInputRegister;
       showMatrix(oldInputRegister);
     }
@@ -335,6 +344,7 @@ int main(void)
       displayTestTick(beat % 2);
       attrackModeTick(beat % 2);
       gameBeat(beat);
+      inputFieldTick(beat);
       lastTime = currentTime;
     }
 
