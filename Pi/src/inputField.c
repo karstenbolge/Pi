@@ -41,13 +41,13 @@ char getNextChar(char inChar, uint8_t direction)
     }
     if (inChar == '9')
     {
-      return '<';
+      return BACKSPACE;
     }
-    if (inChar == '<')
+    if (inChar == BACKSPACE)
     {
-      return '>';
+      return NEWLINE;
     }
-    if (inChar == '>')
+    if (inChar == NEWLINE)
     {
       return 'A';
     }
@@ -61,13 +61,13 @@ char getNextChar(char inChar, uint8_t direction)
     }
     if (inChar == 'A')
     {
-      return '>';
+      return NEWLINE;
     }
-    if (inChar == '>')
+    if (inChar == NEWLINE)
     {
-      return '<';
+      return BACKSPACE;
     }
-    if (inChar == '<')
+    if (inChar == BACKSPACE)
     {
       return '9';
     }
@@ -108,7 +108,7 @@ void openInputField(char *pStr, uint8_t line, uint8_t length, uint8_t type)
 int inputFieldDone()
 {
   //delete last char
-  if (newStr[strlen(newStr) - 1] == '<')
+  if (newStr[strlen(newStr) - 1] == BACKSPACE)
   {
     if (strlen(newStr) == 1)
     {
@@ -121,7 +121,7 @@ int inputFieldDone()
   }
 
   // if last char is enter then done
-  if (newStr[strlen(newStr) - 1] == '>' || strlen(newStr) == maxLength)
+  if (newStr[strlen(newStr) - 1] == NEWLINE || strlen(newStr) == maxLength)
   {
     newStr[strlen(newStr) - 1] = 0;
     return 1;

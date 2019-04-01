@@ -11,6 +11,9 @@
 #define LINE_HEIGHT 15
 #define LINE_COUNT 6
 
+#define BACKSPACE 8
+#define NEWLINE 13
+
 rgb_t dmd[DMD_WIDTH][DMD_HEIGHT];
 
 void clearScreen();

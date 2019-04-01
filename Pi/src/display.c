@@ -253,6 +253,10 @@ uint8_t printCharAt(unsigned char chr, uint16_t position, uint8_t line, rgb_t *p
     return printLessthanAt(dmd, position, line, pColor, pBgColor);
   case '>':
     return printGreaterthanAt(dmd, position, line, pColor, pBgColor);
+  case BACKSPACE:
+    return printBackspaceAt(dmd, position, line, pColor, pBgColor);
+  case NEWLINE:
+    return printReturnAt(dmd, position, line, pColor, pBgColor);
   case '.':
     return printPointAt(dmd, position, line, pColor, pBgColor);
   case ',':
