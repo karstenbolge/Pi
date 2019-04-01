@@ -11,7 +11,8 @@
 
 void setGameIdOpen()
 {
-  openInputField(config.gameId, 3, 31);
+  openInputField(config.gameId, 3, 31, INPUT_TYPE_UPPERCASE);
+  setStaticStr(NULL, "Set game id:");
 }
 
 void setGameIdExit()

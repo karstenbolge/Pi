@@ -2,6 +2,7 @@
 #include <time.h>
 #include <stdio.h>
 #include <ifaddrs.h>
+#include <ctype.h>
 #include <netpacket/packet.h>
 #include "../hdr/log.h"
 #include "../hdr/config.h"
@@ -14,6 +15,7 @@ void getMacAddress()
 
   if (getifaddrs(&ifaddr) == -1)
   {
+    sprintf(config.gameId, "DEFAULT");
   }
   else
   {
@@ -24,15 +26,18 @@ void getMacAddress()
         struct sockaddr_ll *s = (struct sockaddr_ll *)ifa->ifa_addr;
         for (i = 0; i < s->sll_halen; i++)
         {
-          sprintf(config.gameId + i * 3, "%02x", (s->sll_addr[i]));
-          if (i + 1 < s->sll_halen)
-          {
-            sprintf(config.gameId + i * 3 + 2, ":");
-          }
+          sprintf(config.gameId + i * 2, "%02x", (s->sll_addr[i]));
         }
       }
     }
     freeifaddrs(ifaddr);
+
+    int i = 0;
+    while (config.gameId[i])
+    {
+      config.gameId[i] = toupper(config.gameId[i]);
+      i++;
+    }
   }
 }
 
@@ -184,7 +189,10 @@ void readConfig()
       if (stringStart(readBuffer, TOTAL_RIGHT_DRAINS))
         config.totalRightDrains = atol(value);
       if (stringStart(readBuffer, GAME_ID))
+      {
         strcpy(config.gameId, value);
+        config.gameId[strlen(value) - 1] = 0;
+      }
       if (stringStart(readBuffer, HISTOGRAM_SCORES))
       {
         inGroup = IN_HISTOGRAM_SCORES;
@@ -289,6 +297,7 @@ void saveConfig()
   fprintf(pConfig, "%s %ld\n", TOTAL_TILTS, config.totalTilts);
   fprintf(pConfig, "%s %ld\n", TOTAL_LEFT_DRAINS, config.totalLeftDrains);
   fprintf(pConfig, "%s %ld\n", TOTAL_RIGHT_DRAINS, config.totalRightDrains);
+  fprintf(pConfig, "%s %s\n", GAME_ID, config.gameId);
   fprintf(pConfig, "%s\n", HISTOGRAM_SCORES);
   for (int i = 0; i < 13; i++)
   {
