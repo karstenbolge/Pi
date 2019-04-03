@@ -16,10 +16,10 @@ gametime, along game.score.
 
 Make new game(s).
 Add buy in extra ball. Full screen you may buy one extra ball press extra ball.
+remove buy extra ball, but use it as extra ball earned, for test, lock hit.
 
 Add more random player test logic.
 
-remove buy extra ball, but use it as extra ball earned, for test.
 
 Before launch score blinking,
 When playing score is rolling.
