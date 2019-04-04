@@ -18,12 +18,14 @@
 #define UP_DOWN_HELD_UP 1
 #define UP_DOWN_HELD_DOWN 2
 
-#define UP_DOWN_HELD_LOOPS 1000
-#define UP_DOWN_HELD_LOOPS_START 1500
+#define UP_DOWN_HELD_LOOPS_START 2400
+#define UP_DOWN_HELD_LOOPS 600
+#define UP_DOWN_HELD_LOOPS_FAST 200
 
 uint8_t upDownHeld;
 uint8_t upDownHasTicked;
 uint16_t upDownLoops;
+uint16_t upDownEvents;
 
 struct timespec sleepValue = {0};
 
@@ -49,6 +51,7 @@ void init()
   upDownHeld = UP_DOWN_HELD_OFF;
   upDownHasTicked = 0;
   upDownLoops = 0;
+  upDownEvents = 0;
 
   for (int i = 0; i < 8; i++)
   {
@@ -62,16 +65,20 @@ void onUpDownHeld(uint8_t upDown)
 {
   if (upDownHeld == UP_DOWN_HELD_OFF)
   {
+    upDownEvents = 0;
     upDownHeld = upDown;
   }
 
   if (upDownHeld == upDown)
   {
     upDownLoops++;
-    if (upDownLoops > UP_DOWN_HELD_LOOPS)
+    if ((upDownEvents == 0 && upDownLoops > UP_DOWN_HELD_LOOPS_START) ||
+        (upDownEvents > 0 && upDownLoops > UP_DOWN_HELD_LOOPS) ||
+        (upDownEvents > 10 && upDownLoops > UP_DOWN_HELD_LOOPS_FAST))
     {
       upDownLoops = 0;
       upDownHasTicked = 1;
+      upDownEvents++;
       if (upDown == UP_DOWN_HELD_UP)
       {
         menuUp();
