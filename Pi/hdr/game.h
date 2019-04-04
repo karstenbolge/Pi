@@ -27,8 +27,7 @@ typedef struct eventItem
 #define BEFORE_LAUNCH 1
 #define RUNNING_GAME 2
 #define IN_BONUS 3
-#define IN_BUY_IN 4
-#define GAME_ENDED 5
+#define GAME_ENDED 4
 
 #define MAX_EVENTS 50
 #define EVENT_SHOW_SCORE 1
@@ -62,6 +61,5 @@ void clearEvents();
 void removeEvent(int number);
 void addEvent(uint16_t beats, uint8_t type, uint32_t arg);
 void gameBeat(uint8_t tick);
-void buyExtraBall();
 
 #endif

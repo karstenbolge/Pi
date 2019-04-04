@@ -245,7 +245,7 @@ int main(void)
           ;
         else
         {
-          buyExtraBall();
+          //PEZ;
         }
       }
       if ((oldInputRegister[column] & 1 << 12) != (newInputRegister & 1 << 12))

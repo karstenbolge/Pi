@@ -66,7 +66,6 @@ void initConfig()
   config.numberOfExtraBallsOffered = 4;
   config.decimalSeperator = '.';
   config.tournamentMode = 0;
-  config.buyInExtraBall = 0;
   config.allowRestart = ALLOW_RESTART_NEVER;
   config.totalGames = 0;
   config.totalBalls = 0;
@@ -113,7 +112,6 @@ int stringStart(char *str, char *in)
 #define NUMBER_OF_EXTRA_BALLS_OFFERED "numberOfExtraBallsOffered:"
 #define DECIMAL_SEPERATOR "decimalSeperator:"
 #define TOURNAMENT_MODE "tournamentMode:"
-#define BUY_IN_EXTRA_BALL "buyInExtraBall:"
 #define ALLOW_RESTART "allowRestart:"
 #define TOTAL_GAMES "totalGames:"
 #define TOTAL_BALLS "totalBalls:"
@@ -162,8 +160,6 @@ void readConfig()
         config.decimalSeperator = value[0];
       if (stringStart(readBuffer, TOURNAMENT_MODE))
         config.tournamentMode = atoi(value);
-      if (stringStart(readBuffer, BUY_IN_EXTRA_BALL))
-        config.buyInExtraBall = atoi(value);
       if (stringStart(readBuffer, ALLOW_RESTART))
         config.allowRestart = atoi(value);
       if (stringStart(readBuffer, TOTAL_GAMES))
@@ -284,7 +280,6 @@ void saveConfig()
   fprintf(pConfig, "%s %d\n", NUMBER_OF_EXTRA_BALLS_OFFERED, config.numberOfExtraBallsOffered);
   fprintf(pConfig, "%s %c\n", DECIMAL_SEPERATOR, config.decimalSeperator);
   fprintf(pConfig, "%s %d\n", TOURNAMENT_MODE, config.tournamentMode);
-  fprintf(pConfig, "%s %d\n", BUY_IN_EXTRA_BALL, config.buyInExtraBall);
   fprintf(pConfig, "%s %d\n", ALLOW_RESTART, config.allowRestart);
   fprintf(pConfig, "%s %ld\n", TOTAL_GAMES, config.totalGames);
   fprintf(pConfig, "%s %ld\n", TOTAL_BALLS, config.totalBalls);

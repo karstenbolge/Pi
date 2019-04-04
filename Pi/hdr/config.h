@@ -32,7 +32,6 @@ typedef struct config
   uint8_t numberOfExtraBallsOffered;
   char decimalSeperator;
   uint8_t tournamentMode;
-  uint8_t buyInExtraBall;
   uint8_t allowRestart;
   uint64_t totalGames;
   uint64_t totalBalls;

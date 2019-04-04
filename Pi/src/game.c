@@ -227,7 +227,7 @@ void showGameEnded(int event)
 
 void fastBonus()
 {
-  if (inGame != IN_BONUS && inGame != IN_BUY_IN)
+  if (inGame != IN_BONUS)
   {
     return;
   }
@@ -247,17 +247,6 @@ void ballLaunched()
   launchSecond = time(NULL);
   printf("ballLaunched %ld\n", launchSecond);
   showScore(0);
-}
-
-void buyExtraBall()
-{
-  if (inGame != IN_BUY_IN)
-  {
-    return;
-  }
-
-  // remove bonus event
-  // add buy in event, in buy in show ball ready, and load ball for player
 }
 
 void showBonus(int event)
@@ -347,51 +336,7 @@ void showBonus(int event)
       refreshDmd();
       return;
     }
-    events[event].beats == 90;
-  }
-
-  // cancel fast speed from bonus, when going to buy in extra
-  if (events[event].beats == 90)
-  {
-    bonusSpeed = 1;
-  }
-
-  if (games[shooter].ballNumber == config.numberOfBalls && config.buyInExtraBall == 1)
-  {
-    if (events[event].beats == 90 ||
-        events[event].beats == 80 ||
-        events[event].beats == 70 ||
-        events[event].beats == 60 ||
-        events[event].beats == 50 ||
-        events[event].beats == 40 ||
-        events[event].beats == 30 ||
-        events[event].beats == 20 ||
-        events[event].beats == 10)
-    {
-      if (bonusSpeed == 5)
-      {
-        clearDmd();
-        printAtLine("Buy in cancelled", 1, &color, &bgColor);
-        refreshDmd();
-        return;
-      }
-
-      inGame = IN_BUY_IN;
-      clearDmd();
-      printAtLine("May buy an extra ball", 1, &color, &bgColor);
-      sprintf(str, "%d", events[event].beats / 10);
-      printAtLine(str, 3, &color, &bgColor);
-      refreshDmd();
-      return;
-    }
-  }
-  else
-  {
-    if (events[event].beats == 90)
-    {
-      // skip buy in beats
-      events[event].beats = 0;
-    }
+    events[event].beats == 0;
   }
   inGame = IN_BONUS;
 

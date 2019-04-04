@@ -15,8 +15,7 @@ Make total bonus a little longer.
 gametime, along game.score.
 
 Make new game(s).
-Add buy in extra ball. Full screen you may buy one extra ball press extra ball.
-remove buy extra ball, but use it as extra ball earned, for test, lock hit.
+Make PEZ hit.
 
 Add more random player test logic.
 
