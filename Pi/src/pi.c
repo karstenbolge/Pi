@@ -18,7 +18,8 @@
 #define UP_DOWN_HELD_UP 1
 #define UP_DOWN_HELD_DOWN 2
 
-#define UP_DOWN_HELD_LOOPS 10000
+#define UP_DOWN_HELD_LOOPS 1000
+#define UP_DOWN_HELD_LOOPS_START 1500
 
 uint8_t upDownHeld;
 uint8_t upDownHasTicked;

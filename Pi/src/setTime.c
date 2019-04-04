@@ -83,8 +83,8 @@ void showTime()
   sprintf(str, "%02d", date);
   if (inSetTimeMode == IN_MODE_DATE)
   {
-    uint16_t length = printAtLineAndPosition(str, 3, 49, &bgColor, &color);
-    frameLineFrom(3, 49, length, &color);
+    uint16_t length = printAtLineAndPosition(str, 3, 54, &bgColor, &color);
+    frameLineFrom(3, 54, length, &color);
   }
   else
   {

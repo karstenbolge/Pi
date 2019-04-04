@@ -26,8 +26,9 @@ void extraBallsOpen()
 
   clearDmd();
   printCenterAtLine("Total number of extra balls", 1, &color, NULL);
-  printCenterAtLine("8137", 3, &color, NULL);
-
+  char str[32];
+  sprintf(str, "TODO");
+  printCenterAtLine(str, 3, &color, NULL);
   refreshDmd();
 }
 

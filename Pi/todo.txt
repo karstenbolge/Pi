@@ -20,6 +20,7 @@ remove buy extra ball, but use it as extra ball earned, for test, lock hit.
 
 Add more random player test logic.
 
+Held down, first time longer, than ticks.
 
 Before launch score blinking,
 When playing score is rolling.

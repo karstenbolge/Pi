@@ -25,34 +25,12 @@ typedef struct buttonItem
   unsigned long textColor;
   uint16_t registry;
   uint8_t column;
+  uint8_t down;
 } buttonItem_t;
 
 XFontStruct *fontinfo;
 
 buttonItem_t buttons[BUTTONS_COUNT];
-
-const int button1x = 10;
-const int button1y = 485;
-const int button2x = 60;
-const int button2y = 485;
-const int button3x = 110;
-const int button3y = 485;
-const int button4x = 160;
-const int button4y = 485;
-
-const int plungerX = 570;
-const int plungerY = 485;
-
-const int buttonStartX = 600;
-const int buttonStartY = 485;
-const int buttonExtraX = 650;
-const int buttonExtraY = 485;
-
-const int buttonCancelX = 700;
-const int buttonCancelY = 485;
-
-const int buttonBallEndedX = 750;
-const int buttonBallEndedY = 485;
 
 const int buttonBeatX = 10;
 const int buttonBeatY = 535;
@@ -64,9 +42,9 @@ const int buttonWidth = 40;
 const int buttonHeight = 40;
 int onButton = 0;
 
-int oldCursorX, oldCursorY;
+//int oldCursorX, oldCursorY;
 
-void makeButton(int i, char *pName, int fromX, int fromY, int toX, int toY, unsigned long color, unsigned long frameColor, unsigned long textColor, uint16_t registry, uint8_t column)
+void makeButton(int i, char *pName, int fromX, int fromY, int toX, int toY, unsigned long color, unsigned long frameColor, unsigned long textColor, uint16_t registry, uint8_t column, uint8_t down)
 {
   strcpy(buttons[i].name, pName);
   buttons[i].from.x = fromX;
@@ -78,26 +56,37 @@ void makeButton(int i, char *pName, int fromX, int fromY, int toX, int toY, unsi
   buttons[i].textColor = textColor;
   buttons[i].registry = registry;
   buttons[i].column = column;
+  buttons[i].down = down;
 }
 
-void drawButtons()
+void drawButton(int i)
 {
   int direction;
   int ascent;
   int descent;
   XCharStruct overall;
 
+  XSetForeground(display, gc, buttons[i].frameColor);
+  XFillRectangle(display, win, gc, buttons[i].from.x, buttons[i].from.y, buttons[i].to.x - buttons[i].from.x, buttons[i].to.y - buttons[i].from.y);
+  XSetForeground(display, gc, buttons[i].color);
+  int border = 2;
+  if (buttons[i].down == 1)
+  {
+    border = 8;
+  }
+  XFillRectangle(display, win, gc, buttons[i].from.x + border, buttons[i].from.y + border, buttons[i].to.x - buttons[i].from.x - 2 * border, buttons[i].to.y - buttons[i].from.y - 2 * border);
+
+  //https://www.lemoda.net/c/xlib-text-box/
+  XTextExtents(fontinfo, buttons[i].name, strlen(buttons[i].name), &direction, &ascent, &descent, &overall);
+  XSetForeground(display, gc, buttons[i].textColor);
+  XDrawString(display, win, gc, (buttons[i].to.x + buttons[i].from.x - overall.width) / 2, (buttons[i].to.y + buttons[i].from.y + ascent - descent) / 2, buttons[i].name, strlen(buttons[i].name));
+}
+
+void drawButtons()
+{
   for (int i = 0; i < BUTTONS_COUNT; i++)
   {
-    XSetForeground(display, gc, buttons[i].frameColor);
-    XFillRectangle(display, win, gc, buttons[i].from.x, buttons[i].from.y, buttons[i].to.x - buttons[i].from.x, buttons[i].to.y - buttons[i].from.y);
-    XSetForeground(display, gc, buttons[i].color);
-    XFillRectangle(display, win, gc, buttons[i].from.x + 2, buttons[i].from.y + 2, buttons[i].to.x - buttons[i].from.x - 4, buttons[i].to.y - buttons[i].from.y - 4);
-
-    //https://www.lemoda.net/c/xlib-text-box/
-    XTextExtents(fontinfo, buttons[i].name, strlen(buttons[i].name), &direction, &ascent, &descent, &overall);
-    XSetForeground(display, gc, buttons[i].textColor);
-    XDrawString(display, win, gc, (buttons[i].to.x + buttons[i].from.x - overall.width) / 2, (buttons[i].to.y + buttons[i].from.y + ascent - descent) / 2, buttons[i].name, strlen(buttons[i].name));
+    drawButton(i);
   }
 }
 
@@ -132,18 +121,18 @@ void setupWiring()
   XSetForeground(display, gc, colorRed.pixel);
   XFillRectangle(display, win, gc, 0, 480, 799, 529);
 
-  makeButton(0, "Esc", 10, 485, 49, 524, colorBlack.pixel, colorGreen.pixel, colorWhite.pixel, 1 << 2, 2);
-  makeButton(1, "Up", 60, 485, 99, 524, colorGreen.pixel, colorBlack.pixel, colorBlack.pixel, 1 << 12, 2);
-  makeButton(2, "Down", 110, 485, 149, 524, colorWhite.pixel, colorBlack.pixel, colorBlack.pixel, 1 << 15, 2);
-  makeButton(3, "Enter", 160, 485, 199, 524, colorBlue.pixel, colorGreen.pixel, colorWhite.pixel, 1 << 3, 2);
+  makeButton(0, "Esc", 10, 485, 49, 524, colorBlack.pixel, colorGreen.pixel, colorWhite.pixel, 1 << 2, 2, 0);
+  makeButton(1, "Up", 60, 485, 99, 524, colorGreen.pixel, colorBlack.pixel, colorBlack.pixel, 1 << 12, 2, 0);
+  makeButton(2, "Down", 110, 485, 149, 524, colorWhite.pixel, colorBlack.pixel, colorBlack.pixel, 1 << 15, 2, 0);
+  makeButton(3, "Enter", 160, 485, 199, 524, colorBlue.pixel, colorGreen.pixel, colorWhite.pixel, 1 << 3, 2, 0);
 
-  makeButton(4, "Start", 250, 485, 289, 524, colorGreen.pixel, colorBlack.pixel, colorBlack.pixel, 1 << 10, 2);
-  makeButton(5, "Plung", 300, 485, 339, 524, colorBlack.pixel, colorGreen.pixel, colorWhite.pixel, 1 << 13, 2);
-  makeButton(6, "Both", 350, 485, 389, 524, colorWhite.pixel, colorBlack.pixel, colorBlack.pixel, (1 << 5) + (1 << 6), 2);
-  makeButton(7, "Left", 400, 485, 439, 524, colorGreen.pixel, colorBlack.pixel, colorBlack.pixel, 1 << 5, 2);
-  makeButton(8, "Rigth", 450, 485, 489, 524, colorRed.pixel, colorBlack.pixel, colorBlack.pixel, 1 << 6, 2);
-  makeButton(9, "End", 500, 485, 539, 524, colorBlack.pixel, colorGreen.pixel, colorWhite.pixel, 1 << 14, 2);
-  makeButton(10, "PEZ", 500, 485, 539, 524, colorWhite.pixel, colorBlack.pixel, colorRed.pixel, 1 << 11, 2);
+  makeButton(4, "Start", 250, 485, 289, 524, colorGreen.pixel, colorBlack.pixel, colorBlack.pixel, 1 << 10, 2, 0);
+  makeButton(5, "Plung", 300, 485, 339, 524, colorBlack.pixel, colorGreen.pixel, colorWhite.pixel, 1 << 13, 2, 0);
+  makeButton(6, "Both", 350, 485, 389, 524, colorWhite.pixel, colorBlack.pixel, colorBlack.pixel, (1 << 5) + (1 << 6), 2, 0);
+  makeButton(7, "Left", 400, 485, 439, 524, colorGreen.pixel, colorBlack.pixel, colorBlack.pixel, 1 << 5, 2, 0);
+  makeButton(8, "Rigth", 450, 485, 489, 524, colorRed.pixel, colorBlack.pixel, colorBlack.pixel, 1 << 6, 2, 0);
+  makeButton(9, "End", 500, 485, 539, 524, colorBlack.pixel, colorGreen.pixel, colorWhite.pixel, 1 << 14, 2, 0);
+  makeButton(10, "PEZ", 550, 485, 589, 524, colorWhite.pixel, colorBlack.pixel, colorRed.pixel, 1 << 11, 2, 0);
 
   drawButtons();
 
@@ -191,12 +180,30 @@ void updateShiftIn()
         if (cursorX >= x + buttons[i].from.x && cursorX <= x + buttons[i].to.x &&
             cursorY >= y + buttons[i].from.y && cursorY <= y + buttons[i].to.y)
         {
-          newInputRegister = buttons[i].registry;
+          if (cursorY >= y + buttons[i].from.y && cursorY <= y + (buttons[i].from.y + buttons[i].to.y) / 2)
+          {
+            buttons[i].down = 1;
+            drawButton(i);
+          }
+          else
+          {
+            buttons[i].down = 0;
+            drawButton(i);
+          }
+
+          newInputRegister += buttons[i].registry;
+        }
+        else
+        {
+          if (buttons[i].down == 1)
+          {
+            newInputRegister += buttons[i].registry;
+          }
         }
       }
     }
-    oldCursorX = cursorX;
-    oldCursorY = cursorY;
+    //oldCursorX = cursorX;
+    //oldCursorY = cursorY;
   }
 }
 
