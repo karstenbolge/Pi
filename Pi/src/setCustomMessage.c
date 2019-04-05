@@ -63,7 +63,7 @@ void setCustomMessageEnter()
   printCenterAtLine("New custom message ", 1, &color, NULL);
   sprintf(str, "%s", newMessage1);
   printCenterAtLine(str, 3, &color, NULL);
-  sprintf(str, "%s", config.customMessage2);
+  sprintf(str, "%s", getInputFieldValue());
   printCenterAtLine(str, 4, &color, NULL);
   refreshDmd();
 
