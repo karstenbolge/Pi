@@ -57,6 +57,7 @@ config_t config;
 void readConfig();
 void saveConfig();
 void initHighScores();
+void initConfig();
 
 void addGameScore(uint64_t score);
 void addGameGameTime(uint64_t gameSeconds);

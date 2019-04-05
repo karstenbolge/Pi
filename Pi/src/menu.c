@@ -24,6 +24,7 @@
 #include "../hdr/tournamentMode.h"
 #include "../hdr/setGameId.h"
 #include "../hdr/setCustomMessage.h"
+#include "../hdr/factoryReset.h"
 
 typedef struct itemFunctions
 {
@@ -252,6 +253,7 @@ void initMenu()
   factoryAdjustment->previous = setGameId;
 
   menuItem_t *factoryReset = factoryAdjustment->next = makeMenuItem("Factory reset", utilities);
+  factoryReset->event = makeEvent(&factoryResetOpen, &factoryResetUp, &factoryResetDown, &factoryResetEnter, NULL);
   factoryReset->previous = factoryAdjustment;
 
   // loop
