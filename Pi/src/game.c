@@ -368,6 +368,7 @@ void showBonus(int event)
     // when no shooter, no score highlighted
     shooter = -1;
     showScore(0);
+    inGame = GAME_ENDED;
     addEvent(50, EVENT_GAME_ENDED, 0);
   }
 }

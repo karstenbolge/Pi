@@ -13,6 +13,6 @@ void displayInputField();
 char *getInputFieldValue();
 int inputFieldDone();
 
-void setStaticStr(char *pStr1, char *pStr2);
+void setStaticStr(char *pStr1, char *pStr2, char *pStr3, char *pStr4, char *pStr5, char *pStr6, char *pStr7, char *pStr8);
 
 #endif

@@ -18,7 +18,7 @@ uint8_t inInputString = IN_INPUT_STRING_OFF;
 uint8_t fieldTick;
 uint8_t thisLine;
 uint8_t inPutType;
-char staticStr[2][32];
+char staticStr[8][32];
 
 #define CHAR_NEXT_UP 0
 #define CHAR_NEXT_DOWN 1
@@ -174,10 +174,17 @@ void inputFieldTick(uint8_t tick)
   }
 }
 
-void setStaticStr(char *pStr1, char *pStr2)
+void setStaticStr(char *pStr1, char *pStr2, char *pStr3, char *pStr4, char *pStr5, char *pStr6, char *pStr7, char *pStr8)
 {
   memset(&staticStr[0][0], 0, 32);
   memset(&staticStr[1][0], 0, 32);
+  memset(&staticStr[2][0], 0, 32);
+  memset(&staticStr[3][0], 0, 32);
+  memset(&staticStr[4][0], 0, 32);
+  memset(&staticStr[5][0], 0, 32);
+  memset(&staticStr[6][0], 0, 32);
+  memset(&staticStr[7][0], 0, 32);
+
   if (pStr1 && strlen(pStr1) > 0)
   {
     strcpy(&staticStr[0][0], pStr1);
@@ -185,6 +192,30 @@ void setStaticStr(char *pStr1, char *pStr2)
   if (pStr2 && strlen(pStr2) > 0)
   {
     strcpy(&staticStr[1][0], pStr2);
+  }
+  if (pStr3 && strlen(pStr3) > 0)
+  {
+    strcpy(&staticStr[2][0], pStr3);
+  }
+  if (pStr4 && strlen(pStr4) > 0)
+  {
+    strcpy(&staticStr[3][0], pStr4);
+  }
+  if (pStr5 && strlen(pStr5) > 0)
+  {
+    strcpy(&staticStr[4][0], pStr5);
+  }
+  if (pStr6 && strlen(pStr6) > 0)
+  {
+    strcpy(&staticStr[5][0], pStr6);
+  }
+  if (pStr7 && strlen(pStr7) > 0)
+  {
+    strcpy(&staticStr[6][0], pStr7);
+  }
+  if (pStr8 && strlen(pStr8) > 0)
+  {
+    strcpy(&staticStr[7][0], pStr8);
   }
 }
 
@@ -196,13 +227,12 @@ void displayInputField()
 
   clearDmd();
 
-  if (staticStr[0][0] != 0)
+  for (int i = 0; i < 8; i++)
   {
-    printAtLineAndPosition(&staticStr[0][0], 0, 0, &color, NULL);
-  }
-  if (staticStr[1][0] != 0)
-  {
-    printAtLineAndPosition(&staticStr[1][0], 1, 0, &color, NULL);
+    if (staticStr[i][0] != 0)
+    {
+      printAtLineAndPosition(&staticStr[i][0], i, 0, &color, NULL);
+    }
   }
 
   if (strlen(newStr) > 0)
@@ -215,11 +245,11 @@ void displayInputField()
     displayStr[0] = 0;
   }
 
-  uint16_t position = printAtLineAndPosition(displayStr, 3, 0, &color, NULL);
+  uint16_t position = printAtLineAndPosition(displayStr, thisLine, 0, &color, NULL);
 
   if ((fieldTick / 10) % 2 == 0)
   {
-    position = printAtLineAndPosition(&newStr[strlen(newStr) - 1], 3, position, &color, NULL);
+    position = printAtLineAndPosition(&newStr[strlen(newStr) - 1], thisLine, position, &color, NULL);
   }
 
   refreshDmd();

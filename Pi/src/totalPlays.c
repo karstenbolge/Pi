@@ -27,7 +27,7 @@ void extraBallsOpen()
   clearDmd();
   printCenterAtLine("Total number of extra balls", 1, &color, NULL);
   char str[32];
-  sprintf(str, "TODO");
+  sprintf(str, "%ld", config.totalNumberOfExtraBalls);
   printCenterAtLine(str, 3, &color, NULL);
   refreshDmd();
 }
@@ -39,7 +39,9 @@ void percentExtraBalsOpen()
 
   clearDmd();
   printCenterAtLine("Percent extra balls", 1, &color, NULL);
-  printCenterAtLine("12%", 3, &color, NULL);
+  char str[32];
+  sprintf(str, "%ld%%", 100 * config.totalNumberOfExtraBalls / config.totalBalls);
+  printCenterAtLine(str, 3, &color, NULL);
 
   refreshDmd();
 }
@@ -67,6 +69,22 @@ void rightDrainsOpen()
   printCenterAtLine("Right drains", 1, &color, NULL);
   char str[32];
   sprintf(str, "%ld", config.totalRightDrains);
+  printCenterAtLine(str, 3, &color, NULL);
+
+  refreshDmd();
+}
+
+void averageBallTimeOpen()
+{
+  rgb_t color;
+  setColorType(&color, COLOR_RED);
+
+  clearDmd();
+  printCenterAtLine("Average ball time", 1, &color, NULL);
+  char str[32];
+  uint64_t minutes = config.totalBallSeconds / config.totalBalls / 60;
+  uint64_t seconds = (config.totalBallSeconds / config.totalBalls) - minutes * 60;
+  sprintf(str, "%02ld:%02ld minutes", minutes, seconds);
   printCenterAtLine(str, 3, &color, NULL);
 
   refreshDmd();

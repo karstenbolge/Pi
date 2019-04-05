@@ -35,6 +35,7 @@ typedef struct config
   uint8_t allowRestart;
   uint64_t totalGames;
   uint64_t totalBalls;
+  uint64_t totalNumberOfExtraBalls;
   uint64_t totalBallSeconds;
   uint64_t lastGameStart;
   uint64_t lastFactoryReset;
@@ -45,6 +46,8 @@ typedef struct config
   uint64_t totalLeftDrains;
   uint64_t totalRightDrains;
   char gameId[32];
+  char customMessage1[32];
+  char customMessage2[32];
   uint64_t histogramScores[13];
   uint64_t histogramGameTimes[13];
 } config_t;

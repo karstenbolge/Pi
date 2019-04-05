@@ -69,6 +69,7 @@ void initConfig()
   config.allowRestart = ALLOW_RESTART_NEVER;
   config.totalGames = 0;
   config.totalBalls = 0;
+  config.totalNumberOfExtraBalls = 0;
   config.totalBallSeconds = 0;
   config.lastGameStart = 0;
   config.lastFactoryReset = time(NULL);
@@ -79,6 +80,8 @@ void initConfig()
   config.totalLeftDrains = 0;
   config.totalRightDrains = 0;
   getMacAddress(); // which inits gameId
+  config.customMessage1[0] = 0;
+  config.customMessage2[0] = 0;
   for (int i = 0; i < 13; i++)
   {
     config.histogramScores[i] = 0;
@@ -115,6 +118,7 @@ int stringStart(char *str, char *in)
 #define ALLOW_RESTART "allowRestart:"
 #define TOTAL_GAMES "totalGames:"
 #define TOTAL_BALLS "totalBalls:"
+#define TOTAL_NUMBER_OF_EXTRA_BALLS "totalNumberOfExtraBalls:"
 #define TOTAL_BALL_SECONDS "totalBallSeconds:"
 #define LAST_GAME_START "lastGameStart:"
 #define LAST_FACTORY_RESET "lastFactoryReset:"
@@ -125,6 +129,8 @@ int stringStart(char *str, char *in)
 #define TOTAL_LEFT_DRAINS "totalLeftDrains:"
 #define TOTAL_RIGHT_DRAINS "totalRightDrains:"
 #define GAME_ID "gameId:"
+#define CUSTOM_MESSAGE_1 "customMessage1:"
+#define CUSTOM_MESSAGE_2 "customMessage2:"
 #define HISTOGRAM_SCORES "histogramScores:"
 #define HISTOGRAM_GAME_TIMES "histogramGameTimes:"
 
@@ -166,6 +172,8 @@ void readConfig()
         config.totalGames = atol(value);
       if (stringStart(readBuffer, TOTAL_BALLS))
         config.totalBalls = atol(value);
+      if (stringStart(readBuffer, TOTAL_NUMBER_OF_EXTRA_BALLS))
+        config.totalNumberOfExtraBalls = atol(value);
       if (stringStart(readBuffer, TOTAL_BALL_SECONDS))
         config.totalBallSeconds = atol(value);
       if (stringStart(readBuffer, LAST_GAME_START))
@@ -188,6 +196,16 @@ void readConfig()
       {
         strcpy(config.gameId, value);
         config.gameId[strlen(value) - 1] = 0;
+      }
+      if (stringStart(readBuffer, CUSTOM_MESSAGE_1))
+      {
+        strcpy(config.customMessage1, value);
+        config.customMessage1[strlen(value) - 1] = 0;
+      }
+      if (stringStart(readBuffer, CUSTOM_MESSAGE_2))
+      {
+        strcpy(config.customMessage2, value);
+        config.customMessage2[strlen(value) - 1] = 0;
       }
       if (stringStart(readBuffer, HISTOGRAM_SCORES))
       {
@@ -283,6 +301,7 @@ void saveConfig()
   fprintf(pConfig, "%s %d\n", ALLOW_RESTART, config.allowRestart);
   fprintf(pConfig, "%s %ld\n", TOTAL_GAMES, config.totalGames);
   fprintf(pConfig, "%s %ld\n", TOTAL_BALLS, config.totalBalls);
+  fprintf(pConfig, "%s %ld\n", TOTAL_NUMBER_OF_EXTRA_BALLS, config.totalNumberOfExtraBalls);
   fprintf(pConfig, "%s %ld\n", TOTAL_BALL_SECONDS, config.totalBallSeconds);
   fprintf(pConfig, "%s %ld\n", LAST_GAME_START, config.lastGameStart);
   fprintf(pConfig, "%s %ld\n", LAST_FACTORY_RESET, config.lastFactoryReset);
@@ -293,6 +312,8 @@ void saveConfig()
   fprintf(pConfig, "%s %ld\n", TOTAL_LEFT_DRAINS, config.totalLeftDrains);
   fprintf(pConfig, "%s %ld\n", TOTAL_RIGHT_DRAINS, config.totalRightDrains);
   fprintf(pConfig, "%s %s\n", GAME_ID, config.gameId);
+  fprintf(pConfig, "%s %s\n", CUSTOM_MESSAGE_1, config.customMessage1);
+  fprintf(pConfig, "%s %s\n", CUSTOM_MESSAGE_2, config.customMessage2);
   fprintf(pConfig, "%s\n", HISTOGRAM_SCORES);
   for (int i = 0; i < 13; i++)
   {

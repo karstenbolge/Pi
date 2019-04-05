@@ -8,6 +8,7 @@ void extraBallsOpen();
 void percentExtraBalsOpen();
 void leftDrainsOpen();
 void rightDrainsOpen();
+void averageBallTimeOpen();
 void timePerGameOpen();
 void PlayTimeOpen();
 void BallsPlayedOpen();

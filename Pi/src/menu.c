@@ -13,7 +13,6 @@
 #include "../hdr/display.h"
 #include "../hdr/window.h"
 #include "../hdr/displayTest.h"
-#include "../hdr/averageBallTime.h"
 #include "../hdr/attrackMode.h"
 #include "../hdr/totalPlays.h"
 #include "../hdr/histogramScores.h"
@@ -24,6 +23,7 @@
 #include "../hdr/numberOfExtraBallsOffered.h"
 #include "../hdr/tournamentMode.h"
 #include "../hdr/setGameId.h"
+#include "../hdr/setCustomMessage.h"
 
 typedef struct itemFunctions
 {
@@ -241,6 +241,7 @@ void initMenu()
   setTimeAndDate->previous = resetHSTD;
 
   menuItem_t *customMessage = setTimeAndDate->next = makeMenuItem("Set custom message", utilities);
+  customMessage->event = makeEvent(&setCustomMessageOpen, NULL, NULL, &setCustomMessageEnter, &setCustomMessageExit);
   customMessage->previous = setTimeAndDate;
 
   menuItem_t *setGameId = customMessage->next = makeMenuItem("Set game id", utilities);
