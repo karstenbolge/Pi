@@ -191,6 +191,7 @@ void initMenu()
   switchEdge->event = makeEvent(&switchEdgeTestOpen, &switchEdgeTestUp, &switchEdgeTestDown, &switchEdgeTestEnter, &switchEdgeTestExit);
 
   menuItem_t *switchLevels = switchEdge->next = makeMenuItem("Switch levels", testMenu);
+  switchLevels->event = makeEvent(&switchEdgeLevelTestOpen, NULL, NULL, &switchEdgeTestEnter, &switchEdgeTestExit);
   switchLevels->previous = switchEdge;
 
   menuItem_t *singleSwitchTest = switchLevels->next = makeMenuItem("Single switch edge", testMenu);
@@ -572,4 +573,9 @@ void menuEnter()
   }
 
   writeLog(SHOULD_NEVER_HAPPENS);
+}
+
+uint8_t isMenuOpen()
+{
+  return menuOpen;
 }

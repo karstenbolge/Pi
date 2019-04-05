@@ -352,6 +352,7 @@ int main(void)
       displayTestTick(beat % 2);
       attrackModeTick(beat % 2);
       gameBeat(beat);
+      switchBeat(beat);
       inputFieldTick(beat);
       lastTime = currentTime;
     }

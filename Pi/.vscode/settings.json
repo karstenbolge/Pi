@@ -10,6 +10,8 @@
     "displaytest.h": "c",
     "video.h": "c",
     "config.h": "c",
-    "tiltwarnings.h": "c"
+    "tiltwarnings.h": "c",
+    "window.h": "c",
+    "game.h": "c"
   },
 }

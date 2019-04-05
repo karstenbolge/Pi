@@ -5,9 +5,11 @@
 #define MODE_OFF 0
 #define MODE_SHOW 1
 #define MODE_SHOW_SINGLE 2
+#define MODE_SHOW_LEVELS 3
 
 uint8_t inSwitchEdgeTestMode = MODE_OFF;
 uint8_t showColumn, showRow;
+uint8_t levelBeat;
 
 char *getSwitchName()
 {
@@ -39,12 +41,13 @@ char *getSwitchName()
     case 10:
       return "Start";
     case 11:
-      return "Extra ball";
+      return "Lock ball 1";
     case 12:
       return "Up";
     case 13:
+      return "Plunger";
     case 14:
-      return "Not used";
+      return "Drain ball 3";
     case 15:
       return "Down";
     }
@@ -132,12 +135,78 @@ void drawHithlightIn(int j, int i, rgb_t *pColor)
   }
 }
 
+void getNextSwitch()
+{
+  // rest of row
+  if (showRow < 15)
+  {
+    for (int i = showRow + 1; i < 16; i++)
+    {
+      if (oldInputRegister[showColumn] & 1 << i)
+      {
+        showRow = i;
+        return;
+      }
+    }
+  }
+
+  //rest of colunms
+  if (showColumn < 7)
+  {
+    for (int j = showColumn + 1; j < 8; j++)
+    {
+      for (int i = 0; i < 16; i++)
+      {
+        if (oldInputRegister[j] & 1 << i)
+        {
+          showColumn = j;
+          showRow = i;
+          return;
+        }
+      }
+    }
+  }
+
+  //top of matrix
+  for (int j = 0; j < showColumn + 1; j++)
+  {
+    for (int i = 0; i < 16; i++)
+    {
+      if (oldInputRegister[j] & 1 << i)
+      {
+        showColumn = j;
+        showRow = i;
+        return;
+      }
+    }
+  }
+
+  // default to 0, 0
+  showColumn = 0;
+  showRow = 0;
+}
+
+void switchBeat(uint8_t tick)
+{
+  if (inSwitchEdgeTestMode != MODE_SHOW_LEVELS)
+  {
+    return;
+  }
+
+  levelBeat++;
+  if (levelBeat > 64)
+  {
+    levelBeat = 0;
+    getNextSwitch();
+    showMatrix(oldInputRegister);
+  }
+}
+
 void showMatrix(uint16_t oldInputRegister[8])
 {
   if (inSwitchEdgeTestMode != MODE_OFF)
   {
     clearDmd();
-    clearScreen();
     rgb_t color, colorYellow, bgColor;
     setColorType(&color, COLOR_RED);
     setColorType(&colorYellow, COLOR_YELLOW);
@@ -152,7 +221,7 @@ void showMatrix(uint16_t oldInputRegister[8])
       {
         if (oldInputRegister[j] & 1 << i)
         {
-          if (inSwitchEdgeTestMode == MODE_SHOW_SINGLE && showColumn == j && showRow == i)
+          if ((inSwitchEdgeTestMode == MODE_SHOW_SINGLE || inSwitchEdgeTestMode == MODE_SHOW_LEVELS) && showColumn == j && showRow == i)
           {
             drawDotIn(i, j, &colorYellow);
           }
@@ -173,9 +242,8 @@ void showMatrix(uint16_t oldInputRegister[8])
         }
       }
     }
-    if (inSwitchEdgeTestMode == MODE_SHOW_SINGLE)
+    if (inSwitchEdgeTestMode == MODE_SHOW_SINGLE || inSwitchEdgeTestMode == MODE_SHOW_LEVELS)
     {
-      printf("%s\n", getSwitchName());
       printAtLineAndPosition(getSwitchName(), 7, 10, &color, &bgColor);
     }
     refreshDmd();
@@ -185,6 +253,16 @@ void showMatrix(uint16_t oldInputRegister[8])
 void switchEdgeTestOpen()
 {
   inSwitchEdgeTestMode = MODE_SHOW;
+}
+
+void switchEdgeLevelTestOpen()
+{
+  inSwitchEdgeTestMode = MODE_SHOW_LEVELS;
+  levelBeat = 0;
+  showColumn = 0;
+  showRow = 0;
+
+  getNextSwitch();
 }
 
 void switchEdgeTestOpenSingle()

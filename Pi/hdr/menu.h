@@ -1,11 +1,14 @@
 #ifndef _MENU_H_
 #define _MENU_H_
 
+#include <stdint.h>
+
 void openMenu();
 void menuUp();
 void menuDown();
 void menuExit();
 void menuEnter();
+uint8_t isMenuOpen();
 
 #define MENU_BOOKKEEPINGS 1
 #define MENU_MAIN_AUDITS 2

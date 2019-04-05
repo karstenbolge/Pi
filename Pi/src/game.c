@@ -5,6 +5,7 @@
 #include "../hdr/display.h"
 #include "../hdr/data70.h"
 #include "../hdr/attrackMode.h"
+#include "../hdr/menu.h"
 
 void newGame(gameItem_t *pItem)
 {
@@ -63,6 +64,11 @@ void ballEnded()
 
 void startButton()
 {
+  if (isMenuOpen())
+  {
+    return;
+  }
+
   if (inGame == NO_GAME)
   {
     numberOfPlayers = 1;
@@ -239,6 +245,7 @@ void ballLaunched()
 {
   if (inGame != BEFORE_LAUNCH)
   {
+    return;
     printf("Cannot launch ball now\n");
   }
 

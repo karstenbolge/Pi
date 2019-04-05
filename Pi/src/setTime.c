@@ -25,7 +25,7 @@ uint8_t lastAction;
 
 void showTime()
 {
-  clearScreen();
+  /*  clearScreen();
   printf("Set date and time :\n");
   if (inSetTimeMode == IN_MODE_YEAR)
   {
@@ -47,7 +47,7 @@ void showTime()
   {
     printf("  %04d-%02d-%02d %02d>%02d\n", year, month, date, hour, minute);
   }
-
+*/
   rgb_t color, bgColor;
   setColorType(&color, COLOR_RED);
   setColorType(&bgColor, COLOR_BLACK);
@@ -301,9 +301,9 @@ void setTimeDown()
 
 void setTime()
 {
-  clearScreen();
+  /*  clearScreen();
   printf("Time set to :\n");
-  printf("  %04d-%02d-%02d %02d:%02d\n", year, month, date, hour, minute);
+  printf("  %04d-%02d-%02d %02d:%02d\n", year, month, date, hour, minute);*/
 
   rgb_t color, bgColor;
   setColorType(&color, COLOR_RED);
