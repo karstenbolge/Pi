@@ -140,9 +140,9 @@ void showScore(uint8_t type)
         ;
       else
       {
-        if (type == 0 && launchBlink >= 48)
+        if (type == 0 && launchBlink >= 56)
         {
-          printf("Roling score %d\n", launchBlink);
+          printScoreRolling(games[i].score, i, 2 * (launchBlink - 56));
           if (launchBlink >= 64)
           {
             launchBlink = 47;

@@ -8,8 +8,6 @@ Make volumn up down work on pi.
 
 Make big font.
 
-todo menu customMessage, 
-
 Make total bonus a little longer.
 
 gametime, along game.score.

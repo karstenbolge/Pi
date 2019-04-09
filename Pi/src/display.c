@@ -479,7 +479,28 @@ void makeTimeString(uint64_t epoch, char *pScore)
   sprintf(pScore, "%04d-%02d-%02d %02d:%02d", year, month, date, hour, minute);
 }
 
-void printScore(uint32_t score, uint8_t line, uint8_t size)
+void clearDmdArea(int fromX, int toX, int fromY, int toY)
+{
+  rgb_t bgColor;
+  setColorType(&bgColor, COLOR_BLACK);
+  for (int i = fromX; i < toX && i < DMD_WIDTH; i++)
+  {
+    for (int j = fromY; j < toY && j < DMD_HEIGHT; j++)
+    {
+      dmd[i][j] = bgColor;
+    }
+  }
+}
+
+void printScoreRolling(uint32_t score, uint8_t line, uint8_t rolling)
+{
+  int width = printScore(score, line, 2);
+
+  // TODO optimize, by not priting and clearing
+  clearDmdArea(DMD_WIDTH - width - 2, DMD_WIDTH - 1, 5 + line * 24 + rolling, 5 + line * 24 + 16);
+}
+
+int printScore(uint32_t score, uint8_t line, uint8_t size)
 {
   rgb_t color, bgColor;
   setColorType(&color, COLOR_RED);
@@ -493,10 +514,12 @@ void printScore(uint32_t score, uint8_t line, uint8_t size)
   if (size == 2)
   {
     printLargeAtLineAndPosition(pScore, 5 + line * 24, DMD_WIDTH - width - 2, &color, &bgColor);
-    return;
   }
-
-  printAtLineAndPosition(pScore, line * 2 + (2 - size), DMD_WIDTH - width - 2, &color, &bgColor);
+  else
+  {
+    printAtLineAndPosition(pScore, line * 2 + (2 - size), DMD_WIDTH - width - 2, &color, &bgColor);
+  }
+  return width;
 }
 
 void drawProgress(uint8_t progress, uint8_t line, uint16_t xPosition, rgb_t *pColor)

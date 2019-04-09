@@ -25,7 +25,9 @@ uint16_t printLargeAtLineAndPosition(char *str, uint8_t line, uint16_t xPosition
 uint16_t printLargeAtYAndPosition(char *str, uint8_t line, uint16_t xPosition, rgb_t *pColor, rgb_t *pBgColor);
 
 int makeScoreString(uint32_t score, char *pScore);
-void printScore(uint32_t score, uint8_t line, uint8_t size);
+void clearDmdArea(int fromX, int toX, int fromY, int toY);
+void printScoreRolling(uint32_t score, uint8_t line, uint8_t rolling);
+int printScore(uint32_t score, uint8_t line, uint8_t size);
 void makeTimeString(uint64_t epoch, char *pScore);
 
 void drawProgress(uint8_t progress, uint8_t line, uint16_t xPosition, rgb_t *pColor);
