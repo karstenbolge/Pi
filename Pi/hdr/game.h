@@ -7,6 +7,10 @@ typedef struct gameItem
 {
   uint8_t ballNumber;
   uint8_t extraBalls;
+  uint8_t extraBallsOffered;
+  uint8_t extraBallsCollected;
+  uint8_t totalExtraBallsOffered;
+  uint8_t totalExtraBallsCollected;
   uint32_t score;
   uint8_t multiplier;
   uint8_t instumentsCollected;
@@ -61,5 +65,7 @@ void clearEvents();
 void removeEvent(int number);
 void addEvent(uint16_t beats, uint8_t type, uint32_t arg);
 void gameBeat(uint8_t tick);
+void offerExtraBall();
+void onPEZ1();
 
 #endif

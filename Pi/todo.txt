@@ -4,18 +4,27 @@ Add cables to control and make start and extra ball button.
 
 Make volumn up down work on pi.
 
-// Make better physical boards, matrix 16 x 16 input, 16 X 24
+// Make better physical boards, matrix 16 x 16 input, output 8 x 32, coils 8 x 8
 
 Make big font.
 
 Make total bonus a little longer.
 
-gametime, along game.score.
+gametime, along game.score, numberOf ExtraBall erned, offered in each ball and in game
+
+show player shooter is up on extra balls
+
+make start button blinking, when can be pressed.
 
 Make new game(s).
 Make PEZ hit.
 
 Add more random player test logic.
+
+count totalLeftDrains, totalRightDrains;
+count totalTilts make tilt logic.
+
+count totalNumberOfExtraBalls,
 
 Before launch score blinking,
 When playing score is rolling.

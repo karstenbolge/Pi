@@ -11,6 +11,10 @@ void newGame(gameItem_t *pItem)
 {
   pItem->ballNumber = 0;
   pItem->extraBalls = 0;
+  pItem->extraBallsOffered = 0;
+  pItem->extraBallsCollected = 0;
+  pItem->totalExtraBallsOffered = 0;
+  pItem->totalExtraBallsCollected = 0;
   pItem->score = 0;
   pItem->instumentsCollected = 3;
   pItem->totalInstumentsCollected = 3;
@@ -25,6 +29,9 @@ void newGame(gameItem_t *pItem)
 
 void newBall(gameItem_t *pItem)
 {
+  pItem->extraBallsOffered = 0;
+  pItem->extraBallsCollected = 0;
+
   pItem->multiplier = 2;
   pItem->bonuesBeat = 0;
 
@@ -64,18 +71,20 @@ void ballEnded()
 
 void startButton()
 {
+  printf("startButton %d\n", inGame);
   if (isMenuOpen())
   {
     return;
   }
 
-  if (inGame == NO_GAME)
+  if (inGame == NO_GAME || inGame == GAME_ENDED)
   {
     numberOfPlayers = 1;
     shooter = 0;
     newGame(&games[0]);
     loadBall();
     showScore(0);
+    printf("startButton numberOfPlayers %d\n", numberOfPlayers);
     return;
   }
 
@@ -110,6 +119,12 @@ void loadBall()
 {
   inGame = BEFORE_LAUNCH;
   launchBlink = 0;
+  if (games[shooter].extraBalls > 0)
+  {
+    games[shooter].extraBalls--;
+    return;
+  }
+
   games[shooter].ballNumber++;
 }
 
@@ -129,7 +144,7 @@ void showScore(uint8_t type)
       pos += printBallAt(dmd, pos, 13 + 24 * i, &color, &bgColor);
     }
     pos = 0;
-    for (int j = 1; j < games[i].extraBalls; j++)
+    for (int j = 0; j < games[i].extraBalls; j++)
     {
       pos += printBallAt(dmd, pos, 4 + 24 * i, &colorBlue, &bgColor);
     }
@@ -221,7 +236,7 @@ void clearEvents()
 
 void showGameEnded(int event)
 {
-  inGame = EVENT_GAME_ENDED;
+  inGame = GAME_ENDED;
 
   if (events[event].beats > 0)
   {
@@ -237,7 +252,7 @@ void fastBonus()
   {
     return;
   }
-  printf("Fast bonus set\n");
+
   bonusSpeed = 5;
 }
 
@@ -355,6 +370,16 @@ void showBonus(int event)
   games[shooter].score += 500 * games[shooter].totalInstumentsCollected * games[shooter].multiplier;
   games[shooter].score += 250 * games[shooter].totalMovesCollected * games[shooter].multiplier;
 
+  printf("games[shooter].extraBalls %d\n", games[shooter].extraBalls);
+  // does shooter have extra balls
+  if (games[shooter].extraBalls > 0)
+  {
+    // todo show player shooter is up
+    loadBall();
+    return;
+  }
+
+  // move to next shooter, or first shooter
   if (shooter < numberOfPlayers - 1)
   {
     shooter++;
@@ -368,7 +393,6 @@ void showBonus(int event)
   if (games[shooter].ballNumber < config.numberOfBalls)
   {
     loadBall();
-    //showScore(0);
   }
   else
   {
@@ -448,4 +472,42 @@ void gameBeat(uint8_t tick)
   }
 
   showScore(0);
+}
+
+void offerExtraBall()
+{
+  printf("Extra ball offered\n");
+  printf("config.numberOfExtraBallsOffered %d\n", config.numberOfExtraBallsOffered);
+  printf("games[shooter].extraBallsOffered %d\n", games[shooter].extraBallsOffered);
+  printf("games[shooter].extraBalls %d\n", games[shooter].extraBalls);
+  printf("config.numberOfExtraBalls %d\n", config.numberOfExtraBalls);
+  lamps[2] = lamps[2] | (1 << 8);
+  if (games[shooter].extraBallsOffered < config.numberOfExtraBallsOffered && games[shooter].extraBalls < config.numberOfExtraBalls)
+  {
+    games[shooter].extraBallsOffered++;
+    games[shooter].totalExtraBallsOffered++;
+  }
+}
+
+void onPEZ1()
+{
+  printf("onPEZ1\n");
+  printf("games[shooter].extraBallsOffered %d\n", games[shooter].extraBallsOffered);
+  printf("games[shooter].extraBalls %d\n", games[shooter].extraBalls);
+  printf("config.numberOfExtraBalls %d\n", config.numberOfExtraBalls);
+  if (games[shooter].extraBallsOffered > 0 && games[shooter].extraBalls < config.numberOfExtraBalls)
+  {
+    printf("games[shooter].extraBalls %d\n", games[shooter].extraBalls);
+    games[shooter].extraBalls++;
+    printf("games[shooter].extraBalls %d\n", games[shooter].extraBalls);
+    games[shooter].extraBallsCollected++;
+    games[shooter].totalExtraBallsCollected++;
+
+    games[shooter].extraBallsOffered--;
+
+    if (games[shooter].extraBallsOffered == 0)
+    {
+      lamps[2] = lamps[2] & (0 << 8);
+    }
+  }
 }

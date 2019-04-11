@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <sys/select.h>
 
-#define BUTTONS_COUNT 11
+#define BUTTONS_COUNT 12
 
 typedef struct pointItem
 {
@@ -41,8 +41,6 @@ const int gridViewY = 535;
 const int buttonWidth = 40;
 const int buttonHeight = 40;
 int onButton = 0;
-
-//int oldCursorX, oldCursorY;
 
 void makeButton(int i, char *pName, int fromX, int fromY, int toX, int toY, unsigned long color, unsigned long frameColor, unsigned long textColor, uint16_t registry, uint8_t column, uint8_t down)
 {
@@ -132,7 +130,8 @@ void setupWiring()
   makeButton(7, "Left", 400, 485, 439, 524, colorGreen.pixel, colorBlack.pixel, colorBlack.pixel, 1 << 5, 2, 0);
   makeButton(8, "Rigth", 450, 485, 489, 524, colorRed.pixel, colorBlack.pixel, colorBlack.pixel, 1 << 6, 2, 0);
   makeButton(9, "End", 500, 485, 539, 524, colorBlack.pixel, colorGreen.pixel, colorWhite.pixel, 1 << 14, 2, 0);
-  makeButton(10, "PEZ", 550, 485, 589, 524, colorWhite.pixel, colorBlack.pixel, colorRed.pixel, 1 << 11, 2, 0);
+  makeButton(10, "PEZ 1", 550, 485, 589, 524, colorWhite.pixel, colorBlack.pixel, colorRed.pixel, 1 << 11, 2, 0);
+  makeButton(11, "Offer", 600, 485, 639, 524, colorRed.pixel, colorGreen.pixel, colorWhite.pixel, 1 << 11, 3, 0);
 
   drawButtons();
 
@@ -152,6 +151,18 @@ void setupWiring()
 
 void updateColumn(uint8_t column)
 {
+  for (int i = 0; i < 32; i++)
+  {
+    if (lamps[column] & 1 << i)
+    {
+      XSetForeground(display, gc, colorWhite.pixel);
+    }
+    else
+    {
+      XSetForeground(display, gc, colorRed.pixel);
+    }
+    XFillRectangle(display, win, gc, gridViewX + i * 5 + 1, gridViewY + column * 5 + 1, 4, 4);
+  }
 }
 
 void updateShiftIn()
@@ -171,39 +182,34 @@ void updateShiftIn()
   XTranslateCoordinates(display, win, DefaultRootWindow(display), 0, 0, &x, &y, &child);
   XGetWindowAttributes(display, win, &xwa);
 
-  //if (oldCursorX != cursorX || oldCursorY != cursorY)
+  for (int i = 0; i < BUTTONS_COUNT; i++)
   {
-    for (int i = 0; i < BUTTONS_COUNT; i++)
+    if (buttons[i].column == column)
     {
-      if (buttons[i].column == column)
+      if (cursorX >= x + buttons[i].from.x && cursorX <= x + buttons[i].to.x &&
+          cursorY >= y + buttons[i].from.y && cursorY <= y + buttons[i].to.y)
       {
-        if (cursorX >= x + buttons[i].from.x && cursorX <= x + buttons[i].to.x &&
-            cursorY >= y + buttons[i].from.y && cursorY <= y + buttons[i].to.y)
+        if (cursorY >= y + buttons[i].from.y && cursorY <= y + (buttons[i].from.y + buttons[i].to.y) / 2)
         {
-          if (cursorY >= y + buttons[i].from.y && cursorY <= y + (buttons[i].from.y + buttons[i].to.y) / 2)
-          {
-            buttons[i].down = 1;
-            drawButton(i);
-          }
-          else
-          {
-            buttons[i].down = 0;
-            drawButton(i);
-          }
-
-          newInputRegister += buttons[i].registry;
+          buttons[i].down = 1;
+          drawButton(i);
         }
         else
         {
-          if (buttons[i].down == 1)
-          {
-            newInputRegister += buttons[i].registry;
-          }
+          buttons[i].down = 0;
+          drawButton(i);
+        }
+
+        newInputRegister += buttons[i].registry;
+      }
+      else
+      {
+        if (buttons[i].down == 1)
+        {
+          newInputRegister += buttons[i].registry;
         }
       }
     }
-    //oldCursorX = cursorX;
-    //oldCursorY = cursorY;
   }
 }
 

@@ -15,6 +15,9 @@
 uint16_t oldInputRegister[8];
 uint16_t newInputRegister;
 
+uint32_t lamps[8];
+uint8_t coils[8];
+
 uint8_t leds;
 uint8_t column;
 

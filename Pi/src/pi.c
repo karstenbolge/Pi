@@ -48,6 +48,11 @@ void init()
 
   leds = 1;
   column = 0;
+  for (int i = 0; i < 8; i++)
+  {
+    lamps[i] = 0;
+    coils[i] = 0;
+  }
   upDownHeld = UP_DOWN_HELD_OFF;
   upDownHasTicked = 0;
   upDownLoops = 0;
@@ -226,7 +231,6 @@ int main(void)
       // both flippers down
       if ((newInputRegister & 1 << 5) && (newInputRegister & 1 << 6))
       {
-        printf("Both flip\n");
         fastBonus();
       }
       if ((oldInputRegister[column] & 1 << 10) != (newInputRegister & 1 << 10))
@@ -246,6 +250,7 @@ int main(void)
         else
         {
           //PEZ;
+          onPEZ1();
         }
       }
       if ((oldInputRegister[column] & 1 << 12) != (newInputRegister & 1 << 12))
@@ -305,6 +310,17 @@ int main(void)
       if (newInputRegister & 1 << 15)
       {
         onUpDownHeld(UP_DOWN_HELD_DOWN);
+      }
+      break;
+    case 3:
+      if ((oldInputRegister[column] & 1 << 11) != (newInputRegister & 1 << 11))
+      {
+        if (newInputRegister & 1 << 11)
+          ;
+        else
+        {
+          offerExtraBall();
+        }
       }
       break;
     }
