@@ -404,12 +404,29 @@ void showBonus(int event)
   }
 }
 
+void lampBeat(uint8_t tick)
+{
+  if (tick % 4 == 0)
+  {
+    if (games[shooter].extraBallsOffered > 0)
+    {
+      lamps[2] = lamps[2] | (1 << 8);
+    }
+    else
+    {
+      lamps[2] = lamps[2] & (0 << 8);
+    }
+  }
+}
+
 void gameBeat(uint8_t tick)
 {
-  if (tick % 2 != 0 || inGame == NO_GAME)
+  if (inGame == NO_GAME)
   {
     return;
   }
+
+  lampBeat(tick);
 
   int i = 0;
   while (events[i].beats > 0 && i < MAX_EVENTS)
@@ -476,12 +493,6 @@ void gameBeat(uint8_t tick)
 
 void offerExtraBall()
 {
-  printf("Extra ball offered\n");
-  printf("config.numberOfExtraBallsOffered %d\n", config.numberOfExtraBallsOffered);
-  printf("games[shooter].extraBallsOffered %d\n", games[shooter].extraBallsOffered);
-  printf("games[shooter].extraBalls %d\n", games[shooter].extraBalls);
-  printf("config.numberOfExtraBalls %d\n", config.numberOfExtraBalls);
-  lamps[2] = lamps[2] | (1 << 8);
   if (games[shooter].extraBallsOffered < config.numberOfExtraBallsOffered && games[shooter].extraBalls < config.numberOfExtraBalls)
   {
     games[shooter].extraBallsOffered++;
@@ -491,10 +502,6 @@ void offerExtraBall()
 
 void onPEZ1()
 {
-  printf("onPEZ1\n");
-  printf("games[shooter].extraBallsOffered %d\n", games[shooter].extraBallsOffered);
-  printf("games[shooter].extraBalls %d\n", games[shooter].extraBalls);
-  printf("config.numberOfExtraBalls %d\n", config.numberOfExtraBalls);
   if (games[shooter].extraBallsOffered > 0 && games[shooter].extraBalls < config.numberOfExtraBalls)
   {
     printf("games[shooter].extraBalls %d\n", games[shooter].extraBalls);
@@ -504,10 +511,5 @@ void onPEZ1()
     games[shooter].totalExtraBallsCollected++;
 
     games[shooter].extraBallsOffered--;
-
-    if (games[shooter].extraBallsOffered == 0)
-    {
-      lamps[2] = lamps[2] & (0 << 8);
-    }
   }
 }

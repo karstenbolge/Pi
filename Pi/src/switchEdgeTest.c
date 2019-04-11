@@ -194,7 +194,7 @@ void switchBeat(uint8_t tick)
   }
 
   levelBeat++;
-  if (levelBeat > 64)
+  if (levelBeat > 48)
   {
     levelBeat = 0;
     getNextSwitch();
