@@ -408,8 +408,9 @@ void lampBeat(uint8_t tick)
 {
   if (tick % 4 == 0)
   {
-    if (games[shooter].extraBallsOffered > 0)
+    if (games[shooter].extraBallsOffered > 0 && tick % 8 == 0)
     {
+      // quite fast blinking
       lamps[2] = lamps[2] | (1 << 8);
     }
     else

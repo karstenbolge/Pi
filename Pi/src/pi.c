@@ -333,7 +333,7 @@ int main(void)
     // test code to have action on score screen
     if (inGame == RUNNING_GAME)
     {
-      int r = rand() % 600000;
+      int r = rand() % 200000;
       if (r == 2)
       {
         onBumberA();
