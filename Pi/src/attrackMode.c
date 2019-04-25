@@ -56,8 +56,8 @@ void attrackModeTick(uint8_t tick)
       //printAtLine("abcdefghijklmnopqrstuvwxyz", 3, NULL, &bgColor);
       //printAtLine("!\"#¤&/()=?£$€{[]}|*~^.,;:-_'%\\", 0, &color, &bgColor);
       //showImage(getNextSideSoulTrain1Frame());
-      //printLargeAtLineAndPosition("456.789", 5 + 2 * 24, 0, &color, NULL);
-      //printLargeAtLineAndPosition("0,123", 5 + 3 * 24, 0, &color, NULL);
+      printLargeAtLineAndPosition("01234.5678,9", 5 + 2 * 24, 0, &color, NULL);
+      printLargeAtLineAndPosition("ABC", 5 + 3 * 24, 0, &color, NULL);
 
       printCenterAtLine("<Attrack mode>", 1, &color, NULL);
 

@@ -62,6 +62,12 @@ void saveFont()
     }
   }
 
+  if (size == 2)
+  {
+    // one more space between letters
+    width++;
+  }
+
   fprintf(pOutputFile, "uint8_t print?At(rgb_t dmd[DMD_WIDTH][DMD_HEIGHT], uint8_t x, uint8_t y, rgb_t *pColor, rgb_t *pBgColor)\n");
   fprintf(pOutputFile, "{\n");
   fprintf(pOutputFile, "  uint8_t width = %d;\n", width);
@@ -72,10 +78,10 @@ void saveFont()
 
   fprintf(pOutputFile, "  if (pColor != NULL)\n");
   fprintf(pOutputFile, "  {\n");
-  for (int j = 0; j <= (size == 1 ? 10 : 22); j++)
+  for (int j = 0; j < (size == 1 ? 11 : 16); j++) // if below the line then 22 for big size
   {
     int write = 0;
-    for (int i = 0; i < width; i++)
+    for (int i = 0; i <= width; i++)
     {
       if (board[i][j] == 1)
       {
@@ -92,10 +98,10 @@ void saveFont()
 
   fprintf(pOutputFile, "  if (pBgColor != NULL)\n");
   fprintf(pOutputFile, "  {\n");
-  for (int j = 0; j <= (size == 1 ? 10 : 22); j++)
+  for (int j = 0; j < (size == 1 ? 11 : 16); j++) // if below the line then 22 for big size
   {
     int write = 0;
-    for (int i = 0; i < width; i++)
+    for (int i = 0; i <= width; i++)
     {
       if (board[i][j] == 0)
       {

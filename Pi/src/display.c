@@ -63,6 +63,12 @@ uint8_t printLargeCharAt(unsigned char chr, uint16_t position, uint8_t line, rgb
     return printLargePointAt(dmd, position, line, pColor, pBgColor);
   case ',':
     return printLargeCommaAt(dmd, position, line, pColor, pBgColor);
+  case 'A':
+    return printLargeAAt(dmd, position, line, pColor, pBgColor);
+  case 'B':
+    return printLargeBAt(dmd, position, line, pColor, pBgColor);
+  case 'C':
+    return printLargeCAt(dmd, position, line, pColor, pBgColor);
   default:
     printf("Never here!! %c %d\n", chr, chr);
     return 7;
