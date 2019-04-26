@@ -258,13 +258,13 @@ int main(int argc, char **argv)
     }
     if (cursorX < 0)
     {
-      cursorX = 15;
+      cursorX = size == 1 ? 15 : 20;
     }
     if (cursorY < 0)
     {
       cursorY = 11 * size - 1;
     }
-    if (cursorX > 15)
+    if (cursorX > (size == 1 ? 15 : 20))
     {
       cursorX = 0;
     }

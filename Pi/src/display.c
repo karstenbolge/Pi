@@ -87,6 +87,34 @@ uint8_t printLargeCharAt(unsigned char chr, uint16_t position, uint8_t line, rgb
     return printLargeKAt(dmd, position, line, pColor, pBgColor);
   case 'L':
     return printLargeLAt(dmd, position, line, pColor, pBgColor);
+  case 'M':
+    return printLargeMAt(dmd, position, line, pColor, pBgColor);
+  case 'N':
+    return printLargeNAt(dmd, position, line, pColor, pBgColor);
+  case 'O':
+    return printLargeOAt(dmd, position, line, pColor, pBgColor);
+  case 'P':
+    return printLargePAt(dmd, position, line, pColor, pBgColor);
+  case 'Q':
+    return printLargeQAt(dmd, position, line, pColor, pBgColor);
+  case 'R':
+    return printLargeRAt(dmd, position, line, pColor, pBgColor);
+  case 'S':
+    return printLargeSAt(dmd, position, line, pColor, pBgColor);
+  case 'T':
+    return printLargeTAt(dmd, position, line, pColor, pBgColor);
+  case 'U':
+    return printLargeUAt(dmd, position, line, pColor, pBgColor);
+  case 'V':
+    return printLargeVAt(dmd, position, line, pColor, pBgColor);
+  case 'W':
+    return printLargeWAt(dmd, position, line, pColor, pBgColor);
+  case 'X':
+    return printLargeXAt(dmd, position, line, pColor, pBgColor);
+  case 'Y':
+    return printLargeYAt(dmd, position, line, pColor, pBgColor);
+  case 'Z':
+    return printLargeZAt(dmd, position, line, pColor, pBgColor);
   default:
     printf("Never here!! %c %d\n", chr, chr);
     return 7;
