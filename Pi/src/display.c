@@ -69,6 +69,24 @@ uint8_t printLargeCharAt(unsigned char chr, uint16_t position, uint8_t line, rgb
     return printLargeBAt(dmd, position, line, pColor, pBgColor);
   case 'C':
     return printLargeCAt(dmd, position, line, pColor, pBgColor);
+  case 'D':
+    return printLargeDAt(dmd, position, line, pColor, pBgColor);
+  case 'E':
+    return printLargeEAt(dmd, position, line, pColor, pBgColor);
+  case 'F':
+    return printLargeFAt(dmd, position, line, pColor, pBgColor);
+  case 'G':
+    return printLargeGAt(dmd, position, line, pColor, pBgColor);
+  case 'H':
+    return printLargeHAt(dmd, position, line, pColor, pBgColor);
+  case 'I':
+    return printLargeIAt(dmd, position, line, pColor, pBgColor);
+  case 'J':
+    return printLargeJAt(dmd, position, line, pColor, pBgColor);
+  case 'K':
+    return printLargeKAt(dmd, position, line, pColor, pBgColor);
+  case 'L':
+    return printLargeLAt(dmd, position, line, pColor, pBgColor);
   default:
     printf("Never here!! %c %d\n", chr, chr);
     return 7;
