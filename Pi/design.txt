@@ -1,0 +1,7 @@
++--------------+---------------+---------+-------------+----------+
+| Attrack mode | Before launch | In game | Bonus       | Game end |
++--------------+---------------+---------+-------------+----------+
+| Never        | Blinking      | Score   | Instruments | Video    |
+| Last session | Same          | Rolling | Moves       | Score    |
++--------------+---------------+---------| Total       |----------+
+                                         +-------------+

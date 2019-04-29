@@ -77,6 +77,10 @@ void clearAuditsEnter()
   config.totalRightDrains = 0;
   config.totalRightFlip = 0;
   config.totalTilts = 0;
+  config.lastScore[0] = -1;
+  config.lastScore[1] = -1;
+  config.lastScore[2] = -1;
+  config.lastScore[3] = -1;
 
   for (int i = 0; i < 13; i++)
   {

@@ -45,6 +45,7 @@ typedef struct config
   uint64_t totalTilts;
   uint64_t totalLeftDrains;
   uint64_t totalRightDrains;
+  uint32_t lastScore[4];
   char gameId[32];
   char customMessage1[32];
   char customMessage2[32];

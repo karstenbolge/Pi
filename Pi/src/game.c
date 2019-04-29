@@ -237,6 +237,11 @@ void clearEvents()
 void showGameEnded(int event)
 {
   inGame = GAME_ENDED;
+  for (int i = 0; i < numberOfPlayers; i++)
+  {
+    config.lastScore[i] = games[shooter].score;
+  }
+  saveConfig();
 
   if (events[event].beats > 0)
   {

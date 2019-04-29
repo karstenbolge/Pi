@@ -79,6 +79,10 @@ void initConfig()
   config.totalTilts = 0;
   config.totalLeftDrains = 0;
   config.totalRightDrains = 0;
+  config.lastScore[0] = -1;
+  config.lastScore[1] = -1;
+  config.lastScore[2] = -1;
+  config.lastScore[3] = -1;
   getMacAddress(); // which inits gameId
   config.customMessage1[0] = 0;
   config.customMessage2[0] = 0;
@@ -128,6 +132,10 @@ int stringStart(char *str, char *in)
 #define TOTAL_TILTS "totalTilts:"
 #define TOTAL_LEFT_DRAINS "totalLeftDrains:"
 #define TOTAL_RIGHT_DRAINS "totalRightDrains:"
+#define LAST_SCORE_1 "lastScore1:"
+#define LAST_SCORE_2 "lastScore2:"
+#define LAST_SCORE_3 "lastScore3:"
+#define LAST_SCORE_4 "lastScore4:"
 #define GAME_ID "gameId:"
 #define CUSTOM_MESSAGE_1 "customMessage1:"
 #define CUSTOM_MESSAGE_2 "customMessage2:"
@@ -192,6 +200,14 @@ void readConfig()
         config.totalLeftDrains = atol(value);
       if (stringStart(readBuffer, TOTAL_RIGHT_DRAINS))
         config.totalRightDrains = atol(value);
+      if (stringStart(readBuffer, LAST_SCORE_1))
+        config.lastScore[0] = atol(value);
+      if (stringStart(readBuffer, LAST_SCORE_2))
+        config.lastScore[1] = atol(value);
+      if (stringStart(readBuffer, LAST_SCORE_3))
+        config.lastScore[2] = atol(value);
+      if (stringStart(readBuffer, LAST_SCORE_4))
+        config.lastScore[3] = atol(value);
       if (stringStart(readBuffer, GAME_ID))
       {
         strcpy(config.gameId, value);
@@ -311,6 +327,10 @@ void saveConfig()
   fprintf(pConfig, "%s %ld\n", TOTAL_TILTS, config.totalTilts);
   fprintf(pConfig, "%s %ld\n", TOTAL_LEFT_DRAINS, config.totalLeftDrains);
   fprintf(pConfig, "%s %ld\n", TOTAL_RIGHT_DRAINS, config.totalRightDrains);
+  fprintf(pConfig, "%s %d\n", LAST_SCORE_1, config.lastScore[0]);
+  fprintf(pConfig, "%s %d\n", LAST_SCORE_2, config.lastScore[1]);
+  fprintf(pConfig, "%s %d\n", LAST_SCORE_3, config.lastScore[2]);
+  fprintf(pConfig, "%s %d\n", LAST_SCORE_4, config.lastScore[3]);
   fprintf(pConfig, "%s %s\n", GAME_ID, config.gameId);
   fprintf(pConfig, "%s %s\n", CUSTOM_MESSAGE_1, config.customMessage1);
   fprintf(pConfig, "%s %s\n", CUSTOM_MESSAGE_2, config.customMessage2);
